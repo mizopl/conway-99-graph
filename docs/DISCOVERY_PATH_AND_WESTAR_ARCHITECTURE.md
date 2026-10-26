@@ -96,6 +96,29 @@ For prime order $p = 2$, an involution $g \in \mathrm{Aut}(\Gamma)$ fixing $x_0$
     $$b_z = b + c - 2c^2 + 2c_z^2 - c_z, \qquad E_{\text{flip}}(g) = b_{x_0} + \mathrm{Tr}(B) = \sum_{z \in \mathrm{Fix}(g)} b_z = 4\dim V_{-1}(g) - 7M_3(-1).$$
   - Injecting this single theorem into `verify_lens2_p1.py` immediately refuted all 4 remaining fixed-point involution profiles (`(2,2,1)`, `(2,3,0)`, `(3,0,1)`, `(3,1,0)`) in **$< 0.2\text{ seconds}$ each (`1` to `55` RUP steps, `0 RAT`)**, bringing $p = 2$ to **18/19 certified profiles**.
 
+### Step 5: Coupled $42 \times 42$ Orbit & Signed $V_{-1}(g)$ Matrix Equations for `(0, 7, 0)` (`Phase 3`)
+With 18/19 involution profiles certified UNSAT, the entire prime $p = 2$ analysis reduces to the single central involution $g = -I_7 \in Z(B_7)$ (`(0, 7, 0)`, $|\mathrm{Fix}(g)| = 1$, $49$ transpositions):
+1. **$42 \times 42$ Outer Orbit Equation (`B`) & Signed $V_{-1}(g)$ Equation (`D`):**
+   On the $42$ outer $g$-orbits ($21$ conjugate pairs $\{x_a, \bar{x}_a\}$), the orbit-sum matrix $B = 2 P_\pi + |D|$ and the signed $-1$-eigenspace matrix $D \in \{-1, 0, +1\}^{42 \times 42}$ satisfy:
+   $$B^2 + B - 12 I_{42} = M_{21}^{\text{true}} \otimes J_2, \qquad D = D^T, \quad \mathrm{diag}(D) = 0, \quad D C_- = 0, \quad D^2 + D - 12 I_{42} = -C_- C_-^T$$
+   with exact spectra $\mathrm{Spec}(B) = \{12^1, 1^6, 3^{20}, (-4)^{15}\}$ and $\mathrm{Spec}(D) = \{0^7, 3^{20}, (-4)^{15}\}$.
+2. **Global 7-Triangle Triality Coupling:**
+   Each of the $7$ inner triangles $T_r$ ($r \in \{0..6\}$) selects a $12$-orbit slice $S_r \subset \{0..41\}$ with $\sum_{r=0}^6 \Pi_{S_r} = 2 I_{42}$, where the $10,395$ perfect matchings on $12$ vertices compress under $B_6 = \mathbb{Z}_2^6 \rtimes S_6$ (order $46,080$) into **11 canonical integer-partition orbits**, coupled across every pair of slices by the **Triality Reciprocity Law** $M_r^+(x, \bar{x}) = M_t^-(x, \bar{x})$ on $Q_{\{r, t\}} = S_r \cap S_t$.
+
+### Step 6: The Mod-2 Triple-Block Parity Obstruction ($k_{\text{type1}}(S_r) \le 2$) & The $36 \times 36$ Gram / Commutator Audit (`Phase 4`)
+1. **The Mod-2 Triple-Block Parity Obstruction Theorem ($k_{\text{type1}}(S_r) \le 2$):**
+   Suppose a slice $S_r$ has $\ge 3$ Type-I blocks ($b_{x, \bar{x}} = M_r^+(2b, 2b+1) + E_r(2b, 2b+1) = 2$), say $0, b_1, b_2$, with $20$-edge block-sum vectors $Y_b = X_{2b} + X_{2b+1} \in \{0, 1\}^{60}$. By the Block-Orbit Exclusion Identity $Y_b + P_g Y_b = \mathbf{1}_{60} - W_{\cdot, 2b} - W_{\cdot, 2b+1}$, $Y_{b_1}$ and $Y_{b_2}$ must be disjoint on $\mathrm{supp}(Y_0)$. Reducing $\langle Y_{b_1}, Y_{b_2} \rangle$ modulo $2$, all vertex degrees cancel except on the $2$ edges of $Y_0$ between block $b_1$ and block $b_2$:
+   $$\langle Y_{b_1}, Y_{b_2} \rangle \equiv d_{Y_0}(2b_2+1, b_1) + d_{Y_0}(2b_1+1, b_2) \equiv 1 \pmod{2} \in \{1, 3, 5, 7, 9, 11\}.$$
+   Since $\langle Y_{b_1}, Y_{b_2} \rangle$ is **strictly odd**, it can never equal $4$ (`414,973` disjoint block-sum pairs checked across all `78` canonical $B_5$-orbits of $(H_0, H_1)$, `0` compatible, `78/78` Kissat `UNSAT`). Thus **$k_{\text{type1}}(S_r) \le 2$ on every slice $S_r$** ($\Delta(G_{\text{type1}}) \le 2$, at most $7$ Type-I blocks globally).
+2. **The $36 \times 36$ Slice Gram Matrix $G_{36}(M_0^+, E_0)$ & Generalized Cycle-Orbit Exclusion:**
+   Letting $U_{36} = [W \mid X^T \mid P_g X^T] \in \{0, 1\}^{60 \times 36}$, the SRG equation on $S_{36} \times S_{36}$ gives:
+   $$G_{36}(M_0^+, E_0) := U_{36}^T U_{36} = 12 I_{36} + 2 J_{36} - (I_3 \otimes J_{12}) - A_{S_{36}}^2 - A_{S_{36}} = \begin{pmatrix} W^T W & \Delta_0^T & F_{12} \Delta_0^T \\ \Delta_0 & G_+ & K_{W_0} \\ \Delta_0 F_{12} & K_{W_0}^T & G_+ \end{pmatrix}.$$
+   Every $(M_0^+, E_0)$-closed union of blocks $B \subset \{0..5\}$ yields an explicit nullvector $v_B \in \ker(G_{36})$, forcing $\sum_{i \in I_B} (X(i, c) + X(i, g(c))) = |B| - \sum_{j \in I_B} W(c, j)$ on every edge $c \in R_{60}$.
+3. **Exact Bracket I + II Cross-Slice Commutator Identity:**
+   For $Z_D = -D_{S_0, W_0} D_{W_0, W_0} D_{W_0, S_0}$, the asymmetry commutator decomposes into two structural brackets:
+   $$Z_D - Z_D^T = \underbrace{\Big[D_{S_0, W_0} C_{-, W_0} C_{-, S_0}^T - C_{-, S_0} C_{-, W_0}^T D_{W_0, S_0}\Big]}_{\text{Bracket I: } X W = \Delta_0 \text{ (i.e. } (D C_-)_{S_0} = 0\text{)}} + \underbrace{\Big[D_{S_0, S_0}(D_{S_0, W_0} D_{W_0, S_0}) - (D_{S_0, W_0} D_{W_0, S_0}) D_{S_0, S_0}\Big]}_{\text{Bracket II: } X X^T = G_+, \, X P_g X^T = K_{W_0}}.$$
+   Enforcing both Bracket I and Bracket II simultaneously turns all tested $(X_2, X_3)$ extensions for $k_{\text{type1}} = 2$ from `SAT (0.10s)` into **`100% UNSAT (1.50s–4.33s)`** (`asymmetric_research/verify_lens3_asymmetric.py`).
+
 ---
 
 ## 3. How `we*star` Works: Human + AI Collaborative Architecture
@@ -134,6 +157,8 @@ This research was conducted under **[`we*star`](https://github.com/mizopl/we-sta
    - **Multi-Case Bundling Penalty (`[M4-BUNDLE]`):** In Bet `L-C9G-012`, `PROOFER-II` bundled all 5 remaining $p = 2$ profiles into a single binary bet (`all 5 remaining ...`). Even though 4 of the 5 profiles (`80%`) succeeded in $< 0.2\text{s}$, the binary conjunction evaluated to `0` (`Brier = 0.423`).
    - **Artificial Ceiling on Deterministic Certification (`[M4-TIER3]`):** Post-proof packaging bets (`L-C9G-001, 007, 008, 013`) were capped at $p = 0.65$, imposing a minimum Brier penalty of $0.123$ on deterministic engineering checks.
    Upgrading `micro_bet.py` to the **3-Tier Epistemic Calibration (`Law M4 v2`)** reduced the calibrated mean Brier score from `0.233` to **`0.138` (`-40.8%`)**.
+3. **Breaking the `(0, 7, 0)` Single-Slice Bottleneck via Quantitative Pattern Extraction (`18:26`):**
+   When `PROOFER-II`'s relaxed single-slice solver returned `SAT` in `0.10s` on $S_0$ while full multi-slice SAT bogged down, `@mizopl` intervened (*"moze trzeba cos zgeneralizowac, pomyslec z innej strony... popatrzec na ten problem pod katem ilosciowym zeby wylapac patterny"*). Instead of grinding case-by-case SAT, `AUDITOR` and `PROOFER-II` extracted the numerical matrices from the relaxed `SAT` solutions and audited the cross-slice commutator $Z_D - Z_D^T$, discovering its exact decomposition into **Bracket I** ($X W = \Delta_0$, i.e., $(D C_-)_{S_0} = 0$) and **Bracket II** ($X X^T = G_+$, $X P_g X^T = K_{W_0}$). In the relaxed `SAT` solutions, Bracket I exploded ($\max |Z_D - Z_D^T| = 12$); adding the missing linear constraint $X W = \Delta_0$ immediately flipped all tested $(X_2, X_3)$ extensions for $k_{\text{type1}} = 2$ from `SAT (0.10s)` to **`100% UNSAT (1.50s–4.33s)`** and revealed the $36 \times 36$ Gram matrix $G_{36}(M_0^+, E_0)$.
 
 ---
 
