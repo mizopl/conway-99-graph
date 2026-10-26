@@ -50,6 +50,24 @@ Using **only the Python 3 standard library** (`collections`, `hashlib`, `itertoo
 
 ---
 
+## How All 27 Theorems Glue Together: The Exhaustive Cauchy-Orbit Partition Tree
+
+How do we know that these individual SAT/LRAT theorems fit together without missing any hidden intermediate cases? The glue is purely algebraic and rests on three exact exhaustiveness principles (detailed in [`docs/DISCOVERY_PATH_AND_WESTAR_ARCHITECTURE.md`](docs/DISCOVERY_PATH_AND_WESTAR_ARCHITECTURE.md#2-how-all-theorems-glue-together-the-exhaustive-cauchy-orbit-partition-tree)):
+
+1. **Cauchy's Theorem (Prime-Order Reduction):** Every non-trivial finite group $\mathrm{Aut}(\Gamma)$ ($|\mathrm{Aut}(\Gamma)| > 1$) contains an element $g$ of prime order $p \mid |\mathrm{Aut}(\Gamma)|$. By classic orbit-stabilizer congruences on $99$ vertices and valency $14$ (Wilbrink 1983; Cesarz & Woldar 2023), the only primes that can divide $|\mathrm{Aut}(\Gamma)|$ are $p \in \{2, 3, 5, 7, 11, 13\}$, with $p \in \{11, 13\}$ already eliminated in the literature.
+2. **Track `p2` as the Universal Local Glue (`p2_1` through `p2_5`):** Around any fixed vertex $x_0 \in \mathrm{Fix}(g)$, Track `p2` machine-certifies that $\Gamma_1(x_0)$ is rigidly a perfect matching $M_{x_0}$ of $7$ disjoint edges ($7 K_2$, $\lambda = 1$) and that the $84$ vertices of $\Gamma_2(x_0)$ are in canonical bijection with the $\binom{14}{2} - 7 = 84$ non-matched pairs of $\Gamma_1(x_0)$ ($\mu = 2$). Therefore, **any automorphism $g$ fixing $x_0$ is completely determined on $\Gamma_1(x_0) \cup \Gamma_2(x_0)$ by how it permutes the $7$ matched edges of $M_{x_0}$**.
+3. **Exhaustive Diophantine Partition Within Each Prime $p$:**
+   - **Prime $p = 7$ (100% Exhausted -> $7 \nmid |\mathrm{Aut}(\Gamma)|$):** Since $99 \equiv 1 \pmod 7$ and $g^7 = 1$, $|\mathrm{Fix}(g)| \equiv 1 \pmod 7$ whenever $\mathrm{Fix}(g) \ne \emptyset$.
+     - $|\mathrm{Fix}(g)| = 0$: Ruled out by Makhnev & Minakova (2004).
+     - $|\mathrm{Fix}(g)| = 8$: Ruled out by Cesarz & Woldar (2023, Lemma 2.2 / Remark 2.3).
+     - $|\mathrm{Fix}(g)| \ge 15$: Ruled out by Cesarz & Woldar (2023, Corollary 4.4(b)).
+     - **$|\mathrm{Fix}(g)| = 1$ (`p7_fix1`):** Since $7$ is prime, $g$ cannot fix any of the $7$ inner triangles without fixing its vertices, so $g$ must cycle all $7$ edges of $M_{x_0}$ as a single $7$-cycle ($14$ cycles of length $7$ on $V(\Gamma) \setminus \{x_0\}$). Our `p7_fix1` certificate closes this **unique remaining case**, unconditionally proving $7 \nmid |\mathrm{Aut}(\Gamma)|$.
+   - **Prime $p = 2$ (19 Exact Cases from $2a + b + c = 7$, 18/19 Certified UNSAT):** By Cesarz & Woldar (2023, Corollary 3.8), every involution $g$ ($g^2 = 1$) fixes at least one vertex $x_0$. On the $7$ edges of $M_{x_0}$, an involution can only: (i) swap $a$ pairs of edges ($2a$ edges), (ii) flip $b$ edges in place, and (iii) fix $c$ edges pointwise. The Diophantine equation:
+     $$2a + b + c = 7 \quad (a, b, c \in \mathbb{Z}_{\ge 0}, \ (a,b,c) \ne (0,0,7))$$
+     has **exact $7 + 6 + 4 + 2 = 19$ solutions** (`verify.py` enumerates all 19 tuples programmatically). **18 of these 19 tuples** (every tuple with $|\mathrm{Fix}(g)| \ge 3$) are certified UNSAT in Track `p1`, leaving only the single tuple `(0, 7, 0)` ($|\mathrm{Fix}(g)| = 1$).
+
+---
+
 ## Summary Table of Certified Theorems (`27` Theorems = `54` Proofs)
 
 | Track | Theorem ID | Group / Structural Case | Encoding A (Sinz 2005) Core / RUP | Encoding B (Totalizer) Core / RUP | Status |

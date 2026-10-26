@@ -29,6 +29,39 @@ In `p7_fix1`, an order-$7$ automorphism $g$ fixing $x_0$ acts as two $7$-cycles 
 
 ---
 
+## 1.5. How All Theorems Glue Together: The Exhaustive Cauchy-Orbit Partition Tree
+
+A critical question for any case-by-case computer-assisted proof is: **how do we know that the individual theorems glue together without leaving an unexamined gap?**
+
+The architecture is governed by a three-level deductive tree:
+
+### Level 1: Cauchy's Theorem on $|\mathrm{Aut}(\Gamma)|$
+If $|\mathrm{Aut}(\Gamma)| > 1$, then at least one prime $p$ divides $|\mathrm{Aut}(\Gamma)|$, and by Cauchy's Theorem (1845) $\mathrm{Aut}(\Gamma)$ contains an element $g$ of prime order $p$. Classical orbit-stabilizer congruences on $n = 99, k = 14, \lambda = 1, \mu = 2$ restrict $p$ to $\{2, 3, 5, 7, 11, 13\}$, with $p \in \{11, 13\}$ excluded by Wilbrink (1983), Makhnev & Minakova (2004), and Cesarz & Woldar (2023).
+
+### Level 2: Track `p2` (`p2_1`–`p2_5`) as the Universal Neighborhood Glue
+Whenever $g \in \mathrm{Aut}(\Gamma)$ fixes a vertex $x_0 \in V(\Gamma)$, the 5 certified propositions of Track `p2` prove that:
+1. $\Gamma_1(x_0)$ is a union of $7$ disjoint edges $M_{x_0} = \{e_0, \dots, e_6\} \cong 7 K_2$ (`p2_1_inner_matching_k14`).
+2. Every outer vertex $u \in \Gamma_2(x_0)$ corresponds to a unique non-matched pair $P_u = \{y_1, y_2\} \in \binom{\Gamma_1(x_0)}{2} \setminus M_{x_0}$ (`p2_2_outer_pair_uniqueness`).
+3. Consequently, **the action of $g$ on $\Gamma_1(x_0)$ uniquely induces its action $g(P_u) = \{g(y_1), g(y_2)\}$ on all $84$ outer vertices $\Gamma_2(x_0)$!** There is zero freedom in how $g$ permutes the $84$ outer vertices once its permutation of $\Gamma_1(x_0)$ is specified.
+
+### Level 3: Exhaustive Diophantine Case Enumeration Within Each Prime $p$
+
+| Prime $p$ | Fixed-Point / Orbit Classification | Total Mathematical Cases | Closed Prior to This Work | Certified UNSAT in This Repo (`verify.py`) | Remaining Open Cases |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **$p = 7$** | $\|\mathrm{Fix}(g)\| \in \{0\} \cup \{1, 8, 15, \dots\}$ | $4$ regimes ($0, 1, 8, \ge 15$) | $3$ ($f=0$ MM04; $f=8, \ge 15$ CW23) | **`1` (`p7_fix1`, $f=1$) -> 100% CLOSED** | **`0` ($7 \nmid \|\mathrm{Aut}(\Gamma)\|$)** |
+| **$p = 2$** | $2a + b + c = 7$ on $M_{x_0}$ ($f \ge 1$ by CW23 Cor. 3.8) | **$19$ profiles $(a,b,c) \ne (0,0,7)$** | $0$ LRAT certificates | **`18 / 19` profiles ($f \ge 3$)** | **`1` (`(0,7,0)`, $f=1$)** |
+| **$p = 5$** | $f \equiv 99 \equiv 4 \pmod 5 \implies f \in \{4, 9\}$ ($f=0, \ge 14$ ruled out) | $2$ fixed-point regimes ($f=9, f=4$) | $f=9$ empirical CP-SAT (TS26) | **`p5_t1_fix9` ($f=9$)** | $f=4$ (`p5_t2`) |
+| **$p = 3$** | $f \in \{0, 3, 6, 9, \dots, 33\}$ | Fixed-point & FPF actions | Selected $f \ge 6$ (CW23) | **`p3_t1_fix33` ($f=33$) + `frob21_z7_z3`** | Low-$f$ / FPF (`p3_t2`, `p3_fpf`) |
+
+For $p = 2$, the exhaustiveness of the $19$ profiles follows from counting all non-negative integer solutions to $2a + b + c = 7$ with $(a,b,c) \ne (0,0,7)$:
+- $a = 0 \implies b + c = 7$, $b \in \{1,2,3,4,5,6,7\}$ (**7 profiles**: `6` certified UNSAT, `1` open `(0,7,0)`),
+- $a = 1 \implies b + c = 5$, $b \in \{0,1,2,3,4,5\}$ (**6 profiles**: all `6` certified UNSAT),
+- $a = 2 \implies b + c = 3$, $b \in \{0,1,2,3\}$ (**4 profiles**: all `4` certified UNSAT),
+- $a = 3 \implies b + c = 1$, $b \in \{0,1\}$ (**2 profiles**: all `2` certified UNSAT).
+Total: $7 + 6 + 4 + 2 = 19$ profiles.
+
+---
+
 ## 2. Step-by-Step Discovery Path (`Ścieżka Dojścia`)
 
 ### Step 1: Certifying the 5 Forced-Structure Propositions (`Track p2`)
