@@ -302,6 +302,36 @@ theorem two_block_cut_orbit_exact_partition
     s_1 + s_2 ≤ 1 ∧ s_1 + s_3 ≤ 1 ∧ s_2 + s_3 ≤ 1 := by
   omega
 
+
+/-!
+  ### 8. Theorem 8 (`The Asymmetric Diagonal Inversion Law`):
+  Since `F` and `E_r` are fixed-point-free involutions (`F_ii = 0, E_ii = 0`) and `M_r^+`, `E_r` are symmetric
+  involutions (`ME_ii = EM_ii = same_edge in {0, 1}` where `same_edge = 1 <-> M_r^+(i) = E_r(i)`),
+  the diagonal entry `KW_ii = 2 - F_ii - E_ii - ME_ii - EM_ii` satisfies `KW_ii = 2 - 2 * same_edge`.
+  Consequently:
+  - Local 2-cycle symmetry (`same_edge = 1`, i.e. `M_r^+(i) = E_r(i)`) forces `KW_ii = 0` (`req_pairs = 0`).
+  - Asymmetric non-repetition (`same_edge = 0`, i.e. `M_r^+(i) != E_r(i)`) inverts symmetry onto row `X_i`,
+    forcing `KW_ii = 2` (`req_pairs = 1`, so row `X_i` must contain an involution pair `{c, g(c)}`)!
+-/
+
+/-- The Asymmetric Diagonal Inversion Law: absence of edge repetition `M_r^+(i) != E_r(i)` (`same_edge = 0`)
+    forces `KW_ii = 2` (`req_pairs = 1`), whereas local 2-cycle repetition (`same_edge = 1`) forces `KW_ii = 0`. -/
+theorem asymmetric_diagonal_inversion_law
+    (F_ii E_ii ME_ii EM_ii same_edge KW_ii req_pairs : Int)
+    (h_f : F_ii = 0)
+    (h_e : E_ii = 0)
+    (h_me : ME_ii = same_edge)
+    (h_em : EM_ii = same_edge)
+    (_h_bool : same_edge = 0 ∨ same_edge = 1)
+    (h_KW : KW_ii = 2 - F_ii - E_ii - ME_ii - EM_ii)
+    (h_pairs : 2 * req_pairs = KW_ii) :
+    KW_ii = 2 - 2 * same_edge ∧
+    req_pairs = 1 - same_edge ∧
+    (same_edge = 0 ↔ (KW_ii = 2 ∧ req_pairs = 1)) ∧
+    (same_edge = 1 ↔ (KW_ii = 0 ∧ req_pairs = 0)) ∧
+    ((KW_ii = 2 ∧ req_pairs = 1) ∨ (KW_ii = 0 ∧ req_pairs = 0)) := by
+  omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -315,5 +345,6 @@ theorem two_block_cut_orbit_exact_partition
 #print axioms conway99_k_block_particle_hole_table
 #print axioms cross_component_universal_interface
 #print axioms two_block_cut_orbit_exact_partition
+#print axioms asymmetric_diagonal_inversion_law
 
 end Conway99ChiralTheorems

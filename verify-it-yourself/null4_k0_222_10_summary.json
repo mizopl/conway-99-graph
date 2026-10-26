@@ -1,0 +1,31 @@
+{
+  "stratum": "dim_ker_G36=4_k_type1=0_signature_2+2+2",
+  "law_m11_5": "Standardized LEGO Plug Theorem (Cross-Component Universal Interface: Delta_0(i,j)=2, G_+(i,j)=1, K_W0(i,j)=2 for all i in B_p, j in B_q with p != q)",
+  "total_orbits": 10,
+  "certified_unsat": 10,
+  "sat_solutions": 0,
+  "total_b1_solutions_explored": 160968902,
+  "total_b12_solutions_explored": 1933691,
+  "total_b123_solutions": 0,
+  "cross_verification": {
+    "orbit_9_ccc_m1_cpu_vs_a100_gpu": {
+      "batch_512_of_4092": {"cum_b1": 6711887, "cum_b12": 37485, "cum_b123": 0, "match": "EXACT"},
+      "batch_1024_of_4092": {"cum_b1": 17705164, "cum_b12": 138180, "cum_b123": 0, "match": "EXACT"},
+      "batch_3072_of_4092": {"cum_b1": 74739320, "cum_b12": 863083, "cum_b123": 0, "match": "EXACT"},
+      "batch_3584_of_4092": {"cum_b1": 88076784, "cum_b12": 1002472, "cum_b123": 0, "match": "EXACT"},
+      "batch_4092_of_4092_final": {"cum_b1": 110097116, "cum_b12": 1343826, "cum_b123": 0, "status": "UNSAT"}
+    }
+  },
+  "orbits": [
+    {"step": 1, "orbit_idx": 6, "class_triple": "B+B+B", "reps": 3908, "b1_sols": 5448227, "b12_sols": 17535, "b123_sols": 0, "time_s": 66.14, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 2, "orbit_idx": 3, "class_triple": "B+B+A", "reps": 3908, "b1_sols": 5448227, "b12_sols": 17535, "b123_sols": 0, "time_s": 71.26, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 3, "orbit_idx": 7, "class_triple": "B+B+C", "reps": 3908, "b1_sols": 5448227, "b12_sols": 17535, "b123_sols": 0, "time_s": 67.92, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 4, "orbit_idx": 1, "class_triple": "B+A+A", "reps": 3908, "b1_sols": 5448227, "b12_sols": 21637, "b123_sols": 0, "time_s": 82.13, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 5, "orbit_idx": 4, "class_triple": "B+A+C", "reps": 3908, "b1_sols": 5448227, "b12_sols": 21637, "b123_sols": 0, "time_s": 84.20, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 6, "orbit_idx": 0, "class_triple": "A+A+A", "reps": 3908, "b1_sols": 6043871, "b12_sols": 7759, "b123_sols": 0, "time_s": 69.43, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 7, "orbit_idx": 2, "class_triple": "A+A+C", "reps": 3908, "b1_sols": 6043871, "b12_sols": 7759, "b123_sols": 0, "time_s": 68.64, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 8, "orbit_idx": 8, "class_triple": "B+C+C", "reps": 3908, "b1_sols": 5448228, "b12_sols": 242336, "b123_sols": 0, "time_s": 195.46, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 9, "orbit_idx": 5, "class_triple": "A+C+C", "reps": 3908, "b1_sols": 6043881, "b12_sols": 236132, "b123_sols": 0, "time_s": 210.85, "hardware": "Apple M1 8-core Numba", "status": "UNSAT"},
+    {"step": 10, "orbit_idx": 9, "class_triple": "C+C+C", "reps": 4092, "b1_sols": 110097116, "b12_sols": 1343826, "b123_sols": 0, "time_s": 570.74, "hardware": "Apple M1 8-core Numba + Google Colab NVIDIA A100 CUDA C++ (__popcll)", "status": "UNSAT"}
+  ]
+}
