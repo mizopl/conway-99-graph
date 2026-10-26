@@ -89,7 +89,7 @@ How do we know that these individual SAT/LRAT theorems fit together without miss
 
 ---
 
-## The Discovery Path (`Ścieżka Dojścia`) & `we*star` Architecture
+## The Discovery Path & `we*star` Architecture
 
 A complete chronicle of how these results were discovered and verified is documented in **[`docs/DISCOVERY_PATH_AND_WESTAR_ARCHITECTURE.md`](docs/DISCOVERY_PATH_AND_WESTAR_ARCHITECTURE.md)**.
 

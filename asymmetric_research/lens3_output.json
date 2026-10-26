@@ -1,0 +1,80 @@
+{
+  "phase": "Phase_2_Asymmetric_and_Complete_p2_Rigidity",
+  "step1_global_triangle_bijection": {
+    "total_p2_profiles": 19,
+    "certified_unsat_profiles": 18,
+    "newly_certified_profiles": [
+      "(2,2,1)",
+      "(2,3,0)",
+      "(3,0,1)",
+      "(3,1,0)"
+    ],
+    "remaining_centralizer_profile": "(0,7,0)",
+    "M21_eigenvalues": {
+      "-5": 6,
+      "0": 14,
+      "72": 1
+    }
+  },
+  "step2A_canonical_14_plus_70_decomposition": {
+    "CCT_eigenvalues": {
+      "10": 6,
+      "12": 7,
+      "24": 1
+    },
+    "A84_col_CT_spectrum": {
+      "12": 1,
+      "-2": 6,
+      "0": 7
+    },
+    "A84_ker_C_spectrum": {
+      "3": 40,
+      "-4": 30
+    },
+    "A84_trace_on_col_CT": 0,
+    "A84_trace_on_ker_C": 0
+  },
+  "step2B_hyperoctahedral_B7_scheme": {
+    "dimension": 6,
+    "valencies": {
+      "2_0": 1,
+      "1_1": 2,
+      "0_2": 1,
+      "1_0": 20,
+      "0_1": 20,
+      "0_0": 40
+    },
+    "irreducible_subspaces_of_R84": {
+      "V0_trivial_col_CT": 1,
+      "V1_std_S7_col_CT": 6,
+      "V2_2_hook_ker_C": 14,
+      "V3_odd_sign_col_CT": 7,
+      "V4_odd_hook_ker_C": 35,
+      "V5_quad_parity_ker_C": 21
+    },
+    "per_vertex_identities": [
+      "d_(1,0)(u) + d_(1,1)(u) = 2",
+      "2*d_(0,2)(u) + d_(1,1)(u) + d_(0,1)(u) = 2",
+      "d_(0,0)(u) = 8 + d_(0,2)(u) + d_(1,1)(u)"
+    ]
+  },
+  "step2C_triangle_equitable_duality": {
+    "partition_sizes": [
+      3,
+      12,
+      12,
+      12,
+      60
+    ],
+    "quotient_matrix_eigenvalues": [
+      14,
+      3,
+      -1,
+      -1,
+      -4
+    ],
+    "exact_triangle_conservation_law": "T(R_60) + T(S_36) = 32",
+    "triangle_complement_spectral_duality": "spec(A_60)|_col(C^T) = {-(1 + mu_i)} for mu_i in spec(A_S) \\ {3}",
+    "inner_triangle_triality_reciprocity_verified": true
+  }
+}

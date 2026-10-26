@@ -1,4 +1,4 @@
-# The Discovery Path (`Ścieżka Dojścia`) & `we*star` Collaborative Architecture
+# The Discovery Path & `we*star` Collaborative Architecture
 
 > **Repository:** `mizopl/conway-99-graph`  
 > **Inspiration & Benchmark Catalyst:** **[Pliny (`@elder-plinius`)](https://github.com/elder-plinius)** & **[`elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S)** ([PR #774](https://github.com/elder-plinius/V3R1T4S/pull/774))  
@@ -62,7 +62,7 @@ Total: $7 + 6 + 4 + 2 = 19$ profiles.
 
 ---
 
-## 2. Step-by-Step Discovery Path (`Ścieżka Dojścia`)
+## 2. Step-by-Step Discovery Path
 
 ### Step 1: Certifying the 5 Forced-Structure Propositions (`Track p2`)
 Before attacking open symmetry groups, `PROOFER-II` formalized all 5 local structural propositions (`p2_1_inner_matching_k14` through `p2_5_srg9_uniqueness`) of `arXiv:2608.11211v2` in two structurally independent SAT cardinality encodings:

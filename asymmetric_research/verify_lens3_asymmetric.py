@@ -2,17 +2,17 @@
 """
 Deterministic algebraic & spectral verification suite for Phase 2 of Conway's 99-Graph Problem
 (srg(99, 14, 1, 2)):
-  1. KROK 1: Global Flipped-Edge Triangle Bijection Theorem for p = 2 involutions
+  1. STEP 1: Global Flipped-Edge Triangle Bijection Theorem for p = 2 involutions
      (verifying the 4 newly certified profiles (2,2,1), (2,3,0), (3,0,1), (3,1,0) and
      the Tensor-Product Orbit Equation B^2 + B - 12 I_42 = M_21 (x) J_2 for centralizer
      involution (0,7,0), g = -I_7 in Z(B_7)).
-  2. KROK 2A: Canonical 14 + 70 decomposition R^84 = col(C^T) (+) ker(C) around a root x_0,
+  2. STEP 2A: Canonical 14 + 70 decomposition R^84 = col(C^T) (+) ker(C) around a root x_0,
      exact spectrum {12^1, (-2)^6, 0^7} U {3^40, (-4)^30} of A_84, and Smith Normal Form
      invariant factors.
-  3. KROK 2B: 6-dimensional Hyperoctahedral B_7 = Z_2^7 x| S_7 Bose-Mesner association scheme
+  3. STEP 2B: 6-dimensional Hyperoctahedral B_7 = Z_2^7 x| S_7 Bose-Mesner association scheme
      on Gamma_2(x_0), exact per-vertex degree identities, and the 21 disjoint 4-vertex blocks
      Q_{r,t} with parity vectors v_{r,t} in V_2(21) subset ker(C).
-  4. KROK 2C: Equitable partition around a triangle T_0 = {x_0, y_0, z_0} (3 + 12 + 12 + 12 + 60 = 99),
+  4. STEP 2C: Equitable partition around a triangle T_0 = {x_0, y_0, z_0} (3 + 12 + 12 + 12 + 60 = 99),
      Triangle-Complement Spectral Duality Theorem, Exact Triangle Conservation Law
      T(R_60) + T(S_36) = 32, and the Inner-Triangle Triality Reciprocity Law across T_0, ..., T_6.
 """
@@ -154,21 +154,21 @@ def main():
 
     out = {
         "phase": "Phase_2_Asymmetric_and_Complete_p2_Rigidity",
-        "krok1_global_triangle_bijection": {
+        "step1_global_triangle_bijection": {
             "total_p2_profiles": 19,
             "certified_unsat_profiles": 18,
             "newly_certified_profiles": ["(2,2,1)", "(2,3,0)", "(3,0,1)", "(3,1,0)"],
             "remaining_centralizer_profile": "(0,7,0)",
             "M21_eigenvalues": {"-5": 6, "0": 14, "72": 1},
         },
-        "krok2A_canonical_14_plus_70_decomposition": {
+        "step2A_canonical_14_plus_70_decomposition": {
             "CCT_eigenvalues": {"10": 6, "12": 7, "24": 1},
             "A84_col_CT_spectrum": {"12": 1, "-2": 6, "0": 7},
             "A84_ker_C_spectrum": {"3": 40, "-4": 30},
             "A84_trace_on_col_CT": 0,
             "A84_trace_on_ker_C": 0,
         },
-        "krok2B_hyperoctahedral_B7_scheme": {
+        "step2B_hyperoctahedral_B7_scheme": {
             "dimension": 6,
             "valencies": valencies,
             "irreducible_subspaces_of_R84": {
@@ -185,7 +185,7 @@ def main():
                 "d_(0,0)(u) = 8 + d_(0,2)(u) + d_(1,1)(u)",
             ],
         },
-        "krok2C_triangle_equitable_duality": {
+        "step2C_triangle_equitable_duality": {
             "partition_sizes": [3, 12, 12, 12, 60],
             "quotient_matrix_eigenvalues": [14, 3, -1, -1, -4],
             "exact_triangle_conservation_law": "T(R_60) + T(S_36) = 32",
