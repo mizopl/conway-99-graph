@@ -211,6 +211,13 @@ This research was conducted under **[`we*star`](https://github.com/mizopl/we-sta
    - **Human Cognitive Bandwidth:** Stripping away index clutter ($\Delta_r(i,j), G_+(i,j), K_{W_r}(i,j), p \ne q$) exposed the pure causal topology, allowing `@mizopl` to immediately deduce that the `3+3` and `4+2` multi-component strata of $k_{\text{type1}}(S_0) = 0$ reduce to precomputing individual component bricks and joining them across a single universal socket.
    - **LLM Latent-Space Compression & Attention Anchoring:** In a transformer's context window, a 3-word physical isomorphism (*"Standardized LEGO Plug"*, *"Orbit Leakage"*, *"Gas $\to$ Crystal Freezing"*, *"Particle-Hole Mirror"*) compresses a 40-line proof into a single high-leverage semantic pointer that anchors attention heads across steps (`test_33_and_42_lego.py`).
    - **The Three-Handle Rule (`Law M12`):** Every structural theorem in `we*` is codified with **(1) Handle 1 (Intuitive Physical/Mechanical Handle)**, **(2) Handle 2 (Domain-Agnostic Operational Axiom)**, and **(3) Handle 3 (Zero-Axiom Formal Lean 4 / Python Certificate, `0 sorryAx`)**, ensuring that the intuitive handle is a strict 1-to-1 mathematical isomorphism and never a loose metaphor.
+7. **Turning a Human Geometric Hunch into `Theorem 8` (*The Asymmetric Diagonal Inversion Law*) & Hybrid M1 + NVIDIA A100 Verification (`00:15`):**
+   After closing `10 / 10` (`100%`) of `2+2+2` (cross-verified digit-for-digit between Apple M1 CPU and Google Colab NVIDIA A100 CUDA C++ `__popcll` in [`verify-it-yourself/null4_k0_222_10_summary.json`](../verify-it-yourself/null4_k0_222_10_summary.json)) and inspecting the stabilizer distribution of the `2,670` single-component `6`-block orbits (`1,632` with completely trivial stabilizer $|\mathrm{Stab}_{B_6}(M_0^+, E_0)| = 1$), `@mizopl` voiced an intuitive geometric question:
+   > *"Since there are completely asymmetric cases there, isn't there some negation of laws (like: there cannot be something identical on the other side), because it is a completely asymmetric class... in other words, can you invert symmetry, so that from the decision to be in that class it follows that something is NOT there? Maybe I'm rambling, I just had this idea..."*
+   - Rather than dismissing the informal phrasing, `AUDITOR` translated *"there cannot be the same thing on the other side $\implies$ symmetry inverts"* directly into the diagonal equation of $K_{W_0} = 2 J_{12} - F_{12} - E_0 - M_0^+ E_0 - E_0 M_0^+$:
+     Since $F_{12}$ and $E_0$ are fixed-point-free involutions ($F_{ii} = E_{ii} = 0$) and $M_0^+, E_0$ are symmetric involutions, $(M_0^+ E_0)_{ii} = (E_0 M_0^+)_{ii} = \mathbf{1}_{[M_0^+(i) = E_0(i)]} \in \{0, 1\}$, yielding **`Theorem 8` (*The Asymmetric Diagonal Inversion Law*, proved in Lean 4 as `asymmetric_diagonal_inversion_law`)**:
+     $$K_{W_0}(i, i) = 2 - 2\cdot\mathbf{1}_{[M_0^+(i) = E_0(i)]} = \begin{cases} 0 & \text{if } M_0^+(i) = E_0(i) \quad (\text{"the exact same edge on the other side" — a local 2-cycle}), \\ 2 & \text{if } M_0^+(i) \ne E_0(i) \quad (\text{"not the same edge on the other side" — asymmetric non-repetition!}). \end{cases}$$
+   - **Why this matters:** The computationally slow `diag(KW0) = 0` case (`131,072` rows per slot, as in `Orbit 9: C+C+C`) occurs **if and only if** the skeleton $(M_0^+, E_0)$ has a local 2-cycle symmetry $M_0^+(i) = E_0(i)$. In the irreducible/asymmetric `6`-block class, short cycles are forbidden or rare ($M_0^+(i) \ne E_0(i)$), which **inverts symmetry onto the incidence row $X_i$**, forcing $K_{W_0}(i, i) = 2$ (so $X_i$ must contain a symmetric involution pair $\{c, g(c)\}$, cutting the row pool in half to `62,016`!) on all 12 rows in **`1,679 / 2,670` (`62.9%`)** of orbits and on $\ge 8$ rows in **`2,624 / 2,670` (`98.3%`)** of orbits (with only `1` orbit out of `2,670` having `diag_zeros = 12`).
 
 ### 3.2 Pre-Registered Epistemic Micro-Bet Ledger (`L-C9G-001` through `L-C9G-020`) & 4-Wave Computational Spectrogram
 
@@ -256,6 +263,37 @@ In [`verify-it-yourself/run_all_299_nullity3_k1.py`](../verify-it-yourself/run_a
 | `226..250` | **Wave 4** (rise) | `{5}` | `{4, 5}` | `0..6` | `135.66s` | `5.43s` | Entry into `k_cross(E)=5` + `dz=12` orbit |
 | `251..275` | **Wave 4** (peak) | `{5}` | `{5}` | `0..8` | `156.86s` | `6.27s` | Pure `(k_cross(M)=5, k_cross(E)=5)` |
 | `276..299` | **Wave 4** (finale) | `{5}` | `{5}` | `0..6` | **`907.43s`** | **`37.81s`** | **Final 24 orbits (`100%` `k=5, k=5, dz=2`; Orbit 299 = `19.78M` nodes)** |
+
+---
+
+## 4. Field Guide for Human-AI Mathematical Collaboration: Six Actionable Hints from `we*star`
+
+Throughout this campaign, every major speedup and new theorem emerged from a specific **human-AI conversational pattern**. For researchers, mathematicians, and engineers building their own human-AI workflows, here are the six highest-leverage collaboration habits distilled from our live interaction log:
+
+1. **Hint #1 — Never Suppress "Naive" Geometric Hunches (*The "Maybe I'm Rambling" Rule*):**
+   - *The Interaction:* When inspecting the `2,670` single-component `6`-block orbits, `@mizopl` remarked: *"Since those cases are completely asymmetric, isn't there a negation law — like 'there cannot be the same thing on the other side' — in other words, can you invert symmetry? Maybe I'm rambling, I just had this idea..."*
+   - *Why It Worked:* Humans excel at global topological and symmetry intuition, while LLMs excel at rapid symbolic expansion. Translating that informal question directly into the diagonal formula of $K_{W_0}$ immediately yielded **Theorem 8 (`asymmetric_diagonal_inversion_law` in Lean 4)**: $K_{W_0}(i, i) = 2 - 2\cdot\mathbf{1}_{[M_0^+(i) = E_0(i)]} \in \{0, 2\}$, proving that the absence of local edge repetition ($M_0^+(i) \ne E_0(i)$) forces $K_{W_0}(i, i) = 2$ on `98.3%` of the irreducible `6`-block orbits!
+   - *Takeaway:* Voice geometric hunches early, even if they sound informal — ask your AI architect to test whether your intuition corresponds to an exact algebraic identity.
+
+2. **Hint #2 — Demand a "Three-Handle Name" (*The LEGO Handle, `Law M12`*) for Every Technical Lemma:**
+   - *The Interaction:* When the AI proved that cross-component blocks of $(\Delta_0, G_+, K_{W_0})$ collapse to universal constants `(2, 1, 2)`, we named it **"The Standardized LEGO Plug Theorem"** (`Law M11.5` / `Theorem 7`), paired with its domain-agnostic rule and its zero-axiom Lean 4 proof (`cross_component_universal_interface`).
+   - *Why It Worked:* Within seconds of hearing the "LEGO Plug" metaphor, the human architect spotted the next simplification (*"Wait — doesn't `3+3` need no pairwise search at all, because it's just two LEGO bricks with a direct complementarity relation?"*), and the proving agent (`PROOFER-II`) immediately adopted the mental model (`colab_33_all10_lego_a100.py`), solving the `10` individual 3-block LEGO bricks on an NVIDIA A100 instead of grinding `55` full 12-row orbits.
+   - *Takeaway:* Require every formal theorem to carry three handles: **(1) a 2–5 word physical/mechanical handle**, **(2) a domain-agnostic rule**, and **(3) a machine-checked formal proof (`0 sorryAx`)**.
+
+3. **Hint #3 — Watch for "Why Is It Repeating Work?" & "Orbit Leakage" (`Law M10` & `Law M11`):**
+   - *The Interaction:* Whenever case counts exploded (`11 -> 62 -> 620 -> 30,380`) or logs showed identical intermediate counts (`b12_sols = 17,535` repeated across `B+B+B`, `B+B+A`, and `B+B+C`), `@mizopl` stopped execution and asked *"why is it leaking orbits?"* or *"why is it repeating the exact same computation?"*.
+   - *Takeaway:* Exponential case proliferation ("orbit leakage") or repeated sub-counts in a solver log are almost never "just how hard the problem is" — they are a diagnostic signal that either (a) an inner asymmetric choice broke a symmetry stabilizer (`Law M10`), or (b) a spatial cut severed a global conservation cycle (`Law M11`).
+
+4. **Hint #4 — Enforce Strict Role Separation Between the `ARCHITECT/AUDITOR` and the `PROOFER`:**
+   - *The Interaction:* Rather than talking directly to a single agent buried inside 1,000-line C++/CUDA loops, `@mizopl` converses 1-on-1 with an `AUDITOR / Strategic Architect` thread that reads literature, formulates Lean 4 theorems, and audits every 20 minutes via cron, while dispatching heavy compute jobs to a dedicated `PROOFER-II` worker thread (`M1 CPU + Google Colab A100/H100 GPU`).
+   - *Takeaway:* Keep your conversational thinking partner free of solver-log clutter; let the Architect derive exact invariants and send surgical instructions to the Proving Engine.
+
+5. **Hint #5 — Ask for Quantitative Diagnostics & Visual Spectrograms Instead of Raw Logs:**
+   - *The Interaction:* When `SAT` or `UNSAT` times varied wildly across orbits, `@mizopl` asked to look at the problem quantitatively, uncovering the $Z_D - Z_D^T$ commutator split (`Bracket I + II`) and the 4-wave **Sawtooth Computational Spectrogram**.
+   - *Takeaway:* Ask the AI to plot or tabulate runtime against structural invariants (`k_cross`, `diag_zeros`, `offdiag_zeros`) — the outliers will tell you which constraint is doing the real work.
+
+6. **Hint #6 — Combine Algebraic Reduction First with Surgical Cloud GPU Acceleration Second (`K11`):**
+   - *The Interaction:* We never threw raw unreduced CNF formulas at a GPU. Only after `Law M11.4` and `Law M11.5` compressed the slice equations into 60-bit unsigned integers (`uint64_t`) and hardware popcounts (`__popcll`) did `@mizopl` direct `PROOFER-II` to offload the remaining strata to Google Colab GPUs (`NVIDIA A100/H100`), achieving digit-for-digit CPU/GPU cross-verification (`6,711,887` and `88,076,784`) and evaluating billions of depth-3 nodes per minute.
 
 ---
 
