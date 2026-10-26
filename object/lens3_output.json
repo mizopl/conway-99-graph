@@ -1,0 +1,453 @@
+{
+  "phase": "Phase_7_MultiPair_k2_Closure_and_2Block_Component_Bitmask_HashJoin_Audit",
+  "step1_global_triangle_bijection": {
+    "total_p2_profiles": 19,
+    "certified_unsat_profiles": 18,
+    "newly_certified_profiles": [
+      "(2,2,1)",
+      "(2,3,0)",
+      "(3,0,1)",
+      "(3,1,0)"
+    ],
+    "remaining_centralizer_profile": "(0,7,0)"
+  },
+  "step2A_canonical_14_plus_70_decomposition": {
+    "CCT_eigenvalues": {
+      "10": 6,
+      "12": 7,
+      "24": 1
+    },
+    "A84_col_CT_spectrum": {
+      "12": 1,
+      "-2": 6,
+      "0": 7
+    },
+    "A84_ker_C_spectrum": {
+      "3": 40,
+      "-4": 30
+    },
+    "A84_trace_on_col_CT": 0,
+    "A84_trace_on_ker_C": 0
+  },
+  "step2B_hyperoctahedral_B7_scheme": {
+    "dimension": 6,
+    "valencies": {
+      "2_0": 1,
+      "1_1": 2,
+      "0_2": 1,
+      "1_0": 20,
+      "0_1": 20,
+      "0_0": 40
+    },
+    "irreducible_subspaces_of_R84": {
+      "V0_trivial_col_CT": 1,
+      "V1_std_S7_col_CT": 6,
+      "V2_2_hook_ker_C": 14,
+      "V3_odd_sign_col_CT": 7,
+      "V4_odd_hook_ker_C": 35,
+      "V5_quad_parity_ker_C": 21
+    },
+    "per_vertex_identities": [
+      "d_(1,0)(u) + d_(1,1)(u) = 2",
+      "2*d_(0,2)(u) + d_(1,1)(u) + d_(0,1)(u) = 2",
+      "d_(0,0)(u) = 8 + d_(0,2)(u) + d_(1,1)(u)"
+    ]
+  },
+  "step2C_triangle_equitable_duality": {
+    "partition_sizes": [
+      3,
+      12,
+      12,
+      12,
+      60
+    ],
+    "quotient_matrix_eigenvalues": [
+      14,
+      3,
+      -1,
+      -1,
+      -4
+    ],
+    "exact_triangle_conservation_law": "T(R_60) + T(S_36) = 32",
+    "triangle_complement_spectral_duality": "spec(A_60)|_col(C^T) = {-(1 + mu_i)} for mu_i in spec(A_S) \\ {3}",
+    "inner_triangle_triality_reciprocity_verified": true
+  },
+  "step3A_profile_0_7_0_centralizer_audit": {
+    "involution": "g = -I_7 in Z(B_7) (Fix(g) = {x_0}, 49 transpositions)",
+    "coupled_B_equation": "B^2 + B - 12 I_42 = M_21^true (x) J_2, where (M_21^true)_{a,b} = 2 (a=b), 3 (|a cap b|=1), 4 (|a cap b|=0)",
+    "M21_true_eigenvalues": {
+      "-5": 6,
+      "0": 14,
+      "36": 1
+    },
+    "R42_B2_plus_B_eigenvalues": {
+      "2": 6,
+      "12": 35,
+      "156": 1
+    },
+    "B_spectrum": {
+      "12": 1,
+      "1": 6,
+      "3": 20,
+      "-4": 15
+    },
+    "coupled_D_equation": "D = D^T, diag(D) = 0, D C_- = 0, D^2 + D - 12 I_42 = -C_- C_-^T, C_-^T C_- = 12 I_7",
+    "D_spectrum": {
+      "0": 7,
+      "3": 20,
+      "-4": 15
+    },
+    "involution_matching_coupling": "B = 2 P_pi + A_10, |D| = A_10 (P_pi fixed-point-free involution on 42 orbits, A_10 10-regular)",
+    "block_antisymmetric_norm_identity": "||B (e_{x_a} - e_{bar{x}_a})||_2^2 = 24 + 2 b_{x_a, bar{x}_a}",
+    "type1_block_k22222_audit": {
+      "k22222_total_edges": 40,
+      "num_gfree_2factors_on_k22222": 22176,
+      "num_b5_canonical_orbits": 15
+    }
+  },
+  "step3B_global_7triangle_triality_coupling": {
+    "slice_partition_sum": "sum_{r=0}^6 Pi_{S_r} = 2 I_42",
+    "global_double_counting_identities": [
+      "sum_{r=0}^6 B_{*,S_r} B_{S_r,*} = 2 B^2",
+      "sum_{r=0}^6 D_{*,S_r} D_{S_r,*} = 2 D^2"
+    ],
+    "triality_reciprocity_on_overlap_Q_rt": "M_r^+(x, bar{x}) = M_t^-(x, bar{x}) and M_r^-(x, bar{x}) = M_t^+(x, bar{x})",
+    "cross_side_gram_identity": "K_{W_r} = X^{(r)} P_g (X^{(r)})^T = 2 J_12 - F_12 - M_r^- - M_r^+ M_r^- - M_r^- M_r^+ >= 0",
+    "block_orbit_exclusion_identity": "Y(t, j) + Y(t, g(j)) = 1 - [t in w_j] for every Type I block t",
+    "all_type1_slice_configuration_sat_audit": "UNSAT certified by Kissat + drat-trim (rc=20 in 3.90s, 13,644 core clauses)",
+    "b6_half_slice_matching_orbits": {
+      "total_matchings_on_12": 10395,
+      "num_b6_canonical_orbits": 11,
+      "allowed_type1_block_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "orbits_by_block_cycle_partition": {
+        "1+1+1+1+1+1": {
+          "size": 1,
+          "num_type1_blocks": 6
+        },
+        "2+1+1+1+1": {
+          "size": 30,
+          "num_type1_blocks": 4
+        },
+        "2+2+1+1": {
+          "size": 180,
+          "num_type1_blocks": 2
+        },
+        "2+2+2": {
+          "size": 120,
+          "num_type1_blocks": 0
+        },
+        "3+1+1+1": {
+          "size": 160,
+          "num_type1_blocks": 3
+        },
+        "3+2+1": {
+          "size": 960,
+          "num_type1_blocks": 1
+        },
+        "3+3": {
+          "size": 640,
+          "num_type1_blocks": 0
+        },
+        "4+1+1": {
+          "size": 720,
+          "num_type1_blocks": 2
+        },
+        "4+2": {
+          "size": 1440,
+          "num_type1_blocks": 0
+        },
+        "5+1": {
+          "size": 2304,
+          "num_type1_blocks": 1
+        },
+        "6": {
+          "size": 3840,
+          "num_type1_blocks": 0
+        }
+      }
+    }
+  },
+  "step4A_s0_matching_pair_and_triple_block_parity_audit": {
+    "ordered_matching_pairs_total": 108056025,
+    "b6_ordered_pair_orbits_total": 3580,
+    "kw0_nonneg_b6_orbits": 3308,
+    "k_type1_le_2_surviving_b6_orbits": 3294,
+    "kw0_equivalence_verified": "K_{W_0} >= 0 <=> K_{W_0}' = F_12 K_{W_0} F_12 >= 0",
+    "orbits_by_m0_plus_partition": {
+      "1+1+1+1+1+1": {
+        "total_b6_orbits": 11,
+        "kw0_nonneg_orbits": 11,
+        "k_type1_le_2_orbits": 8
+      },
+      "2+1+1+1+1": {
+        "total_b6_orbits": 51,
+        "kw0_nonneg_orbits": 46,
+        "k_type1_le_2_orbits": 41
+      },
+      "2+2+1+1": {
+        "total_b6_orbits": 140,
+        "kw0_nonneg_orbits": 125,
+        "k_type1_le_2_orbits": 125
+      },
+      "2+2+2": {
+        "total_b6_orbits": 106,
+        "kw0_nonneg_orbits": 89,
+        "k_type1_le_2_orbits": 89
+      },
+      "3+1+1+1": {
+        "total_b6_orbits": 106,
+        "kw0_nonneg_orbits": 99,
+        "k_type1_le_2_orbits": 93
+      },
+      "3+2+1": {
+        "total_b6_orbits": 357,
+        "kw0_nonneg_orbits": 322,
+        "k_type1_le_2_orbits": 322
+      },
+      "3+3": {
+        "total_b6_orbits": 234,
+        "kw0_nonneg_orbits": 215,
+        "k_type1_le_2_orbits": 215
+      },
+      "4+1+1": {
+        "total_b6_orbits": 313,
+        "kw0_nonneg_orbits": 296,
+        "k_type1_le_2_orbits": 296
+      },
+      "4+2": {
+        "total_b6_orbits": 525,
+        "kw0_nonneg_orbits": 471,
+        "k_type1_le_2_orbits": 471
+      },
+      "5+1": {
+        "total_b6_orbits": 672,
+        "kw0_nonneg_orbits": 634,
+        "k_type1_le_2_orbits": 634
+      },
+      "6": {
+        "total_b6_orbits": 1065,
+        "kw0_nonneg_orbits": 1000,
+        "k_type1_le_2_orbits": 1000
+      }
+    },
+    "canonical_b5_type1_block_pair_orbits": 78,
+    "mod2_triple_block_parity_obstruction_theorem": "For any 3 Type I blocks (0, b1, b2) in a slice S_r, disjointness A_{b1} cap A_{b2} = empty forces <Y_{b1}, Y_{b2}> == d_{Y_0}(2b2+1, b1) + d_{Y_0}(2b1+1, b2) == 1 (mod 2) (odd, in {1,3,5,7,9,11}), contradicting <Y_{b1}, Y_{b2}> = 4. Hence k_type1(S_r) <= 2 for all r in {0..6} and Delta(G_type1) <= 2 (<= 7 Type I blocks globally).",
+    "disjoint_block_sum_pairs_checked": 414973,
+    "compatible_triple_block_pairs_found": 0,
+    "kissat_78_orbits_triple_block_audit": "78/78 UNSAT (12.19s total)"
+  },
+  "step4B_generalized_cycle_orbit_exclusion_and_cross_slice_commutator_audit": {
+    "full_36x36_gram_identity": "G_36(M_0^+, E_0) = U_36^T U_36 = 12 I_36 + 2 J_36 - (I_3 (x) J_12) - A_{S_36}^2 - A_{S_36}",
+    "sample_G36_spectrum": {
+      "0": 5,
+      "6": 6,
+      "10": 12,
+      "12": 12,
+      "60": 1
+    },
+    "generalized_cycle_orbit_exclusion_theorem": "For every (M_0^+, E_0)-closed union of blocks B subset {0..5} with vertex set I_B, v_B in ker(G_36) forces sum_{i in I_B} (X(i, c) + X(i, g(c))) = |B| - sum_{j in I_B} W(c, j) for all c in R_60.",
+    "cross_slice_commutator_identity": "Z_D - Z_D^T = [D_{S0,W0} C_{-,W0} C_{-,S0}^T - C_{-,S0} C_{-,W0}^T D_{W0,S0}] - [D_{S0,S0} (D_{S0,W0} D_{W0,S0}) - (D_{S0,W0} D_{W0,S0}) D_{S0,S0}]",
+    "test_ilosciowy_A_and_B_audit": {
+      "relaxed_s0_sat_solutions_audit": {
+        "max_Z_D_asymmetry": 12,
+        "asymmetric_entries_count": 52,
+        "max_UD_T_RD_asymmetry": 32,
+        "M60_negative_off_diagonal_entries": 8,
+        "M60_min_eigenvalue": -3.957342
+      },
+      "exact_delta0_linear_milp_solutions_audit": {
+        "max_Z_D_asymmetry_range": [
+          5,
+          6
+        ],
+        "max_UD_T_RD_asymmetry_range": [
+          30,
+          32
+        ],
+        "max_U36T_S36_minus_R36T_R36_range": [
+          19,
+          47
+        ],
+        "max_R36T_S36_asymmetry_range": [
+          28,
+          83
+        ]
+      },
+      "combined_exact_delta0_plus_G_plus_kissat_audit": "10/10 tested (X_2, X_3) extensions UNSAT (1.50s-4.33s per pair)"
+    }
+  },
+  "step5A_g36_and_schur_s12d_spectral_nullspace_sieve": {
+    "surviving_b6_orbits_tested": 3294,
+    "g36_psd_orbits": 3294,
+    "s12d_psd_orbits": 3294,
+    "g36_kernel_dimension_formula": "dim ker(G_36(M_0^+, E_0)) = 1 + c(M_0^+, E_0) in {2, 3, 4, 5}",
+    "g36_kernel_dimension_distribution": {
+      "5": 6,
+      "4": 96,
+      "3": 522,
+      "2": 2670
+    },
+    "s12d_kernel_dimension_distribution": {
+      "1": 3294
+    },
+    "s12d_kernel_generator": "1_12 (since column 0 of C_{-,S0} is 1_12 and C_{-,W0,0} = 0)",
+    "k_type1_eq_2_b4_orbits_on_remaining_4_blocks": 62
+  },
+  "step5B_universal_symmetric_e0_decoupling_of_bracket_I_and_bracket_II": {
+    "universal_symmetric_e0_sat_result": "SAT in 6.216s (/tmp/test_sym_e0.cnf)",
+    "selected_e0_matching": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        8,
+        11
+      ]
+    ],
+    "selected_e0_cycle_type_on_blocks": "4+1+1 (single 4-block cycle on blocks 2,3,4,5, escaping the 2+2+1+1 two-cycle obstruction of task-1526)",
+    "exact_G_plus_verified": true,
+    "exact_Delta0_verified": true,
+    "dc_minus_s0_max_abs": 0,
+    "universal_commutator_cancellation_law": "Z_D - Z_D^T = Bracket_I - Bracket_II = [D_{S0,S0}, X P_g X^T - K_{W_0}^true] identically whenever X X^T = G_+ and X W = Delta_0",
+    "max_Z_D_asymmetry": 7,
+    "max_UD_T_RD_asymmetry": 7,
+    "max_X_Pg_XT_minus_KW0_true": 4,
+    "diagonal_kw0_obstruction_identity": "(X P_g X^T)_{i,i} = 2 * sum_{m=1}^{30} X(i, c_m) X(i, g(c_m)) = 2 for all i in {4..11}"
+  },
+  "step6A_and_6B_62_canonical_b4_orbits_and_full_kw0_sieve": {
+    "canonical_b4_orbits_for_k_type1_eq_2": 62,
+    "orbits_by_m0_plus_partition_on_blocks_2_to_5": {
+      "1+1+1+1": 2,
+      "2+1+1": 8,
+      "3+1": 11,
+      "2+2": 14,
+      "4": 27
+    },
+    "automatic_kw0_row_sum_identity": "sum_{j=4..11} (X P_g X^T)_{i,j} = 12 = sum_{j=4..11} K_{W_0}(i,j) for all i in {4..11}",
+    "full_fixed_me_kw0_kissat_audit_across_all_62_b4_orbits": "62/62 UNSAT (27.12s wall time across 8 threads, max single = 12.60s, min single = 0.068s)",
+    "sample_drat_trim_core_audits": {
+      "Orbit_0_1111_vs_22": {
+        "conflicts": 1619,
+        "core_clauses": 4783,
+        "time_s": 0.1199
+      },
+      "Orbit_1_1111_vs_4": {
+        "conflicts": 13007,
+        "core_clauses": 10725,
+        "time_s": 0.652
+      },
+      "Orbit_2_211_vs_22": {
+        "conflicts": 1338,
+        "core_clauses": 4151,
+        "time_s": 0.0685
+      },
+      "Orbit_10_211_vs_211": {
+        "conflicts": 7031,
+        "core_clauses": 7687,
+        "time_s": 0.4623
+      },
+      "Orbit_13_211_vs_4": {
+        "conflicts": 6914,
+        "core_clauses": 5999,
+        "time_s": 0.3505
+      }
+    }
+  },
+  "step7A_and_7B_multipair_k2_closure_and_2block_component_bitmask_hashjoin": {
+    "surviving_3294_orbits_by_k_type1_and_g36_nullity": {
+      "k_type1_eq_2": {
+        "5": 6,
+        "4": 56
+      },
+      "k_type1_eq_1": {
+        "4": 30,
+        "3": 299
+      },
+      "k_type1_eq_0": {
+        "4": 10,
+        "3": 223,
+        "2": 2670
+      }
+    },
+    "step7A_multipair_62_orbits_x_10_x23_pairs_kissat_audit": {
+      "instances_tested": 620,
+      "unsat_certified": 620,
+      "sat_found": 0,
+      "orbits_0_to_9_wall_time_s": 16.03,
+      "orbits_10_to_61_wall_time_s": 274.66,
+      "total_wall_time_s": 290.69
+    },
+    "step7B_component_wise_pruning_and_2block_bitmask_hashjoin": {
+      "two_block_g_orbit_partition_law": "For any 2-block connected component B_2 = {b1, b2} (|I_{B_2}| = 4), the 30 g-orbits partition into 2 internal (req=0), 16 cut (req=1), and 12 disjoint (req=2).",
+      "six_way_r60_column_partition_under_type1_block0": "R_60 = h0 (10) u g(h0) (10) u h1 (10) u g(h1) (10) u W_0 (10) u W_1 (10)",
+      "sample_IB_2345_single_row_candidate_counts": {
+        "TypeA_m0_e1_diagKW_2": [
+          2458,
+          1889,
+          2413,
+          2132
+        ],
+        "TypeC_m1_e1_diagKW_0": [
+          4438,
+          4438,
+          4438,
+          4438
+        ]
+      },
+      "k_type1_eq_1_nullity_4_canonical_30_orbits_audit": {
+        "orbits_total": 30,
+        "kissat_10row_certified_unsat": 20,
+        "kissat_10row_diagKW_0_blind_spot_orbits": [
+          5,
+          7,
+          9,
+          11,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "bitmask_hashjoin_4row_certified_unsat": "30/30 UNSAT (0 valid 4-row submatrices across all 30 orbits in 31.47s)"
+      },
+      "uncanonicalized_80_two_block_configurations_audit": {
+        "block_pairs_tested": 10,
+        "connected_matching_pairs_per_block_pair": 8,
+        "total_configurations": 80,
+        "eliminated_by_KW0_negativity": 20,
+        "eliminated_by_4row_bitmask_hashjoin": 60,
+        "total_unsat": "80/80 UNSAT (67.86s)"
+      },
+      "k_type1_eq_0_nullity_4_two_component_extension_audit": {
+        "orbits_total_3_multisets_of_3_types": 10,
+        "single_2block_component_B1_unanchored": "3/3 SAT in 0.054s-0.710s",
+        "second_2block_component_B2_given_B1_representative": "9/9 (T1, T2) pairs UNSAT (rc=20 in 0.081s-0.924s, 2.86s total)"
+      }
+    }
+  }
+}
