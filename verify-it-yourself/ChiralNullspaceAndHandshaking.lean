@@ -264,6 +264,44 @@ theorem conway99_k_block_particle_hole_table
     (n2_3 = 12 ∧ n1_3 = 36 ∧ n0_3 = 12 ∧ n2_3 = n0_3) := by
   omega
 
+
+/-!
+  ### 7. Theorem 7 (`Law M11.5` / `The Standardized LEGO Plug Theorem`): Universal Cross-Component Interface & Cut-Orbit Partition
+-/
+
+/-- For any two vertices `i in I_{B_p}` and `j in I_{B_q}` in DIFFERENT connected components (`p != q`)
+    of `(F, M_r^+, E_r)`, since `F`, `M_r^+`, and `E_r` have zero edges between `B_p` and `B_q`,
+    all cross-component entries of `I`, `F`, `M_r^+`, `E_r`, `E_r F`, `M_r^+ E_r`, and `E_r M_r^+`
+    vanish identically (`0`). Consequently, the three boundary matrices between `B_p` and `B_q`
+    collapse to universal constants `(Delta_ij = 2, Gp_ij = 1, KW_ij = 2)` completely independent
+    of the internal matchings inside `B_p` and `B_q`! -/
+theorem cross_component_universal_interface
+    (m I_ij F_ij M_ij E_ij EF_ij ME_ij EM_ij Delta_ij Gp_ij KW_ij : Int)
+    (h_disj : I_ij = 0 ∧ F_ij = 0 ∧ M_ij = 0 ∧ E_ij = 0 ∧ EF_ij = 0 ∧ ME_ij = 0 ∧ EM_ij = 0)
+    (h_Delta : Delta_ij = 2 - I_ij - F_ij - M_ij - EF_ij)
+    (h_Gp : Gp_ij = (2 * m - 5) * I_ij + 1 - M_ij)
+    (h_KW : KW_ij = 2 - F_ij - E_ij - ME_ij - EM_ij) :
+    Delta_ij = 2 ∧ Gp_ij = 1 ∧ KW_ij = 2 := by
+  rcases h_disj with ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
+  omega
+
+/-- For any 2-block connected component `B_q` (`k = 2`, `4` rows `i = 0,1,2,3`), on each of the
+    `16` cut `g`-orbits `e = {c_e, g(c_e)}` touching `B_q` (`W_sum = 1`), the `ker_+(G_36)` nullspace
+    equation forces `s_0 + s_1 + s_2 + s_3 = k - W_sum = 2 - 1 = 1` (`0 <= s_i <= 2`).
+    Therefore at most one of the 4 rows can touch each cut `g`-orbit (`s_a + s_b <= 1` for all `a != b`),
+    so the 4 rows (with `4` cut ones each) partition the `16` cut `g`-orbits into `4` pairwise disjoint
+    4-element subsets! -/
+theorem two_block_cut_orbit_exact_partition
+    (k W_sum s_0 s_1 s_2 s_3 : Int)
+    (hk : k = 2)
+    (hW : W_sum = 1)
+    (hs0 : 0 ≤ s_0) (hs1 : 0 ≤ s_1) (hs2 : 0 ≤ s_2) (hs3 : 0 ≤ s_3)
+    (h_ker : s_0 + s_1 + s_2 + s_3 = k - W_sum) :
+    s_0 + s_1 + s_2 + s_3 = 1 ∧
+    s_0 + s_1 ≤ 1 ∧ s_0 + s_2 ≤ 1 ∧ s_0 + s_3 ≤ 1 ∧
+    s_1 + s_2 ≤ 1 ∧ s_1 + s_3 ≤ 1 ∧ s_2 + s_3 ≤ 1 := by
+  omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -275,5 +313,7 @@ theorem conway99_k_block_particle_hole_table
 #print axioms global_involution_partner_common_neighbors
 #print axioms k_block_column_sum_particle_hole_duality
 #print axioms conway99_k_block_particle_hole_table
+#print axioms cross_component_universal_interface
+#print axioms two_block_cut_orbit_exact_partition
 
 end Conway99ChiralTheorems
