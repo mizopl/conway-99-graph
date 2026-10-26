@@ -57,6 +57,8 @@ No scratch notes or attempt directories were accessed.
    - `verify_positive_control_srg9` in `claim/verify.py` constructs the unblocked `p2_5_srg9_uniqueness` CNF for both Encoding A and Encoding B and verifies that the explicit $4$-cycle assignment on the $4$ outer vertices propagates deterministically via unit propagation to satisfy every clause in both encodings (`positive_control_srg_9_4_1_2_encoding_A_sat: true`, `positive_control_srg_9_4_1_2_encoding_B_sat: true`).
 3. **Fresh CNF Clause Membership & Pure RUP Proof Verification (`0` RAT Lemmas):**
    - For all $54$ proofs ($27$ theorems $\times 2$ encodings), `claim/verify.py` regenerates the complete CNF formula from scratch, verifies exact variable and clause counts, verifies SHA-256 digests of all core `.cnf` and `.lrat` files against `claim/certificate.json`, checks that every clause in `*_core.cnf` belongs to `set(clauses)` of the freshly generated CNF, and runs `verify_lrat_python` to confirm that all $92,259$ steps are pure Reverse Unit Propagation (`0` RAT lemmas, explicitly rejecting any negative hint `h < 0`) and derive the empty clause `0`.
+4. **Asymmetric Algebraic, Spectral & 7-Triangle Triality Audit (`verify_lens3_asymmetric.py`):**
+   - Independently verifies all Phase 2–Phase 5 algebraic, spectral, and triality invariants on $\Gamma_2(x_0)$ and the 19th involution profile `(0, 7, 0)` ($g = -I_7 \in Z(B_7)$), including the $3,580 \to 3,308 \to 3,294$ $B_6$-orbit sieve, the Mod-2 Triple-Block Parity Obstruction Theorem ($k_{\text{type1}}(S_r) \le 2$), the $3,294$-orbit $G_{36} \succeq 0$ / $S_{12}^D \succeq 0$ spectral-nullspace sieve, and the Universal $[F_{12}, D_{S_0, S_0}]$ Commutator Cancellation Law.
 
 ---
 

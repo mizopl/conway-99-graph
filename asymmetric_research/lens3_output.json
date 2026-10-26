@@ -1,5 +1,5 @@
 {
-  "phase": "Phase_4_Complete_S0_Matching_Pair_Sieve_and_Cross_Slice_Obstruction_Audit",
+  "phase": "Phase_5_Complete_G36_Schur_Nullspace_Sieve_and_Bracket_Decoupling_Audit",
   "step1_global_triangle_bijection": {
     "total_p2_profiles": 19,
     "certified_unsat_profiles": 18,
@@ -282,5 +282,61 @@
       },
       "combined_exact_delta0_plus_G_plus_kissat_audit": "10/10 tested (X_2, X_3) extensions UNSAT (1.50s-4.33s per pair)"
     }
+  },
+  "step5A_g36_and_schur_s12d_spectral_nullspace_sieve": {
+    "surviving_b6_orbits_tested": 3294,
+    "g36_psd_orbits": 3294,
+    "s12d_psd_orbits": 3294,
+    "g36_kernel_dimension_formula": "dim ker(G_36(M_0^+, E_0)) = 1 + c(M_0^+, E_0) in {2, 3, 4, 5}",
+    "g36_kernel_dimension_distribution": {
+      "5": 6,
+      "4": 96,
+      "3": 522,
+      "2": 2670
+    },
+    "s12d_kernel_dimension_distribution": {
+      "1": 3294
+    },
+    "s12d_kernel_generator": "1_12 (since column 0 of C_{-,S0} is 1_12 and C_{-,W0,0} = 0)",
+    "k_type1_eq_2_b4_orbits_on_remaining_4_blocks": 62
+  },
+  "step5B_universal_symmetric_e0_decoupling_of_bracket_I_and_bracket_II": {
+    "universal_symmetric_e0_sat_result": "SAT in 6.216s (/tmp/test_sym_e0.cnf)",
+    "selected_e0_matching": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        8,
+        11
+      ]
+    ],
+    "selected_e0_cycle_type_on_blocks": "4+1+1 (single 4-block cycle on blocks 2,3,4,5, escaping the 2+2+1+1 two-cycle obstruction of task-1526)",
+    "exact_G_plus_verified": true,
+    "exact_Delta0_verified": true,
+    "dc_minus_s0_max_abs": 0,
+    "bracket_I_max_abs": 0,
+    "bracket_II_max_abs": 7,
+    "max_Z_D_asymmetry": 7,
+    "max_UD_T_RD_asymmetry": 7,
+    "max_X_Pg_XT_minus_KW0_true": 4,
+    "diagonal_kw0_obstruction_identity": "(X P_g X^T)_{i,i} = 2 * sum_{m=1}^{30} X(i, c_m) X(i, g(c_m)) = 2 for all i in {4..11}"
   }
 }

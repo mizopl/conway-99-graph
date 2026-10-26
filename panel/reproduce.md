@@ -66,4 +66,16 @@ VERIFY: PASS
   - All $54$ `core_cnf_sha256` and $88$ `core_lrat_sha256s` digests (`142` proof files total, each strictly $< 750\text{ KB}$) in `certificate.json` match the files on disk and are mutually distinct between Encoding A and Encoding B.
   - Every variable count, full clause count, core clause count, RUP lemma count, and cycle-structure statistic in `artifact.md` matches `certificate.json` and `verify.py` with zero discrepancies.
 
+## 5. Asymmetric Algebraic, Spectral & 7-Triangle Triality Suite (`verify_lens3_asymmetric.py`)
+
+- **Command executed:** `/opt/homebrew/bin/python3 attempts/lens3_asymmetric_algebraic_spectral/verify_lens3_asymmetric.py`.
+- **Execution result:** Completed in $\sim 6.5$ seconds with exit code `0` and output `[PASS] Phase 2, Phase 3, Phase 4 & Phase 5 Algebraic, Spectral & Triality Verification Suite`.
+- **Verified invariants (`lens3_output.json`):**
+  1. Canonical $14 + 70$ decomposition $\mathbb{R}^{84} = \mathrm{col}(C^T) \oplus \ker(C)$ with $\mathrm{Spec}(A_{84}) = \{12^1, (-2)^6, 0^7\} \cup \{3^{40}, (-4)^{30}\}$.
+  2. $6$-dimensional Hyperoctahedral $B_7 = \mathbb{Z}_2^7 \rtimes S_7$ Bose-Mesner association scheme on $\Gamma_2(x_0)$ with valencies $(1, 2, 1, 20, 20, 40)$ and irreducible decomposition $(1 \oplus 6 \oplus 7) \oplus (14 \oplus 35 \oplus 21)$.
+  3. Triangle-Complement Spectral Duality Theorem and Exact Triangle Conservation Law $T(R_{60}) + T(S_{36}) = 32$.
+  4. Coupled $42 \times 42$ matrix system $(B, D)$ for the 19th involution profile `(0, 7, 0)` ($g = -I_7 \in Z(B_7)$), $15$ canonical $B_5$-orbits of $H_{u_0}$ on $K_{2,2,2,2,2}$, Block-Orbit Exclusion Identity, and Global 7-Triangle Triality Coupling across $T_0, \dots, T_6$.
+  5. Exact $3,580 \to 3,308 \to 3,294$ $B_6$-orbit sieve of matching pairs $(M_0^+, E_0)$ on $S_0$, $78$ canonical $B_5$-orbits of Type I block pairs $(H_0, H_1)$, and the Mod-2 Triple-Block Parity Obstruction Theorem ($k_{\text{type1}}(S_r) \le 2$ and $\Delta(G_{\text{type1}}) \le 2$).
+  6. Full $3,294$-orbit $G_{36}(M_0^+, E_0) \succeq 0$ and $S_{12}^D(M_0^+, E_0) \succeq 0$ spectral & nullspace sieve ($\dim \ker(G_{36}) = 1 + c(M_0^+, E_0) \in \{2,3,4,5\}$, $\dim \ker(S_{12}^D) = 1$), Generalized Cycle-Orbit Exclusion Theorem, and Universal $[F_{12}, D_{S_0, S_0}]$ Commutator Cancellation Law ($Z_D - Z_D^T = [D_{S_0, S_0}, X P_g X^T - K_{W_0}^{\text{true}}]$) verified on the explicit binary solution $X_{\text{sym}} \in \{0, 1\}^{12 \times 60}$.
+
 pass: true

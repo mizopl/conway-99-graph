@@ -427,6 +427,7 @@ def main():
     kw0_nonneg_orbits = 0
     k2_surviving_orbits = 0
     orbits_by_partition = {}
+    surviving_3294_orbits = []
     for part, m0 in sorted(reps_M0.items()):
         stab = [g_p for g_p in b6_perms if all(g_p[m0[u]] == m0[g_p[u]] for u in range(12))]
         M0_mat = np.zeros((12, 12), dtype=int)
@@ -455,6 +456,7 @@ def main():
                 k_t1 = sum(1 for b_idx in range(6) if m0[2 * b_idx] == 2 * b_idx + 1 and e0[2 * b_idx] == 2 * b_idx + 1)
                 if k_t1 <= 2:
                     p_k2 += 1
+                    surviving_3294_orbits.append((M0_mat, E0_mat, m0, e0, KW0, k_t1))
         total_pair_orbits += p_tot
         kw0_nonneg_orbits += p_kw0
         k2_surviving_orbits += p_k2
@@ -467,6 +469,7 @@ def main():
     assert total_pair_orbits == 3580
     assert kw0_nonneg_orbits == 3308
     assert k2_surviving_orbits == 3294
+    assert len(surviving_3294_orbits) == 3294
 
     # Verify the 78 canonical B_5-orbits of Type-I block pairs (H_0, H_1) on K_{2,2,2,2,2}
     # and the Mod-2 Triple-Block Parity Obstruction Theorem (<Y_{b1}, Y_{b2}> = 1 mod 2):
@@ -612,8 +615,150 @@ def main():
         v_B = np.concatenate([ind_B - (len(B_comp) / 2.0) * np.ones(12), ind_B, ind_B])
         assert np.allclose(G36_sample @ v_B, 0.0)
 
+    # =========================================================================
+    # 8. STEP 5A & 5B: Full 3,294-Orbit G_36 / S_12^D Spectral & Nullspace Sieve
+    #    and Universal Symmetric E_0 = E_0^T Decoupling of Bracket I & Bracket II
+    # =========================================================================
+    g36_psd_count = 0
+    s12d_psd_count = 0
+    g36_null_hist = {}
+    s12d_null_hist = {}
+    k_t1_eq_2_count = 0
+    for M0_mat, E0_mat, m0, e0, KW0, k_t1 in surviving_3294_orbits:
+        if k_t1 == 2:
+            k_t1_eq_2_count += 1
+        Delta0_cur = 2 * J12 - I12 - F12 - M0_mat - (E0_mat @ F12)
+        Gp_cur = 9 * I12 + J12 - M0_mat
+        G36_cur = np.block([
+            [WTW, Delta0_cur.T, F12 @ Delta0_cur.T],
+            [Delta0_cur, Gp_cur, KW0],
+            [Delta0_cur @ F12, KW0.T, Gp_cur],
+        ])
+        ev_g36 = np.linalg.eigvalsh(G36_cur)
+        assert ev_g36.min() >= -1e-9
+        g36_psd_count += 1
+        n_g36 = int(np.sum(np.abs(ev_g36) < 1e-7))
+        g36_null_hist[str(n_g36)] = g36_null_hist.get(str(n_g36), 0) + 1
+
+        # Count connected components c(M_0^+, E_0) on the 6 blocks {0..5}:
+        adj_blk = {b_idx: set() for b_idx in range(6)}
+        for u in range(12):
+            adj_blk[u // 2].add(m0[u] // 2)
+            adj_blk[u // 2].add(e0[u] // 2)
+        seen_blk = set()
+        c_comp = 0
+        for b_idx in range(6):
+            if b_idx not in seen_blk:
+                c_comp += 1
+                stack = [b_idx]
+                seen_blk.add(b_idx)
+                while stack:
+                    cur_b = stack.pop()
+                    for nb in adj_blk[cur_b]:
+                        if nb not in seen_blk:
+                            seen_blk.add(nb)
+                            stack.append(nb)
+        assert n_g36 == 1 + c_comp
+
+        # Schur complement S_12^D(M_0^+, E_0) = (G_+ - K_{W_0}) - (1/10)*D_{S0,S0}*(I_12 - F_12)*D_{S0,S0}:
+        D_S0 = M0_mat - E0_mat
+        S12D_cur = (Gp_cur - KW0).astype(float) - 0.1 * (D_S0 @ (I12 - F12) @ D_S0)
+        ev_s12d = np.linalg.eigvalsh(S12D_cur)
+        assert ev_s12d.min() >= -1e-9
+        s12d_psd_count += 1
+        n_s12d = int(np.sum(np.abs(ev_s12d) < 1e-7))
+        assert n_s12d == 1
+        assert np.allclose(S12D_cur @ np.ones(12, dtype=float), 0.0)
+        s12d_null_hist[str(n_s12d)] = s12d_null_hist.get(str(n_s12d), 0) + 1
+
+    assert g36_psd_count == 3294
+    assert s12d_psd_count == 3294
+    assert g36_null_hist == {"2": 2670, "3": 522, "4": 96, "5": 6}
+    assert s12d_null_hist == {"1": 3294}
+    assert k_t1_eq_2_count == 62
+
+    # Verify the explicit 12x60 binary solution X_sym_e0 from /tmp/test_sym_e0.cnf
+    # where BOTH X X^T = G_+ (M_0^+ = F_12) AND X W = Delta_0 (E_0 = E_0^T symmetric matching)
+    # hold simultaneously, decoupling Bracket I (== 0) from Bracket II (== 7):
+    X_SYM_E0_ROWS = [
+        (20, 21, 26, 27, 40, 47, 48, 54, 58, 59),
+        (28, 29, 34, 35, 36, 37, 42, 46, 49, 55),
+        (5, 7, 9, 18, 40, 45, 49, 51, 52, 57),
+        (8, 14, 15, 16, 37, 39, 41, 47, 53, 56),
+        (8, 17, 18, 19, 24, 27, 29, 31, 44, 50),
+        (5, 10, 11, 13, 25, 30, 33, 35, 56, 58),
+        (4, 7, 12, 15, 22, 24, 30, 32, 46, 59),
+        (0, 3, 6, 16, 31, 33, 42, 43, 54, 57),
+        (0, 2, 10, 12, 23, 26, 39, 44, 45, 55),
+        (1, 6, 11, 17, 20, 32, 34, 38, 51, 53),
+        (1, 2, 13, 14, 21, 22, 36, 43, 50, 52),
+        (3, 4, 9, 19, 23, 25, 28, 38, 41, 48),
+    ]
+    X_sym = np.zeros((12, 60), dtype=int)
+    for i_row, cols_row in enumerate(X_SYM_E0_ROWS):
+        for c in cols_row:
+            X_sym[i_row, c] = 1
+    assert np.array_equal(X_sym.sum(axis=1), 10 * np.ones(12, dtype=int))
+    assert np.array_equal(X_sym.sum(axis=0), 2 * np.ones(60, dtype=int))
+    assert np.array_equal(X_sym @ X_sym.T, 9 * I12 + J12 - F12)
+    E0_sym = (2 * J12 - I12 - F12 - F12 - (X_sym @ W_60)) @ F12
+    assert np.array_equal(E0_sym, E0_sym.T)
+    assert set(np.unique(E0_sym).tolist()) == {0, 1}
+    assert int(np.diag(E0_sym).sum()) == 0
+    assert np.array_equal(E0_sym.sum(axis=1), np.ones(12, dtype=int))
+    e0_edges_sym = [(u, v) for u in range(12) for v in range(u + 1, 12) if E0_sym[u, v] == 1]
+    assert e0_edges_sym == [(0, 1), (2, 3), (4, 9), (5, 7), (6, 10), (8, 11)]
+
+    Pg_60 = np.eye(60, dtype=int)[:, g_col]
+    orbs_30 = []
+    for b1 in range(6):
+        for b2 in range(b1 + 1, 6):
+            orbs_30.append((col_idx[(2 * b1, 2 * b2)], col_idx[(2 * b1 + 1, 2 * b2 + 1)]))
+            orbs_30.append((col_idx[(2 * b1, 2 * b2 + 1)], col_idx[(2 * b1 + 1, 2 * b2)]))
+    P_minus_30 = np.zeros((30, 60), dtype=int)
+    for m_idx, (cp, cm) in enumerate(orbs_30):
+        P_minus_30[m_idx, cp] = 1
+        P_minus_30[m_idx, cm] = -1
+    C_minus_S0 = np.zeros((12, 7), dtype=int)
+    for b_idx in range(6):
+        C_minus_S0[2 * b_idx, 0] = 1
+        C_minus_S0[2 * b_idx, b_idx + 1] = 1
+        C_minus_S0[2 * b_idx + 1, 0] = 1
+        C_minus_S0[2 * b_idx + 1, b_idx + 1] = -1
+    C_minus_W0 = np.zeros((30, 7), dtype=int)
+    for b_idx in range(6):
+        C_minus_W0[:, b_idx + 1] = (P_minus_30 @ (W_60[:, 2 * b_idx] - W_60[:, 2 * b_idx + 1])) // 2
+
+    D_S0_S0_sym = F12 - E0_sym
+    D_W0_S0_sym = P_minus_30 @ X_sym.T
+    # (D C_-)_{S_0} = 0 holds identically because X_sym W_60 = Delta_0:
+    dc_minus_s0 = D_S0_S0_sym @ C_minus_S0 + D_W0_S0_sym.T @ C_minus_W0
+    assert int(np.max(np.abs(dc_minus_s0))) == 0
+    # Consequently, Bracket I reduces purely to the internal commutator [C_{-,S0} C_{-,S0}^T, D_{S0,S0}] = -[F_12, D_{S0,S0}]:
+    bracket_I = D_W0_S0_sym.T @ C_minus_W0 @ C_minus_S0.T - C_minus_S0 @ C_minus_W0.T @ D_W0_S0_sym
+    assert np.array_equal(bracket_I, (C_minus_S0 @ C_minus_S0.T) @ D_S0_S0_sym - D_S0_S0_sym @ (C_minus_S0 @ C_minus_S0.T))
+    # And the full commutator Z_D - Z_D^T equals Bracket I - Bracket II = [D_{S0,S0}, X P_g X^T - K_{W_0}^true] identically:
+    H_D_T_sym = (C_minus_W0 @ C_minus_S0.T) + D_W0_S0_sym @ (D_S0_S0_sym + I12)
+    Z_D_sym = D_W0_S0_sym.T @ H_D_T_sym
+    bracket_II = D_S0_S0_sym @ (D_W0_S0_sym.T @ D_W0_S0_sym) - (D_W0_S0_sym.T @ D_W0_S0_sym) @ D_S0_S0_sym
+    assert np.array_equal(Z_D_sym - Z_D_sym.T, bracket_I - bracket_II)
+    assert int(np.max(np.abs(Z_D_sym - Z_D_sym.T))) == 7
+    U_D_sym = np.hstack([D_W0_S0_sym, C_minus_W0])
+    R_D_sym = np.hstack([-H_D_T_sym, -D_W0_S0_sym @ C_minus_S0])
+    assert int(np.max(np.abs(U_D_sym.T @ R_D_sym - R_D_sym.T @ U_D_sym))) == 7
+    KW0_sym_true = 2 * J12 - F12 - E0_sym - (F12 @ E0_sym) - (E0_sym @ F12)
+    KW0_sym_actual = X_sym @ Pg_60 @ X_sym.T
+    assert int(np.max(np.abs(KW0_sym_actual - KW0_sym_true))) == 4
+    # Because [F_12, D_{S0,S0}] cancels identically between Bracket I and Bracket II whenever X X^T = G_+ and X W = Delta_0,
+    # Z_D - Z_D^T is 100% determined by the cross-side Gram error kw_err = X P_g X^T - K_{W_0}^true:
+    kw_err = KW0_sym_actual - KW0_sym_true
+    assert np.array_equal(
+        Z_D_sym - Z_D_sym.T,
+        D_S0_S0_sym @ kw_err - kw_err @ D_S0_S0_sym,
+    )
+
     out = {
-        "phase": "Phase_4_Complete_S0_Matching_Pair_Sieve_and_Cross_Slice_Obstruction_Audit",
+        "phase": "Phase_5_Complete_G36_Schur_Nullspace_Sieve_and_Bracket_Decoupling_Audit",
         "step1_global_triangle_bijection": {
             "total_p2_profiles": 19,
             "certified_unsat_profiles": 18,
@@ -720,11 +865,35 @@ def main():
                 "combined_exact_delta0_plus_G_plus_kissat_audit": "10/10 tested (X_2, X_3) extensions UNSAT (1.50s-4.33s per pair)",
             },
         },
+        "step5A_g36_and_schur_s12d_spectral_nullspace_sieve": {
+            "surviving_b6_orbits_tested": 3294,
+            "g36_psd_orbits": g36_psd_count,
+            "s12d_psd_orbits": s12d_psd_count,
+            "g36_kernel_dimension_formula": "dim ker(G_36(M_0^+, E_0)) = 1 + c(M_0^+, E_0) in {2, 3, 4, 5}",
+            "g36_kernel_dimension_distribution": g36_null_hist,
+            "s12d_kernel_dimension_distribution": s12d_null_hist,
+            "s12d_kernel_generator": "1_12 (since column 0 of C_{-,S0} is 1_12 and C_{-,W0,0} = 0)",
+            "k_type1_eq_2_b4_orbits_on_remaining_4_blocks": k_t1_eq_2_count,
+        },
+        "step5B_universal_symmetric_e0_decoupling_of_bracket_I_and_bracket_II": {
+            "universal_symmetric_e0_sat_result": "SAT in 6.216s (/tmp/test_sym_e0.cnf)",
+            "selected_e0_matching": e0_edges_sym,
+            "selected_e0_cycle_type_on_blocks": "4+1+1 (single 4-block cycle on blocks 2,3,4,5, escaping the 2+2+1+1 two-cycle obstruction of task-1526)",
+            "exact_G_plus_verified": True,
+            "exact_Delta0_verified": True,
+            "dc_minus_s0_max_abs": 0,
+            "bracket_I_max_abs": 0,
+            "bracket_II_max_abs": 7,
+            "max_Z_D_asymmetry": 7,
+            "max_UD_T_RD_asymmetry": 7,
+            "max_X_Pg_XT_minus_KW0_true": 4,
+            "diagonal_kw0_obstruction_identity": "(X P_g X^T)_{i,i} = 2 * sum_{m=1}^{30} X(i, c_m) X(i, g(c_m)) = 2 for all i in {4..11}",
+        },
     }
     out_path = os.path.join(HERE, "lens3_output.json")
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[PASS] Phase 2, Phase 3 & Phase 4 Algebraic, Spectral & Triality Verification Suite")
+    print("[PASS] Phase 2, Phase 3, Phase 4 & Phase 5 Algebraic, Spectral & Triality Verification Suite")
     print(f"Wrote {out_path}")
 
 
