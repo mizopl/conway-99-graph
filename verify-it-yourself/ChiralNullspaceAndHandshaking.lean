@@ -5,7 +5,7 @@
   for the Generalized Algebraic & Chiral Nullspace Theorems of the Infinite Family
   of Locally Linear Strongly Regular Graphs srg(2m^2 + 1, 2m, 1, 2):
 
-    1. Theorem 1 (`Prawo A` / Intra-Slice k-Block Edge-Split Law):
+    1. Theorem 1 (`Law M11-A` / Intra-Slice k-Block Edge-Split Law):
        For any k-block connected component B_q (|I_{B_q}| = 2k) in srg(2m^2+1, 2m, 1, 2),
          2 * n_int + n_cut = 4 * (k - 1)   and   n_int - n_disj = 4 * k - 2 * m.
        For m = 7 (Conway's 99-graph) and k = 2 (n_int = 0), this forces
@@ -29,7 +29,7 @@
        splits the 12 disjoint g-orbits into d_2 = 4 orbits of type (2,0)/(0,2)
        and d_0 = 8 orbits of type (1,1).
 
-    4. Theorem 4 (`Prawo B1` / 7-Triangle Type-I Matching & Handshaking Theorem):
+    4. Theorem 4 (`Law M11-B1` / 7-Triangle Type-I Matching & Handshaking Theorem):
        By Triality Reciprocity (M_r^+(u, u') = M_t^-(u, u')), Type-I blocks form a
        symmetric graph H_type1 on the m = 7 inner triangles with degree k_type1(r) <= 1.
        By Euler's Handshaking Lemma (sum_{r=0}^6 k_type1(r) = 2 * numEdges), at least
@@ -42,7 +42,7 @@
 namespace Conway99ChiralTheorems
 
 /-!
-  ### 1. Theorem 1 (`Prawo A`): Intra-Slice k-Block Edge-Split Law for `srg(2m^2+1, 2m, 1, 2)`
+  ### 1. Theorem 1 (`Law M11-A`): Intra-Slice k-Block Edge-Split Law for `srg(2m^2+1, 2m, 1, 2)`
 -/
 
 /-- In `srg(2m^2+1, 2m, 1, 2)`, for any `k`-block component closed under the three
@@ -166,12 +166,12 @@ theorem conway99_three_block_chiral_orbit_split
 
 
 /-!
-  ### 4. Theorem 4 (`Prawo B1`): The 7-Triangle Type-I Matching & Handshaking Theorem
+  ### 4. Theorem 4 (`Law M11-B1`): The 7-Triangle Type-I Matching & Handshaking Theorem
 -/
 
 /-- By Triality Reciprocity (`M_r^+(u, u') = M_t^-(u, u')`), Type-I blocks form an undirected
     graph `H_type1` on the `7` inner triangles `{0..6}` with vertex degrees `k0..k6`.
-    Once `k_type1(S_r) <= 1` is established (`KROK 4A + 6B + 7A`), Euler's Handshaking Lemma
+    Once `k_type1(S_r) <= 1` is established (`STEP 4A + 6B + 7A`), Euler's Handshaking Lemma
     (`k0 + k1 + k2 + k3 + k4 + k5 + k6 = 2 * numEdges`) proves that:
     (1) It is impossible for all 7 slices to have `k_type1 = 1` (`k0 + ... + k6 = 7`),
     (2) At least one slice `r in {0..6}` must satisfy `k_type1(S_r) = 0`! -/
@@ -191,7 +191,7 @@ theorem seven_triangle_type1_handshaking
 
 
 /-!
-  ### 5. Theorem 5 (`Prawo B2`): Global Involution Partner Common-Neighbor Law in `B = 2 P_pi + |D|`
+  ### 5. Theorem 5 (`Law M11-B2`): Global Involution Partner Common-Neighbor Law in `B = 2 P_pi + |D|`
 -/
 
 /-- For any orbit `u in Q_a` and its unique involution partner `v = pi(u) in Q_b`
@@ -215,7 +215,7 @@ theorem global_involution_partner_common_neighbors
 
 
 /-!
-  ### 6. Theorem 6 (`KROK 9B`): Universal `k`-Block Column-Sum Distribution & Particle-Hole Duality
+  ### 6. Theorem 6 (`STEP 9B`): Universal `k`-Block Column-Sum Distribution & Particle-Hole Duality
 -/
 
 /-- In any strongly regular graph `srg(2m^2 + 1, 2m, 1, 2)` with a central involution fixing

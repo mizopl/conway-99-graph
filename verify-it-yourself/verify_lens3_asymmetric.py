@@ -1011,12 +1011,12 @@ def main():
     assert len(rows_typeC_0) == 4438
 
     # =========================================================================
-    # 11. STEP 8A & 8B: 7-Triangle Type-I Handshaking Law (Prawo B1), Global
-    #     Involution Partner Classification (Prawo B2), Connected Component
+    # 11. STEP 8A & 8B: 7-Triangle Type-I Handshaking Law (Law M11-B1), Global
+    #     Involution Partner Classification (Law M11-B2), Connected Component
     #     Factorization (N_1..N_6), Unified Chiral Nullspace & Component
     #     Imbalance Law (Law M11-A2), and Nullity-3 Native ARM64 Bitmask Sieve
     # =========================================================================
-    # 11.1 Prawo B1: H_type1 on the 7 inner triangles {0..6} has deg_{H_type1}(r) = k_type1(S_r) in {0, 1},
+    # 11.1 Law M11-B1: H_type1 on the 7 inner triangles {0..6} has deg_{H_type1}(r) = k_type1(S_r) in {0, 1},
     # i.e. H_type1 is a matching on 7 vertices (1 + 21 + 105 + 105 = 232 possible matchings).
     # By the Handshaking Lemma on 7 (odd) vertices, sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6},
     # forcing at least 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices to have k_type1(S_r) = 0!
@@ -1036,7 +1036,7 @@ def main():
     assert kt1_null_table[0]["3"] == N_comp[2] * N_comp[4] + (N_comp[3] * (N_comp[3] + 1)) // 2  # 168 + 55 = 223
     assert kt1_null_table[0]["2"] == N_comp[6]  # 2670
 
-    # 11.3 Verify Prawo B2 (Type II cross-block common edges of M_0^+ cap E_0 force K_{W_0}(u, u) = K_{W_0}(v, v) = 0),
+    # 11.3 Verify Law M11-B2 (Type II cross-block common edges of M_0^+ cap E_0 force K_{W_0}(u, u) = K_{W_0}(v, v) = 0),
     # the k-Block Edge-Split Identities, and the Unified Chiral Nullspace & Component Imbalance Law (Law M11-A2)
     # across all 3,294 surviving canonical B_6-orbits:
     c_II_hist = {}
@@ -1051,7 +1051,7 @@ def main():
         # Global Odd Sector of ker(G_36): 1_12^T (G_+ - K_{W_0}) 1_12 == 0 => sum_{i=0..11} X(i, c) == 2 for all c in R_60:
         assert int(ones_12 @ G_diff @ ones_12) == 0
 
-        # Prawo B2 on Type II cross-block common edges {u, v} in M_0^+ cap E_0 (u // 2 != v // 2):
+        # Law M11-B2 on Type II cross-block common edges {u, v} in M_0^+ cap E_0 (u // 2 != v // 2):
         c_II = 0
         for u_v in range(12):
             v_v = m0[u_v]
@@ -1328,7 +1328,7 @@ def main():
             "prawo_B1_7triangle_type1_handshaking_theorem": {
                 "statement": (
                     "Since Q_{r,t} is Type I in S_r iff Type I in S_t (Triality Reciprocity) and k_type1(S_r) in {0, 1} "
-                    "(KROK 4A + KROK 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, "
+                    "(STEP 4A + STEP 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, "
                     "sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices with k_type1(S_r) = 0."
                 ),
                 "matchings_on_7_by_edge_count": matchings_on_7_by_size,

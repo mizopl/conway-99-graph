@@ -452,7 +452,7 @@
   },
   "step8A_and_8B_global_triality_handshaking_chiral_nullspace_and_nullity3_bitmask_sieve": {
     "prawo_B1_7triangle_type1_handshaking_theorem": {
-      "statement": "Since Q_{r,t} is Type I in S_r iff Type I in S_t (Triality Reciprocity) and k_type1(S_r) in {0, 1} (KROK 4A + KROK 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices with k_type1(S_r) = 0.",
+      "statement": "Since Q_{r,t} is Type I in S_r iff Type I in S_t (Triality Reciprocity) and k_type1(S_r) in {0, 1} (STEP 4A + STEP 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices with k_type1(S_r) = 0.",
       "matchings_on_7_by_edge_count": {
         "0": 1,
         "1": 21,
