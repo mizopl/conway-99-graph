@@ -1,0 +1,2706 @@
+{
+  "orbits_total": 299,
+  "unsat_certified": 299,
+  "sat_found": 0,
+  "total_search_nodes": 686048000,
+  "unique_row_pools_cached": 148,
+  "total_wall_time_s": 2077.56,
+  "solve_wall_time_s": 2021.96,
+  "max_single_orbit_time_s": 176.6486,
+  "min_single_orbit_time_s": 0.7019,
+  "max_single_orbit_nodes": 24303558,
+  "min_single_orbit_nodes": 201966,
+  "per_orbit": [
+    {
+      "orbit": 0,
+      "dz": 2,
+      "min_L": 3215,
+      "max_L": 3571,
+      "nodes": 253322,
+      "sols": 0,
+      "time_s": 6.0095
+    },
+    {
+      "orbit": 1,
+      "dz": 2,
+      "min_L": 2949,
+      "max_L": 7535,
+      "nodes": 243754,
+      "sols": 0,
+      "time_s": 1.1935
+    },
+    {
+      "orbit": 2,
+      "dz": 4,
+      "min_L": 3226,
+      "max_L": 7912,
+      "nodes": 299839,
+      "sols": 0,
+      "time_s": 1.4827
+    },
+    {
+      "orbit": 3,
+      "dz": 2,
+      "min_L": 3226,
+      "max_L": 7315,
+      "nodes": 287595,
+      "sols": 0,
+      "time_s": 1.3925
+    },
+    {
+      "orbit": 4,
+      "dz": 2,
+      "min_L": 2949,
+      "max_L": 7650,
+      "nodes": 381001,
+      "sols": 0,
+      "time_s": 2.4393
+    },
+    {
+      "orbit": 5,
+      "dz": 2,
+      "min_L": 2949,
+      "max_L": 7650,
+      "nodes": 236540,
+      "sols": 0,
+      "time_s": 1.3071
+    },
+    {
+      "orbit": 6,
+      "dz": 2,
+      "min_L": 2949,
+      "max_L": 7650,
+      "nodes": 307423,
+      "sols": 0,
+      "time_s": 1.3836
+    },
+    {
+      "orbit": 7,
+      "dz": 2,
+      "min_L": 3019,
+      "max_L": 7416,
+      "nodes": 250639,
+      "sols": 0,
+      "time_s": 0.96
+    },
+    {
+      "orbit": 8,
+      "dz": 4,
+      "min_L": 3009,
+      "max_L": 7454,
+      "nodes": 268221,
+      "sols": 0,
+      "time_s": 1.393
+    },
+    {
+      "orbit": 9,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7552,
+      "nodes": 298266,
+      "sols": 0,
+      "time_s": 1.5531
+    },
+    {
+      "orbit": 10,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7577,
+      "nodes": 316692,
+      "sols": 0,
+      "time_s": 1.6017
+    },
+    {
+      "orbit": 11,
+      "dz": 2,
+      "min_L": 2969,
+      "max_L": 7603,
+      "nodes": 296022,
+      "sols": 0,
+      "time_s": 1.7749
+    },
+    {
+      "orbit": 12,
+      "dz": 2,
+      "min_L": 3019,
+      "max_L": 7416,
+      "nodes": 340451,
+      "sols": 0,
+      "time_s": 1.892
+    },
+    {
+      "orbit": 13,
+      "dz": 2,
+      "min_L": 2916,
+      "max_L": 7416,
+      "nodes": 363520,
+      "sols": 0,
+      "time_s": 2.0067
+    },
+    {
+      "orbit": 14,
+      "dz": 4,
+      "min_L": 3365,
+      "max_L": 7577,
+      "nodes": 388213,
+      "sols": 0,
+      "time_s": 1.632
+    },
+    {
+      "orbit": 15,
+      "dz": 6,
+      "min_L": 3251,
+      "max_L": 7585,
+      "nodes": 295370,
+      "sols": 0,
+      "time_s": 1.3115
+    },
+    {
+      "orbit": 16,
+      "dz": 4,
+      "min_L": 3059,
+      "max_L": 7885,
+      "nodes": 312892,
+      "sols": 0,
+      "time_s": 1.4711
+    },
+    {
+      "orbit": 17,
+      "dz": 4,
+      "min_L": 3009,
+      "max_L": 7649,
+      "nodes": 483317,
+      "sols": 0,
+      "time_s": 1.7584
+    },
+    {
+      "orbit": 18,
+      "dz": 4,
+      "min_L": 3009,
+      "max_L": 7649,
+      "nodes": 234819,
+      "sols": 0,
+      "time_s": 1.2304
+    },
+    {
+      "orbit": 19,
+      "dz": 4,
+      "min_L": 3009,
+      "max_L": 7454,
+      "nodes": 460272,
+      "sols": 0,
+      "time_s": 1.7774
+    },
+    {
+      "orbit": 20,
+      "dz": 2,
+      "min_L": 3191,
+      "max_L": 7576,
+      "nodes": 352453,
+      "sols": 0,
+      "time_s": 1.5951
+    },
+    {
+      "orbit": 21,
+      "dz": 2,
+      "min_L": 3059,
+      "max_L": 7885,
+      "nodes": 346621,
+      "sols": 0,
+      "time_s": 1.5905
+    },
+    {
+      "orbit": 22,
+      "dz": 2,
+      "min_L": 3009,
+      "max_L": 7576,
+      "nodes": 392062,
+      "sols": 0,
+      "time_s": 1.6166
+    },
+    {
+      "orbit": 23,
+      "dz": 2,
+      "min_L": 3009,
+      "max_L": 7649,
+      "nodes": 478572,
+      "sols": 0,
+      "time_s": 1.7969
+    },
+    {
+      "orbit": 24,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7649,
+      "nodes": 409018,
+      "sols": 0,
+      "time_s": 1.6908
+    },
+    {
+      "orbit": 25,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7552,
+      "nodes": 484059,
+      "sols": 0,
+      "time_s": 1.7406
+    },
+    {
+      "orbit": 26,
+      "dz": 2,
+      "min_L": 3059,
+      "max_L": 7577,
+      "nodes": 449030,
+      "sols": 0,
+      "time_s": 1.7049
+    },
+    {
+      "orbit": 27,
+      "dz": 2,
+      "min_L": 3009,
+      "max_L": 7577,
+      "nodes": 701805,
+      "sols": 0,
+      "time_s": 2.1584
+    },
+    {
+      "orbit": 28,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7577,
+      "nodes": 670479,
+      "sols": 0,
+      "time_s": 2.061
+    },
+    {
+      "orbit": 29,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7577,
+      "nodes": 388064,
+      "sols": 0,
+      "time_s": 1.8233
+    },
+    {
+      "orbit": 30,
+      "dz": 2,
+      "min_L": 3015,
+      "max_L": 7601,
+      "nodes": 260814,
+      "sols": 0,
+      "time_s": 1.0745
+    },
+    {
+      "orbit": 31,
+      "dz": 4,
+      "min_L": 3015,
+      "max_L": 7650,
+      "nodes": 278595,
+      "sols": 0,
+      "time_s": 1.3496
+    },
+    {
+      "orbit": 32,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7508,
+      "nodes": 320596,
+      "sols": 0,
+      "time_s": 1.8668
+    },
+    {
+      "orbit": 33,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7525,
+      "nodes": 421218,
+      "sols": 0,
+      "time_s": 1.7956
+    },
+    {
+      "orbit": 34,
+      "dz": 2,
+      "min_L": 3015,
+      "max_L": 7601,
+      "nodes": 347289,
+      "sols": 0,
+      "time_s": 1.4945
+    },
+    {
+      "orbit": 35,
+      "dz": 2,
+      "min_L": 2916,
+      "max_L": 7938,
+      "nodes": 519021,
+      "sols": 0,
+      "time_s": 1.9954
+    },
+    {
+      "orbit": 36,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7938,
+      "nodes": 515381,
+      "sols": 0,
+      "time_s": 2.7726
+    },
+    {
+      "orbit": 37,
+      "dz": 4,
+      "min_L": 3365,
+      "max_L": 7912,
+      "nodes": 297379,
+      "sols": 0,
+      "time_s": 2.0002
+    },
+    {
+      "orbit": 38,
+      "dz": 4,
+      "min_L": 2905,
+      "max_L": 7577,
+      "nodes": 887191,
+      "sols": 0,
+      "time_s": 3.33
+    },
+    {
+      "orbit": 39,
+      "dz": 4,
+      "min_L": 3200,
+      "max_L": 7650,
+      "nodes": 720347,
+      "sols": 0,
+      "time_s": 3.276
+    },
+    {
+      "orbit": 40,
+      "dz": 6,
+      "min_L": 2905,
+      "max_L": 7650,
+      "nodes": 722607,
+      "sols": 0,
+      "time_s": 2.8373
+    },
+    {
+      "orbit": 41,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7576,
+      "nodes": 519226,
+      "sols": 0,
+      "time_s": 2.4654
+    },
+    {
+      "orbit": 42,
+      "dz": 2,
+      "min_L": 3365,
+      "max_L": 7508,
+      "nodes": 296762,
+      "sols": 0,
+      "time_s": 1.8551
+    },
+    {
+      "orbit": 43,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7508,
+      "nodes": 679231,
+      "sols": 0,
+      "time_s": 2.3996
+    },
+    {
+      "orbit": 44,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7508,
+      "nodes": 350378,
+      "sols": 0,
+      "time_s": 2.1724
+    },
+    {
+      "orbit": 45,
+      "dz": 2,
+      "min_L": 3371,
+      "max_L": 7650,
+      "nodes": 2339992,
+      "sols": 0,
+      "time_s": 5.5228
+    },
+    {
+      "orbit": 46,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7650,
+      "nodes": 2130547,
+      "sols": 0,
+      "time_s": 4.275
+    },
+    {
+      "orbit": 47,
+      "dz": 2,
+      "min_L": 3371,
+      "max_L": 7650,
+      "nodes": 2501300,
+      "sols": 0,
+      "time_s": 5.157
+    },
+    {
+      "orbit": 48,
+      "dz": 2,
+      "min_L": 3257,
+      "max_L": 7650,
+      "nodes": 2385739,
+      "sols": 0,
+      "time_s": 5.2374
+    },
+    {
+      "orbit": 49,
+      "dz": 2,
+      "min_L": 3257,
+      "max_L": 7672,
+      "nodes": 2239734,
+      "sols": 0,
+      "time_s": 5.8126
+    },
+    {
+      "orbit": 50,
+      "dz": 2,
+      "min_L": 2959,
+      "max_L": 7431,
+      "nodes": 232333,
+      "sols": 0,
+      "time_s": 1.5249
+    },
+    {
+      "orbit": 51,
+      "dz": 4,
+      "min_L": 3019,
+      "max_L": 7416,
+      "nodes": 247271,
+      "sols": 0,
+      "time_s": 1.3156
+    },
+    {
+      "orbit": 52,
+      "dz": 2,
+      "min_L": 2916,
+      "max_L": 7416,
+      "nodes": 273414,
+      "sols": 0,
+      "time_s": 1.9622
+    },
+    {
+      "orbit": 53,
+      "dz": 2,
+      "min_L": 2916,
+      "max_L": 7577,
+      "nodes": 203092,
+      "sols": 0,
+      "time_s": 1.2105
+    },
+    {
+      "orbit": 54,
+      "dz": 2,
+      "min_L": 2991,
+      "max_L": 7671,
+      "nodes": 210493,
+      "sols": 0,
+      "time_s": 1.0717
+    },
+    {
+      "orbit": 55,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7791,
+      "nodes": 335504,
+      "sols": 0,
+      "time_s": 1.8928
+    },
+    {
+      "orbit": 56,
+      "dz": 4,
+      "min_L": 3059,
+      "max_L": 7577,
+      "nodes": 294085,
+      "sols": 0,
+      "time_s": 2.1243
+    },
+    {
+      "orbit": 57,
+      "dz": 6,
+      "min_L": 3096,
+      "max_L": 7504,
+      "nodes": 365330,
+      "sols": 0,
+      "time_s": 2.2837
+    },
+    {
+      "orbit": 58,
+      "dz": 4,
+      "min_L": 3074,
+      "max_L": 7523,
+      "nodes": 335908,
+      "sols": 0,
+      "time_s": 2.3674
+    },
+    {
+      "orbit": 59,
+      "dz": 4,
+      "min_L": 3096,
+      "max_L": 7504,
+      "nodes": 537606,
+      "sols": 0,
+      "time_s": 2.436
+    },
+    {
+      "orbit": 60,
+      "dz": 4,
+      "min_L": 3074,
+      "max_L": 7416,
+      "nodes": 244686,
+      "sols": 0,
+      "time_s": 1.6756
+    },
+    {
+      "orbit": 61,
+      "dz": 2,
+      "min_L": 3059,
+      "max_L": 7525,
+      "nodes": 271259,
+      "sols": 0,
+      "time_s": 1.6133
+    },
+    {
+      "orbit": 62,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7523,
+      "nodes": 324830,
+      "sols": 0,
+      "time_s": 1.8255
+    },
+    {
+      "orbit": 63,
+      "dz": 2,
+      "min_L": 3096,
+      "max_L": 7504,
+      "nodes": 447526,
+      "sols": 0,
+      "time_s": 2.3411
+    },
+    {
+      "orbit": 64,
+      "dz": 2,
+      "min_L": 3074,
+      "max_L": 7576,
+      "nodes": 246923,
+      "sols": 0,
+      "time_s": 1.4872
+    },
+    {
+      "orbit": 65,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7577,
+      "nodes": 497534,
+      "sols": 0,
+      "time_s": 2.1579
+    },
+    {
+      "orbit": 66,
+      "dz": 2,
+      "min_L": 3096,
+      "max_L": 7576,
+      "nodes": 499686,
+      "sols": 0,
+      "time_s": 2.1423
+    },
+    {
+      "orbit": 67,
+      "dz": 2,
+      "min_L": 2916,
+      "max_L": 7494,
+      "nodes": 345625,
+      "sols": 0,
+      "time_s": 2.0703
+    },
+    {
+      "orbit": 68,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7577,
+      "nodes": 557459,
+      "sols": 0,
+      "time_s": 2.1259
+    },
+    {
+      "orbit": 69,
+      "dz": 2,
+      "min_L": 3096,
+      "max_L": 7577,
+      "nodes": 702669,
+      "sols": 0,
+      "time_s": 2.3542
+    },
+    {
+      "orbit": 70,
+      "dz": 2,
+      "min_L": 2916,
+      "max_L": 7577,
+      "nodes": 562294,
+      "sols": 0,
+      "time_s": 2.1847
+    },
+    {
+      "orbit": 71,
+      "dz": 2,
+      "min_L": 2959,
+      "max_L": 7431,
+      "nodes": 335769,
+      "sols": 0,
+      "time_s": 2.3839
+    },
+    {
+      "orbit": 72,
+      "dz": 2,
+      "min_L": 2959,
+      "max_L": 7576,
+      "nodes": 453712,
+      "sols": 0,
+      "time_s": 2.177
+    },
+    {
+      "orbit": 73,
+      "dz": 4,
+      "min_L": 3365,
+      "max_L": 7577,
+      "nodes": 295422,
+      "sols": 0,
+      "time_s": 2.062
+    },
+    {
+      "orbit": 74,
+      "dz": 4,
+      "min_L": 2905,
+      "max_L": 7577,
+      "nodes": 569730,
+      "sols": 0,
+      "time_s": 3.435
+    },
+    {
+      "orbit": 75,
+      "dz": 6,
+      "min_L": 2905,
+      "max_L": 7577,
+      "nodes": 665846,
+      "sols": 0,
+      "time_s": 2.8797
+    },
+    {
+      "orbit": 76,
+      "dz": 6,
+      "min_L": 2877,
+      "max_L": 7455,
+      "nodes": 306514,
+      "sols": 0,
+      "time_s": 3.0649
+    },
+    {
+      "orbit": 77,
+      "dz": 8,
+      "min_L": 3365,
+      "max_L": 7455,
+      "nodes": 287055,
+      "sols": 0,
+      "time_s": 1.8184
+    },
+    {
+      "orbit": 78,
+      "dz": 6,
+      "min_L": 2905,
+      "max_L": 7577,
+      "nodes": 479710,
+      "sols": 0,
+      "time_s": 2.9129
+    },
+    {
+      "orbit": 79,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7523,
+      "nodes": 598186,
+      "sols": 0,
+      "time_s": 2.9065
+    },
+    {
+      "orbit": 80,
+      "dz": 4,
+      "min_L": 2905,
+      "max_L": 7577,
+      "nodes": 532565,
+      "sols": 0,
+      "time_s": 2.4518
+    },
+    {
+      "orbit": 81,
+      "dz": 4,
+      "min_L": 3371,
+      "max_L": 7523,
+      "nodes": 1327387,
+      "sols": 0,
+      "time_s": 3.7273
+    },
+    {
+      "orbit": 82,
+      "dz": 4,
+      "min_L": 3365,
+      "max_L": 7455,
+      "nodes": 296324,
+      "sols": 0,
+      "time_s": 2.4728
+    },
+    {
+      "orbit": 83,
+      "dz": 4,
+      "min_L": 3059,
+      "max_L": 7455,
+      "nodes": 1075140,
+      "sols": 0,
+      "time_s": 4.7375
+    },
+    {
+      "orbit": 84,
+      "dz": 4,
+      "min_L": 3257,
+      "max_L": 7504,
+      "nodes": 902628,
+      "sols": 0,
+      "time_s": 4.0517
+    },
+    {
+      "orbit": 85,
+      "dz": 6,
+      "min_L": 3074,
+      "max_L": 7299,
+      "nodes": 840904,
+      "sols": 0,
+      "time_s": 3.798
+    },
+    {
+      "orbit": 86,
+      "dz": 4,
+      "min_L": 2905,
+      "max_L": 7603,
+      "nodes": 978942,
+      "sols": 0,
+      "time_s": 3.7119
+    },
+    {
+      "orbit": 87,
+      "dz": 4,
+      "min_L": 3257,
+      "max_L": 7603,
+      "nodes": 1586523,
+      "sols": 0,
+      "time_s": 4.9078
+    },
+    {
+      "orbit": 88,
+      "dz": 4,
+      "min_L": 3074,
+      "max_L": 7603,
+      "nodes": 834795,
+      "sols": 0,
+      "time_s": 3.3291
+    },
+    {
+      "orbit": 89,
+      "dz": 4,
+      "min_L": 3346,
+      "max_L": 7416,
+      "nodes": 528376,
+      "sols": 0,
+      "time_s": 2.8355
+    },
+    {
+      "orbit": 90,
+      "dz": 2,
+      "min_L": 3191,
+      "max_L": 7525,
+      "nodes": 390462,
+      "sols": 0,
+      "time_s": 2.4563
+    },
+    {
+      "orbit": 91,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7525,
+      "nodes": 427973,
+      "sols": 0,
+      "time_s": 2.2195
+    },
+    {
+      "orbit": 92,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7523,
+      "nodes": 646364,
+      "sols": 0,
+      "time_s": 3.4612
+    },
+    {
+      "orbit": 93,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7523,
+      "nodes": 783392,
+      "sols": 0,
+      "time_s": 2.6576
+    },
+    {
+      "orbit": 94,
+      "dz": 2,
+      "min_L": 3365,
+      "max_L": 7455,
+      "nodes": 303540,
+      "sols": 0,
+      "time_s": 2.4421
+    },
+    {
+      "orbit": 95,
+      "dz": 2,
+      "min_L": 3059,
+      "max_L": 7576,
+      "nodes": 1429965,
+      "sols": 0,
+      "time_s": 4.5556
+    },
+    {
+      "orbit": 96,
+      "dz": 2,
+      "min_L": 3059,
+      "max_L": 7504,
+      "nodes": 704898,
+      "sols": 0,
+      "time_s": 2.6038
+    },
+    {
+      "orbit": 97,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7504,
+      "nodes": 759558,
+      "sols": 0,
+      "time_s": 3.2383
+    },
+    {
+      "orbit": 98,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7603,
+      "nodes": 1343617,
+      "sols": 0,
+      "time_s": 3.4658
+    },
+    {
+      "orbit": 99,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7603,
+      "nodes": 1259473,
+      "sols": 0,
+      "time_s": 2.9679
+    },
+    {
+      "orbit": 100,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7603,
+      "nodes": 1234724,
+      "sols": 0,
+      "time_s": 3.1124
+    },
+    {
+      "orbit": 101,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7603,
+      "nodes": 813156,
+      "sols": 0,
+      "time_s": 2.5129
+    },
+    {
+      "orbit": 102,
+      "dz": 2,
+      "min_L": 3346,
+      "max_L": 7576,
+      "nodes": 1697979,
+      "sols": 0,
+      "time_s": 4.8443
+    },
+    {
+      "orbit": 103,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7576,
+      "nodes": 945427,
+      "sols": 0,
+      "time_s": 3.2611
+    },
+    {
+      "orbit": 104,
+      "dz": 2,
+      "min_L": 3257,
+      "max_L": 7504,
+      "nodes": 1378130,
+      "sols": 0,
+      "time_s": 3.7183
+    },
+    {
+      "orbit": 105,
+      "dz": 2,
+      "min_L": 3074,
+      "max_L": 7468,
+      "nodes": 250685,
+      "sols": 0,
+      "time_s": 1.5695
+    },
+    {
+      "orbit": 106,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 825305,
+      "sols": 0,
+      "time_s": 3.08
+    },
+    {
+      "orbit": 107,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7577,
+      "nodes": 1596456,
+      "sols": 0,
+      "time_s": 3.8402
+    },
+    {
+      "orbit": 108,
+      "dz": 2,
+      "min_L": 3371,
+      "max_L": 7577,
+      "nodes": 2302145,
+      "sols": 0,
+      "time_s": 5.2095
+    },
+    {
+      "orbit": 109,
+      "dz": 2,
+      "min_L": 3074,
+      "max_L": 7577,
+      "nodes": 1929545,
+      "sols": 0,
+      "time_s": 4.6002
+    },
+    {
+      "orbit": 110,
+      "dz": 2,
+      "min_L": 3008,
+      "max_L": 7577,
+      "nodes": 1997811,
+      "sols": 0,
+      "time_s": 5.2718
+    },
+    {
+      "orbit": 111,
+      "dz": 2,
+      "min_L": 2905,
+      "max_L": 7603,
+      "nodes": 244782,
+      "sols": 0,
+      "time_s": 1.7385
+    },
+    {
+      "orbit": 112,
+      "dz": 2,
+      "min_L": 3257,
+      "max_L": 7671,
+      "nodes": 2436524,
+      "sols": 0,
+      "time_s": 5.1892
+    },
+    {
+      "orbit": 113,
+      "dz": 2,
+      "min_L": 3074,
+      "max_L": 7671,
+      "nodes": 2197155,
+      "sols": 0,
+      "time_s": 4.6849
+    },
+    {
+      "orbit": 114,
+      "dz": 2,
+      "min_L": 3346,
+      "max_L": 7671,
+      "nodes": 2654586,
+      "sols": 0,
+      "time_s": 5.3722
+    },
+    {
+      "orbit": 115,
+      "dz": 2,
+      "min_L": 3074,
+      "max_L": 7791,
+      "nodes": 2072803,
+      "sols": 0,
+      "time_s": 4.7598
+    },
+    {
+      "orbit": 116,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 222118,
+      "sols": 0,
+      "time_s": 1.0029
+    },
+    {
+      "orbit": 117,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7938,
+      "nodes": 228581,
+      "sols": 0,
+      "time_s": 1.0994
+    },
+    {
+      "orbit": 118,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 226247,
+      "sols": 0,
+      "time_s": 0.9836
+    },
+    {
+      "orbit": 119,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7535,
+      "nodes": 207951,
+      "sols": 0,
+      "time_s": 1.2655
+    },
+    {
+      "orbit": 120,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7672,
+      "nodes": 325127,
+      "sols": 0,
+      "time_s": 1.4494
+    },
+    {
+      "orbit": 121,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7672,
+      "nodes": 468552,
+      "sols": 0,
+      "time_s": 1.6812
+    },
+    {
+      "orbit": 122,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7912,
+      "nodes": 210006,
+      "sols": 0,
+      "time_s": 1.6626
+    },
+    {
+      "orbit": 123,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7508,
+      "nodes": 370287,
+      "sols": 0,
+      "time_s": 2.1876
+    },
+    {
+      "orbit": 124,
+      "dz": 6,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 583978,
+      "sols": 0,
+      "time_s": 2.3154
+    },
+    {
+      "orbit": 125,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7508,
+      "nodes": 209094,
+      "sols": 0,
+      "time_s": 1.4007
+    },
+    {
+      "orbit": 126,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7508,
+      "nodes": 340242,
+      "sols": 0,
+      "time_s": 1.9531
+    },
+    {
+      "orbit": 127,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 502299,
+      "sols": 0,
+      "time_s": 1.7397
+    },
+    {
+      "orbit": 128,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 1064217,
+      "sols": 0,
+      "time_s": 2.4016
+    },
+    {
+      "orbit": 129,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7912,
+      "nodes": 1129727,
+      "sols": 0,
+      "time_s": 2.5722
+    },
+    {
+      "orbit": 130,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 1148126,
+      "sols": 0,
+      "time_s": 2.5018
+    },
+    {
+      "orbit": 131,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7938,
+      "nodes": 1133319,
+      "sols": 0,
+      "time_s": 2.3902
+    },
+    {
+      "orbit": 132,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7912,
+      "nodes": 1193575,
+      "sols": 0,
+      "time_s": 2.4525
+    },
+    {
+      "orbit": 133,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7938,
+      "nodes": 1110396,
+      "sols": 0,
+      "time_s": 2.5431
+    },
+    {
+      "orbit": 134,
+      "dz": 4,
+      "min_L": 3128,
+      "max_L": 7525,
+      "nodes": 371550,
+      "sols": 0,
+      "time_s": 2.235
+    },
+    {
+      "orbit": 135,
+      "dz": 2,
+      "min_L": 3128,
+      "max_L": 7629,
+      "nodes": 333655,
+      "sols": 0,
+      "time_s": 2.0892
+    },
+    {
+      "orbit": 136,
+      "dz": 6,
+      "min_L": 3128,
+      "max_L": 7535,
+      "nodes": 279200,
+      "sols": 0,
+      "time_s": 2.3703
+    },
+    {
+      "orbit": 137,
+      "dz": 4,
+      "min_L": 3128,
+      "max_L": 7672,
+      "nodes": 319569,
+      "sols": 0,
+      "time_s": 2.1138
+    },
+    {
+      "orbit": 138,
+      "dz": 2,
+      "min_L": 3128,
+      "max_L": 7672,
+      "nodes": 426404,
+      "sols": 0,
+      "time_s": 2.4001
+    },
+    {
+      "orbit": 139,
+      "dz": 2,
+      "min_L": 3128,
+      "max_L": 7629,
+      "nodes": 348854,
+      "sols": 0,
+      "time_s": 2.0757
+    },
+    {
+      "orbit": 140,
+      "dz": 2,
+      "min_L": 3128,
+      "max_L": 7502,
+      "nodes": 505443,
+      "sols": 0,
+      "time_s": 2.3978
+    },
+    {
+      "orbit": 141,
+      "dz": 6,
+      "min_L": 5208,
+      "max_L": 7938,
+      "nodes": 544891,
+      "sols": 0,
+      "time_s": 2.967
+    },
+    {
+      "orbit": 142,
+      "dz": 4,
+      "min_L": 3186,
+      "max_L": 7938,
+      "nodes": 431964,
+      "sols": 0,
+      "time_s": 2.4335
+    },
+    {
+      "orbit": 143,
+      "dz": 8,
+      "min_L": 5208,
+      "max_L": 7912,
+      "nodes": 286267,
+      "sols": 0,
+      "time_s": 2.6026
+    },
+    {
+      "orbit": 144,
+      "dz": 6,
+      "min_L": 3186,
+      "max_L": 7508,
+      "nodes": 1869667,
+      "sols": 0,
+      "time_s": 8.1454
+    },
+    {
+      "orbit": 145,
+      "dz": 4,
+      "min_L": 3626,
+      "max_L": 7508,
+      "nodes": 1812011,
+      "sols": 0,
+      "time_s": 8.9702
+    },
+    {
+      "orbit": 146,
+      "dz": 4,
+      "min_L": 3200,
+      "max_L": 7629,
+      "nodes": 1557152,
+      "sols": 0,
+      "time_s": 8.2967
+    },
+    {
+      "orbit": 147,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7508,
+      "nodes": 748166,
+      "sols": 0,
+      "time_s": 2.3301
+    },
+    {
+      "orbit": 148,
+      "dz": 4,
+      "min_L": 3546,
+      "max_L": 7649,
+      "nodes": 882795,
+      "sols": 0,
+      "time_s": 4.7269
+    },
+    {
+      "orbit": 149,
+      "dz": 2,
+      "min_L": 3186,
+      "max_L": 7649,
+      "nodes": 425279,
+      "sols": 0,
+      "time_s": 2.4075
+    },
+    {
+      "orbit": 150,
+      "dz": 6,
+      "min_L": 3546,
+      "max_L": 7508,
+      "nodes": 809553,
+      "sols": 0,
+      "time_s": 4.1715
+    },
+    {
+      "orbit": 151,
+      "dz": 4,
+      "min_L": 3186,
+      "max_L": 7508,
+      "nodes": 1459171,
+      "sols": 0,
+      "time_s": 6.0461
+    },
+    {
+      "orbit": 152,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7508,
+      "nodes": 879246,
+      "sols": 0,
+      "time_s": 3.8451
+    },
+    {
+      "orbit": 153,
+      "dz": 2,
+      "min_L": 3200,
+      "max_L": 7629,
+      "nodes": 1163840,
+      "sols": 0,
+      "time_s": 5.7963
+    },
+    {
+      "orbit": 154,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7508,
+      "nodes": 975534,
+      "sols": 0,
+      "time_s": 5.2981
+    },
+    {
+      "orbit": 155,
+      "dz": 4,
+      "min_L": 5436,
+      "max_L": 7650,
+      "nodes": 2002778,
+      "sols": 0,
+      "time_s": 4.8065
+    },
+    {
+      "orbit": 156,
+      "dz": 2,
+      "min_L": 3479,
+      "max_L": 7629,
+      "nodes": 4250825,
+      "sols": 0,
+      "time_s": 10.8113
+    },
+    {
+      "orbit": 157,
+      "dz": 2,
+      "min_L": 7006,
+      "max_L": 7525,
+      "nodes": 17037184,
+      "sols": 0,
+      "time_s": 33.7359
+    },
+    {
+      "orbit": 158,
+      "dz": 4,
+      "min_L": 5436,
+      "max_L": 7912,
+      "nodes": 2975427,
+      "sols": 0,
+      "time_s": 4.7514
+    },
+    {
+      "orbit": 159,
+      "dz": 2,
+      "min_L": 3186,
+      "max_L": 7525,
+      "nodes": 4158282,
+      "sols": 0,
+      "time_s": 8.8306
+    },
+    {
+      "orbit": 160,
+      "dz": 2,
+      "min_L": 7052,
+      "max_L": 7525,
+      "nodes": 20492164,
+      "sols": 0,
+      "time_s": 34.7525
+    },
+    {
+      "orbit": 161,
+      "dz": 4,
+      "min_L": 5436,
+      "max_L": 7650,
+      "nodes": 2912482,
+      "sols": 0,
+      "time_s": 5.4419
+    },
+    {
+      "orbit": 162,
+      "dz": 2,
+      "min_L": 3479,
+      "max_L": 7649,
+      "nodes": 4551331,
+      "sols": 0,
+      "time_s": 11.4178
+    },
+    {
+      "orbit": 163,
+      "dz": 2,
+      "min_L": 3626,
+      "max_L": 7650,
+      "nodes": 4817249,
+      "sols": 0,
+      "time_s": 10.4114
+    },
+    {
+      "orbit": 164,
+      "dz": 4,
+      "min_L": 5269,
+      "max_L": 7535,
+      "nodes": 2673392,
+      "sols": 0,
+      "time_s": 4.7197
+    },
+    {
+      "orbit": 165,
+      "dz": 2,
+      "min_L": 7104,
+      "max_L": 7672,
+      "nodes": 13420418,
+      "sols": 0,
+      "time_s": 34.1391
+    },
+    {
+      "orbit": 166,
+      "dz": 2,
+      "min_L": 3626,
+      "max_L": 7672,
+      "nodes": 4800225,
+      "sols": 0,
+      "time_s": 11.3513
+    },
+    {
+      "orbit": 167,
+      "dz": 4,
+      "min_L": 5269,
+      "max_L": 7672,
+      "nodes": 1880400,
+      "sols": 0,
+      "time_s": 3.9761
+    },
+    {
+      "orbit": 168,
+      "dz": 2,
+      "min_L": 3626,
+      "max_L": 7912,
+      "nodes": 4694254,
+      "sols": 0,
+      "time_s": 9.3606
+    },
+    {
+      "orbit": 169,
+      "dz": 2,
+      "min_L": 7052,
+      "max_L": 7938,
+      "nodes": 22471197,
+      "sols": 0,
+      "time_s": 34.3489
+    },
+    {
+      "orbit": 170,
+      "dz": 4,
+      "min_L": 5269,
+      "max_L": 7912,
+      "nodes": 2824178,
+      "sols": 0,
+      "time_s": 4.7859
+    },
+    {
+      "orbit": 171,
+      "dz": 2,
+      "min_L": 7104,
+      "max_L": 7649,
+      "nodes": 13356498,
+      "sols": 0,
+      "time_s": 37.2033
+    },
+    {
+      "orbit": 172,
+      "dz": 2,
+      "min_L": 7006,
+      "max_L": 7938,
+      "nodes": 18604521,
+      "sols": 0,
+      "time_s": 30.5284
+    },
+    {
+      "orbit": 173,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 3181,
+      "nodes": 201966,
+      "sols": 0,
+      "time_s": 0.7019
+    },
+    {
+      "orbit": 174,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 206134,
+      "sols": 0,
+      "time_s": 0.9374
+    },
+    {
+      "orbit": 175,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 205224,
+      "sols": 0,
+      "time_s": 0.8027
+    },
+    {
+      "orbit": 176,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 232224,
+      "sols": 0,
+      "time_s": 1.1328
+    },
+    {
+      "orbit": 177,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7690,
+      "nodes": 234816,
+      "sols": 0,
+      "time_s": 1.1361
+    },
+    {
+      "orbit": 178,
+      "dz": 6,
+      "min_L": 2877,
+      "max_L": 7232,
+      "nodes": 212883,
+      "sols": 0,
+      "time_s": 0.936
+    },
+    {
+      "orbit": 179,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7462,
+      "nodes": 216119,
+      "sols": 0,
+      "time_s": 0.8951
+    },
+    {
+      "orbit": 180,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7462,
+      "nodes": 222152,
+      "sols": 0,
+      "time_s": 0.9457
+    },
+    {
+      "orbit": 181,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 237357,
+      "sols": 0,
+      "time_s": 1.0857
+    },
+    {
+      "orbit": 182,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 254541,
+      "sols": 0,
+      "time_s": 1.0943
+    },
+    {
+      "orbit": 183,
+      "dz": 4,
+      "min_L": 3019,
+      "max_L": 7428,
+      "nodes": 222853,
+      "sols": 0,
+      "time_s": 1.0524
+    },
+    {
+      "orbit": 184,
+      "dz": 4,
+      "min_L": 3019,
+      "max_L": 7567,
+      "nodes": 440569,
+      "sols": 0,
+      "time_s": 1.8329
+    },
+    {
+      "orbit": 185,
+      "dz": 2,
+      "min_L": 3019,
+      "max_L": 7428,
+      "nodes": 223554,
+      "sols": 0,
+      "time_s": 1.1716
+    },
+    {
+      "orbit": 186,
+      "dz": 2,
+      "min_L": 3019,
+      "max_L": 7409,
+      "nodes": 428840,
+      "sols": 0,
+      "time_s": 1.8793
+    },
+    {
+      "orbit": 187,
+      "dz": 2,
+      "min_L": 3019,
+      "max_L": 7577,
+      "nodes": 532101,
+      "sols": 0,
+      "time_s": 1.879
+    },
+    {
+      "orbit": 188,
+      "dz": 2,
+      "min_L": 3019,
+      "max_L": 7577,
+      "nodes": 575535,
+      "sols": 0,
+      "time_s": 2.1135
+    },
+    {
+      "orbit": 189,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 208640,
+      "sols": 0,
+      "time_s": 1.138
+    },
+    {
+      "orbit": 190,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 546116,
+      "sols": 0,
+      "time_s": 2.1665
+    },
+    {
+      "orbit": 191,
+      "dz": 8,
+      "min_L": 2877,
+      "max_L": 7321,
+      "nodes": 202587,
+      "sols": 0,
+      "time_s": 0.9391
+    },
+    {
+      "orbit": 192,
+      "dz": 6,
+      "min_L": 2877,
+      "max_L": 7504,
+      "nodes": 302351,
+      "sols": 0,
+      "time_s": 1.638
+    },
+    {
+      "orbit": 193,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7494,
+      "nodes": 270202,
+      "sols": 0,
+      "time_s": 1.5807
+    },
+    {
+      "orbit": 194,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7429,
+      "nodes": 209383,
+      "sols": 0,
+      "time_s": 1.1673
+    },
+    {
+      "orbit": 195,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7473,
+      "nodes": 637513,
+      "sols": 0,
+      "time_s": 2.1292
+    },
+    {
+      "orbit": 196,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7603,
+      "nodes": 715419,
+      "sols": 0,
+      "time_s": 2.3845
+    },
+    {
+      "orbit": 197,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 208052,
+      "sols": 0,
+      "time_s": 1.0983
+    },
+    {
+      "orbit": 198,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7525,
+      "nodes": 462885,
+      "sols": 0,
+      "time_s": 1.8841
+    },
+    {
+      "orbit": 199,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7504,
+      "nodes": 576774,
+      "sols": 0,
+      "time_s": 2.0215
+    },
+    {
+      "orbit": 200,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7468,
+      "nodes": 490028,
+      "sols": 0,
+      "time_s": 2.0233
+    },
+    {
+      "orbit": 201,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7377,
+      "nodes": 213352,
+      "sols": 0,
+      "time_s": 1.2023
+    },
+    {
+      "orbit": 202,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 767227,
+      "sols": 0,
+      "time_s": 2.237
+    },
+    {
+      "orbit": 203,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7603,
+      "nodes": 748311,
+      "sols": 0,
+      "time_s": 2.3151
+    },
+    {
+      "orbit": 204,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 861121,
+      "sols": 0,
+      "time_s": 2.2401
+    },
+    {
+      "orbit": 205,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 208458,
+      "sols": 0,
+      "time_s": 1.1259
+    },
+    {
+      "orbit": 206,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 687011,
+      "sols": 0,
+      "time_s": 2.3265
+    },
+    {
+      "orbit": 207,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7494,
+      "nodes": 253486,
+      "sols": 0,
+      "time_s": 1.3836
+    },
+    {
+      "orbit": 208,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7494,
+      "nodes": 351126,
+      "sols": 0,
+      "time_s": 1.7045
+    },
+    {
+      "orbit": 209,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 471157,
+      "sols": 0,
+      "time_s": 1.8776
+    },
+    {
+      "orbit": 210,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7494,
+      "nodes": 756694,
+      "sols": 0,
+      "time_s": 2.1193
+    },
+    {
+      "orbit": 211,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7649,
+      "nodes": 595040,
+      "sols": 0,
+      "time_s": 1.9633
+    },
+    {
+      "orbit": 212,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7603,
+      "nodes": 594653,
+      "sols": 0,
+      "time_s": 1.9718
+    },
+    {
+      "orbit": 213,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 1021655,
+      "sols": 0,
+      "time_s": 2.5429
+    },
+    {
+      "orbit": 214,
+      "dz": 6,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 535494,
+      "sols": 0,
+      "time_s": 1.9556
+    },
+    {
+      "orbit": 215,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 631963,
+      "sols": 0,
+      "time_s": 2.0045
+    },
+    {
+      "orbit": 216,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7577,
+      "nodes": 1018646,
+      "sols": 0,
+      "time_s": 2.4316
+    },
+    {
+      "orbit": 217,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7603,
+      "nodes": 765755,
+      "sols": 0,
+      "time_s": 2.2691
+    },
+    {
+      "orbit": 218,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 217966,
+      "sols": 0,
+      "time_s": 1.7658
+    },
+    {
+      "orbit": 219,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 1017196,
+      "sols": 0,
+      "time_s": 2.6523
+    },
+    {
+      "orbit": 220,
+      "dz": 4,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 499908,
+      "sols": 0,
+      "time_s": 2.2226
+    },
+    {
+      "orbit": 221,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 365005,
+      "sols": 0,
+      "time_s": 1.9295
+    },
+    {
+      "orbit": 222,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 1055872,
+      "sols": 0,
+      "time_s": 2.9847
+    },
+    {
+      "orbit": 223,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7671,
+      "nodes": 1126080,
+      "sols": 0,
+      "time_s": 2.616
+    },
+    {
+      "orbit": 224,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7690,
+      "nodes": 1134416,
+      "sols": 0,
+      "time_s": 2.6685
+    },
+    {
+      "orbit": 225,
+      "dz": 6,
+      "min_L": 2877,
+      "max_L": 7690,
+      "nodes": 652571,
+      "sols": 0,
+      "time_s": 2.3123
+    },
+    {
+      "orbit": 226,
+      "dz": 2,
+      "min_L": 2877,
+      "max_L": 7690,
+      "nodes": 1103687,
+      "sols": 0,
+      "time_s": 2.9739
+    },
+    {
+      "orbit": 227,
+      "dz": 8,
+      "min_L": 5208,
+      "max_L": 7577,
+      "nodes": 269102,
+      "sols": 0,
+      "time_s": 2.8391
+    },
+    {
+      "orbit": 228,
+      "dz": 6,
+      "min_L": 3186,
+      "max_L": 7577,
+      "nodes": 1762984,
+      "sols": 0,
+      "time_s": 7.8568
+    },
+    {
+      "orbit": 229,
+      "dz": 4,
+      "min_L": 3626,
+      "max_L": 7577,
+      "nodes": 1962427,
+      "sols": 0,
+      "time_s": 10.0784
+    },
+    {
+      "orbit": 230,
+      "dz": 4,
+      "min_L": 3186,
+      "max_L": 7577,
+      "nodes": 1147097,
+      "sols": 0,
+      "time_s": 6.4298
+    },
+    {
+      "orbit": 231,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7577,
+      "nodes": 793985,
+      "sols": 0,
+      "time_s": 2.7164
+    },
+    {
+      "orbit": 232,
+      "dz": 6,
+      "min_L": 3186,
+      "max_L": 7629,
+      "nodes": 355077,
+      "sols": 0,
+      "time_s": 2.288
+    },
+    {
+      "orbit": 233,
+      "dz": 12,
+      "min_L": 5203,
+      "max_L": 5436,
+      "nodes": 242098,
+      "sols": 0,
+      "time_s": 1.5287
+    },
+    {
+      "orbit": 234,
+      "dz": 6,
+      "min_L": 3069,
+      "max_L": 7494,
+      "nodes": 1267358,
+      "sols": 0,
+      "time_s": 6.7744
+    },
+    {
+      "orbit": 235,
+      "dz": 8,
+      "min_L": 5208,
+      "max_L": 7567,
+      "nodes": 311538,
+      "sols": 0,
+      "time_s": 1.5111
+    },
+    {
+      "orbit": 236,
+      "dz": 6,
+      "min_L": 3186,
+      "max_L": 7567,
+      "nodes": 961842,
+      "sols": 0,
+      "time_s": 6.8415
+    },
+    {
+      "orbit": 237,
+      "dz": 6,
+      "min_L": 5208,
+      "max_L": 7350,
+      "nodes": 398804,
+      "sols": 0,
+      "time_s": 1.7869
+    },
+    {
+      "orbit": 238,
+      "dz": 4,
+      "min_L": 3186,
+      "max_L": 7629,
+      "nodes": 397495,
+      "sols": 0,
+      "time_s": 2.2924
+    },
+    {
+      "orbit": 239,
+      "dz": 4,
+      "min_L": 3069,
+      "max_L": 7494,
+      "nodes": 2006727,
+      "sols": 0,
+      "time_s": 6.5859
+    },
+    {
+      "orbit": 240,
+      "dz": 6,
+      "min_L": 3602,
+      "max_L": 7567,
+      "nodes": 2231360,
+      "sols": 0,
+      "time_s": 9.3113
+    },
+    {
+      "orbit": 241,
+      "dz": 4,
+      "min_L": 3186,
+      "max_L": 7567,
+      "nodes": 1636793,
+      "sols": 0,
+      "time_s": 6.7804
+    },
+    {
+      "orbit": 242,
+      "dz": 4,
+      "min_L": 3479,
+      "max_L": 7629,
+      "nodes": 1610241,
+      "sols": 0,
+      "time_s": 6.5663
+    },
+    {
+      "orbit": 243,
+      "dz": 4,
+      "min_L": 3602,
+      "max_L": 7473,
+      "nodes": 3143124,
+      "sols": 0,
+      "time_s": 7.2838
+    },
+    {
+      "orbit": 244,
+      "dz": 4,
+      "min_L": 3479,
+      "max_L": 7629,
+      "nodes": 2226101,
+      "sols": 0,
+      "time_s": 7.4318
+    },
+    {
+      "orbit": 245,
+      "dz": 4,
+      "min_L": 3626,
+      "max_L": 7567,
+      "nodes": 2398674,
+      "sols": 0,
+      "time_s": 9.5633
+    },
+    {
+      "orbit": 246,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7567,
+      "nodes": 1934727,
+      "sols": 0,
+      "time_s": 4.2277
+    },
+    {
+      "orbit": 247,
+      "dz": 6,
+      "min_L": 5208,
+      "max_L": 7473,
+      "nodes": 1191675,
+      "sols": 0,
+      "time_s": 3.8377
+    },
+    {
+      "orbit": 248,
+      "dz": 4,
+      "min_L": 3271,
+      "max_L": 7342,
+      "nodes": 1743690,
+      "sols": 0,
+      "time_s": 8.4033
+    },
+    {
+      "orbit": 249,
+      "dz": 4,
+      "min_L": 3186,
+      "max_L": 7603,
+      "nodes": 1649612,
+      "sols": 0,
+      "time_s": 7.3502
+    },
+    {
+      "orbit": 250,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7603,
+      "nodes": 1442160,
+      "sols": 0,
+      "time_s": 3.8126
+    },
+    {
+      "orbit": 251,
+      "dz": 4,
+      "min_L": 3626,
+      "max_L": 7603,
+      "nodes": 3017047,
+      "sols": 0,
+      "time_s": 9.6175
+    },
+    {
+      "orbit": 252,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7603,
+      "nodes": 1533367,
+      "sols": 0,
+      "time_s": 3.7933
+    },
+    {
+      "orbit": 253,
+      "dz": 6,
+      "min_L": 5208,
+      "max_L": 7603,
+      "nodes": 1455628,
+      "sols": 0,
+      "time_s": 3.775
+    },
+    {
+      "orbit": 254,
+      "dz": 4,
+      "min_L": 3271,
+      "max_L": 7603,
+      "nodes": 2457944,
+      "sols": 0,
+      "time_s": 8.1993
+    },
+    {
+      "orbit": 255,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7468,
+      "nodes": 2297384,
+      "sols": 0,
+      "time_s": 4.1614
+    },
+    {
+      "orbit": 256,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7504,
+      "nodes": 2274355,
+      "sols": 0,
+      "time_s": 3.8669
+    },
+    {
+      "orbit": 257,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7567,
+      "nodes": 2452700,
+      "sols": 0,
+      "time_s": 4.0808
+    },
+    {
+      "orbit": 258,
+      "dz": 4,
+      "min_L": 5208,
+      "max_L": 7567,
+      "nodes": 1605584,
+      "sols": 0,
+      "time_s": 3.8076
+    },
+    {
+      "orbit": 259,
+      "dz": 2,
+      "min_L": 3191,
+      "max_L": 7525,
+      "nodes": 459540,
+      "sols": 0,
+      "time_s": 2.1653
+    },
+    {
+      "orbit": 260,
+      "dz": 2,
+      "min_L": 3186,
+      "max_L": 7525,
+      "nodes": 935585,
+      "sols": 0,
+      "time_s": 4.4942
+    },
+    {
+      "orbit": 261,
+      "dz": 2,
+      "min_L": 3191,
+      "max_L": 7525,
+      "nodes": 514888,
+      "sols": 0,
+      "time_s": 2.36
+    },
+    {
+      "orbit": 262,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7462,
+      "nodes": 2546710,
+      "sols": 0,
+      "time_s": 7.5309
+    },
+    {
+      "orbit": 263,
+      "dz": 2,
+      "min_L": 3186,
+      "max_L": 7473,
+      "nodes": 1997355,
+      "sols": 0,
+      "time_s": 6.7072
+    },
+    {
+      "orbit": 264,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7473,
+      "nodes": 2960109,
+      "sols": 0,
+      "time_s": 7.9726
+    },
+    {
+      "orbit": 265,
+      "dz": 2,
+      "min_L": 3479,
+      "max_L": 7649,
+      "nodes": 2805169,
+      "sols": 0,
+      "time_s": 7.8869
+    },
+    {
+      "orbit": 266,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7473,
+      "nodes": 2446983,
+      "sols": 0,
+      "time_s": 7.9848
+    },
+    {
+      "orbit": 267,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7321,
+      "nodes": 3126317,
+      "sols": 0,
+      "time_s": 9.0316
+    },
+    {
+      "orbit": 268,
+      "dz": 2,
+      "min_L": 3271,
+      "max_L": 7321,
+      "nodes": 2036216,
+      "sols": 0,
+      "time_s": 6.9399
+    },
+    {
+      "orbit": 269,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7603,
+      "nodes": 2356333,
+      "sols": 0,
+      "time_s": 8.404
+    },
+    {
+      "orbit": 270,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7649,
+      "nodes": 4045135,
+      "sols": 0,
+      "time_s": 9.5862
+    },
+    {
+      "orbit": 271,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7603,
+      "nodes": 3112779,
+      "sols": 0,
+      "time_s": 8.4877
+    },
+    {
+      "orbit": 272,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7603,
+      "nodes": 3838536,
+      "sols": 0,
+      "time_s": 8.4139
+    },
+    {
+      "orbit": 273,
+      "dz": 2,
+      "min_L": 3271,
+      "max_L": 7603,
+      "nodes": 2682412,
+      "sols": 0,
+      "time_s": 7.3284
+    },
+    {
+      "orbit": 274,
+      "dz": 2,
+      "min_L": 3186,
+      "max_L": 7437,
+      "nodes": 2072007,
+      "sols": 0,
+      "time_s": 6.4174
+    },
+    {
+      "orbit": 275,
+      "dz": 2,
+      "min_L": 3186,
+      "max_L": 7649,
+      "nodes": 2918497,
+      "sols": 0,
+      "time_s": 7.6576
+    },
+    {
+      "orbit": 276,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7504,
+      "nodes": 3455676,
+      "sols": 0,
+      "time_s": 8.1957
+    },
+    {
+      "orbit": 277,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7468,
+      "nodes": 4160364,
+      "sols": 0,
+      "time_s": 10.7233
+    },
+    {
+      "orbit": 278,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7504,
+      "nodes": 4153677,
+      "sols": 0,
+      "time_s": 9.9286
+    },
+    {
+      "orbit": 279,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7409,
+      "nodes": 3149755,
+      "sols": 0,
+      "time_s": 9.0313
+    },
+    {
+      "orbit": 280,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7649,
+      "nodes": 4218641,
+      "sols": 0,
+      "time_s": 10.3131
+    },
+    {
+      "orbit": 281,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7468,
+      "nodes": 4222581,
+      "sols": 0,
+      "time_s": 10.0275
+    },
+    {
+      "orbit": 282,
+      "dz": 2,
+      "min_L": 3546,
+      "max_L": 7504,
+      "nodes": 3981494,
+      "sols": 0,
+      "time_s": 8.8326
+    },
+    {
+      "orbit": 283,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7577,
+      "nodes": 17932875,
+      "sols": 0,
+      "time_s": 107.3729
+    },
+    {
+      "orbit": 284,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7577,
+      "nodes": 21192920,
+      "sols": 0,
+      "time_s": 176.6486
+    },
+    {
+      "orbit": 285,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7577,
+      "nodes": 5524729,
+      "sols": 0,
+      "time_s": 81.7827
+    },
+    {
+      "orbit": 286,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7577,
+      "nodes": 21465325,
+      "sols": 0,
+      "time_s": 40.0937
+    },
+    {
+      "orbit": 287,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7603,
+      "nodes": 20882055,
+      "sols": 0,
+      "time_s": 39.5993
+    },
+    {
+      "orbit": 288,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7603,
+      "nodes": 5483895,
+      "sols": 0,
+      "time_s": 23.4116
+    },
+    {
+      "orbit": 289,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7603,
+      "nodes": 23335144,
+      "sols": 0,
+      "time_s": 37.842
+    },
+    {
+      "orbit": 290,
+      "dz": 2,
+      "min_L": 6990,
+      "max_L": 7603,
+      "nodes": 22996131,
+      "sols": 0,
+      "time_s": 38.5614
+    },
+    {
+      "orbit": 291,
+      "dz": 2,
+      "min_L": 7082,
+      "max_L": 7671,
+      "nodes": 12681467,
+      "sols": 0,
+      "time_s": 25.0358
+    },
+    {
+      "orbit": 292,
+      "dz": 2,
+      "min_L": 7082,
+      "max_L": 7671,
+      "nodes": 17336215,
+      "sols": 0,
+      "time_s": 31.9821
+    },
+    {
+      "orbit": 293,
+      "dz": 2,
+      "min_L": 7052,
+      "max_L": 7671,
+      "nodes": 23396303,
+      "sols": 0,
+      "time_s": 37.9973
+    },
+    {
+      "orbit": 294,
+      "dz": 2,
+      "min_L": 7082,
+      "max_L": 7671,
+      "nodes": 13699841,
+      "sols": 0,
+      "time_s": 32.8779
+    },
+    {
+      "orbit": 295,
+      "dz": 2,
+      "min_L": 7082,
+      "max_L": 7671,
+      "nodes": 11288774,
+      "sols": 0,
+      "time_s": 35.605
+    },
+    {
+      "orbit": 296,
+      "dz": 2,
+      "min_L": 7187,
+      "max_L": 7690,
+      "nodes": 24303558,
+      "sols": 0,
+      "time_s": 43.3035
+    },
+    {
+      "orbit": 297,
+      "dz": 2,
+      "min_L": 7087,
+      "max_L": 7690,
+      "nodes": 21231364,
+      "sols": 0,
+      "time_s": 40.6405
+    },
+    {
+      "orbit": 298,
+      "dz": 2,
+      "min_L": 7087,
+      "max_L": 7603,
+      "nodes": 19783231,
+      "sols": 0,
+      "time_s": 39.8697
+    }
+  ]
+}

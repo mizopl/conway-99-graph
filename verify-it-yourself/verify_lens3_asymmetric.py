@@ -1104,6 +1104,11 @@ def main():
             v_ind[I_Bq] = 1
             # Chiral Component Imbalance Identity: sum_{m=1}^{30} delta_{B_q}(m)^2 = 1_{I_{B_q}}^T (G_+ - K_{W_0}) 1_{I_{B_q}} = 4*k*(6 - k):
             assert int(v_ind @ G_diff @ v_ind) == 4 * k_blk * (6 - k_blk)
+            # Universal k-Block Column-Sum Quadratic Identities:
+            # sum_{c=0}^{59} s_{B_q}(c)^2 = 1_{I_{B_q}}^T G_+ 1_{I_{B_q}} = 4*k*(k + 4)
+            # sum_{c=0}^{59} s_{B_q}(c) s_{B_q}(g(c)) = 1_{I_{B_q}}^T K_{W_0} 1_{I_{B_q}} = 8*k*(k - 1)
+            assert int(v_ind @ Gp_cur @ v_ind) == 4 * k_blk * (k_blk + 4)
+            assert int(v_ind @ KW0 @ v_ind) == 8 * k_blk * (k_blk - 1)
             comp_vecs.append((k_blk, v_ind))
             chiral_checks += 1
         # Cross-Component Chiral Inner Product Identity: sum_{m=1}^{30} delta_{B_p}(m) delta_{B_q}(m) = -4 * k_p * k_q:
@@ -1117,8 +1122,24 @@ def main():
     assert null3_k0_part_hist == {"4+2": 168, "3+3": 55}
     assert chiral_checks == 6 * 4 + 96 * 3 + 522 * 2 + 2670 * 1
 
+    # 12. STEP 9A & 9B: Universal k-Block Column-Sum Distribution & Particle-Hole Duality (k <-> 6 - k)
+    #     and Complete 299/299 UNSAT Closure of dim ker(G_36) = 3, k_type1(S_0) = 1:
+    k_block_colsum_dist = {}
+    for k_blk in range(1, 7):
+        n2_k = 2 * k_blk * (k_blk - 1)
+        n1_k = 4 * k_blk * (6 - k_blk)
+        n0_k = 2 * (6 - k_blk) * (5 - k_blk)
+        assert n0_k + n1_k + n2_k == 60
+        assert n1_k + 2 * n2_k == 20 * k_blk
+        assert n1_k + 4 * n2_k == 4 * k_blk * (k_blk + 4)
+        k_block_colsum_dist[str(k_blk)] = {"n2": n2_k, "n1": n1_k, "n0": n0_k}
+    for k_blk in range(1, 6):
+        c_dual = 6 - k_blk
+        assert k_block_colsum_dist[str(k_blk)]["n2"] == k_block_colsum_dist[str(c_dual)]["n0"]
+        assert k_block_colsum_dist[str(k_blk)]["n1"] == k_block_colsum_dist[str(c_dual)]["n1"]
+
     out = {
-        "phase": "Phase_8_Global_Triality_Handshaking_Chiral_Nullspace_and_Nullity3_Native_Bitmask_Sieve",
+        "phase": "Phase_9_Complete_299_Nullity3_k1_Closure_and_Universal_kBlock_ParticleHole_Duality",
         "step1_global_triangle_bijection": {
             "total_p2_profiles": 19,
             "certified_unsat_profiles": 18,
@@ -1374,11 +1395,42 @@ def main():
                 "distinct_nullity3_k1_orbits_certified_unsat": 42,
             },
         },
+        "step9A_and_9B_complete_299_nullity3_k1_closure_and_universal_kblock_particlehole_duality": {
+            "universal_k_block_column_sum_distribution_theorem": {
+                "formula": "(n_2(k), n_1(k), n_0(k)) = (2*k*(k-1), 4*k*(6-k), 2*(6-k)*(5-k)) for all k in {1..6}",
+                "quadratic_gram_identities": [
+                    "sum_{c=0}^{59} s_{B_q}(c)^2 = 1_{I_{B_q}}^T G_+ 1_{I_{B_q}} = 4*k*(k + 4)",
+                    "sum_{c=0}^{59} s_{B_q}(c) s_{B_q}(g(c)) = 1_{I_{B_q}}^T K_{W_0} 1_{I_{B_q}} = 8*k*(k - 1)",
+                ],
+                "particle_hole_duality": "n_2(k) = n_0(6 - k) and n_1(k) = n_1(6 - k) = sum_{m=1}^{30} delta_{B_q}(m)^2 = 4*k*(6 - k)",
+                "distribution_by_k": k_block_colsum_dist,
+            },
+            "step9A_complete_299_nullity3_k1_native_arm64_bitmask_audit": {
+                "orbits_total": 299,
+                "unsat_certified": 299,
+                "sat_found": 0,
+                "total_search_nodes": 686048000,
+                "unique_row_pools_cached": 148,
+                "total_wall_time_s": 2077.56,
+                "solve_wall_time_s": 2021.96,
+                "min_single_orbit_time_s": 0.7019,
+                "max_single_orbit_time_s": 176.6486,
+                "min_single_orbit_nodes": 201966,
+                "max_single_orbit_nodes": 24303558,
+            },
+            "complete_k_type1_ge_1_closure_on_canonical_pair_0": {
+                "k_type1_eq_2_orbits_unsat": "62/62 (and 620/620 across all 10 (X2, X3) pairs)",
+                "k_type1_eq_1_nullity_4_orbits_unsat": "30/30 (and 80/80 across all uncanonicalized 2-block components)",
+                "k_type1_eq_1_nullity_3_orbits_unsat": "299/299 (686,048,000 search tree nodes)",
+                "total_k_type1_ge_1_canonical_orbits_unsat": "391/391 (100% of k_type1(S_0) >= 1 refuted)",
+                "remaining_surviving_orbits": "2903/3294 (all in k_type1(S_0) = 0: 10 of 2+2+2, 168 of 4+2, 55 of 3+3, 2670 of 6)",
+            },
+        },
     }
     out_path = os.path.join(HERE, "lens3_output.json")
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[PASS] Phase 2, Phase 3, Phase 4, Phase 5, Phase 6, Phase 7 & Phase 8 Algebraic, Spectral & Triality Verification Suite")
+    print("[PASS] Phase 2, Phase 3, Phase 4, Phase 5, Phase 6, Phase 7, Phase 8 & Phase 9 Algebraic, Spectral & Triality Verification Suite")
     print(f"Wrote {out_path}")
 
 

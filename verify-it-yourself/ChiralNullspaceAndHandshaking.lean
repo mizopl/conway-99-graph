@@ -213,6 +213,57 @@ theorem global_involution_partner_common_neighbors
     B2_uv = 2 - overlap ∧ D2_uv = -CmCmT_uv := by
   omega
 
+
+/-!
+  ### 6. Theorem 6 (`KROK 9B`): Universal `k`-Block Column-Sum Distribution & Particle-Hole Duality
+-/
+
+/-- In any strongly regular graph `srg(2m^2 + 1, 2m, 1, 2)` with a central involution fixing
+    `m` internal triangles (`m - 1` non-fixed blocks per slice, `2(m - 1)(m - 2)` columns in `R`
+    each of exact column sum `2`), for any `k`-block connected component `B_q` (`|I_{B_q}| = 2k` rows),
+    let `(n_2, n_1, n_0)` be the number of columns `c in R` with column sum `s_{B_q}(c) = 2, 1, 0`.
+    Then the three linear equations:
+    (1) `n_0 + n_1 + n_2 = 2 * (m - 1) * (m - 2)`
+    (2) `n_1 + 2 * n_2 = 4 * k * (m - 2)`
+    (3) `n_1 + 4 * n_2 = 4 * k * (k + m - 3)` (`1_{I_{B_q}}^T G_+ 1_{I_{B_q}}`)
+    uniquely determine `(n_2, n_1, n_0)` solely as a function of `(m, k)` and satisfy exact
+    Particle-Hole Duality under `k <-> (m - 1) - k`! -/
+theorem k_block_column_sum_particle_hole_duality
+    (m k n_0 n_1 n_2 n_0_dual n_1_dual n_2_dual : Int)
+    (h_tot : n_0 + n_1 + n_2 = 2 * (m * m) - 6 * m + 4)
+    (h_ones : n_1 + 2 * n_2 = 4 * (k * m) - 8 * k)
+    (h_quad : n_1 + 4 * n_2 = 4 * (k * k) + 4 * (k * m) - 12 * k)
+    (h_tot_d : n_0_dual + n_1_dual + n_2_dual = 2 * (m * m) - 6 * m + 4)
+    (h_ones_d : n_1_dual + 2 * n_2_dual = 4 * (m * m) - 4 * (k * m) - 12 * m + 8 * k + 8)
+    (h_quad_d : n_1_dual + 4 * n_2_dual = 8 * (m * m) - 12 * (k * m) + 4 * (k * k) - 24 * m + 20 * k + 16) :
+    n_2 = 2 * (k * k) - 2 * k ∧
+    n_1 = 4 * (k * m) - 4 * (k * k) - 4 * k ∧
+    n_0 = 2 * (m * m) - 4 * (k * m) + 2 * (k * k) - 6 * m + 6 * k + 4 ∧
+    n_2_dual = n_0 ∧
+    n_1_dual = n_1 ∧
+    n_0_dual = n_2 := by
+  omega
+
+/-- Specialization of Theorem 6 to Conway's 99-graph (`m = 7`, `6` non-fixed blocks per slice)
+    giving the exact column-sum table `(n_2(k), n_1(k), n_0(k))` and Particle-Hole Symmetry
+    `k <-> 6 - k` across all `k in {1..5}`:
+    - `k = 1 <-> k = 5`: `(0, 20, 40) <-> (40, 20, 0)`
+    - `k = 2 <-> k = 4`: `(4, 32, 24) <-> (24, 32, 4)`
+    - `k = 3` (self-dual): `(12, 36, 12)` -/
+theorem conway99_k_block_particle_hole_table
+    (n2_1 n1_1 n0_1 n2_2 n1_2 n0_2 n2_3 n1_3 n0_3 n2_4 n1_4 n0_4 n2_5 n1_5 n0_5 : Int)
+    (h1 : n0_1 + n1_1 + n2_1 = 60 ∧ n1_1 + 2 * n2_1 = 20 ∧ n1_1 + 4 * n2_1 = 20)
+    (h2 : n0_2 + n1_2 + n2_2 = 60 ∧ n1_2 + 2 * n2_2 = 40 ∧ n1_2 + 4 * n2_2 = 48)
+    (h3 : n0_3 + n1_3 + n2_3 = 60 ∧ n1_3 + 2 * n2_3 = 60 ∧ n1_3 + 4 * n2_3 = 84)
+    (h4 : n0_4 + n1_4 + n2_4 = 60 ∧ n1_4 + 2 * n2_4 = 80 ∧ n1_4 + 4 * n2_4 = 128)
+    (h5 : n0_5 + n1_5 + n2_5 = 60 ∧ n1_5 + 2 * n2_5 = 100 ∧ n1_5 + 4 * n2_5 = 180) :
+    (n2_1 = 0 ∧ n1_1 = 20 ∧ n0_1 = 40) ∧
+    (n2_5 = 40 ∧ n1_5 = 20 ∧ n0_5 = 0 ∧ n2_5 = n0_1 ∧ n1_5 = n1_1 ∧ n0_5 = n2_1) ∧
+    (n2_2 = 4 ∧ n1_2 = 32 ∧ n0_2 = 24) ∧
+    (n2_4 = 24 ∧ n1_4 = 32 ∧ n0_4 = 4 ∧ n2_4 = n0_2 ∧ n1_4 = n1_2 ∧ n0_4 = n2_2) ∧
+    (n2_3 = 12 ∧ n1_3 = 36 ∧ n0_3 = 12 ∧ n2_3 = n0_3) := by
+  omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -222,5 +273,7 @@ theorem global_involution_partner_common_neighbors
 #print axioms conway99_three_block_chiral_orbit_split
 #print axioms seven_triangle_type1_handshaking
 #print axioms global_involution_partner_common_neighbors
+#print axioms k_block_column_sum_particle_hole_duality
+#print axioms conway99_k_block_particle_hole_table
 
 end Conway99ChiralTheorems

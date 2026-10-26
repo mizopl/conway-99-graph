@@ -1,5 +1,5 @@
 {
-  "phase": "Phase_6_Complete_62_B4_Orbits_Full_Fixed_ME_KW0_Sieve_Audit",
+  "phase": "Phase_9_Complete_299_Nullity3_k1_Closure_and_Universal_kBlock_ParticleHole_Duality",
   "step1_global_triangle_bijection": {
     "total_p2_profiles": 19,
     "certified_unsat_profiles": 18,
@@ -301,7 +301,7 @@
     "k_type1_eq_2_b4_orbits_on_remaining_4_blocks": 62
   },
   "step5B_universal_symmetric_e0_decoupling_of_bracket_I_and_bracket_II": {
-    "universal_symmetric_e0_sat_result": "SAT in 6.216s (/tmp/test_sym_e0.cnf)",
+    "universal_symmetric_e0_sat_result": "SAT in 6.216s (universal symmetric E_0 CNF)",
     "selected_e0_matching": [
       [
         0,
@@ -375,6 +375,280 @@
         "core_clauses": 5999,
         "time_s": 0.3505
       }
+    }
+  },
+  "step7A_and_7B_multipair_k2_closure_and_2block_component_bitmask_hashjoin": {
+    "surviving_3294_orbits_by_k_type1_and_g36_nullity": {
+      "k_type1_eq_2": {
+        "5": 6,
+        "4": 56
+      },
+      "k_type1_eq_1": {
+        "4": 30,
+        "3": 299
+      },
+      "k_type1_eq_0": {
+        "4": 10,
+        "3": 223,
+        "2": 2670
+      }
+    },
+    "step7A_multipair_62_orbits_x_10_x23_pairs_kissat_audit": {
+      "instances_tested": 620,
+      "unsat_certified": 620,
+      "sat_found": 0,
+      "orbits_0_to_9_wall_time_s": 16.03,
+      "orbits_10_to_61_wall_time_s": 274.66,
+      "total_wall_time_s": 290.69
+    },
+    "step7B_component_wise_pruning_and_2block_bitmask_hashjoin": {
+      "two_block_g_orbit_partition_law": "For any 2-block connected component B_2 = {b1, b2} (|I_{B_2}| = 4), the 30 g-orbits partition into 2 internal (req=0), 16 cut (req=1), and 12 disjoint (req=2).",
+      "six_way_r60_column_partition_under_type1_block0": "R_60 = h0 (10) u g(h0) (10) u h1 (10) u g(h1) (10) u W_0 (10) u W_1 (10)",
+      "sample_IB_2345_single_row_candidate_counts": {
+        "TypeA_m0_e1_diagKW_2": [
+          2458,
+          1889,
+          2413,
+          2132
+        ],
+        "TypeC_m1_e1_diagKW_0": [
+          4438,
+          4438,
+          4438,
+          4438
+        ]
+      },
+      "k_type1_eq_1_nullity_4_canonical_30_orbits_audit": {
+        "orbits_total": 30,
+        "kissat_10row_certified_unsat": 20,
+        "kissat_10row_diagKW_0_blind_spot_orbits": [
+          5,
+          7,
+          9,
+          11,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "bitmask_hashjoin_4row_certified_unsat": "30/30 UNSAT (0 valid 4-row submatrices across all 30 orbits in 31.47s)"
+      },
+      "uncanonicalized_80_two_block_configurations_audit": {
+        "block_pairs_tested": 10,
+        "connected_matching_pairs_per_block_pair": 8,
+        "total_configurations": 80,
+        "eliminated_by_KW0_negativity": 20,
+        "eliminated_by_4row_bitmask_hashjoin": 60,
+        "total_unsat": "80/80 UNSAT (67.86s)"
+      },
+      "k_type1_eq_0_nullity_4_two_component_extension_audit": {
+        "orbits_total_3_multisets_of_3_types": 10,
+        "single_2block_component_B1_unanchored": "3/3 SAT in 0.054s-0.710s",
+        "second_2block_component_B2_given_B1_representative": "9/9 (T1, T2) pairs UNSAT (rc=20 in 0.081s-0.924s, 2.86s total)"
+      }
+    }
+  },
+  "step8A_and_8B_global_triality_handshaking_chiral_nullspace_and_nullity3_bitmask_sieve": {
+    "prawo_B1_7triangle_type1_handshaking_theorem": {
+      "statement": "Since Q_{r,t} is Type I in S_r iff Type I in S_t (Triality Reciprocity) and k_type1(S_r) in {0, 1} (KROK 4A + KROK 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices with k_type1(S_r) = 0.",
+      "matchings_on_7_by_edge_count": {
+        "0": 1,
+        "1": 21,
+        "2": 105,
+        "3": 105
+      },
+      "forced_zero_kt1_slices_by_edge_count": {
+        "0": 7,
+        "1": 5,
+        "2": 3,
+        "3": 1
+      }
+    },
+    "prawo_B2_global_involution_partner_classification": {
+      "type_I_intra_block": "a = b (v = bar{u}): Type I block in both slices containing a, contributing 2 to sum_{r=0}^6 k_type1(S_r)",
+      "type_II_shared_slice_cross_block": "|a cap b| = 1 (a={r,s}, b={r,t}): common cross-block edge of M_r^+ cap E_r in S_r with K_{W_r}(u,u)=K_{W_r}(v,v)=0, and self-block-incident (P^{(s)}(u,v) = P^{(t)}(u,v) = 1) in non-shared slices S_s, S_t",
+      "type_III_disjoint_blocks": "|a cap b| = 0: self-block-disjoint (P^{(q)}(u,v) = 1) across all 4 slices containing a or b",
+      "global_conservation_law": "sum_{r=0}^6 p_self(S_r) = 2 * sum_{r=0}^6 c_II(S_r) = 2 * n_II",
+      "c_II_distribution_across_3294_orbits": {
+        "0": 2027,
+        "2": 316,
+        "1": 859,
+        "4": 21,
+        "3": 65,
+        "6": 4,
+        "5": 2
+      }
+    },
+    "connected_component_factorization_theorem": {
+      "canonical_connected_k_block_orbits_N1_to_N6": {
+        "1": 1,
+        "2": 3,
+        "3": 10,
+        "4": 56,
+        "5": 299,
+        "6": 2670
+      },
+      "multiset_identities_verified": true,
+      "k_block_edge_split_identities": [
+        "2 * n_int(i) + n_cut(i) = 4 * (k - 1)",
+        "n_int(i) - n_disj(i) = 4 * k - 14"
+      ]
+    },
+    "unified_chiral_nullspace_and_component_imbalance_theorem_law_M11_A2": {
+      "global_odd_nullvector": "v_-^global = [0, 1_12, -1_12] in ker(G_36) => 1_12^T (G_+ - K_{W_0}) 1_12 = 0 => sum_{i=0..11} X(i, c) = 2 for all c in R_60",
+      "chiral_component_imbalance_identity": "sum_{m=1}^{30} delta_{B_q}(m)^2 = 1_{I_{B_q}}^T (G_+ - K_{W_0}) 1_{I_{B_q}} = 4 * k * (6 - k)",
+      "cross_component_chiral_inner_product_identity": "sum_{m=1}^{30} delta_{B_p}(m) delta_{B_q}(m) = 1_{I_{B_p}}^T (G_+ - K_{W_0}) 1_{I_{B_q}} = -4 * k_p * k_q",
+      "k2_corollary": "For k=2 (sum delta^2 = 32), 16 cut g-orbits have delta=+-1 (sum=16) and 12 disjoint g-orbits have exactly 4 with split (2,0)/(0,2) (delta=+-2) and 8 with split (1,1) (delta=0).",
+      "k3_corollary": "For k=3 (sum delta^2 = 36), 6 internal and 6 disjoint g-orbits have delta=+-1 (sum=12) and 18 cut g-orbits have exactly 6 with split (2,0)/(0,2) (delta=+-2) and 12 with split (1,1) (delta=0).",
+      "components_verified_across_3294_orbits": 4026
+    },
+    "step8B_nullity3_native_arm64_bitmask_sieve": {
+      "nullity3_k_type1_eq_1_orbits_by_diag_zeros": {
+        "2": 185,
+        "4": 84,
+        "6": 24,
+        "8": 5,
+        "12": 1
+      },
+      "nullity3_k_type1_eq_0_orbits_by_block_partition": {
+        "4+2": 168,
+        "3+3": 55
+      },
+      "orbit_0_single_core_benchmark": {
+        "root_candidates": 3333,
+        "search_tree_nodes": 253427,
+        "python_time_s": 109.48,
+        "numba_njit_1core_time_s": 7.9194,
+        "numba_njit_8core_time_s": 1.535,
+        "result": "UNSAT (0 solutions)"
+      },
+      "orbits_0_to_29_contiguous_batch_audit": {
+        "orbits_tested": 30,
+        "unsat_certified": 30,
+        "total_search_nodes": 10990331,
+        "wall_time_s": 70.11
+      },
+      "stratified_20_orbits_across_diag_zeros_4_6_8_12_audit": {
+        "orbits_tested": 20,
+        "selected_orbit_indices": [
+          233,
+          77,
+          143,
+          191,
+          227,
+          235,
+          15,
+          40,
+          57,
+          75,
+          76,
+          2,
+          8,
+          14,
+          16,
+          17,
+          18,
+          19,
+          31,
+          36
+        ],
+        "dz_12_all_1_orbit_certified_unsat": {
+          "Orbit_233": {
+            "nodes": 242098,
+            "time_s": 6.12
+          }
+        },
+        "dz_8_all_5_orbits_certified_unsat": {
+          "Orbit_77": {
+            "nodes": 287055,
+            "time_s": 2.35
+          },
+          "Orbit_143": {
+            "nodes": 286267,
+            "time_s": 3.756
+          },
+          "Orbit_191": {
+            "nodes": 202587,
+            "time_s": 1.309
+          },
+          "Orbit_227": {
+            "nodes": 269102,
+            "time_s": 3.474
+          },
+          "Orbit_235": {
+            "nodes": 311538,
+            "time_s": 2.409
+          }
+        },
+        "unsat_certified": 20,
+        "total_search_nodes": 7195863,
+        "wall_time_s": 63.91
+      },
+      "distinct_nullity3_k1_orbits_certified_unsat": 42
+    }
+  },
+  "step9A_and_9B_complete_299_nullity3_k1_closure_and_universal_kblock_particlehole_duality": {
+    "universal_k_block_column_sum_distribution_theorem": {
+      "formula": "(n_2(k), n_1(k), n_0(k)) = (2*k*(k-1), 4*k*(6-k), 2*(6-k)*(5-k)) for all k in {1..6}",
+      "quadratic_gram_identities": [
+        "sum_{c=0}^{59} s_{B_q}(c)^2 = 1_{I_{B_q}}^T G_+ 1_{I_{B_q}} = 4*k*(k + 4)",
+        "sum_{c=0}^{59} s_{B_q}(c) s_{B_q}(g(c)) = 1_{I_{B_q}}^T K_{W_0} 1_{I_{B_q}} = 8*k*(k - 1)"
+      ],
+      "particle_hole_duality": "n_2(k) = n_0(6 - k) and n_1(k) = n_1(6 - k) = sum_{m=1}^{30} delta_{B_q}(m)^2 = 4*k*(6 - k)",
+      "distribution_by_k": {
+        "1": {
+          "n2": 0,
+          "n1": 20,
+          "n0": 40
+        },
+        "2": {
+          "n2": 4,
+          "n1": 32,
+          "n0": 24
+        },
+        "3": {
+          "n2": 12,
+          "n1": 36,
+          "n0": 12
+        },
+        "4": {
+          "n2": 24,
+          "n1": 32,
+          "n0": 4
+        },
+        "5": {
+          "n2": 40,
+          "n1": 20,
+          "n0": 0
+        },
+        "6": {
+          "n2": 60,
+          "n1": 0,
+          "n0": 0
+        }
+      }
+    },
+    "step9A_complete_299_nullity3_k1_native_arm64_bitmask_audit": {
+      "orbits_total": 299,
+      "unsat_certified": 299,
+      "sat_found": 0,
+      "total_search_nodes": 686048000,
+      "unique_row_pools_cached": 148,
+      "total_wall_time_s": 2077.56,
+      "solve_wall_time_s": 2021.96,
+      "min_single_orbit_time_s": 0.7019,
+      "max_single_orbit_time_s": 176.6486,
+      "min_single_orbit_nodes": 201966,
+      "max_single_orbit_nodes": 24303558
+    },
+    "complete_k_type1_ge_1_closure_on_canonical_pair_0": {
+      "k_type1_eq_2_orbits_unsat": "62/62 (and 620/620 across all 10 (X2, X3) pairs)",
+      "k_type1_eq_1_nullity_4_orbits_unsat": "30/30 (and 80/80 across all uncanonicalized 2-block components)",
+      "k_type1_eq_1_nullity_3_orbits_unsat": "299/299 (686,048,000 search tree nodes)",
+      "total_k_type1_ge_1_canonical_orbits_unsat": "391/391 (100% of k_type1(S_0) >= 1 refuted)",
+      "remaining_surviving_orbits": "2903/3294 (all in k_type1(S_0) = 0: 10 of 2+2+2, 168 of 4+2, 55 of 3+3, 2670 of 6)"
     }
   }
 }

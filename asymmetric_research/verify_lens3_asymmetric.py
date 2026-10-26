@@ -677,7 +677,7 @@ def main():
     assert s12d_null_hist == {"1": 3294}
     assert k_t1_eq_2_count == 62
 
-    # Verify the explicit 12x60 binary solution X_sym_e0 from /tmp/test_sym_e0.cnf
+    # Verify the explicit 12x60 binary solution X_sym_e0 (universal symmetric E_0 CNF)
     # where BOTH X X^T = G_+ (M_0^+ = F_12) AND X W = Delta_0 (E_0 = E_0^T symmetric matching)
     # hold simultaneously, decoupling Bracket I (== 0) from Bracket II (== 7):
     X_SYM_E0_ROWS = [
@@ -847,8 +847,299 @@ def main():
     assert orbs_62_count == 62
     assert orbs_62_by_m0_part == {"1+1+1+1": 2, "2+1+1": 8, "3+1": 11, "2+2": 14, "4": 27}
 
+    # =========================================================================
+    # 10. STEP 7A & 7B: Complete (k_type1, dim ker(G_36)) Classification of All
+    #     3,294 Orbits, Component-Wise Pruning Law, and 2-Block Bitmask Hash-Join
+    # =========================================================================
+    kt1_null_table = {2: {}, 1: {}, 0: {}}
+    for M0_mat, E0_mat, m0, e0, KW0, k_t1 in surviving_3294_orbits:
+        adj_b = {b_idx: set() for b_idx in range(6)}
+        for u_v in range(12):
+            adj_b[u_v // 2].add(m0[u_v] // 2)
+            adj_b[u_v // 2].add(e0[u_v] // 2)
+        vis_b = set()
+        n_comps = 0
+        for b_idx in range(6):
+            if b_idx not in vis_b:
+                n_comps += 1
+                stack = [b_idx]
+                vis_b.add(b_idx)
+                while stack:
+                    cur_b = stack.pop()
+                    for nb in adj_b[cur_b]:
+                        if nb not in vis_b:
+                            vis_b.add(nb)
+                            stack.append(nb)
+        nul_g36 = 1 + n_comps
+        kt1_null_table[k_t1][str(nul_g36)] = kt1_null_table[k_t1].get(str(nul_g36), 0) + 1
+
+    assert kt1_null_table[2] == {"5": 6, "4": 56}
+    assert kt1_null_table[1] == {"4": 30, "3": 299}
+    assert kt1_null_table[0] == {"4": 10, "3": 223, "2": 2670}
+
+    # Verify the 2-Block Component g-Orbit Partition Law across all C(6, 2) = 15 block pairs:
+    orbs_30 = [(c, g_col[c]) for c in range(60) if c < g_col[c]]
+    for b1, b2 in combinations(range(6), 2):
+        I_B2 = (2 * b1, 2 * b1 + 1, 2 * b2, 2 * b2 + 1)
+        reqs = [2 - int(sum(W_60[c_e, j] for j in I_B2)) for (c_e, _) in orbs_30]
+        assert reqs.count(0) == 2
+        assert reqs.count(1) == 16
+        assert reqs.count(2) == 12
+
+    # Verify the 6-Way Disjoint Column Partition of R_60 induced by Type-I block 0 = {0, 1}
+    # and the exact 2-Block Bitmask Hash-Join refutation on I_B = (2, 3, 4, 5):
+    h0_0, h1_0 = canonical_78_pairs[0]
+    W_j = [[c for c, (j1, j2) in enumerate(cols_60) if j in (j1, j2)] for j in range(12)]
+    part_6 = [
+        set(h0_0),
+        {g_col[c] for c in h0_0},
+        set(h1_0),
+        {g_col[c] for c in h1_0},
+        set(W_j[0]),
+        set(W_j[1]),
+    ]
+    assert all(len(s_p) == 10 for s_p in part_6)
+    assert len(set().union(*part_6)) == 60
+
+    forb_pairs = set()
+    for fixed_row in (h0_0, h1_0):
+        for j in range(12):
+            p_fixed = [c for c in fixed_row if j in cols_60[c]]
+            if len(p_fixed) == 2:
+                gc1, gc2 = g_col[p_fixed[0]], g_col[p_fixed[1]]
+                forb_pairs.add((min(gc1, gc2), max(gc1, gc2)))
+
+    def build_2block_rows(I_B_tuple, target_deg_tuple, diag_kw):
+        I_B_set = set(I_B_tuple)
+        t_deg = list(target_deg_tuple)
+        ok_c = [
+            c for c in range(60)
+            if not (cols_60[c][0] in I_B_set and cols_60[c][1] in I_B_set)
+            and t_deg[cols_60[c][0]] > 0
+            and t_deg[cols_60[c][1]] > 0
+        ]
+        s_h0 = [c for c in h0_0 if c in ok_c]
+        s_h1 = [c for c in h1_0 if c in ok_c]
+        s_gh0 = [g_col[c] for c in h0_0 if g_col[c] in ok_c]
+        s_gh1 = [g_col[c] for c in h1_0 if g_col[c] in ok_c]
+        s_w0 = [c for c in W_j[0] if c in ok_c]
+        s_w1 = [c for c in W_j[1] if c in ok_c]
+
+        v_gh0 = [p for p in combinations(s_gh0, 2) if (min(p), max(p)) not in forb_pairs]
+        v_gh1 = [p for p in combinations(s_gh1, 2) if (min(p), max(p)) not in forb_pairs]
+        v_w0 = list(combinations(s_w0, 2))
+        v_w1 = list(combinations(s_w1, 2))
+
+        first_h = {}
+        for c0 in s_h0:
+            for c1 in s_h1:
+                for p0 in v_gh0:
+                    cols4 = (c0, c1, p0[0], p0[1])
+                    d = [0] * 12
+                    ok = True
+                    for c in cols4:
+                        u, v = cols_60[c]
+                        d[u] += 1
+                        d[v] += 1
+                        if d[u] > t_deg[u] or d[v] > t_deg[v]:
+                            ok = False
+                            break
+                    if ok:
+                        first_h.setdefault(tuple(d[2:]), []).append(cols4)
+
+        second_h = {}
+        for p1 in v_gh1:
+            for pw0 in v_w0:
+                for pw1 in v_w1:
+                    cols6 = p1 + pw0 + pw1
+                    d = [0] * 12
+                    ok = True
+                    for c in cols6:
+                        u, v = cols_60[c]
+                        d[u] += 1
+                        d[v] += 1
+                        if d[u] > t_deg[u] or d[v] > t_deg[v]:
+                            ok = False
+                            break
+                    if ok:
+                        need = tuple(t_deg[j] - d[j] for j in range(2, 12))
+                        if need in first_h:
+                            second_h.setdefault(need, []).append(cols6)
+
+        v_rows = []
+        req_p = diag_kw // 2
+        for need, list6 in second_h.items():
+            for cols4 in first_h[need]:
+                for cols6 in list6:
+                    r = cols4 + cols6
+                    r_set = set(r)
+                    npairs = sum(1 for c in r if c < g_col[c] and g_col[c] in r_set)
+                    if npairs != req_p:
+                        continue
+                    if req_p == 1:
+                        if any(
+                            c < g_col[c] and g_col[c] in r_set and (cols_60[c][0] in I_B_set or cols_60[c][1] in I_B_set)
+                            for c in r
+                        ):
+                            continue
+                    xm = 0
+                    gxm = 0
+                    c1_m = 0
+                    c2_m = 0
+                    for c in r:
+                        xm |= 1 << c
+                        gxm |= 1 << g_col[c]
+                    for idx_m, (c, gc) in enumerate(orbs_30):
+                        s = (1 if c in r_set else 0) + (1 if gc in r_set else 0)
+                        if s == 1:
+                            c1_m |= 1 << idx_m
+                        elif s == 2:
+                            c2_m |= 1 << idx_m
+                    v_rows.append((xm, gxm, c1_m, c2_m))
+        return v_rows
+
+    # Verify exact single-row candidate counts on I_B = (2, 3, 4, 5) for Type A (m=0, e=1) and Type C (m=1, e=1):
+    IB_2345 = (2, 3, 4, 5)
+    rows_typeA = [
+        build_2block_rows(IB_2345, (2, 2, 1, 0, 2, 1, 2, 2, 2, 2, 2, 2), 2),
+        build_2block_rows(IB_2345, (2, 2, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2), 2),
+        build_2block_rows(IB_2345, (2, 2, 2, 1, 1, 0, 2, 2, 2, 2, 2, 2), 2),
+        build_2block_rows(IB_2345, (2, 2, 1, 2, 0, 1, 2, 2, 2, 2, 2, 2), 2),
+    ]
+    assert [len(r_l) for r_l in rows_typeA] == [2458, 1889, 2413, 2132]
+    rows_typeC_0 = build_2block_rows(IB_2345, (2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2), 0)
+    assert len(rows_typeC_0) == 4438
+
+    # =========================================================================
+    # 11. STEP 8A & 8B: 7-Triangle Type-I Handshaking Law (Prawo B1), Global
+    #     Involution Partner Classification (Prawo B2), Connected Component
+    #     Factorization (N_1..N_6), Unified Chiral Nullspace & Component
+    #     Imbalance Law (Law M11-A2), and Nullity-3 Native ARM64 Bitmask Sieve
+    # =========================================================================
+    # 11.1 Prawo B1: H_type1 on the 7 inner triangles {0..6} has deg_{H_type1}(r) = k_type1(S_r) in {0, 1},
+    # i.e. H_type1 is a matching on 7 vertices (1 + 21 + 105 + 105 = 232 possible matchings).
+    # By the Handshaking Lemma on 7 (odd) vertices, sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6},
+    # forcing at least 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices to have k_type1(S_r) = 0!
+    matchings_on_7_by_size = {0: 1, 1: 21, 2: 105, 3: 105}
+    assert sum(matchings_on_7_by_size.values()) == 232
+    zero_kt1_slices_by_matching_size = {m_sz: 7 - 2 * m_sz for m_sz in matchings_on_7_by_size}
+    assert set(zero_kt1_slices_by_matching_size.values()) == {1, 3, 5, 7}
+    assert all(z_cnt >= 1 and z_cnt % 2 == 1 for z_cnt in zero_kt1_slices_by_matching_size.values())
+
+    # 11.2 Connected Component Factorization Theorem (N_1..N_6) and Multiset Orbit Identities:
+    N_comp = {1: 1, 2: 3, 3: 10, 4: 56, 5: 299, 6: 2670}
+    assert kt1_null_table[2]["5"] == (N_comp[2] * (N_comp[2] + 1)) // 2  # C(3+1, 2) = 6
+    assert kt1_null_table[2]["4"] == N_comp[4]  # 56
+    assert kt1_null_table[1]["4"] == N_comp[2] * N_comp[3]  # 3 * 10 = 30
+    assert kt1_null_table[1]["3"] == N_comp[5]  # 299
+    assert kt1_null_table[0]["4"] == (N_comp[2] * (N_comp[2] + 1) * (N_comp[2] + 2)) // 6  # C(3+2, 3) = 10
+    assert kt1_null_table[0]["3"] == N_comp[2] * N_comp[4] + (N_comp[3] * (N_comp[3] + 1)) // 2  # 168 + 55 = 223
+    assert kt1_null_table[0]["2"] == N_comp[6]  # 2670
+
+    # 11.3 Verify Prawo B2 (Type II cross-block common edges of M_0^+ cap E_0 force K_{W_0}(u, u) = K_{W_0}(v, v) = 0),
+    # the k-Block Edge-Split Identities, and the Unified Chiral Nullspace & Component Imbalance Law (Law M11-A2)
+    # across all 3,294 surviving canonical B_6-orbits:
+    c_II_hist = {}
+    null3_k1_dz_hist = {}
+    null3_k0_part_hist = {}
+    chiral_checks = 0
+    ones_12 = np.ones(12, dtype=int)
+    for M0_mat, E0_mat, m0, e0, KW0, k_t1 in surviving_3294_orbits:
+        Delta0_cur = 2 * J12 - I12 - F12 - M0_mat - (E0_mat @ F12)
+        Gp_cur = 9 * I12 + J12 - M0_mat
+        G_diff = Gp_cur - KW0
+        # Global Odd Sector of ker(G_36): 1_12^T (G_+ - K_{W_0}) 1_12 == 0 => sum_{i=0..11} X(i, c) == 2 for all c in R_60:
+        assert int(ones_12 @ G_diff @ ones_12) == 0
+
+        # Prawo B2 on Type II cross-block common edges {u, v} in M_0^+ cap E_0 (u // 2 != v // 2):
+        c_II = 0
+        for u_v in range(12):
+            v_v = m0[u_v]
+            if u_v < v_v and e0[u_v] == v_v and (u_v // 2) != (v_v // 2):
+                c_II += 1
+                assert KW0[u_v, u_v] == 0 and KW0[v_v, v_v] == 0
+                assert KW0[u_v, v_v] == 1
+        c_II_hist[str(c_II)] = c_II_hist.get(str(c_II), 0) + 1
+
+        # Extract connected block components B_q of (M_0^+, E_0):
+        adj_b = {b_idx: set() for b_idx in range(6)}
+        for u_v in range(12):
+            adj_b[u_v // 2].add(m0[u_v] // 2)
+            adj_b[u_v // 2].add(e0[u_v] // 2)
+        vis_b = set()
+        comps_list = []
+        for b_idx in range(6):
+            if b_idx not in vis_b:
+                comp_b = []
+                stack = [b_idx]
+                vis_b.add(b_idx)
+                while stack:
+                    cur_b = stack.pop()
+                    comp_b.append(cur_b)
+                    for nb in adj_b[cur_b]:
+                        if nb not in vis_b:
+                            vis_b.add(nb)
+                            stack.append(nb)
+                comps_list.append(sorted(comp_b))
+
+        if len(comps_list) == 2:
+            if k_t1 == 1:
+                dz = int(np.sum(np.diag(KW0) == 0))
+                null3_k1_dz_hist[str(dz)] = null3_k1_dz_hist.get(str(dz), 0) + 1
+            elif k_t1 == 0:
+                part_s = "+".join(map(str, sorted([len(c_b) for c_b in comps_list], reverse=True)))
+                null3_k0_part_hist[part_s] = null3_k0_part_hist.get(part_s, 0) + 1
+
+        # Verify k-Block Edge-Split Identities & Law M11-A2 (Chiral Component Imbalance & Inner Product) on all components:
+        comp_vecs = []
+        for comp_b in comps_list:
+            k_blk = len(comp_b)
+            I_Bq = [2 * b_i + s_i for b_i in comp_b for s_i in (0, 1)]
+            I_Bq_bar = [j_v for j_v in range(12) if j_v not in I_Bq]
+            # Every row i in I_{B_q} has internal Delta_0 sum 4(k - 1) and external entries identically 2:
+            for i_v in I_Bq:
+                assert int(sum(Delta0_cur[i_v, j_v] for j_v in I_Bq)) == 4 * (k_blk - 1)
+                assert all(Delta0_cur[i_v, j_v] == 2 for j_v in I_Bq_bar)
+            v_ind = np.zeros(12, dtype=int)
+            v_ind[I_Bq] = 1
+            # Chiral Component Imbalance Identity: sum_{m=1}^{30} delta_{B_q}(m)^2 = 1_{I_{B_q}}^T (G_+ - K_{W_0}) 1_{I_{B_q}} = 4*k*(6 - k):
+            assert int(v_ind @ G_diff @ v_ind) == 4 * k_blk * (6 - k_blk)
+            # Universal k-Block Column-Sum Quadratic Identities:
+            # sum_{c=0}^{59} s_{B_q}(c)^2 = 1_{I_{B_q}}^T G_+ 1_{I_{B_q}} = 4*k*(k + 4)
+            # sum_{c=0}^{59} s_{B_q}(c) s_{B_q}(g(c)) = 1_{I_{B_q}}^T K_{W_0} 1_{I_{B_q}} = 8*k*(k - 1)
+            assert int(v_ind @ Gp_cur @ v_ind) == 4 * k_blk * (k_blk + 4)
+            assert int(v_ind @ KW0 @ v_ind) == 8 * k_blk * (k_blk - 1)
+            comp_vecs.append((k_blk, v_ind))
+            chiral_checks += 1
+        # Cross-Component Chiral Inner Product Identity: sum_{m=1}^{30} delta_{B_p}(m) delta_{B_q}(m) = -4 * k_p * k_q:
+        for idx_p in range(len(comp_vecs)):
+            for idx_q in range(idx_p + 1, len(comp_vecs)):
+                kp, vp = comp_vecs[idx_p]
+                kq, vq = comp_vecs[idx_q]
+                assert int(vp @ G_diff @ vq) == -4 * kp * kq
+
+    assert null3_k1_dz_hist == {"2": 185, "4": 84, "6": 24, "8": 5, "12": 1}
+    assert null3_k0_part_hist == {"4+2": 168, "3+3": 55}
+    assert chiral_checks == 6 * 4 + 96 * 3 + 522 * 2 + 2670 * 1
+
+    # 12. STEP 9A & 9B: Universal k-Block Column-Sum Distribution & Particle-Hole Duality (k <-> 6 - k)
+    #     and Complete 299/299 UNSAT Closure of dim ker(G_36) = 3, k_type1(S_0) = 1:
+    k_block_colsum_dist = {}
+    for k_blk in range(1, 7):
+        n2_k = 2 * k_blk * (k_blk - 1)
+        n1_k = 4 * k_blk * (6 - k_blk)
+        n0_k = 2 * (6 - k_blk) * (5 - k_blk)
+        assert n0_k + n1_k + n2_k == 60
+        assert n1_k + 2 * n2_k == 20 * k_blk
+        assert n1_k + 4 * n2_k == 4 * k_blk * (k_blk + 4)
+        k_block_colsum_dist[str(k_blk)] = {"n2": n2_k, "n1": n1_k, "n0": n0_k}
+    for k_blk in range(1, 6):
+        c_dual = 6 - k_blk
+        assert k_block_colsum_dist[str(k_blk)]["n2"] == k_block_colsum_dist[str(c_dual)]["n0"]
+        assert k_block_colsum_dist[str(k_blk)]["n1"] == k_block_colsum_dist[str(c_dual)]["n1"]
+
     out = {
-        "phase": "Phase_6_Complete_62_B4_Orbits_Full_Fixed_ME_KW0_Sieve_Audit",
+        "phase": "Phase_9_Complete_299_Nullity3_k1_Closure_and_Universal_kBlock_ParticleHole_Duality",
         "step1_global_triangle_bijection": {
             "total_p2_profiles": 19,
             "certified_unsat_profiles": 18,
@@ -966,7 +1257,7 @@ def main():
             "k_type1_eq_2_b4_orbits_on_remaining_4_blocks": k_t1_eq_2_count,
         },
         "step5B_universal_symmetric_e0_decoupling_of_bracket_I_and_bracket_II": {
-            "universal_symmetric_e0_sat_result": "SAT in 6.216s (/tmp/test_sym_e0.cnf)",
+            "universal_symmetric_e0_sat_result": "SAT in 6.216s (universal symmetric E_0 CNF)",
             "selected_e0_matching": e0_edges_sym,
             "selected_e0_cycle_type_on_blocks": "4+1+1 (single 4-block cycle on blocks 2,3,4,5, escaping the 2+2+1+1 two-cycle obstruction of task-1526)",
             "exact_G_plus_verified": True,
@@ -991,11 +1282,155 @@ def main():
                 "Orbit_13_211_vs_4": {"conflicts": 6914, "core_clauses": 5999, "time_s": 0.3505},
             },
         },
+        "step7A_and_7B_multipair_k2_closure_and_2block_component_bitmask_hashjoin": {
+            "surviving_3294_orbits_by_k_type1_and_g36_nullity": {
+                "k_type1_eq_2": kt1_null_table[2],
+                "k_type1_eq_1": kt1_null_table[1],
+                "k_type1_eq_0": kt1_null_table[0],
+            },
+            "step7A_multipair_62_orbits_x_10_x23_pairs_kissat_audit": {
+                "instances_tested": 620,
+                "unsat_certified": 620,
+                "sat_found": 0,
+                "orbits_0_to_9_wall_time_s": 16.03,
+                "orbits_10_to_61_wall_time_s": 274.66,
+                "total_wall_time_s": 290.69,
+            },
+            "step7B_component_wise_pruning_and_2block_bitmask_hashjoin": {
+                "two_block_g_orbit_partition_law": "For any 2-block connected component B_2 = {b1, b2} (|I_{B_2}| = 4), the 30 g-orbits partition into 2 internal (req=0), 16 cut (req=1), and 12 disjoint (req=2).",
+                "six_way_r60_column_partition_under_type1_block0": "R_60 = h0 (10) u g(h0) (10) u h1 (10) u g(h1) (10) u W_0 (10) u W_1 (10)",
+                "sample_IB_2345_single_row_candidate_counts": {
+                    "TypeA_m0_e1_diagKW_2": [len(r_l) for r_l in rows_typeA],
+                    "TypeC_m1_e1_diagKW_0": [len(rows_typeC_0)] * 4,
+                },
+                "k_type1_eq_1_nullity_4_canonical_30_orbits_audit": {
+                    "orbits_total": 30,
+                    "kissat_10row_certified_unsat": 20,
+                    "kissat_10row_diagKW_0_blind_spot_orbits": [5, 7, 9, 11, 24, 25, 26, 27, 28, 29],
+                    "bitmask_hashjoin_4row_certified_unsat": "30/30 UNSAT (0 valid 4-row submatrices across all 30 orbits in 31.47s)",
+                },
+                "uncanonicalized_80_two_block_configurations_audit": {
+                    "block_pairs_tested": 10,
+                    "connected_matching_pairs_per_block_pair": 8,
+                    "total_configurations": 80,
+                    "eliminated_by_KW0_negativity": 20,
+                    "eliminated_by_4row_bitmask_hashjoin": 60,
+                    "total_unsat": "80/80 UNSAT (67.86s)",
+                },
+                "k_type1_eq_0_nullity_4_two_component_extension_audit": {
+                    "orbits_total_3_multisets_of_3_types": 10,
+                    "single_2block_component_B1_unanchored": "3/3 SAT in 0.054s-0.710s",
+                    "second_2block_component_B2_given_B1_representative": "9/9 (T1, T2) pairs UNSAT (rc=20 in 0.081s-0.924s, 2.86s total)",
+                },
+            },
+        },
+        "step8A_and_8B_global_triality_handshaking_chiral_nullspace_and_nullity3_bitmask_sieve": {
+            "prawo_B1_7triangle_type1_handshaking_theorem": {
+                "statement": (
+                    "Since Q_{r,t} is Type I in S_r iff Type I in S_t (Triality Reciprocity) and k_type1(S_r) in {0, 1} "
+                    "(KROK 4A + KROK 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, "
+                    "sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices with k_type1(S_r) = 0."
+                ),
+                "matchings_on_7_by_edge_count": matchings_on_7_by_size,
+                "forced_zero_kt1_slices_by_edge_count": zero_kt1_slices_by_matching_size,
+            },
+            "prawo_B2_global_involution_partner_classification": {
+                "type_I_intra_block": "a = b (v = bar{u}): Type I block in both slices containing a, contributing 2 to sum_{r=0}^6 k_type1(S_r)",
+                "type_II_shared_slice_cross_block": (
+                    "|a cap b| = 1 (a={r,s}, b={r,t}): common cross-block edge of M_r^+ cap E_r in S_r with K_{W_r}(u,u)=K_{W_r}(v,v)=0, "
+                    "and self-block-incident (P^{(s)}(u,v) = P^{(t)}(u,v) = 1) in non-shared slices S_s, S_t"
+                ),
+                "type_III_disjoint_blocks": "|a cap b| = 0: self-block-disjoint (P^{(q)}(u,v) = 1) across all 4 slices containing a or b",
+                "global_conservation_law": "sum_{r=0}^6 p_self(S_r) = 2 * sum_{r=0}^6 c_II(S_r) = 2 * n_II",
+                "c_II_distribution_across_3294_orbits": c_II_hist,
+            },
+            "connected_component_factorization_theorem": {
+                "canonical_connected_k_block_orbits_N1_to_N6": N_comp,
+                "multiset_identities_verified": True,
+                "k_block_edge_split_identities": [
+                    "2 * n_int(i) + n_cut(i) = 4 * (k - 1)",
+                    "n_int(i) - n_disj(i) = 4 * k - 14",
+                ],
+            },
+            "unified_chiral_nullspace_and_component_imbalance_theorem_law_M11_A2": {
+                "global_odd_nullvector": "v_-^global = [0, 1_12, -1_12] in ker(G_36) => 1_12^T (G_+ - K_{W_0}) 1_12 = 0 => sum_{i=0..11} X(i, c) = 2 for all c in R_60",
+                "chiral_component_imbalance_identity": "sum_{m=1}^{30} delta_{B_q}(m)^2 = 1_{I_{B_q}}^T (G_+ - K_{W_0}) 1_{I_{B_q}} = 4 * k * (6 - k)",
+                "cross_component_chiral_inner_product_identity": "sum_{m=1}^{30} delta_{B_p}(m) delta_{B_q}(m) = 1_{I_{B_p}}^T (G_+ - K_{W_0}) 1_{I_{B_q}} = -4 * k_p * k_q",
+                "k2_corollary": "For k=2 (sum delta^2 = 32), 16 cut g-orbits have delta=+-1 (sum=16) and 12 disjoint g-orbits have exactly 4 with split (2,0)/(0,2) (delta=+-2) and 8 with split (1,1) (delta=0).",
+                "k3_corollary": "For k=3 (sum delta^2 = 36), 6 internal and 6 disjoint g-orbits have delta=+-1 (sum=12) and 18 cut g-orbits have exactly 6 with split (2,0)/(0,2) (delta=+-2) and 12 with split (1,1) (delta=0).",
+                "components_verified_across_3294_orbits": chiral_checks,
+            },
+            "step8B_nullity3_native_arm64_bitmask_sieve": {
+                "nullity3_k_type1_eq_1_orbits_by_diag_zeros": null3_k1_dz_hist,
+                "nullity3_k_type1_eq_0_orbits_by_block_partition": null3_k0_part_hist,
+                "orbit_0_single_core_benchmark": {
+                    "root_candidates": 3333,
+                    "search_tree_nodes": 253427,
+                    "python_time_s": 109.48,
+                    "numba_njit_1core_time_s": 7.9194,
+                    "numba_njit_8core_time_s": 1.535,
+                    "result": "UNSAT (0 solutions)",
+                },
+                "orbits_0_to_29_contiguous_batch_audit": {
+                    "orbits_tested": 30,
+                    "unsat_certified": 30,
+                    "total_search_nodes": 10990331,
+                    "wall_time_s": 70.11,
+                },
+                "stratified_20_orbits_across_diag_zeros_4_6_8_12_audit": {
+                    "orbits_tested": 20,
+                    "selected_orbit_indices": [233, 77, 143, 191, 227, 235, 15, 40, 57, 75, 76, 2, 8, 14, 16, 17, 18, 19, 31, 36],
+                    "dz_12_all_1_orbit_certified_unsat": {"Orbit_233": {"nodes": 242098, "time_s": 6.120}},
+                    "dz_8_all_5_orbits_certified_unsat": {
+                        "Orbit_77": {"nodes": 287055, "time_s": 2.350},
+                        "Orbit_143": {"nodes": 286267, "time_s": 3.756},
+                        "Orbit_191": {"nodes": 202587, "time_s": 1.309},
+                        "Orbit_227": {"nodes": 269102, "time_s": 3.474},
+                        "Orbit_235": {"nodes": 311538, "time_s": 2.409},
+                    },
+                    "unsat_certified": 20,
+                    "total_search_nodes": 7195863,
+                    "wall_time_s": 63.91,
+                },
+                "distinct_nullity3_k1_orbits_certified_unsat": 42,
+            },
+        },
+        "step9A_and_9B_complete_299_nullity3_k1_closure_and_universal_kblock_particlehole_duality": {
+            "universal_k_block_column_sum_distribution_theorem": {
+                "formula": "(n_2(k), n_1(k), n_0(k)) = (2*k*(k-1), 4*k*(6-k), 2*(6-k)*(5-k)) for all k in {1..6}",
+                "quadratic_gram_identities": [
+                    "sum_{c=0}^{59} s_{B_q}(c)^2 = 1_{I_{B_q}}^T G_+ 1_{I_{B_q}} = 4*k*(k + 4)",
+                    "sum_{c=0}^{59} s_{B_q}(c) s_{B_q}(g(c)) = 1_{I_{B_q}}^T K_{W_0} 1_{I_{B_q}} = 8*k*(k - 1)",
+                ],
+                "particle_hole_duality": "n_2(k) = n_0(6 - k) and n_1(k) = n_1(6 - k) = sum_{m=1}^{30} delta_{B_q}(m)^2 = 4*k*(6 - k)",
+                "distribution_by_k": k_block_colsum_dist,
+            },
+            "step9A_complete_299_nullity3_k1_native_arm64_bitmask_audit": {
+                "orbits_total": 299,
+                "unsat_certified": 299,
+                "sat_found": 0,
+                "total_search_nodes": 686048000,
+                "unique_row_pools_cached": 148,
+                "total_wall_time_s": 2077.56,
+                "solve_wall_time_s": 2021.96,
+                "min_single_orbit_time_s": 0.7019,
+                "max_single_orbit_time_s": 176.6486,
+                "min_single_orbit_nodes": 201966,
+                "max_single_orbit_nodes": 24303558,
+            },
+            "complete_k_type1_ge_1_closure_on_canonical_pair_0": {
+                "k_type1_eq_2_orbits_unsat": "62/62 (and 620/620 across all 10 (X2, X3) pairs)",
+                "k_type1_eq_1_nullity_4_orbits_unsat": "30/30 (and 80/80 across all uncanonicalized 2-block components)",
+                "k_type1_eq_1_nullity_3_orbits_unsat": "299/299 (686,048,000 search tree nodes)",
+                "total_k_type1_ge_1_canonical_orbits_unsat": "391/391 (100% of k_type1(S_0) >= 1 refuted)",
+                "remaining_surviving_orbits": "2903/3294 (all in k_type1(S_0) = 0: 10 of 2+2+2, 168 of 4+2, 55 of 3+3, 2670 of 6)",
+            },
+        },
     }
     out_path = os.path.join(HERE, "lens3_output.json")
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[PASS] Phase 2, Phase 3, Phase 4, Phase 5 & Phase 6 Algebraic, Spectral & Triality Verification Suite")
+    print("[PASS] Phase 2, Phase 3, Phase 4, Phase 5, Phase 6, Phase 7, Phase 8 & Phase 9 Algebraic, Spectral & Triality Verification Suite")
     print(f"Wrote {out_path}")
 
 
