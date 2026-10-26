@@ -201,6 +201,51 @@ This research was conducted under **[`we*star`](https://github.com/mizopl/we-sta
      $$n_2(m, k) = 2k(k - 1), \qquad n_1(m, k) = 4k(m - 1 - k), \qquad n_0(m, k) = 2(m - 1 - k)(m - 2 - k)$$
      with exact particle-hole duality $n_2(m, m-1-k) = n_0(m, k)$ and $n_1(m, m-1-k) = n_1(m, k)$ (`Phase 9`, `L-C9G-020 = 1`, formally proved in Lean 4.35.0 as `k_block_column_sum_particle_hole_duality` and `conway99_k_block_particle_hole_table` in [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean)).
    - **Exhaustive `299 / 299 UNSAT` Certification of $\dim \ker(G_{36}) = 3, k_{\text{type1}} = 1$ (`Phase 9`, `L-C9G-020 = 1`):** Using our `@numba.njit(parallel=True)` native ARM64 64-bit bitmask solver ([`verify-it-yourself/run_all_299_nullity3_k1.py`](../verify-it-yourself/run_all_299_nullity3_k1.py)), all `299 / 299` canonical $B_5$-orbits of component signature `1+5` are certified `UNSAT` in `2,077.56s` (`686,048,000` search tree nodes, `148` cached row pools, [`verify-it-yourself/null3_k1_299_summary.json`](../verify-it-yourself/null3_k1_299_summary.json)), exhibiting a natural 4-wave **Sawtooth Computational Spectrogram** governed by the lexicographic sweep of `(k_cross(M₀⁺), k_cross(E₀))` and off-diagonal chiral zeros in $K_{W_0}$. Together with `620 / 620 UNSAT` at $k_{\text{type1}} = 2$ and `30 / 30 UNSAT` at $\dim = 4, k_{\text{type1}} = 1$, this establishes **`391 / 391` (`100%`) `UNSAT` across all canonical orbits with $k_{\text{type1}}(S_0) \ge 1$**.
+
+### 3.2 Pre-Registered Epistemic Micro-Bet Ledger (`L-C9G-001` through `L-C9G-020`) & 4-Wave Computational Spectrogram
+
+Every hypothesis in this campaign was pre-registered before execution via `scripts/micro_bet.py` (`Law M4 v2`) and scored by its Brier penalty $(p - \text{outcome})^2$, providing an immutable, falsifiable scientific provenance log (`17 / 20` resolved as `1` = **`85.0%` hit rate**):
+
+| Bet ID | Hypothesis Node Key | Tier | $p$ | Outcome | Brier | Scientific Milestone / Phase-Transition Diagnosis |
+| :--- | :--- | :--- | :---: | :---: | :---: | :--- |
+| `L-C9G-001` | `H_forced_structure_p2_L1_L5_dual_lrat` | Tier 3 (Cert) | `0.62` | `1` | `0.144` | Track `p2` (`p2_1..p2_5`, 10 Dual-SAT Pure-RUP LRAT proofs + `srg(9,4,1,2)` SAT witness) |
+| `L-C9G-002` | `H_prime_order_p11_p3fix0_frob21_p5t4_p2fix11` | Tier 2 (Expl) | `0.58` | `1` | `0.176` | Initial prime-order and `Frob(21)` exclusion batch |
+| `L-C9G-003` | `H_edge_level_cnf_p5t1_p7fix1_direct` | Tier 2 (Expl) | `0.45` | `0` | `0.203` | **State 1 (Gas):** Raw shift variables leave $7^3$ gauge symmetries $\to$ triggered `M2 Pivot` |
+| `L-C9G-004` | `H_m2_pivot_orbit_matrix_B_p7_fix1` | Tier 2 (Pivot) | `0.55` | `1` | `0.203` | **Phase Transition $\to$ Crystal (`M11.2`):** $12 \times 12$ orbit matrix $B$ + Galois trace $\mathrm{Tr}(B)=0$ (`0.82s UNSAT`) |
+| `L-C9G-005` | `H_m2_pivot_spectral_trace_p5_t1` | Tier 2 (Pivot) | `0.60` | `1` | `0.160` | Subconstituent spectral trace $\mathrm{Tr}(B)=8$ refutes `p5_t1` in `< 0.9s` |
+| `L-C9G-006` | `H_p3_18block_and_p2_involution_trace_mod7` | Tier 2 (Expl) | `0.55` | `1` | `0.203` | Involution trace law $\mathrm{Tr}(B) = 8a + 3b + 4k_2 - 7m_3(-1)$ |
+| `L-C9G-007` | `H_p2_c1_trace_window_and_full_18case_lrat_suite` | Tier 3 (Cert) | `0.60` | `1` | `0.160` | Wave 1 involution LRAT suite (`14 / 19` profiles of $p = 2$) |
+| `L-C9G-008` | `H_claim_and_outbox_46proof_package_verification` | Tier 3 (Pkg) | `0.62` | `1` | `0.144` | Standalone stdlib verification of 23 theorems (`46` Pure-RUP proofs) |
+| `L-C9G-009` | `p2_remaining_5_profiles` | Tier 1 (Bundle) | `0.85` | `0` | `0.723` | **State 2 (Liquid):** Single-center horizon $x_0$ leaks $E_{\text{flip}}(g)$ into exterior |
+| `L-C9G-010` | `asymmetric_2adic_b7_triangle_probe` | Tier 2 (Expl) | `0.55` | `1` | `0.203` | Canonical split $\mathbb{R}^{84} = \mathrm{col}(C^T) \oplus W_{70}$ with spectrum $3^{40}, (-4)^{30}$ |
+| `L-C9G-011` | `triangle_T0_equitable_spectrum` | Tier 2 (Expl) | `0.60` | `1` | `0.160` | 7-cell equitable partition around $T_0=\{x_0,y_0,z_0\}$ & $T(R_{60})+T(S_{36})=32$ |
+| `L-C9G-012` | `p2_remaining5_global_triangle_bijection` | Tier 1 (Bundle) | `0.65` | `0` | `0.423` | **All-or-Nothing Bundling Trap:** Multi-center suspension killed 4 of 5 profiles (`80%`!), isolating `(0,7,0)` |
+| `L-C9G-013` | `p2_18_of_19_lrat_certification` | Tier 3 (Cert) | `0.65` | `1` | `0.123` | **Phase Transition $\to$ Crystal (`M11.3`):** Multi-center suspension certifies `18/19` profiles (`0.32s–0.36s`) |
+| `L-C9G-014` | `p2_a0_b7_c0_fix1_block_degree_audit` | Tier 2 (Expl) | `0.60` | `1` | `0.160` | Coupled $B = 2P_\pi + |D|$ & $D^2+D-12I_{42} = -C_- C_-^T$; 11 canonical $B_6$-orbits; Triality Reciprocity |
+| `L-C9G-015` | `k4_s0_matching_pair_gram_and_sat_sieve` | Tier 2 (Expl) | `0.60` | `1` | `0.160` | **State 3 (Glass — Single Slice $S_0$):** $3,580 \to 3,294$ orbits; Mod-2 Triple-Block Parity ($k_{\text{type1}} \le 2$); $G_{36}$ & Bracket I+II |
+| `L-C9G-016` | `k5_g36_schur_nullspace_sieve_and_task1526_core` | Tier 2 (Expl) | `0.50` | `1` | `0.250` | Proved $\dim \ker(G_{36}) = 1 + c(M_0^+, E_0) \in \{2..5\}$ & Universal Commutator Cancellation $[D_{S_0,S_0}, X P_g X^T - K_{W_0}]$ |
+| `L-C9G-017` | `k6_62_b4_orbits_fixed_me_full_kw0_sieve` | Tier 2 (Expl) | `0.55` | `1` | `0.203` | **`Law M10` Outside-In Sieve:** Full fixed-`K_{W_0}` + $\ker(G_{36})$ Kissat sieve refutes `62/62` orbits of $k_{\text{type1}}=2$ on `x23_pairs[0]` (`27.12s`) |
+| `L-C9G-018` | `k7_unconditional_k2_closure_and_k1_k0_full_kw0_sieve` | Tier 2 (Expl) | `0.55` | `1` | `0.203` | **Phase Transition $\to$ Crystal (`c >= 3`, `M10 + M11.4`):** `620/620 UNSAT` for $k_{\text{type1}}=2$ (`290.69s`) + 60-bit Bitmask Hash-Join `80/80 UNSAT` (`67.86s`) |
+| `L-C9G-019` | `k8_nullity3_sieve_and_3block_component_pruning` | Tier 2 (Expl) | `0.50` | `1` | `0.250` | **Phase Transition $\to$ Crystal (`c = 2`, `M11.3 + M11.4`):** Proved `Theorems A, A2, B1, B2` (`4,644` components) + ARM64 bitmask solver certified `42/42` sample orbits across all 5 `dz` strata (`134.02s`) |
+| `L-C9G-020` | `H_phase9_nullity3_full_and_k0_multicomp_refutation` | Tier 2 (Expl) | `0.50` | `1` | `0.250` | **100% Closure of $k_{\text{type1}}(S_r) \ge 1$ (`391/391 UNSAT`):** Certified all `299/299` orbits of $\dim=3, k=1$ (`1+5`) `UNSAT` (`2,077.56s`, `686,048,000` nodes) + proved Universal $k$-Block Particle-Hole Duality ($k \leftrightarrow m-1-k$) in Lean 4.35.0 (`0 sorryAx`) |
+
+#### The 4-Wave Sawtooth Computational Spectrogram of $B_5$ (`299` Orbits of $\dim \ker(G_{36}) = 3, k_{\text{type1}} = 1$)
+In [`verify-it-yourself/run_all_299_nullity3_k1.py`](../verify-it-yourself/run_all_299_nullity3_k1.py) ([`verify-it-yourself/null3_k1_299_summary.json`](../verify-it-yourself/null3_k1_299_summary.json)), the outer loop steps through canonical cycle types of $M_0^+$ by increasing cross-block count `k_cross(M₀⁺)` $\in \{0, 2, 3, 4, 5\}$, while the inner loop sweeps $E_0$ from `k_cross(E₀) = 0, 2` up to `5`. Because small `k_cross(E₀)` creates diagonal zeros $\Delta_0(i, i) = 0$ (blocking $10$-column windows $W_i$) and off-diagonal chiral zeros $K_{W_0}(u, v) = 0$ (up to $12$ zeros), each new canonical $M_0^+$ triggers a fast **Valley** followed by a dense **Resonance Peak** at `k_cross(E₀) = 5`:
+
+| Orbit Batch | Outer-Loop Wave ($M_0^+$) | `k_cross(M₀⁺)` | `k_cross(E₀)` | `offdiag_zeros` in $K_{W_0}$ | Batch Time (`25` orbits) | Mean / Orbit | Regime |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| `1..25` | **Wave 1** (start) | `{0, 2, 3}` | `{3, 4, 5}` | `0..8` | `49.95s` | `2.00s` | Valley (sparse $M_0^+$) |
+| `26..50` | **Wave 1 $\to$ 2** | `{3, 4}` | `{3, 4, 5}` | `0..8` | `71.05s` | `2.84s` | Wave 1 Peak (`k_cross(M)=3, E=5`) |
+| `51..75` | **Wave 2** (valley) | `{4}` | `{2, 3, 4, 5}` | `2..10` | **`51.84s`** | **`2.07s`** | **$E_0$ resets to `k=2,3,4` (fast valley)** |
+| `76..100` | **Wave 2** (peak) | `{4}` | `{5}` | `0..8` | `80.14s` | `3.21s` | Wave 2 Peak (all $E_0$ have `k=5`) |
+| `101..125` | **Wave 3** (`M₀⁺`: `3+2`) | `{4, 5}` | `{2, 3, 4, 5}` | `0..10` | `77.16s` | `3.09s` | Entry into `k_cross(M)=5`, $E_0$ reset |
+| `126..150` | **Wave 3** (rise) | `{5}` | `{4, 5}` | `0..10` | `79.66s` | `3.19s` | `k_cross(E) -> 5` climb |
+| `151..175` | **Wave 3** (culmination!) | `{5}` | `{0, 2, 5}` | `0..10` | **`322.76s`** | **`12.91s`** | **Wave 3 Peak (`8` orbits with `offdiag_zeros = 0`!)** |
+| `176..200` | **Wave 4** (deep valley!) | `{5}` | `{2, 3, 4}` | **`2..12`** | **`36.84s`** | **`1.47s`** | **New $M_0^+$ ($5$-cycle) resets $E_0$ — fastest batch!** |
+| `201..225` | **Wave 4** (valley) | `{5}` | `{4}` | `2..10` | **`52.61s`** | **`2.10s`** | `k_cross(E)=4` ($\Delta_0(i,i)=0$ blocks 20 columns) |
+| `226..250` | **Wave 4** (rise) | `{5}` | `{4, 5}` | `0..6` | `135.66s` | `5.43s` | Entry into `k_cross(E)=5` + `dz=12` orbit |
+| `251..275` | **Wave 4** (peak) | `{5}` | `{5}` | `0..8` | `156.86s` | `6.27s` | Pure `(k_cross(M)=5, k_cross(E)=5)` |
+| `276..299` | **Wave 4** (finale) | `{5}` | `{5}` | `0..6` | **`907.43s`** | **`37.81s`** | **Final 24 orbits (`100%` `k=5, k=5, dz=2`; Orbit 299 = `19.78M` nodes)** |
    - **`Theorem B1` (The 7-Triangle Type-I Matching & Handshaking Theorem, `M11.3`):** By Triality Reciprocity ($M_r^+(u, \bar{u}) = M_t^-(u, \bar{u})$), being a Type-I block is a symmetric edge $\{r, t\}$ in an undirected graph $H_{\text{type1}}$ on the $7$ inner triangles $\{0..6\}$ with $\deg_{H_{\text{type1}}}(r) = k_{\text{type1}}(S_r) \le 1$. By Euler's Handshaking Lemma on $7$ (odd!) vertices, $\sum_{r=0}^6 k_{\text{type1}}(S_r) = 2|E(H_{\text{type1}})| \in \{0, 2, 4, 6\}$, proving that **at least $1, 3, 5,$ or $7$ slices must have $k_{\text{type1}}(S_r) = 0$** and eliminating the need to solve the `299` five-block (`1+5`) orbits of $k_{\text{type1}} = 1$ separately.
    - **`Theorem B2` (Global Involution Partner Common-Neighbor Law, `M11.4`):** For every orbit $u \in Q_a$ and its unique partner $v = \pi(u) \in Q_b$ ($B(u, v) = 2, D(u, v) = 0$ in $B = 2 P_\pi + |D|$), $\sum_w |D(u, w)| |D(w, v)| = (M_{21}^{\text{true}})_{a, b} - 2 \in \{0, 1, 2\}$ and $\sum_w D(u, w) D(w, v) = -(C_- C_-^T)_{u, v} \in \{0, \pm 1, 0\}$.
 
