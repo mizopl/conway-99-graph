@@ -6,6 +6,8 @@
 
 This repository contains the standalone code, algebraic-spectral reductions, trimmed CNF cores, and **54 dual-encoded Pure-RUP LRAT (`0 RAT lemmas`) UNSAT certificates** across **27 theorems** on John H. Conway's 99-graph problem ($\Gamma = \mathrm{srg}(99, 14, 1, 2)$, $\lambda = 1$, $\mu = 2$), developed using the **[`we*star`](https://github.com/mizopl/we-star)** human-AI autoresearch architecture (`CONSTITUTION v18/v19`) on a single 16 GB M1 laptop.
 
+> **Inspiration & Catalyst (`@elder-plinius` / `V3R1T4S`):** This work was directly inspired by **[Pliny (`@elder-plinius`)](https://github.com/elder-plinius)** and the **[`elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S)** open-science benchmark, which formulated the structured `p2 -> p1 -> p0` challenge ladder for Conway's 99-graph (`problems/conway-99-graph/PROBLEM.md`) and established the zero-trust *Verify-It-Yourself* standard requiring self-contained, fast, dependency-free verification ([PR #774](https://github.com/elder-plinius/V3R1T4S/pull/774)).
+
 All **54 LRAT certificates (`92,259` Reverse Unit Propagation steps, `0` RAT lemmas)** are verified from freshly generated CNF clauses in **$\sim 18$ seconds** using only the Python 3 standard library (`verify-it-yourself/verify.py`).
 
 ---
@@ -100,10 +102,10 @@ This project was engineered using **[`we*star`](https://github.com/mizopl/we-sta
 
 ---
 
-## Links & Lineage
+## Inspiration, Links & Lineage
 
+- **Inspiration & Benchmark Catalyst (`@elder-plinius`):** Directly inspired by **[Pliny (`@elder-plinius`)](https://github.com/elder-plinius)** and the **[`elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S)** open-science initiative. Putting `conway-99-graph` on the `V3R1T4S` frontier list, and demanding zero-trust, dependency-free *Verify-It-Yourself* artifacts, was the direct catalyst that drove both these mathematical results and the evolution of the `we*star` engine ([Pull Request #774 on `elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S/pull/774)).
 - **Autoresearch Engine & Constitution (`we*star`):** [https://github.com/mizopl/we-star](https://github.com/mizopl/we-star)
-- **V3R1T4S Benchmark Submission:** [Pull Request #774 on `elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S/pull/774)
 - **Prior Literature Referenced:**
   - P. G. Cesarz & A. J. Woldar, *"On symmetries of Conway's 99-graph"*, `arXiv:2308.02978` (2023).
   - A. Thakkar & S. Severini, *"Computational Restrictions on Networking Conway's 99-Graph"*, `arXiv:2608.11211v2` (Sep 2026).

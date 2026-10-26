@@ -1,9 +1,17 @@
 # The Discovery Path (`Ścieżka Dojścia`) & `we*star` Collaborative Architecture
 
 > **Repository:** `mizopl/conway-99-graph`  
+> **Inspiration & Benchmark Catalyst:** **[Pliny (`@elder-plinius`)](https://github.com/elder-plinius)** & **[`elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S)** ([PR #774](https://github.com/elder-plinius/V3R1T4S/pull/774))  
 > **Autoresearch Engine:** [`mizopl/we-star`](https://github.com/mizopl/we-star) (`CONSTITUTION v18` -> `v19`)  
-> **Benchmark Lineage:** [`elder-plinius/V3R1T4S` — PR #774](https://github.com/elder-plinius/V3R1T4S/pull/774)  
 > **Hardware:** Single Apple MacBook Air M1 (16 GB RAM, 0 GPUs)
+
+---
+
+## 0. Inspiration: Pliny (`@elder-plinius`) and the `V3R1T4S` Frontier Benchmark
+
+This investigation, and the broader evolution of the **[`we*star`](https://github.com/mizopl/we-star)** autoresearch system, was directly inspired by **[Pliny (`@elder-plinius`)](https://github.com/elder-plinius)** and the **[`elder-plinius/V3R1T4S`](https://github.com/elder-plinius/V3R1T4S)** open-science repository.
+
+By curating `conway-99-graph` (`problems/conway-99-graph/PROBLEM.md`) into a clear three-tier research ladder (`p2`: machine-checkable certificates for forced local reductions; `p1`: strengthening automorphism exclusions beyond 2023–2026 literature; `p0`: full resolution) and enforcing a strict **zero-trust *Verify-It-Yourself* architecture**, `@elder-plinius` created an ideal proving ground for human-AI mathematical discovery. In particular, the `V3R1T4S` principle that *a claim is only as strong as what a skeptic can verify locally in seconds without trusting external solver binaries* directly motivated our Pure-RUP (`0 RAT lemmas`) dual-encoded LRAT pipeline.
 
 ---
 
