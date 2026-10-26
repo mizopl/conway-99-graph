@@ -1,5 +1,5 @@
 {
-  "phase": "Phase_5_Complete_G36_Schur_Nullspace_Sieve_and_Bracket_Decoupling_Audit",
+  "phase": "Phase_6_Complete_62_B4_Orbits_Full_Fixed_ME_KW0_Sieve_Audit",
   "step1_global_triangle_bijection": {
     "total_p2_profiles": 19,
     "certified_unsat_profiles": 18,
@@ -253,7 +253,7 @@
       "60": 1
     },
     "generalized_cycle_orbit_exclusion_theorem": "For every (M_0^+, E_0)-closed union of blocks B subset {0..5} with vertex set I_B, v_B in ker(G_36) forces sum_{i in I_B} (X(i, c) + X(i, g(c))) = |B| - sum_{j in I_B} W(c, j) for all c in R_60.",
-    "cross_slice_commutator_identity": "Z_D - Z_D^T = [D_{S0,W0} C_{-,W0} C_{-,S0}^T - C_{-,S0} C_{-,W0}^T D_{W0,S0}] + [D_{S0,S0} (D_{S0,W0} D_{W0,S0}) - (D_{S0,W0} D_{W0,S0}) D_{S0,S0}]",
+    "cross_slice_commutator_identity": "Z_D - Z_D^T = [D_{S0,W0} C_{-,W0} C_{-,S0}^T - C_{-,S0} C_{-,W0}^T D_{W0,S0}] - [D_{S0,S0} (D_{S0,W0} D_{W0,S0}) - (D_{S0,W0} D_{W0,S0}) D_{S0,S0}]",
     "test_ilosciowy_A_and_B_audit": {
       "relaxed_s0_sat_solutions_audit": {
         "max_Z_D_asymmetry": 12,
@@ -332,11 +332,49 @@
     "exact_G_plus_verified": true,
     "exact_Delta0_verified": true,
     "dc_minus_s0_max_abs": 0,
-    "bracket_I_max_abs": 0,
-    "bracket_II_max_abs": 7,
+    "universal_commutator_cancellation_law": "Z_D - Z_D^T = Bracket_I - Bracket_II = [D_{S0,S0}, X P_g X^T - K_{W_0}^true] identically whenever X X^T = G_+ and X W = Delta_0",
     "max_Z_D_asymmetry": 7,
     "max_UD_T_RD_asymmetry": 7,
     "max_X_Pg_XT_minus_KW0_true": 4,
     "diagonal_kw0_obstruction_identity": "(X P_g X^T)_{i,i} = 2 * sum_{m=1}^{30} X(i, c_m) X(i, g(c_m)) = 2 for all i in {4..11}"
+  },
+  "step6A_and_6B_62_canonical_b4_orbits_and_full_kw0_sieve": {
+    "canonical_b4_orbits_for_k_type1_eq_2": 62,
+    "orbits_by_m0_plus_partition_on_blocks_2_to_5": {
+      "1+1+1+1": 2,
+      "2+1+1": 8,
+      "3+1": 11,
+      "2+2": 14,
+      "4": 27
+    },
+    "automatic_kw0_row_sum_identity": "sum_{j=4..11} (X P_g X^T)_{i,j} = 12 = sum_{j=4..11} K_{W_0}(i,j) for all i in {4..11}",
+    "full_fixed_me_kw0_kissat_audit_across_all_62_b4_orbits": "62/62 UNSAT (27.12s wall time across 8 threads, max single = 12.60s, min single = 0.068s)",
+    "sample_drat_trim_core_audits": {
+      "Orbit_0_1111_vs_22": {
+        "conflicts": 1619,
+        "core_clauses": 4783,
+        "time_s": 0.1199
+      },
+      "Orbit_1_1111_vs_4": {
+        "conflicts": 13007,
+        "core_clauses": 10725,
+        "time_s": 0.652
+      },
+      "Orbit_2_211_vs_22": {
+        "conflicts": 1338,
+        "core_clauses": 4151,
+        "time_s": 0.0685
+      },
+      "Orbit_10_211_vs_211": {
+        "conflicts": 7031,
+        "core_clauses": 7687,
+        "time_s": 0.4623
+      },
+      "Orbit_13_211_vs_4": {
+        "conflicts": 6914,
+        "core_clauses": 5999,
+        "time_s": 0.3505
+      }
+    }
   }
 }
