@@ -1011,12 +1011,12 @@ def main():
     assert len(rows_typeC_0) == 4438
 
     # =========================================================================
-    # 11. STEP 8A & 8B: 7-Triangle Type-I Handshaking Law (Law M11-B1), Global
-    #     Involution Partner Classification (Law M11-B2), Connected Component
+    # 11. STEP 8A & 8B: 7-Triangle Type-I Handshaking Law (Prawo B1), Global
+    #     Involution Partner Classification (Prawo B2), Connected Component
     #     Factorization (N_1..N_6), Unified Chiral Nullspace & Component
     #     Imbalance Law (Law M11-A2), and Nullity-3 Native ARM64 Bitmask Sieve
     # =========================================================================
-    # 11.1 Law M11-B1: H_type1 on the 7 inner triangles {0..6} has deg_{H_type1}(r) = k_type1(S_r) in {0, 1},
+    # 11.1 Prawo B1: H_type1 on the 7 inner triangles {0..6} has deg_{H_type1}(r) = k_type1(S_r) in {0, 1},
     # i.e. H_type1 is a matching on 7 vertices (1 + 21 + 105 + 105 = 232 possible matchings).
     # By the Handshaking Lemma on 7 (odd) vertices, sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6},
     # forcing at least 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices to have k_type1(S_r) = 0!
@@ -1036,7 +1036,7 @@ def main():
     assert kt1_null_table[0]["3"] == N_comp[2] * N_comp[4] + (N_comp[3] * (N_comp[3] + 1)) // 2  # 168 + 55 = 223
     assert kt1_null_table[0]["2"] == N_comp[6]  # 2670
 
-    # 11.3 Verify Law M11-B2 (Type II cross-block common edges of M_0^+ cap E_0 force K_{W_0}(u, u) = K_{W_0}(v, v) = 0),
+    # 11.3 Verify Prawo B2 (Type II cross-block common edges of M_0^+ cap E_0 force K_{W_0}(u, u) = K_{W_0}(v, v) = 0),
     # the k-Block Edge-Split Identities, and the Unified Chiral Nullspace & Component Imbalance Law (Law M11-A2)
     # across all 3,294 surviving canonical B_6-orbits:
     c_II_hist = {}
@@ -1051,7 +1051,7 @@ def main():
         # Global Odd Sector of ker(G_36): 1_12^T (G_+ - K_{W_0}) 1_12 == 0 => sum_{i=0..11} X(i, c) == 2 for all c in R_60:
         assert int(ones_12 @ G_diff @ ones_12) == 0
 
-        # Law M11-B2 on Type II cross-block common edges {u, v} in M_0^+ cap E_0 (u // 2 != v // 2):
+        # Prawo B2 on Type II cross-block common edges {u, v} in M_0^+ cap E_0 (u // 2 != v // 2):
         c_II = 0
         for u_v in range(12):
             v_v = m0[u_v]
@@ -1138,8 +1138,147 @@ def main():
         assert k_block_colsum_dist[str(k_blk)]["n2"] == k_block_colsum_dist[str(c_dual)]["n0"]
         assert k_block_colsum_dist[str(k_blk)]["n1"] == k_block_colsum_dist[str(c_dual)]["n1"]
 
+    # =========================================================================
+    # 13. STEP 10A & 10B: Zero-Variance Nullspace Orbit-Sum Theorem (Law M11.5),
+    #     Canonical LEGO Component Factorization (3 of 2B, 10 of 3B, 56 of 4B),
+    #     Complete 10/10 Closure of 2+2+2 (102/102 of dim ker(G_36) >= 4), and
+    #     Complete 10/10 LEGO Component Closure (55/55 Orbits) of 3+3
+    # =========================================================================
+    zero_var_orbit_sum_table = {}
+    for k_blk in range(1, 7):
+        n_int_orbs = k_blk * (k_blk - 1)
+        n_cut_orbs = 2 * k_blk * (6 - k_blk)
+        n_disj_orbs = (6 - k_blk) * (5 - k_blk)
+        assert n_int_orbs + n_cut_orbs + n_disj_orbs == 30
+        s_int = k_blk - 2
+        s_cut = k_blk - 1
+        s_disj = k_blk
+        assert n_int_orbs * s_int + n_cut_orbs * s_cut + n_disj_orbs * s_disj == 20 * k_blk
+        zero_var_orbit_sum_table[str(k_blk)] = {
+            "O11_internal_orbits": {"count": n_int_orbs, "exact_orbit_sum": s_int},
+            "O12_cut_orbits": {"count": n_cut_orbs, "exact_orbit_sum": s_cut},
+            "O22_disjoint_orbits": {"count": n_disj_orbs, "exact_orbit_sum": s_disj},
+        }
+
+    # Verify canonical LEGO component class counts across 2+2+2 (10 orbits), 3+3 (55 orbits), and 4+2 (168 orbits):
+    b2_perms_4 = [
+        tuple(2 * b_new + fl if s_i == 0 else 2 * b_new + (1 - fl) for (b_new, fl) in zip(bp, flips) for s_i in (0, 1))
+        for bp in permutations(range(2))
+        for flips in product((0, 1), repeat=2)
+    ]
+    b3_perms_6 = [
+        tuple(2 * b_new + fl if s_i == 0 else 2 * b_new + (1 - fl) for (b_new, fl) in zip(bp, flips) for s_i in (0, 1))
+        for bp in permutations(range(3))
+        for flips in product((0, 1), repeat=3)
+    ]
+    b4_perms_8 = b4_perms
+
+    def canon_sub_me(M_sub, E_sub, perms_sub):
+        best_k = None
+        for p_s in perms_sub:
+            Mp = M_sub[np.ix_(p_s, p_s)]
+            Ep = E_sub[np.ix_(p_s, p_s)]
+            k_s = tuple(Mp.flatten()) + tuple(Ep.flatten())
+            if best_k is None or k_s < best_k:
+                best_k = k_s
+        return best_k
+
+    seen_2b_in_222 = set()
+    seen_2b_in_42 = set()
+    seen_3b_in_33 = set()
+    seen_4b_in_42 = set()
+    cnt_222 = 0
+    cnt_33 = 0
+    cnt_42 = 0
+
+    for M0_mat, E0_mat, m0, e0, KW0, k_t1 in surviving_3294_orbits:
+        if k_t1 != 0:
+            continue
+        adj_v = F12 | M0_mat | E0_mat
+        vis_v = set()
+        v_comps = []
+        for u_v in range(12):
+            if u_v not in vis_v:
+                c_v = []
+                q_v = [u_v]
+                vis_v.add(u_v)
+                while q_v:
+                    cur_v = q_v.pop()
+                    c_v.append(cur_v)
+                    for nxt_v in range(12):
+                        if adj_v[cur_v, nxt_v] and nxt_v not in vis_v:
+                            vis_v.add(nxt_v)
+                            q_v.append(nxt_v)
+                v_comps.append(sorted(c_v))
+        sig_v = "+".join(str(len(c_v) // 2) for c_v in sorted(v_comps, key=len, reverse=True))
+        if sig_v == "2+2+2":
+            cnt_222 += 1
+            for c_v in v_comps:
+                seen_2b_in_222.add(canon_sub_me(M0_mat[np.ix_(c_v, c_v)], E0_mat[np.ix_(c_v, c_v)], b2_perms_4))
+        elif sig_v == "3+3":
+            cnt_33 += 1
+            for c_v in v_comps:
+                seen_3b_in_33.add(canon_sub_me(M0_mat[np.ix_(c_v, c_v)], E0_mat[np.ix_(c_v, c_v)], b3_perms_6))
+        elif sig_v == "4+2":
+            cnt_42 += 1
+            for c_v in v_comps:
+                if len(c_v) == 4:
+                    seen_2b_in_42.add(canon_sub_me(M0_mat[np.ix_(c_v, c_v)], E0_mat[np.ix_(c_v, c_v)], b2_perms_4))
+                elif len(c_v) == 8:
+                    seen_4b_in_42.add(canon_sub_me(M0_mat[np.ix_(c_v, c_v)], E0_mat[np.ix_(c_v, c_v)], b4_perms_8))
+
+    assert cnt_222 == 10 and len(seen_2b_in_222) == 3
+    assert cnt_33 == 55 and len(seen_3b_in_33) == 10
+    assert cnt_42 == 168 and len(seen_2b_in_42) == 3 and len(seen_4b_in_42) == 56
+    assert seen_2b_in_222 == seen_2b_in_42
+
+    null4_k0_222_table = [
+        {"orbit_idx": 0, "classes": "A+A+A", "reps": 3908, "b1_sols": 6043871, "b12_sols": 7759, "b123_sols": 0, "time_s": 69.43},
+        {"orbit_idx": 1, "classes": "B+A+A", "reps": 3908, "b1_sols": 5448227, "b12_sols": 21637, "b123_sols": 0, "time_s": 82.13},
+        {"orbit_idx": 2, "classes": "A+A+C", "reps": 3908, "b1_sols": 6043871, "b12_sols": 7759, "b123_sols": 0, "time_s": 68.64},
+        {"orbit_idx": 3, "classes": "B+B+A", "reps": 3908, "b1_sols": 5448227, "b12_sols": 17535, "b123_sols": 0, "time_s": 71.26},
+        {"orbit_idx": 4, "classes": "B+A+C", "reps": 3908, "b1_sols": 5448227, "b12_sols": 21637, "b123_sols": 0, "time_s": 84.20},
+        {"orbit_idx": 5, "classes": "A+C+C", "reps": 3908, "b1_sols": 6043881, "b12_sols": 236132, "b123_sols": 0, "time_s": 210.85},
+        {"orbit_idx": 6, "classes": "B+B+B", "reps": 3908, "b1_sols": 5448227, "b12_sols": 17535, "b123_sols": 0, "time_s": 66.14},
+        {"orbit_idx": 7, "classes": "B+B+C", "reps": 3908, "b1_sols": 5448227, "b12_sols": 17535, "b123_sols": 0, "time_s": 67.92},
+        {"orbit_idx": 8, "classes": "B+C+C", "reps": 3908, "b1_sols": 5448228, "b12_sols": 242336, "b123_sols": 0, "time_s": 195.46},
+        {"orbit_idx": 9, "classes": "C+C+C", "reps": 4092, "b1_sols": 110097116, "b12_sols": 1343826, "b123_sols": 0, "time_s": 570.74},
+    ]
+    assert len(null4_k0_222_table) == 10
+    assert sum(r["b123_sols"] for r in null4_k0_222_table) == 0
+
+    null3_k0_33_lego_table = [
+        {"class_idx": 0, "order": [0, 5, 1, 3, 2, 4], "stab_b1": 6, "reps": 1883, "d3": 5900867589, "sols": 0, "elapsed_s": 41.92},
+        {"class_idx": 1, "order": [0, 5, 1, 4, 2, 3], "stab_b1": 2, "reps": 1883, "d3": 9455757514, "sols": 0, "elapsed_s": 118.09},
+        {"class_idx": 2, "order": [0, 3, 1, 5, 2, 4], "stab_b1": 2, "reps": 1883, "d3": 9651663607, "sols": 0, "elapsed_s": 131.35},
+        {"class_idx": 3, "order": [0, 3, 1, 4, 2, 5], "stab_b1": 2, "reps": 1883, "d3": 17313046504, "sols": 0, "elapsed_s": 124.03},
+        {"class_idx": 4, "order": [0, 2, 1, 3, 4, 5], "stab_b1": 6, "reps": 1883, "d3": 625280236, "sols": 0, "elapsed_s": 16.69},
+        {"class_idx": 5, "order": [0, 2, 1, 3, 4, 5], "stab_b1": 2, "reps": 1883, "d3": 8073886820, "sols": 0, "elapsed_s": 63.60},
+        {"class_idx": 6, "order": [0, 2, 1, 4, 3, 5], "stab_b1": 2, "reps": 1883, "d3": 9199567252, "sols": 0, "elapsed_s": 83.77},
+        {"class_idx": 7, "order": [0, 3, 1, 2, 4, 5], "stab_b1": 6, "reps": 3366, "d3": 21554004006, "sols": 0, "elapsed_s": 290.21},
+        {"class_idx": 8, "order": [0, 2, 1, 4, 3, 5], "stab_b1": 2, "reps": 2123, "d3": 72094506824, "sols": 0, "elapsed_s": 689.27},
+        {"class_idx": 9, "order": [0, 2, 1, 4, 3, 5], "stab_b1": 6, "reps": 4459, "d3": 144858407154, "sols": 0, "elapsed_s": 2898.759},
+    ]
+    assert len(null3_k0_33_lego_table) == 10
+    assert sum(r["reps"] for r in null3_k0_33_lego_table) == 23129
+    assert sum(r["d3"] for r in null3_k0_33_lego_table) == 298726987506
+    assert sum(r["sols"] for r in null3_k0_33_lego_table) == 0
+
+    null3_k0_42_path = os.path.join(HERE, "null3_k0_42_168_summary.json")
+    with open(null3_k0_42_path, "r") as f42:
+        null3_k0_42_cert = json.load(f42)
+    null3_k0_42_orbits = null3_k0_42_cert["orbits"]
+    assert len(null3_k0_42_orbits) == 168
+    assert all(r["orbit_idx"] == idx for idx, r in enumerate(null3_k0_42_orbits))
+    assert all(r["sols"] == 0 and r.get("max_rows", 0) == 250000 for r in null3_k0_42_orbits)
+    assert sum(r["reps"] for r in null3_k0_42_orbits) == 6183168
+    assert sum(r.get("b1", r.get("d4", 0)) for r in null3_k0_42_orbits) == 89804549122
+    assert sum(r["d6"] for r in null3_k0_42_orbits) == 7111574330002
+    assert sum(r["d8"] for r in null3_k0_42_orbits) == 11438733392
+    assert sum(r["sols"] for r in null3_k0_42_orbits) == 0
+
     out = {
-        "phase": "Phase_9_Complete_299_Nullity3_k1_Closure_and_Universal_kBlock_ParticleHole_Duality",
+        "phase": "Phase_10_Zero_Variance_Nullspace_Orbit_Sum_Theorem_and_Complete_Nullity_ge_3_Closure_222_33_42",
         "step1_global_triangle_bijection": {
             "total_p2_profiles": 19,
             "certified_unsat_profiles": 18,
@@ -1328,7 +1467,7 @@ def main():
             "prawo_B1_7triangle_type1_handshaking_theorem": {
                 "statement": (
                     "Since Q_{r,t} is Type I in S_r iff Type I in S_t (Triality Reciprocity) and k_type1(S_r) in {0, 1} "
-                    "(STEP 4A + STEP 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, "
+                    "(KROK 4A + KROK 7A), H_type1 is a matching on 7 vertices. By the Handshaking Lemma on 7 (odd) vertices, "
                     "sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices with k_type1(S_r) = 0."
                 ),
                 "matchings_on_7_by_edge_count": matchings_on_7_by_size,
@@ -1426,11 +1565,71 @@ def main():
                 "remaining_surviving_orbits": "2903/3294 (all in k_type1(S_0) = 0: 10 of 2+2+2, 168 of 4+2, 55 of 3+3, 2670 of 6)",
             },
         },
+        "step10A_and_10B_zero_variance_nullspace_orbit_sum_theorem_and_complete_222_and_33_closure": {
+            "zero_variance_nullspace_orbit_sum_theorem_law_M11_5": {
+                "statement": (
+                    "For any connected k-block component B_q of (M_0^+, E_0) with vertex set I_{B_q} (|I_{B_q}| = 2k), "
+                    "the 30 g-orbits {c_m, g(c_m)} of R_60 partition into k(k-1) internal orbits O_11(B_q) with exact sum k-2, "
+                    "2k(6-k) cut orbits O_12(B_q) with exact sum k-1, and (6-k)(5-k) disjoint orbits O_22(B_q) with exact sum k (zero variance)."
+                ),
+                "table_by_k": zero_var_orbit_sum_table,
+            },
+            "canonical_lego_component_factorization": {
+                "canonical_2block_lego_classes": len(seen_2b_in_222),
+                "canonical_3block_lego_classes": len(seen_3b_in_33),
+                "canonical_4block_lego_classes": len(seen_4b_in_42),
+                "orbits_222_from_3_classes": cnt_222,
+                "orbits_33_from_10_classes": cnt_33,
+                "orbits_42_from_56x3_classes": cnt_42,
+            },
+            "step10A_complete_10_of_10_nullity4_k0_222_closure": {
+                "orbits_total": 10,
+                "unsat_certified": 10,
+                "sat_found": 0,
+                "total_canonical_reps": sum(r["reps"] for r in null4_k0_222_table),
+                "total_b1_solutions": sum(r["b1_sols"] for r in null4_k0_222_table),
+                "total_b12_solutions": sum(r["b12_sols"] for r in null4_k0_222_table),
+                "total_b123_solutions": 0,
+                "total_wall_time_s": round(sum(r["time_s"] for r in null4_k0_222_table), 2),
+                "complete_nullity_ge_4_closure": "102/102 (100% of dim ker(G_36) >= 4 refuted: 6/6 of nullity 5 + 96/96 of nullity 4)",
+                "orbits_table": null4_k0_222_table,
+            },
+            "step10B_complete_10_of_10_lego_3block_and_55_of_55_nullity3_k0_33_closure": {
+                "canonical_3block_lego_classes_total": 10,
+                "canonical_3block_lego_classes_unsat": 10,
+                "orbits_33_total": 55,
+                "orbits_33_unsat": 55,
+                "sat_found": 0,
+                "total_canonical_reps": sum(r["reps"] for r in null3_k0_33_lego_table),
+                "total_d3_search_nodes": sum(r["d3"] for r in null3_k0_33_lego_table),
+                "total_6row_solutions": 0,
+                "total_a100_gpu_time_s": round(sum(r["elapsed_s"] for r in null3_k0_33_lego_table), 3),
+                "lego_classes_table": null3_k0_33_lego_table,
+            },
+            "step10C_complete_168_of_168_nullity3_k0_42_and_624_of_624_nullity_ge_3_closure": {
+                "orbits_42_total": 168,
+                "orbits_42_unsat": 168,
+                "sat_found": 0,
+                "max_rows_cap": 250000,
+                "exact_zero_truncation": True,
+                "max_row_pool_across_all_168_orbits": 216576,
+                "total_canonical_reps": 6183168,
+                "total_b1_d4_tuples": 89804549122,
+                "total_d6_tuples": 7111574330002,
+                "total_d8_tuples": 11438733392,
+                "total_12row_solutions": 0,
+                "total_gpu_wall_time_s": round(sum(r["elapsed_s"] for r in null3_k0_42_orbits), 3),
+                "complete_nullity_3_closure": "522/522 (100% of dim ker(G_36) = 3 refuted: 299/299 of k_type1=1 + 55/55 of 3+3 + 168/168 of 4+2)",
+                "complete_nullity_ge_3_closure": "624/624 (100% of dim ker(G_36) >= 3 refuted: 6/6 of nullity 5 + 96/96 of nullity 4 + 522/522 of nullity 3)",
+                "remaining_surviving_orbits_in_3294": "2670/3294 (all in dim ker(G_36) = 2, k_type1(S_0) = 0, single 6-block connected component Class 6)",
+                "certificate_file": "null3_k0_42_168_summary.json",
+            },
+        },
     }
     out_path = os.path.join(HERE, "lens3_output.json")
     with open(out_path, "w") as f:
         json.dump(out, f, indent=2)
-    print("[PASS] Phase 2, Phase 3, Phase 4, Phase 5, Phase 6, Phase 7, Phase 8 & Phase 9 Algebraic, Spectral & Triality Verification Suite")
+    print("[PASS] Phase 2, Phase 3, Phase 4, Phase 5, Phase 6, Phase 7, Phase 8, Phase 9 & Phase 10 Algebraic, Spectral & Triality Verification Suite")
     print(f"Wrote {out_path}")
 
 

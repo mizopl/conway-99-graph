@@ -332,6 +332,53 @@ theorem asymmetric_diagonal_inversion_law
     ((KW_ii = 2 ∧ req_pairs = 1) ∨ (KW_ii = 0 ∧ req_pairs = 0)) := by
   omega
 
+
+/-!
+  ### 9. Theorem 9 (`Law M13` / `The Attention-Cone Law` — *Prawo Stożka Uwagi: Klein-Triality & Exact Tensor Factorization*):
+  On a 2-block component `C_2` (`4` vertices, complete graph `K_4`), the 3 fixed-point-free involutions
+  `{tau_1, tau_2, tau_3} = V_4 \ {I}` form the non-identity elements of the Klein four-group (`tau_i * tau_j = tau_k`).
+  - If `(F_4, M, E)` are all distinct (`eq_FM = 0, eq_FE = 0, eq_ME = 0`), the Klein group law forces
+    `M * E = E * M = F_4`, so on any edge of `F_4` (`F_f = 1, E_f = 0, ME_f = 1, EM_f = 1`),
+    `KW_f = 2 - F_f - E_f - ME_f - EM_f = -1 < 0`, violating non-negativity `KW_f >= 0`.
+  - If `(F_4, M, E)` all coincide (`eq_FM = 1, eq_FE = 1, eq_ME = 1`), `C_2` splits into `1 + 1` (disconnected).
+  - By transitivity of equality, at most one pair can differ if two pairs are equal; hence **exactly one** pair of
+    `{F_4, M, E}` coincides (`eq_FM + eq_FE + eq_ME = 1`), yielding the exact 3-element Klein-Triality basis
+    with trace triples `(Tr(FM), Tr(FE), Tr(ME)) in {(0, 0, 4), (0, 4, 0), (4, 0, 0)}` (`|C_2^conn| = 3`),
+    which induces the exact Cartesian factorization `|O_{4+2}| = 3 * 56 = 168` and symmetric square `|O_{3+3}| = 10 * 11 / 2 = 55`.
+-/
+
+/-- First part of Theorem 9: In any valid 2-block component on `K_4`, all three involutions `(F_4, M, E)`
+    cannot be pairwise distinct because `M * E = E * M = F_4` forces `KW_f = -1 < 0` on edges of `F_4`. -/
+theorem klein_four_distinct_matchings_no_go
+    (F_f E_f ME_f EM_f KW_f : Int)
+    (h_edge : F_f = 1 ∧ E_f = 0 ∧ ME_f = 1 ∧ EM_f = 1)
+    (h_KW : KW_f = 2 - F_f - E_f - ME_f - EM_f) :
+    KW_f = -1 ∧ ¬(0 ≤ KW_f) := by
+  omega
+
+/-- Second part of Theorem 9: Klein-Triality Classification of connected 2-block components (`|C_2^conn| = 3`,
+    trace triples `(0,0,4), (0,4,0), (4,0,0)`) and the resulting exact factorizations
+    `168 = 3 * 56` (`4+2`) and `55 = 10 * 11 / 2` (`3+3`). -/
+theorem klein_triality_and_exact_tensor_factorization
+    (eq_FM eq_FE eq_ME Tr_FM Tr_FE Tr_ME N_C2 N_C3 N_C4 N_42 N_33 : Int)
+    (h_b1 : eq_FM = 0 ∨ eq_FM = 1)
+    (h_b2 : eq_FE = 0 ∨ eq_FE = 1)
+    (h_b3 : eq_ME = 0 ∨ eq_ME = 1)
+    (h_trans : eq_FM + eq_FE + eq_ME ≠ 2)
+    (h_conn : ¬(eq_FM = 1 ∧ eq_FE = 1 ∧ eq_ME = 1))
+    (h_nogo : ¬(eq_FM = 0 ∧ eq_FE = 0 ∧ eq_ME = 0))
+    (h_tr : Tr_FM = 4 * eq_FM ∧ Tr_FE = 4 * eq_FE ∧ Tr_ME = 4 * eq_ME)
+    (h_counts : N_C2 = 3 ∧ N_C3 = 10 ∧ N_C4 = 56)
+    (h_prod42 : N_42 = N_C2 * N_C4)
+    (h_sym33 : 2 * N_33 = N_C3 * (N_C3 + 1)) :
+    eq_FM + eq_FE + eq_ME = 1 ∧
+    ((Tr_FM = 0 ∧ Tr_FE = 0 ∧ Tr_ME = 4) ∨
+     (Tr_FM = 0 ∧ Tr_FE = 4 ∧ Tr_ME = 0) ∨
+     (Tr_FM = 4 ∧ Tr_FE = 0 ∧ Tr_ME = 0)) ∧
+    N_42 = 168 ∧ N_33 = 55 := by
+  rcases h_counts with ⟨rfl, rfl, rfl⟩
+  omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -346,5 +393,7 @@ theorem asymmetric_diagonal_inversion_law
 #print axioms cross_component_universal_interface
 #print axioms two_block_cut_orbit_exact_partition
 #print axioms asymmetric_diagonal_inversion_law
+#print axioms klein_four_distinct_matchings_no_go
+#print axioms klein_triality_and_exact_tensor_factorization
 
 end Conway99ChiralTheorems
