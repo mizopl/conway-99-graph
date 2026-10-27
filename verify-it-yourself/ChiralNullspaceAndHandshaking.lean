@@ -810,6 +810,30 @@ theorem m0_column_completion_k12_gram_crystallization
     simp
     omega
 
+/-- Theorem 17c (`phantom_completion_two_way_bijection_iff`):
+    Adding the Phantom Factor `X` (either the 7th phantom block `Phantom12 + Phantom13` on
+    vertices `{12, 13}` or the 6 phantom `M_0` columns `M0_ColGram` on columns `{60..65}`)
+    and then subtracting `X` is a 100% lossless two-way bijection (`↔` / `iff`):
+    1. Subtracting `X` from `H + X` recovers the exact original matrix `H` (`(H + X) - X = H`).
+    2. A candidate 12-vertex degree profile `deg_H` satisfies the asymmetric target
+       `deg_H i j = Delta12 F M_pos E_r_F i j` if and only if (`↔`) the augmented 14-vertex
+       profile is crystallized at `2` (`deg_H i j + Phantom12 F i j + Phantom13 M_pos E_r_F i j = 2`).
+    3. A candidate 60-column Gram matrix `Gram_X` satisfies `Gram_X i k = Gp12 M_pos i k`
+       if and only if (`↔`) the 66-column augmented Gram matrix equals the universal
+       `K_12` Gram matrix (`Gram_X i k + M0_ColGram M_pos i k = 10 * I12 i k + J12 i k`). -/
+theorem phantom_completion_two_way_bijection_iff
+    (F M_pos E_r_F deg_H Gram_X : Mat12) (i j k : Fin 12) :
+    ((deg_H i j + Phantom12 F i j + Phantom13 M_pos E_r_F i j) -
+      (Phantom12 F i j + Phantom13 M_pos E_r_F i j) = deg_H i j) ∧
+    (deg_H i j = Delta12 F M_pos E_r_F i j ↔
+      deg_H i j + Phantom12 F i j + Phantom13 M_pos E_r_F i j = 2) ∧
+    (Gram_X i k = Gp12 M_pos i k ↔
+      Gram_X i k + M0_ColGram M_pos i k = 10 * I12 i k + J12 i k) := by
+  dsimp [Delta12, Phantom12, Phantom13, Gp12, M0_ColGram, J12, I12]
+  refine ⟨by omega, ?_, ?_⟩
+  · constructor <;> intro h <;> omega
+  · constructor <;> intro h <;> omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -840,5 +864,6 @@ theorem m0_column_completion_k12_gram_crystallization
 #print axioms twenty_column_m0_block_design_empty_horizon
 #print axioms phantom_seventh_block_two_regular_crystallization
 #print axioms m0_column_completion_k12_gram_crystallization
+#print axioms phantom_completion_two_way_bijection_iff
 
 end Conway99ChiralTheorems
