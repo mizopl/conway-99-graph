@@ -523,7 +523,7 @@ def main():
         "min_single_orbit_nodes": min(x["nodes"] for x in per_orbit),
         "per_orbit": per_orbit,
     }
-    out_p = "/Users/blister/.gemini/antigravity/brain/f9b47d7b-99a3-46e5-bb06-bc765b9911fb/scratch/null3_k1_299_summary.json"
+    out_p = "null3_k1_299_summary.json"
     with open(out_p, "w") as f:
         json.dump(summary, f, indent=2)
     print(

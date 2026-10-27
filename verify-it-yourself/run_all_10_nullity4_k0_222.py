@@ -744,7 +744,7 @@ def main():
         "total_wall_time_s": round(time.time() - t_start, 2),
         "per_orbit": results_sorted,
     }
-    out_p = "/Users/blister/.gemini/antigravity/brain/f9b47d7b-99a3-46e5-bb06-bc765b9911fb/scratch/null4_k0_222_10_summary.json"
+    out_p = "null4_k0_222_10_summary.json"
     with open(out_p, "w") as f:
         json.dump(summary, f, indent=2)
     print(f"DONE: Certified {total_unsat}/10 orbits of 2+2+2 UNSAT in {time.time()-t_start:.2f}s!", flush=True)
