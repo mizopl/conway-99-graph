@@ -408,7 +408,110 @@ def build_orbits():
     I12 = np.eye(12, dtype=int)
     J12 = np.ones((12, 12), dtype=int)
 
-    
+    def gen_matchings_12(verts):
+        if not verts:
+            yield ()
+            return
+        v0 = verts[0]
+        rest = verts[1:]
+        for idx, v1 in enumerate(rest):
+            rem = rest[:idx] + rest[idx + 1:]
+            for m in gen_matchings_12(rem):
+                yield ((v0, v1),) + m
+
+    matchings_12 = list(gen_matchings_12(list(range(12))))
+    m_tuples = []
+    for m in matchings_12:
+        p = [0] * 12
+        for u, v in m:
+            p[u] = v
+            p[v] = u
+        m_tuples.append(tuple(p))
+    m_to_id = {t: i for i, t in enumerate(m_tuples)}
+
+    def cycle_part_12(p):
+        vis = [False] * 6
+        cycs = []
+        for b_idx in range(6):
+            if vis[b_idx]:
+                continue
+            cur = 2 * b_idx
+            length = 0
+            while not vis[cur // 2]:
+                vis[cur // 2] = True
+                length += 1
+                nxt = p[cur]
+                if nxt // 2 == cur // 2:
+                    break
+                cur = nxt ^ 1
+            cycs.append(length)
+        return tuple(sorted(cycs, reverse=True))
+
+    reps_M0 = {}
+    for p in m_tuples:
+        part = cycle_part_12(p)
+        if part not in reps_M0:
+            reps_M0[part] = p
+
+    b6_perms = []
+    for perm in permutations(range(6)):
+        for flips in product((0, 1), repeat=6):
+            g_p = [0] * 12
+            for b_old in range(6):
+                b_new = perm[b_old]
+                fl = flips[b_old]
+                g_p[2 * b_old] = 2 * b_new + fl
+                g_p[2 * b_old + 1] = 2 * b_new + (1 - fl)
+            b6_perms.append(tuple(g_p))
+
+    def get_block_comps(M, E):
+        adj = F12 | M | E
+        vis = set()
+        comps = []
+        for u in range(12):
+            if u not in vis:
+                comp = []
+                q = [u]
+                vis.add(u)
+                while q:
+                    cur = q.pop()
+                    comp.append(cur)
+                    for nxt in range(12):
+                        if adj[cur, nxt] and nxt not in vis:
+                            vis.add(nxt)
+                            q.append(nxt)
+                comps.append(sorted(comp))
+        return comps
+
+    orbits_by_sig = {}
+    for part, m0 in sorted(reps_M0.items()):
+        stab = [g_p for g_p in b6_perms if all(g_p[m0[u]] == m0[g_p[u]] for u in range(12))]
+        M0_mat = np.zeros((12, 12), dtype=int)
+        for u, v in enumerate(m0):
+            M0_mat[u, v] = 1
+        seen_e0 = [False] * len(m_tuples)
+        for idx_e, e0 in enumerate(m_tuples):
+            if seen_e0[idx_e]:
+                continue
+            for g_p in stab:
+                img = [0] * 12
+                for u in range(12):
+                    img[g_p[u]] = g_p[e0[u]]
+                seen_e0[m_to_id[tuple(img)]] = True
+            E0_mat = np.zeros((12, 12), dtype=int)
+            for u, v in enumerate(e0):
+                E0_mat[u, v] = 1
+            KW0 = 2 * J12 - F12 - E0_mat - (M0_mat @ E0_mat) - (E0_mat @ M0_mat)
+            if KW0.min() >= 0:
+                k_t1 = sum(1 for b_idx in range(6) if m0[2 * b_idx] == 2 * b_idx + 1 and e0[2 * b_idx] == 2 * b_idx + 1)
+                comps = get_block_comps(M0_mat, E0_mat)
+                sig = f"kt1={k_t1}_" + "+".join(str(len(c)//2) for c in sorted(comps, key=lambda x: len(x), reverse=True))
+                Gp = 9 * I12 + J12 - M0_mat
+                Delta0 = 2 * J12 - I12 - F12 - M0_mat - (E0_mat @ F12)
+                orbits_by_sig.setdefault(sig, []).append((M0_mat, E0_mat, Gp, KW0, Delta0, comps))
+    return F12, I12, J12, b6_perms, orbits_by_sig
+
+
 def main():
     F12, I12, J12, b6_perms, orbits_by_sig = build_orbits()
     orbits_33 = orbits_by_sig["kt1=0_3+3"]
