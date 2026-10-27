@@ -1,0 +1,21 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "MainResults.conway99_nonexistence_challenge"
+  ],
+  "definition_names": [
+    "MainResults.SimpleGraph",
+    "MainResults.commonNeighbors",
+    "MainResults.degree",
+    "MainResults.IsSRG",
+    "MainResults.IsConway99Graph",
+    "MainResults.Conway99Nonexistence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
