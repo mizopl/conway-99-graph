@@ -558,6 +558,29 @@ theorem open_cone_column_saturation_and_halfway_duality
     (r = 8 ∧ pairs = 28 → n_2 = 28 - e ∧ n_1 = 24 + 2 * e ∧ n_0 = 8 - e) := by
   omega
 
+
+/-!
+  ### 14. Theorem 14 (`Law M18` — Three-Handle Specification per `K17`):
+  - **Handle 1 (Vivid Functional Handle):** **"The Single-Pin / No-Shared-Domino Theorem"** (*Twierdzenie o Pojedynczej Szpilce — „Gdy Wiersze Dzielą Co Najwyżej Jedną Kolumnę, Nie Mogą Dzielić Kostki Domina $\{c, g(c)\}$”*).
+    *What it does & what it is for:* Eliminates all chiral pair-disjointness bitmasks (`o2 = x & gx`, `(rx & rgx) & o2 == 0ULL`) from the solver across every $k_{\text{type1}} = 0$ stratum (`2+2+2`, `3+3`, `4+2`, and `Class 6`), shrinking row-pool GPU memory by **`3x`** (`1 uint64_t` per row instead of `3`) and removing `get_gx` from inner loops. Because every off-diagonal inner product in $k_{\text{type1}} = 0$ satisfies $G_p^{\text{eff}}(a, b) = 1 - M_0(a, b) \in \{0, 1\} < 2$, any two rows $x_a, x_b$ satisfying $\langle x_a, x_b \rangle = G_p^{\text{eff}}(a, b) \le 1$ share at most **one** column (`1 pin`), so they can never share a 2-column involution domino $\{c, g(c)\}$ (`which requires >= 2 shared columns`).
+  - **Handle 2 (Domain-Agnostic Operational Axiom):** Sub-Binary Overlap Implies Fixed-Point-Free Involution Pair Disjointness (`Law M18`).
+  - **Handle 3 (Formal Lean 4 Proof):** `single_pin_no_shared_involution_domino` (`0 sorryAx`).
+-/
+
+/-- Theorem 14 (`Law M18`): In any `k_type1 = 0` stratum, off-diagonal `Gp_eff(a, b) = 1 - M_0(a, b)`
+    lies in `{0, 1} <= 1`. Since each shared involution domino `{c, g(c)}` contributes `2` to the
+    column overlap `ovlp = popcnt(x_a & x_b) >= 2 * shared_dominoes`, `Gp_eff(a, b) <= 1` forces
+    `shared_dominoes = 0` (`o2_a & o2_b == 0` is 100% redundant). -/
+theorem single_pin_no_shared_involution_domino
+    (M_ab gp_ab ovlp shared_dominoes rest_ovlp : Int)
+    (h_M_bin : M_ab = 0 ∨ M_ab = 1)
+    (h_gp_def : gp_ab = 1 - M_ab)
+    (h_ovlp_eq : ovlp = gp_ab)
+    (h_decomp : ovlp = 2 * shared_dominoes + rest_ovlp)
+    (h_nonneg : 0 ≤ shared_dominoes ∧ 0 ≤ rest_ovlp) :
+    gp_ab ≤ 1 ∧ shared_dominoes = 0 := by
+  omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -580,5 +603,6 @@ theorem open_cone_column_saturation_and_halfway_duality
 #print axioms decoupled_row_col_cone_covariance
 #print axioms free_block_pointwise_col_stabilizer_order
 #print axioms open_cone_column_saturation_and_halfway_duality
+#print axioms single_pin_no_shared_involution_domino
 
 end Conway99ChiralTheorems
