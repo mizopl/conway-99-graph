@@ -381,12 +381,11 @@ theorem klein_triality_and_exact_tensor_factorization
 
 
 /-!
-  ### 10. Theorem 10 (`Law M14` / `The Cone-Fiber Coset Adjunction Theorem` — *Twierdzenie o Sprzężeniu Stożek–Włókno*):
-  Let a group/monoid of cone symmetries `H` act on the prefix cone space `X` (`actX`), extension space `Y` (`actY`),
-  and target fiber space `M` (`actM`). Even when a federated bundle of fibers `m in B` has trivial global symmetry
-  intersection (`cap_{m in B} Aut(m) = {1}`), symmetry breaking at the prefix cone `C(x)` by the **full intrinsic cone
-  automorphism group `H = Aut(C)`** (`restricting x to IsCanon(x)`) is **100% exhaustive and sound** provided each
-  fiber `m` is expanded over its `H`-orbit / quotient cosets `actM h m` in the extension space `Y`!
+  ### 10. Theorem 10 (`Law M14` — Three-Handle Specification per `K17`):
+  - **Handle 1 (Vivid Functional Handle):** **"The Symmetric Trunk & Rotated Leaves Theorem"** (*Twierdzenie o Symetrycznym Pniu i Obróconych Liściach — „Złóż Pień, Obróć Liście”*).
+    *What it does & what it is for:* When dozens of orbits share a common 6-row search trunk (`6-Cone`) and even one orbit in the bundle is asymmetric (`|Aut(m)| = 1`), naive symmetry intersection throws away the symmetry of the entire trunk. This theorem proves you can fold (quotient) the heavy trunk by the **trunk's own full symmetry group `H = Aut(C)`** (cutting root GPU work by `2x–6x`), and simply attach rotated copies (`coset leaves h * m`) of the asymmetric branches at the very bottom of the tree (`D7/D8`, where checking a leaf costs `< 0.5%` of runtime).
+  - **Handle 2 (Domain-Agnostic Operational Axiom):** Cone-Fiber Coset Adjunction (`Res` at root $\leftrightarrow$ `Ind` at leaves).
+  - **Handle 3 (Formal Zero-Axiom Proof):** `cone_fiber_coset_adjunction` & `cone_fiber_coset_unsat_transfer` (`0 axioms`).
 -/
 
 /-- Theorem 10a (`Law M14` Adjunction Equivalence): Exists `(x, y)` in the full prefix-extension space solving fiber `m`
@@ -427,14 +426,11 @@ theorem cone_fiber_coset_unsat_transfer
 
 
 /-!
-  ### 11. Theorem 11 (`Law M15` / `The Delta0-KW0 Zero Conservation Law` — *Zasada Zachowania Zer $\Delta_0$–$KW_0$*):
-  For every row `i` in `S_r` (`12` columns, row sum of `Delta_0` = `24 - 4 = 20`, row sum of `KW_0` = `24 - 4 = 20`
-  since `I, F, M_0^+, E_0` are 1-regular):
-  - If `Delta_0` has `z_d` zeros, `o_d` ones, and `t_d` twos (`z_d + o_d + t_d = 12` and `o_d + 2 * t_d = 20`),
-    and `KW_0` has `z_k` zeros, `o_k` ones, and `t_k` twos (`z_k + o_k + t_k = 12` and `o_k + 2 * t_k = 20`),
-    then `2 * z_d + o_d = 4` (`z_d in {0, 1, 2}`) and `2 * z_k + o_k = 4` (`z_k in {1, 2}`).
-  - Moreover, whenever `M_0^+(i) != F(E_0(i))` off-block (`so z_d = 0`, expanding the row pool to `216,576`),
-    any coincidence between `E_0` and `M_0^+ E_0 + E_0 M_0^+` (`redukcja o_k o 2`) forces `z_k = 2` (`an extra zero in KW_0`!).
+  ### 11. Theorem 11 (`Law M15` — Three-Handle Specification per `K17`):
+  - **Handle 1 (Vivid Functional Handle):** **"The Wide-Pool / Tight-Sieve Balloon Law"** (*Prawo Balonu: Szeroka Pula = Gęste Sito*).
+    *What it does & what it is for:* Explains why orbits with huge single-row candidate pools (`216,576` rows instead of `91,392`) do not blow up the solver when ordered properly. Like squeezing a water balloon, total constraint tightness across $\Delta_0$ and $KW_0$ is conserved (`2*z + o = 4`): whenever a row has no off-block $\Delta_0 = 0$ blockers (making its candidate pool `2.37x` wider), the algebra forces extra $KW_0 = 0$ pairwise blockers (`making the pairwise compatibility sieve 2.57x tighter: 13.6% vs 35%`). Moving those tight $KW_0 \in \{0, 1\}$ pairs into the first 4 rows (`B1`) immediately crushes the wide pool.
+  - **Handle 2 (Domain-Agnostic Operational Axiom):** $\Delta_0$–$KW_0$ Row-Entry & Zero Conservation Law (`2 * z_d + o_d = 4`, `2 * z_k + o_k = 4`).
+  - **Handle 3 (Formal Lean 4 Proof):** `delta0_kw0_zero_conservation` (`0 sorryAx`).
 -/
 
 /-- Theorem 11 (`Law M15`): Exact row-entry conservation laws `2 * z_d + o_d = 4` and `2 * z_k + o_k = 4`
