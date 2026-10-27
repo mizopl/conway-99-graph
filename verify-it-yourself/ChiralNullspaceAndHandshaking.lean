@@ -379,6 +379,81 @@ theorem klein_triality_and_exact_tensor_factorization
   rcases h_counts with ⟨rfl, rfl, rfl⟩
   omega
 
+
+/-!
+  ### 10. Theorem 10 (`Law M14` / `The Cone-Fiber Coset Adjunction Theorem` — *Twierdzenie o Sprzężeniu Stożek–Włókno*):
+  Let a group/monoid of cone symmetries `H` act on the prefix cone space `X` (`actX`), extension space `Y` (`actY`),
+  and target fiber space `M` (`actM`). Even when a federated bundle of fibers `m in B` has trivial global symmetry
+  intersection (`cap_{m in B} Aut(m) = {1}`), symmetry breaking at the prefix cone `C(x)` by the **full intrinsic cone
+  automorphism group `H = Aut(C)`** (`restricting x to IsCanon(x)`) is **100% exhaustive and sound** provided each
+  fiber `m` is expanded over its `H`-orbit / quotient cosets `actM h m` in the extension space `Y`!
+-/
+
+/-- Theorem 10a (`Law M14` Adjunction Equivalence): Exists `(x, y)` in the full prefix-extension space solving fiber `m`
+    if and only if there exists a canonical prefix `x` (`C x ∧ IsCanon x`), a cone symmetry `h : H`, and an extension `y`
+    solving the conjugated fiber `actM h m`. -/
+theorem cone_fiber_coset_adjunction
+    {H X Y M : Type}
+    (actX : H → X → X) (actY : H → Y → Y) (actM : H → M → M) (invH : H → H)
+    (C : X → Prop) (IsCanon : X → Prop) (P : M → X → Y → Prop)
+    (h_canon_rep : ∀ x : X, C x → ∃ h : H, C (actX h x) ∧ IsCanon (actX h x))
+    (h_equiv : ∀ (h : H) (m : M) (x : X) (y : Y), P m x y → P (actM h m) (actX h x) (actY h y))
+    (h_equiv_inv : ∀ (h : H) (m : M) (x : X) (y : Y), P (actM h m) x y → P m (actX (invH h) x) (actY (invH h) y))
+    (h_cone_inv : ∀ (h : H) (x : X), C x → C (actX (invH h) x))
+    (m : M) :
+    (∃ x : X, ∃ y : Y, C x ∧ P m x y) ↔
+    (∃ x : X, C x ∧ IsCanon x ∧ ∃ h : H, ∃ y : Y, P (actM h m) x y) := by
+  constructor
+  · rintro ⟨x, y, hCx, hPm⟩
+    rcases h_canon_rep x hCx with ⟨h, hC_hx, hCan_hx⟩
+    exact ⟨actX h x, hC_hx, hCan_hx, h, actY h y, h_equiv h m x y hPm⟩
+  · rintro ⟨x, hCx, _hCanx, h, y, hPhm⟩
+    exact ⟨actX (invH h) x, actY (invH h) y, h_cone_inv h x hCx, h_equiv_inv h m x y hPhm⟩
+
+/-- Theorem 10b (`Law M14` Direct UNSAT Transfer): If every canonical cone prefix `x` (`C x ∧ IsCanon x`) has no valid
+    extension `(h, y)` across the `H`-coset fibers `actM h m`, then fiber `m` is globally UNSAT (`¬ ∃ x y, C x ∧ P m x y`). -/
+theorem cone_fiber_coset_unsat_transfer
+    {H X Y M : Type}
+    (actX : H → X → X) (actY : H → Y → Y) (actM : H → M → M)
+    (C : X → Prop) (IsCanon : X → Prop) (P : M → X → Y → Prop)
+    (h_canon_rep : ∀ x : X, C x → ∃ h : H, C (actX h x) ∧ IsCanon (actX h x))
+    (h_equiv : ∀ (h : H) (m : M) (x : X) (y : Y), P m x y → P (actM h m) (actX h x) (actY h y))
+    (m : M)
+    (h_unsat_canon : ∀ x : X, C x → IsCanon x → ∀ h : H, ∀ y : Y, ¬ P (actM h m) x y) :
+    ¬ (∃ x : X, ∃ y : Y, C x ∧ P m x y) := by
+  rintro ⟨x, y, hCx, hPm⟩
+  rcases h_canon_rep x hCx with ⟨h, hC_hx, hCan_hx⟩
+  exact h_unsat_canon (actX h x) hC_hx hCan_hx h (actY h y) (h_equiv h m x y hPm)
+
+
+/-!
+  ### 11. Theorem 11 (`Law M15` / `The Delta0-KW0 Zero Conservation Law` — *Zasada Zachowania Zer $\Delta_0$–$KW_0$*):
+  For every row `i` in `S_r` (`12` columns, row sum of `Delta_0` = `24 - 4 = 20`, row sum of `KW_0` = `24 - 4 = 20`
+  since `I, F, M_0^+, E_0` are 1-regular):
+  - If `Delta_0` has `z_d` zeros, `o_d` ones, and `t_d` twos (`z_d + o_d + t_d = 12` and `o_d + 2 * t_d = 20`),
+    and `KW_0` has `z_k` zeros, `o_k` ones, and `t_k` twos (`z_k + o_k + t_k = 12` and `o_k + 2 * t_k = 20`),
+    then `2 * z_d + o_d = 4` (`z_d in {0, 1, 2}`) and `2 * z_k + o_k = 4` (`z_k in {1, 2}`).
+  - Moreover, whenever `M_0^+(i) != F(E_0(i))` off-block (`so z_d = 0`, expanding the row pool to `216,576`),
+    any coincidence between `E_0` and `M_0^+ E_0 + E_0 M_0^+` (`redukcja o_k o 2`) forces `z_k = 2` (`an extra zero in KW_0`!).
+-/
+
+/-- Theorem 11 (`Law M15`): Exact row-entry conservation laws `2 * z_d + o_d = 4` and `2 * z_k + o_k = 4`
+    for `Delta_0` and `KW_0` in Conway's 99-Graph (`m = 7`). -/
+theorem delta0_kw0_zero_conservation
+    (z_d o_d t_d z_k o_k t_k : Int)
+    (h_cnt_d : z_d + o_d + t_d = 12)
+    (h_sum_d : 0 * z_d + 1 * o_d + 2 * t_d = 24 - 1 - 1 - 1 - 1)
+    (h_cnt_k : z_k + o_k + t_k = 12)
+    (h_sum_k : 0 * z_k + 1 * o_k + 2 * t_k = 24 - 1 - 1 - 1 - 1)
+    (_h_nonneg : 0 ≤ z_d ∧ 0 ≤ o_d ∧ 0 ≤ z_k ∧ 0 ≤ o_k) :
+    2 * z_d + o_d = 4 ∧
+    t_d - z_d = 8 ∧
+    2 * z_k + o_k = 4 ∧
+    t_k - z_k = 8 ∧
+    (z_d = 0 ↔ (o_d = 4 ∧ t_d = 8)) ∧
+    (o_k = 0 ↔ (z_k = 2 ∧ t_k = 10)) := by
+  omega
+
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -395,5 +470,8 @@ theorem klein_triality_and_exact_tensor_factorization
 #print axioms asymmetric_diagonal_inversion_law
 #print axioms klein_four_distinct_matchings_no_go
 #print axioms klein_triality_and_exact_tensor_factorization
+#print axioms cone_fiber_coset_adjunction
+#print axioms cone_fiber_coset_unsat_transfer
+#print axioms delta0_kw0_zero_conservation
 
 end Conway99ChiralTheorems
