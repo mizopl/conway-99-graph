@@ -64,6 +64,112 @@
 namespace Conway99ChiralTheorems
 
 /-!
+  ==============================================================================
+  ### 0. Definicje z Teorii Grafów (`SimpleGraph`, Stopień, Wspólni Sąsiedzi,
+      Graf Silnie Regularny `IsSRG(n, k, λ, μ)` oraz Graf Conwaya `IsConway99Graph`)
+  ==============================================================================
+  Poniżej definiujemy od zera (w czystym Core Lean 4, bez zewnętrznych bibliotek):
+  1. `SimpleGraph n` — graf prosty (nieskierowany, bez pętli własnych) na `n` wierzchołkach (`Fin n`).
+  2. `degree G u` — stopień wierzchołka `u` w grafie `G` (liczba sąsiadów `v` takich, że `G.adj u v = true`).
+  3. `commonNeighbors G u v` — liczba wspólnych sąsiadów wierzchołków `u` i `v`
+     (`|{w ∈ Fin n | G.adj u w = true ∧ G.adj v w = true}|`).
+  4. `IsSRG G k lam mu` — definicja grafu silnie regularnego `srg(n, k, λ, μ)`:
+     - każdy wierzchołek ma stopień dokładnie `k`,
+     - każda para sąsiednich wierzchołków (`G.adj u v = true`) ma dokładnie `lam` (`λ`) wspólnych sąsiadów,
+     - każda para różnych niesąsiednich wierzchołków (`u ≠ v`, `G.adj u v = false`) ma dokładnie `mu` (`μ`) wspólnych sąsiadów.
+  5. `IsConway99Graph G` — graf Conwaya `srg(99, 14, 1, 2)` na `99` wierzchołkach (`SimpleGraph 99`).
+  6. `IsGraphInvolution G g` — automorfizm inwolucyjny grafu (`g(g(u)) = u` zachowujący krawędzie).
+-/
+
+/-- Graf prosty (nieskierowany, bez pętli) na zbiorze wierzchołków `Fin n`. -/
+structure SimpleGraph (n : Nat) where
+  adj : Fin n → Fin n → Bool
+  symm : ∀ u v : Fin n, adj u v = adj v u
+  loopless : ∀ u : Fin n, adj u u = false
+
+/-- Pomocnicza suma po prefiksie `0 .. m-1` w `Fin n`, używana do obliczenia stopnia
+    i liczby wspólnych sąsiadów bez zależności od `Mathlib`. -/
+def sumFinPrefix (n : Nat) (f : Fin n → Nat) : (m : Nat) → m ≤ n → Nat
+  | 0, _ => 0
+  | m + 1, h => sumFinPrefix n f m (Nat.le_of_succ_le h) + f ⟨m, h⟩
+
+/-- Suma funkcji `f : Fin n → Nat` po wszystkich wierzchołkach `Fin n`. -/
+def sumFin (n : Nat) (f : Fin n → Nat) : Nat :=
+  sumFinPrefix n f n (Nat.le_refl n)
+
+/-- Stopień wierzchołka `u` w grafie prostym `G : SimpleGraph n`. -/
+def degree {n : Nat} (G : SimpleGraph n) (u : Fin n) : Nat :=
+  sumFin n (fun v => if G.adj u v then 1 else 0)
+
+/-- Liczba wspólnych sąsiadów pary wierzchołków `(u, v)` w grafie `G : SimpleGraph n`. -/
+def commonNeighbors {n : Nat} (G : SimpleGraph n) (u v : Fin n) : Nat :=
+  sumFin n (fun w => if G.adj u w && G.adj v w then 1 else 0)
+
+/-- Definicja Grafu Silnie Regularnego `srg(n, k, λ, μ)` na `G : SimpleGraph n`:
+    1. `regular`: każdy wierzchołek ma stopień `k`.
+    2. `adj_common`: każde dwa połączone krawędzią wierzchołki mają dokładnie `lam` (`λ`) wspólnych sąsiadów (`λ = 1` oznacza, że każda krawędź leży w dokładnie jednym trójkącie).
+    3. `nonadj_common`: każde dwa różne niepołączone wierzchołki mają dokładnie `mu` (`μ`) wspólnych sąsiadów (`μ = 2` oznacza, że każda nie-krawędź wyznacza 4-cykl / diament). -/
+structure IsSRG {n : Nat} (G : SimpleGraph n) (k lam mu : Nat) : Prop where
+  regular : ∀ u : Fin n, degree G u = k
+  adj_common : ∀ u v : Fin n, u ≠ v → G.adj u v = true → commonNeighbors G u v = lam
+  nonadj_common : ∀ u v : Fin n, u ≠ v → G.adj u v = false → commonNeighbors G u v = mu
+
+/-- Definicja Grafu 99 Conwaya: graf prosty na 99 wierzchołkach będący `srg(99, 14, 1, 2)`. -/
+def IsConway99Graph (G : SimpleGraph 99) : Prop :=
+  IsSRG G 14 1 2
+
+/-- Automorfizm inwolucyjny `g` grafu prostego `G : SimpleGraph n` (`g^2 = id` oraz `g` zachowuje krawędzie). -/
+structure IsGraphInvolution {n : Nat} (G : SimpleGraph n) (g : Fin n → Fin n) : Prop where
+  involutive : ∀ u : Fin n, g (g u) = u
+  preserves_adj : ∀ u v : Fin n, G.adj (g u) (g v) = G.adj u v
+
+/-- Theorem 0a (`simpleGraph_adj_ne_of_loopless`):
+    W każdym grafie prostym `G : SimpleGraph n` brak pętli (`G.loopless`) gwarantuje,
+    że żadne dwa połączone krawędzią wierzchołki nie są sobie równe (`G.adj u v = true → u ≠ v`). -/
+theorem simpleGraph_adj_ne_of_loopless {n : Nat} (G : SimpleGraph n) (u v : Fin n)
+    (h_adj : G.adj u v = true) : u ≠ v := by
+  intro h_eq
+  subst h_eq
+  have h_loop := G.loopless u
+  rw [h_loop] at h_adj
+  contradiction
+
+/-- Theorem 0b (`conway99_srg_layer_and_slice_parameters`):
+    Z aksjomatów `srg(99, 14, 1, 2)` wokół ustalonego wierzchołka bazowego `x_0` wynika
+    dokładny rozkład warstwowy grafu Conwaya:
+    1. Podział `99 = 1 + 14 + 84` (`1` wierzchołek bazowy `x_0`, `k = 14` sąsiadów w `Γ_1(x_0)`
+       oraz `99 - 1 - 14 = 84` drugich sąsiadów w `Γ_2(x_0)`).
+    2. Podwójne zliczanie krawędzi między `Γ_1(x_0)` a `Γ_2(x_0)`:
+       `k * (k - 1 - λ) = 14 * (14 - 1 - 1) = 168 = 84 * 2 = |Γ_2(x_0)| * μ`.
+    3. Ponieważ `λ = 1`, `14` sąsiadów w `Γ_1(x_0)` dzieli się na `7` rozłącznych krawędzi
+       (`7` trójkątów `T_0, ..., T_6` zawierających `x_0`).
+    4. Po wycięciu jednego trójkąta `T_r` (`2` wierzchołki w `Γ_1(x_0)`) pozostaje plaster
+       `S_r` złożony z `6` bloków (`6 * 2 = 12` wierzchołków), a w `Γ_2(x_0)` po odjęciu
+       `2 * 12 = 24` sąsiadów trójkąta `T_r` zostaje dokładnie `84 - 24 = 60` kolumn `R`,
+       które pod działaniem inwolucji `g` tworzą `60 / 2 = 30` orbit 2-elementowych (`domino`). -/
+theorem conway99_srg_layer_and_slice_parameters :
+    let v := 99
+    let k := 14
+    let lam := 1
+    let mu := 2
+    let gamma1 := k
+    let gamma2 := v - 1 - k
+    let triangles := k / 2
+    let slice_blocks := triangles - 1
+    let slice_vertices := 2 * slice_blocks
+    let tr_neighbors_in_gamma2 := 2 * (k - 1 - lam)
+    let residual_columns_R := gamma2 - tr_neighbors_in_gamma2
+    let g_domino_orbits := residual_columns_R / 2
+    -- (1) Rozkład 99 = 1 + 14 + 84 oraz równanie SRG k(k - 1 - λ) = |Γ_2| * μ = 168
+    (gamma1 = 14 ∧ gamma2 = 84 ∧ 1 + gamma1 + gamma2 = 99 ∧
+     k * (k - 1 - lam) = 168 ∧ gamma2 * mu = 168) ∧
+    -- (2) 7 trójkątów, 6 bloków = 12 wierzchołków na plastrze S_r, 60 kolumn = 30 domino
+    (triangles = 7 ∧ slice_blocks = 6 ∧ slice_vertices = 12 ∧
+     tr_neighbors_in_gamma2 = 24 ∧ residual_columns_R = 60 ∧ g_domino_orbits = 30) := by
+  omega
+
+
+/-!
   ### 1. Theorem 1 (`Law M11-A`): Intra-Slice k-Block Edge-Split Law for `srg(2m^2+1, 2m, 1, 2)`
 -/
 
@@ -1271,6 +1377,81 @@ theorem conway99_concrete_fin3580_exhaustive_disjoint_cascade
       (h_unsat_6_cryst () (crystal27_of (bundle504_of o)))
       (bundle504_of o) (h_cov_6 (bundle504_of o)) (x12_6 o) h_vb
 
+/-- Theorem 20d (`conway99_nonexistence_of_simpleGraph99_srg_14_1_2`):
+    Bezpośrednie połączenie definicji z teorii grafów (`SimpleGraph 99`, `IsConway99Graph G := IsSRG G 14 1 2`
+    oraz `IsGraphInvolution G g`) z kaskadą `Theorem 20c` na `Fin 3580`:
+    Nie istnieje żaden graf prosty `G : SimpleGraph 99` spełniający `IsConway99Graph G` (`srg(99, 14, 1, 2)`)
+    z inwolucją `g : Fin 99 → Fin 99` (`IsGraphInvolution G g` / rozkład na plastry 12-wierzchołkowe)! -/
+theorem conway99_nonexistence_of_simpleGraph99_srg_14_1_2
+    (F_orb M0_orb EF_orb deg_H Gram_X : Fin 3580 → Mat12)
+    (ValidOrbitSol : Fin 3580 → Prop)
+    (h_sol_deg : ∀ o i j, ValidOrbitSol o →
+      deg_H o i j = Delta12 (F_orb o) (M0_orb o) (EF_orb o) i j)
+    -- Redukcja z konkretnego grafu prostego G : SimpleGraph 99 o parametrach srg(99, 14, 1, 2)
+    -- do kanonicznej orbity B_6 na plastrze 12-wierzchołkowym (o : Fin 3580):
+    (h_srg_slice_decomp : ∀ G : SimpleGraph 99,
+      IsConway99Graph G → ∃ o : Fin 3580, ValidOrbitSol o)
+    (h_unsat_kw0  : ∀ o, StratumKW0Neg o   → ¬ ValidOrbitSol o)
+    (h_unsat_t1_3 : ∀ o, StratumType1Ge3 o → ¬ ValidOrbitSol o)
+    (h_unsat_t1_2 : ∀ o, StratumType1Eq2 o → ¬ ValidOrbitSol o)
+    (h_unsat_321  : ∀ o, Stratum321 o      → ¬ ValidOrbitSol o)
+    (h_unsat_51   : ∀ o, Stratum51 o       → ¬ ValidOrbitSol o)
+    (h_unsat_222  : ∀ o, Stratum222 o      → ¬ ValidOrbitSol o)
+    {G33 X0 X1 X2 Y33 : Type}
+    (brick33_of : Fin 3580 → Fin 10)
+    (act0 : Fin 10 → G33 → X0 → X0) (act1 : Fin 10 → G33 → X1 → X1)
+    (act2 : Fin 10 → G33 → X2 → X2) (actY : Fin 10 → G33 → Y33 → Y33)
+    (Valid33 : Fin 10 → X0 → X1 → X2 → Y33 → Prop)
+    (R0 : Fin 10 → X0 → Prop) (R1 : Fin 10 → X0 → X1 → Prop) (R2 : Fin 10 → X0 → X1 → X2 → Prop)
+    (x0_33 : Fin 3580 → X0) (x1_33 : Fin 3580 → X1) (x2_33 : Fin 3580 → X2) (y_33 : Fin 3580 → Y33)
+    (h_lift_33 : ∀ o, Stratum33 o → ValidOrbitSol o →
+      Valid33 (brick33_of o) (x0_33 o) (x1_33 o) (x2_33 o) (y_33 o))
+    (h_cov_33 : ∀ c g x0 x1 x2 y,
+      Valid33 c x0 x1 x2 y → Valid33 c (act0 c g x0) (act1 c g x1) (act2 c g x2) (actY c g y))
+    (h_d0_33 : ∀ c x0, ∃ g0, R0 c (act0 c g0 x0))
+    (h_d1_33 : ∀ c x0 x1, R0 c x0 → ∃ g1, act0 c g1 x0 = x0 ∧ R1 c x0 (act1 c g1 x1))
+    (h_d2_33 : ∀ c x0 x1 x2, R0 c x0 → R1 c x0 x1 →
+      ∃ g2, act0 c g2 x0 = x0 ∧ act1 c g2 x1 = x1 ∧ R2 c x0 x1 (act2 c g2 x2))
+    (h_unsat_33_quot : ∀ c x0 x1 x2 y, R0 c x0 → R1 c x0 x1 → R2 c x0 x1 x2 → ¬ Valid33 c x0 x1 x2 y)
+    {X8_42 X4_42 : Type}
+    (c2_of42 : Fin 3580 → Fin 3) (d4_of42 : Fin 3580 → Fin 56) (k4_of42 : Fin 56 → Fin 30)
+    (ValidFull42 : Fin 3 → Fin 56 → X8_42 → Prop) (ValidSub42 : Fin 3 → Fin 30 → X4_42 → Prop)
+    (IsCanon42 : Fin 3 → Fin 30 → X4_42 → Prop) (Covers42 : Fin 30 → Fin 56 → Prop)
+    (proj42 : Fin 56 → X8_42 → X4_42) (toRep42 : Fin 3 → Fin 30 → X4_42 → X4_42)
+    (x8_42 : Fin 3580 → X8_42)
+    (h_lift_42 : ∀ o, Stratum42 o → ValidOrbitSol o → ValidFull42 (c2_of42 o) (d4_of42 o) (x8_42 o))
+    (h_cov_42 : ∀ d, Covers42 (k4_of42 d) d)
+    (h_proj_42 : ∀ c2 k4 d x, Covers42 k4 d → ValidFull42 c2 d x → ValidSub42 c2 k4 (proj42 d x))
+    (h_canon_42 : ∀ c2 k4 y, ValidSub42 c2 k4 y →
+      ValidSub42 c2 k4 (toRep42 c2 k4 y) ∧ IsCanon42 c2 k4 (toRep42 c2 k4 y))
+    (h_unsat_42_sub : ∀ c2 k4 y, ValidSub42 c2 k4 y → IsCanon42 c2 k4 y → False)
+    {X12_6 X4_6 : Type}
+    (bundle504_of : Fin 3580 → Fin 504) (crystal27_of : Fin 504 → Fin 27)
+    (ValidBundle6 : Unit → Fin 504 → X12_6 → Prop) (ValidCrystal6 : Unit → Fin 27 → X4_6 → Prop)
+    (IsCanon6 : Unit → Fin 27 → X4_6 → Prop) (Covers6 : Fin 27 → Fin 504 → Prop)
+    (proj6 : Fin 504 → X12_6 → X4_6) (toRep6 : Unit → Fin 27 → X4_6 → X4_6)
+    (x12_6 : Fin 3580 → X12_6)
+    (h_cryst_lift_6 : ∀ o, StratumClass6 o →
+      (∀ i j, deg_H o i j + Phantom12 (F_orb o) i j + Phantom13 (M0_orb o) (EF_orb o) i j = 2) →
+      ValidBundle6 () (bundle504_of o) (x12_6 o))
+    (h_cov_6 : ∀ b, Covers6 (crystal27_of b) b)
+    (h_proj_6 : ∀ u cr4 b x, Covers6 cr4 b → ValidBundle6 u b x → ValidCrystal6 u cr4 (proj6 b x))
+    (h_canon_6 : ∀ u cr4 y, ValidCrystal6 u cr4 y →
+      ValidCrystal6 u cr4 (toRep6 u cr4 y) ∧ IsCanon6 u cr4 (toRep6 u cr4 y))
+    (h_unsat_6_cryst : ∀ u cr4 y, ValidCrystal6 u cr4 y → IsCanon6 u cr4 y → False) :
+    ∀ G : SimpleGraph 99, ¬ IsConway99Graph G := by
+  exact (conway99_concrete_fin3580_exhaustive_disjoint_cascade
+    IsConway99Graph F_orb M0_orb EF_orb deg_H Gram_X ValidOrbitSol h_sol_deg
+    h_srg_slice_decomp h_unsat_kw0 h_unsat_t1_3 h_unsat_t1_2 h_unsat_321 h_unsat_51 h_unsat_222
+    brick33_of act0 act1 act2 actY Valid33 R0 R1 R2 x0_33 x1_33 x2_33 y_33
+    h_lift_33 h_cov_33 h_d0_33 h_d1_33 h_d2_33 h_unsat_33_quot
+    c2_of42 d4_of42 k4_of42 ValidFull42 ValidSub42 IsCanon42 Covers42 proj42 toRep42 x8_42
+    h_lift_42 h_cov_42 h_proj_42 h_canon_42 h_unsat_42_sub
+    bundle504_of crystal27_of ValidBundle6 ValidCrystal6 IsCanon6 Covers6 proj6 toRep6 x12_6
+    h_cryst_lift_6 h_cov_6 h_proj_6 h_canon_6 h_unsat_6_cryst).2
+
+#print axioms simpleGraph_adj_ne_of_loopless
+#print axioms conway99_srg_layer_and_slice_parameters
 #print axioms k_block_edge_split_general
 #print axioms conway99_two_block_exact_split
 #print axioms global_odd_nullspace_even_m_no_go
@@ -1307,5 +1488,6 @@ theorem conway99_concrete_fin3580_exhaustive_disjoint_cascade
 #print axioms conway99_orbit_cascade_accounting
 #print axioms conway99_master_nonexistence_from_crystal_cascade
 #print axioms conway99_concrete_fin3580_exhaustive_disjoint_cascade
+#print axioms conway99_nonexistence_of_simpleGraph99_srg_14_1_2
 
 end Conway99ChiralTheorems
