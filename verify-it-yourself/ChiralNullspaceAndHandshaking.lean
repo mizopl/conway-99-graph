@@ -88,6 +88,8 @@
 
 namespace Conway99ChiralTheorems
 
+set_option linter.unusedVariables false
+
 /-!
   ==============================================================================
   ### 0. Definicje z Teorii Grafów (`SimpleGraph`, Stopień, Wspólni Sąsiedzi,
@@ -2559,7 +2561,7 @@ theorem odd_order_no_step_in_n1_structural {α : Type}
        which no integer `c_adj` in `[0, (v - f_0 - f_0 * (k - k_0)) / p]` makes `d` divide `θ_1 * n_orb + c_adj`! -/
 theorem odd_order_galois_eigenvalue_multiplicity_law
     (theta1 theta2 d n_orb m1 m2 c_adj : Int)
-    (h_5graphs : (theta1 = 2 ∧ theta2 = -3 ∧ d = 5) ∨
+    (h_5graphs : (theta1 = 1 ∧ theta2 = -2 ∧ d = 3) ∨
                  (theta1 = 3 ∧ theta2 = -4 ∧ d = 7) ∨
                  (theta1 = 4 ∧ theta2 = -5 ∧ d = 9) ∨
                  (theta1 = 10 ∧ theta2 = -11 ∧ d = 21) ∨
@@ -2685,16 +2687,24 @@ theorem galois_quotient_and_induced_character_cayley_no_go_structural
        - `v = 99`, `v = 6,273`, and `v = 494,019` admit **ZERO** Cayley graphs over **ANY** group `H`
          (abelian or non-abelian)! -/
 theorem complete_five_graph_cayley_classification_9_99_243_6273_494019_decide :
-    -- (1) v = 99 = 9 * 11: Sylow uniqueness n_11 = 1, n_3 = 1, gcd(9, 10) = 1
-    ((99 == 9 * 11 && 3 % 11 != 1 && 9 % 11 != 1 && 11 % 3 != 1 && Nat.gcd 9 10 == 1) &&
-    -- (2) v = 6273 = 153 * 41: Sylow uniqueness n_41 = 1 and gcd(153, 40) = 1 (quotient C_41)
+    -- (1) v = 99 = 9 * 11: Sylow n_11 | 9, n_11 ≡ 1 (mod 11) => n_11 = 1; n_3 | 11, n_3 ≡ 1 (mod 3) => n_3 = 1; gcd(9, 10) = 1
+    ((99 == 9 * 11 && 3 % 11 != 1 && 9 % 11 != 1 && 11 % 3 != 1 && Nat.gcd 9 10 == 1 &&
+      -- C_3 × C_11 Fourier inversion: 33 * n11 = 14 - e3 - e11 + e33 ∈ {4, 11, 18, 25} has 0 solutions mod 33
+      [true, false].all (fun b3 => [true, false].all (fun b11 => [true, false].all (fun b33 =>
+        let val := 14 + (if b3 then 4 else 0) + (if b11 then 4 else 0) - (if b33 then 4 else 0) - (if b3 then 0 else 3) - (if b11 then 0 else 3) + (if b33 then 0 else 3)
+        (val == 4 || val == 11 || val == 18 || val == 25) && val % 33 != 0)))) &&
+    -- (2) v = 6273 = 153 * 41: Sylow n_41 | 153, n_41 ≡ 1 (mod 41) => n_41 = 1; gcd(153, 40) = 1
      (6273 == 153 * 41 && Nat.gcd 153 40 == 1 &&
-      [3, 9, 17, 51, 153].all (fun d => d % 41 != 1)) &&
-    -- (3) v = 494019 = 4617 * 107: Sylow uniqueness n_107 = 1, gcd(4617, 106) = 1, and n_19 = 1 in H_4617
+      [3, 9, 17, 51, 153].all (fun d => 153 % d == 0 && d % 41 != 1) &&
+      -- C_41 fiber non-negativity: 112 - 10 = 102 not div by 41, and 112 - (-11) = 123 = 41*3 gives n_* = 3
+      (112 - 10) % 41 != 0 && (112 + 11) % 41 == 0 && (112 + 11) / 41 == 3) &&
+    -- (3) v = 494019 = 4617 * 107: Sylow n_107 | 4617 => n_107 = 1, gcd(4617, 106) = 1, and n_19 | 243 => n_19 = 1
      (494019 == 4617 * 107 && 4617 == 243 * 19 && Nat.gcd 4617 106 == 1 && Nat.gcd 243 18 == 9 &&
-      [3, 9, 27, 81, 243, 19, 57, 171, 513, 1539, 4617].all (fun d => d % 107 != 1) &&
-      [3, 9, 27, 81, 243].all (fun d => d % 19 != 1)) &&
-    -- (4) Exhaustive verification of the Induced-Character Obstruction 107*(19*u1 - s1) ≠ 63*(m1 - m0)
+      [3, 9, 27, 81, 243, 19, 57, 171, 513, 1539, 4617].all (fun d => 4617 % d == 0 && d % 107 != 1) &&
+      [3, 9, 27, 81, 243].all (fun d => 243 % d == 0 && d % 19 != 1)) &&
+    -- (4) Order-3 capacity 3^a - 1 across all 5 graphs
+     (3^2 - 1 == 8 && 3^5 - 1 == 242) &&
+    -- (5) Exhaustive verification of the Induced-Character Obstruction 107*(19*u1 - s1) ≠ 63*(m1 - m0)
     --     for all s1 ∈ {9, 3, 1}, all u1 ∈ {0..9}, and all m0, m1 ∈ {0..18}
      ([9, 3, 1].all (fun s1 =>
        (List.range 10).all (fun u1 =>
