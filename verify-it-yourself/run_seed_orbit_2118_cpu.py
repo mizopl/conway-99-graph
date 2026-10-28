@@ -5,8 +5,9 @@ from numba import njit, prange
 from itertools import permutations, product
 
 t_start = time.time()
-import os
-from verify_seed_dodecagon_and_freckles import I12, J12, F12, orbits_6
+with open("/Users/blister/.gemini/antigravity/brain/a032f282-8f89-4af4-b78c-396ebf6f53dc/scratch/build_we_star_ladder_plan.py") as f:
+    bsrc = f.read()
+exec(bsrc.split("def canonicalize_cone6_all20")[0])
 
 MASK60 = np.uint64((1 << 60) - 1)
 
@@ -713,5 +714,5 @@ cert_out = {
     "sols": tot_sol,
     "elapsed_s": round(el, 3)
 }
-with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "seed_orbit_2118_cert.json"), "w") as f:
+with open("/Users/blister/.gemini/antigravity/brain/a032f282-8f89-4af4-b78c-396ebf6f53dc/scratch/seed_orbit_2118_cert.json", "w") as f:
     json.dump(cert_out, f, indent=2)

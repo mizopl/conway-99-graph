@@ -87,7 +87,21 @@
         "canonical_L0_reps": 212,
         "coset_tail_members": 64
       },
-      "status": "IN_PROGRESS_M1_CPU_SOLVER"
+      "status": "CERTIFIED_UNSAT",
+      "certificate": {
+        "orbit_idx": 2118,
+        "seed_name": "Seed III (Self-Chiral M0 = E0 on C12)",
+        "aut_dec_order": 24576,
+        "coset_members": 64,
+        "reps": 212,
+        "d4": 969255803,
+        "d6": 189503580,
+        "d8": 5966,
+        "d10": 0,
+        "d11": 0,
+        "sols": 0,
+        "elapsed_s": 2544.9
+      }
     }
   ]
 }
