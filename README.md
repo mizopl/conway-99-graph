@@ -14,7 +14,8 @@
 
 > **Full Monograph (Plain-English & Mathematical Exposition of the 5 Master Theorems, Literature Novelty Audit & Short Proofs for All 5 Graphs):** [`docs/FIVE_MASTER_THEOREMS_AND_5GRAPH_CLASSIFICATION.md`](docs/FIVE_MASTER_THEOREMS_AND_5GRAPH_CLASSIFICATION.md)  
 > **Technical Subpage (`Work in Progress` — 6D Orthoplex & 7-Slice Coupling):** [`docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md`](docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md)  
-> **Formal Lean 4 Companion (`42` Theorems, `5` Master Theorems, `67` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)
+> **Formal Lean 4 Companion (`42` Theorems, `5` Master Theorems, `67` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)  
+> **Zero-Trust Skeptic Panel Reports (`V3R1T4S` `panel/` — `reproduce`, `novelty`, `criterion` & Blind Reconstructor):** [`panel/gate.md`](panel/gate.md) · [`panel/criterion.md`](panel/criterion.md) *(Section 3.1: Full Blind Reconstruction of All 5 Graphs)* · [`panel/novelty.md`](panel/novelty.md) *(Section 2.3: Prior-Art & Novelty Audit)* · [`panel/reproduce.md`](panel/reproduce.md) *(Section 5.9: Lean 4 `#print axioms` Audit)*
 
 1. **Canonical Synthesis into the Five Master Theorems (`Master Theorems I–V`, `Theorems 1–42` in Core Lean 4 — Full Exposition & Literature Comparison in [`docs/FIVE_MASTER_THEOREMS_AND_5GRAPH_CLASSIFICATION.md`](docs/FIVE_MASTER_THEOREMS_AND_5GRAPH_CLASSIFICATION.md)):**
    - **Master Theorem I — Spectral Triangle-Pairing & Five-Graph Finiteness Law (`Theorems 1, 22, 38`):** Proves from $A^2 + A - (k-2)I = 2J$, odd discriminant $d = \sqrt{4k-7} = 2s+1$, and multiplicity integrality $d \mid 63 = 3^2 \times 7$ that $\mathrm{SRG}(v, k, 1, 2)$ admits **uniquely five parameter sets**:

@@ -80,7 +80,18 @@ VERIFY: PASS
   7. Complete $(k_{\text{type1}}(S_0), \dim \ker(G_{36}))$ classification of all $3,294$ surviving orbits (`k_type1=2: {5: 6, 4: 56}`, `k_type1=1: {4: 30, 3: 299}`, `k_type1=0: {4: 10, 3: 223, 2: 2670}`), multi-pair $k_{\text{type1}}(S_0) = 2$ closure across all $62 \times 10 = 620$ instances (`620/620 UNSAT` in `290.69s`), 2-Block Component $g$-Orbit Partition Law ($(2, 16, 12)$), 6-Way Disjoint Column Partition $R_{60} = h_0 \sqcup g(h_0) \sqcup h_1 \sqcup g(h_1) \sqcup W_0 \sqcup W_1$, and 4-row 60-bit Bitmask Hash-Join certifying `30/30 UNSAT` across all $\dim \ker(G_{36}) = 4$ orbits of $k_{\text{type1}}(S_0) = 1$ (`31.47s`), `80/80 UNSAT` across all $\binom{5}{2} \times 8 = 80$ uncanonicalized 2-block connected components (`67.86s`), and `9/9 UNSAT` across all two-component extensions for the $10 = \binom{3+3-1}{3}$ $\dim \ker(G_{36}) = 4$ orbits of $k_{\text{type1}}(S_0) = 0$ (`2.86s`).
   8. 7-Triangle Type-I Handshaking Law (`Law M11-B1`, forcing $7 - 2|E(H_{\text{type1}})| \in \{1, 3, 5, 7\}$ slices with $k_{\text{type1}}(S_r) = 0$), Global Involution Partner Classification (`Law M11-B2`: Type I / II / III), Connected Component Factorization Theorem ($(N_1, N_2, N_3, N_4, N_5, N_6) = (1, 3, 10, 56, 299, 2670)$), Unified Chiral Nullspace & Component Imbalance Law (`Law M11-A2`: $\sum_{i=0}^{11} X(i, c) = 2$, $\sum_{m=1}^{30} \delta_{B_q}(m)^2 = 4k(6-k)$, $\sum_{m=1}^{30} \delta_{B_p}(m)\delta_{B_q}(m) = -4k_p k_q$, verified across all $4,644$ connected components of all $3,294$ orbits), and native ARM64 `@numba.njit(parallel=True)` Bitmask Forward-Checking Backtracker certifying `30/30 UNSAT` on `Orbits 0..29` (`70.11s`) and `20/20 UNSAT` across all non-trivial `diag_zeros` strata (`dz = 12`: `1/1`, `dz = 8`: `5/5`, `dz = 6`: `5`, `dz = 4`: `9`, in `63.91s`; `42` distinct canonical $B_5$-orbits of $\dim \ker(G_{36}) = 3, k_{\text{type1}}(S_0) = 1$ certified `UNSAT`).
   9. **Five Master Theorems & 5-Graph Cayley Classification (`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`, `verify-it-yourself/run_checks.sh`):**
-     - **Command executed:** `/Users/blister/.elan/bin/lean verify-it-yourself/ChiralNullspaceAndHandshaking.lean && sh verify-it-yourself/run_checks.sh`.
-     - **Execution result:** Compiles 2,727 lines (`Theorems 1–42b`) with `0 warnings`, `0 errors`, and `0 sorryAx`, and passes `28/28` checks in `verify-it-yourself/run_checks.sh`.
+     - **Command executed:** `lean verify-it-yourself/ChiralNullspaceAndHandshaking.lean && sh verify-it-yourself/run_checks.sh`.
+     - **Execution result:** Compiles 2,734 lines (`67` theorem declarations across `Theorems 1–42b`) with `0 warnings`, `0 errors`, and `0 sorryAx`, and passes `28/28` checks in `verify-it-yourself/run_checks.sh`.
+     - **Axiom & Kernel Audit of New Master Theorem Declarations (`#print axioms`):**
+       - `odd_order_disjoint_star_bundle_structural` (`Theorem 34`): `does not depend on any axioms` (`0 axioms`).
+       - `windmill_involution_unique_fixed_point_structural` (`Theorem 35a`): `does not depend on any axioms` (`0 axioms`).
+       - `abelian_cayley_lambda_one_order_three_structural` (`Theorem 35b`): `does not depend on any axioms` (`0 axioms`).
+       - `no_cherry_collision_srg_fiber_law` (`Theorem 36`): `[propext, Classical.choice, Quot.sound]`.
+       - `higher_srg_seed_and_cayley_6273_obstructions_decide` (`Theorem 37`): `does not depend on any axioms` (`0 axioms`).
+       - `odd_order_no_step_in_n1_structural` (`Theorem 38a`): `does not depend on any axioms` (`0 axioms`).
+       - `odd_order_galois_eigenvalue_multiplicity_law` (`Theorem 38c`): `[propext, Quot.sound]`.
+       - `schur_fiber_three_block_rr_sufficiency_and_matching_law` (`Theorem 41b`): `[propext, Classical.choice, Quot.sound]`.
+       - `galois_quotient_and_induced_character_cayley_no_go_structural` (`Theorem 42a`): `[propext, Classical.choice, Quot.sound]`.
+       - `complete_five_graph_cayley_classification_9_99_243_6273_494019_decide` (`Theorem 42b`): `does not depend on any axioms` (`0 axioms`).
 
 pass: true
