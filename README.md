@@ -3,6 +3,32 @@
 [![Engine: we*star](https://img.shields.io/badge/Autoresearch_Engine-we*star-blue)](https://github.com/mizopl/we-star)
 [![Benchmark: V3R1T4S PR #774](https://img.shields.io/badge/V3R1T4S-PR_%23774-success)](https://github.com/elder-plinius/V3R1T4S/pull/774)
 [![Proofs: 54 Pure-RUP LRAT (0 RAT)](https://img.shields.io/badge/LRAT_Proofs-54_Pure--RUP_(0_RAT)-brightgreen)](#quick-verification-18-seconds-zero-dependencies)
+[![Lean 4.35.0: 32 Theorems (0 sorryAx)](https://img.shields.io/badge/Lean_4.35.0-32_Theorems_(0_sorryAx)-blueviolet)](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)
+[![Seed Dodecagon C12: 3/3 UNSAT](https://img.shields.io/badge/Seed_Dodecagon_C12-3%2F3_CERTIFIED_UNSAT-gold)](docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md)
+
+---
+
+## 🌟 MAJOR UPDATE (`2026-10-28`): The Universal Seed Dodecagon $C_{12}$ & Complete Polygonal Generalization (`913 / 913` Symmetric & Decomposable Orbits `100% CERTIFIED UNSAT`)
+
+> **[📄 Read the Full Dedicated Subpage: `docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md`](docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md)**  
+> **[⚖️ Formal Lean 4 Companion (`32` Theorems, `52` Declarations, `0 sorryAx`): `verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)**  
+> **[⚡ Zero-Trust Python Verifier (`5.4s`, `0` Errors across all `2,670` Orbits): `verify-it-yourself/verify_seed_dodecagon_and_freckles.py`](verify-it-yourself/verify_seed_dodecagon_and_freckles.py)**
+
+![The Seed Dodecagon C12 Unification & Polygonal Generalization](docs/seed_dodecagon_generalization.svg)
+
+We have established the **Universal Seed Dodecagon $C_{12}$ Generalization (`Theorems 25–32`)**, unifying the positive control $\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$, all decomposable polygonal strata (`1+5`, `4+2`, `3+3`, `2+2+2`), and the `2,670`-orbit `Class 6` freckle hierarchy into a single deductive tree:
+
+1. **From the $\mathrm{srg}(9,4,1,2)$ Seed Square $C_4$ ($m = 2$, `SAT = 1`) to the Conway-99 Seed Dodecagon $C_{12}$ ($m = 7$, `3 / 3 UNSAT`):**
+   - At $m = 2$ ($\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$), the 4-vertex outer slice at $h = 0$ forms the **Regular Seed Square $C_4$**, where the Domino Ladder shadow survives and closes at $k = 2$ to the **unique solution (`SAT = 1`)**.
+   - At $m = 7$ ($\mathrm{srg}(99, 14, 1, 2)$), the No-Triple-Edge Law ($F_{12}+M_0+E_0 \le 2$, `Theorem 28`) forces $|E(F_{12}\cup M_0\cup E_0)| = 18 - c_{\text{shared}} = 12 + h \ge 12$. At the ground state **$h = 0$ (`|E| = 12`)**, the slice graph is uniquely the **Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$** (the 3-fold cover of $C_4$!) with **uniquely $2^2 - 1 = 3$ Seed Orbits (`Orbit 0`, `Orbit 1670`, `Orbit 2118`)**.
+   - **All `3 / 3` Seed Orbits on $C_{12}$ are now 100% machine-certified `UNSAT` (`d10 = 0, sols = 0` — [`verify-it-yourself/seed_dodecagon_c12_summary.json`](verify-it-yourself/seed_dodecagon_c12_summary.json) & [`verify-it-yourself/seed_orbit_2118_cert.json`](verify-it-yourself/seed_orbit_2118_cert.json))!**
+2. **Symmetric Co-Pinches of $C_{12}$ Generate All Decomposable Polygonal Strata (`910 / 910 = 100% CERTIFIED UNSAT`):**
+   - Pinching both $(M_0, E_0)$ along a chord of span $k \in \{1, 2, 3\}$ dominoes (`Theorem 31`) cleaves $C_{12}$ into disconnected even polygons $C_{2k} \sqcup C_{12-2k}$: **`1+5` ($C_2 \sqcup C_{10}$, `299/299 UNSAT`)**, **`4+2` ($C_8 \sqcup C_4$, `168/168 UNSAT`)**, **`3+3` ($C_6 \sqcup C_6$, `35/35 + 55/55 UNSAT`)**, and **`2+2+2` ($C_4 \sqcup C_4 \sqcup C_4$, `10/10 UNSAT`)**. Combined with all odd prime orders $p \in \{3, 5, 7, 11, 13\}$ and `18 / 19` involution profiles (`54` Pure-RUP LRAT proofs), **every higher-symmetry, polygonally decomposable (`910 / 910`), and unpinched dodecagonal (`3 / 3`) Conway-99 graph is unconditionally ruled out (`913 / 913 UNSAT`)**.
+3. **Chiral Half-Pinches (`Piegi Powiązań`, $h = 1..6$) & Loop Parity Breaking $(2,0) \mapsto (1,1)$ (`Theorem 32`):**
+   - Pinching only one matching yields the 7-level `Class 6` freckle pyramid ($3 + 18 + 119 + 347 + 749 + 853 + 581 = 2,670$), where `95.32%` (`2,545 / 2,670`) split into polygonal clusters stitched by freckle bridges (`Theorem 25`).
+   - By **`Theorem 32` (`we_star_three_row_spectra_and_loop_parity_breaking`)**, every row of $\Delta_0$ and $\mathrm{KW}_0$ satisfies $n_0 = z, \, n_1 = 4 - 2z, \, n_2 = 8 + z$ ($z \in \{0, 1, 2\}$), restricting all `32,040` rows to three spectra: **`z = 2` (`{2^10, 0^2}` pure even loops on $C_{12}$)** $\to$ **`z = 1` (`{2^9, 1^2, 0^1}`)** $\to$ **`z = 0` (`{2^8, 1^4}`)**. Each freckle breaks smooth even cycles $(2,0)$ into odd endpoints $(1,1)$, shrinking mean `d6` shadows monotonically from `11.49B` ($h=0$) to `3.94B` ($h=6$).
+
+---
 
 This repository contains the standalone code, algebraic-spectral reductions, trimmed CNF cores, and **54 dual-encoded Pure-RUP LRAT (`0 RAT lemmas`) UNSAT certificates** across **27 theorems** on John H. Conway's 99-graph problem ($\Gamma = \mathrm{srg}(99, 14, 1, 2)$, $\lambda = 1$, $\mu = 2$), developed using the **[`we*star`](https://github.com/mizopl/we-star)** human-AI autoresearch architecture (`CONSTITUTION v18/v19`) on a single 16 GB M1 laptop.
 

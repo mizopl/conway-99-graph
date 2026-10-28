@@ -236,7 +236,7 @@ assert seed_h0_indices == [(0, 6, 0, 0), (1670, 0, 6, 0), (2118, 0, 0, 6)]
 assert len(h1_triples) == 18 and level_counts[1] == 18
 print(f"[4/6] Theorem 28 & 29 verified: 3 Seed Orbits {seed_h0_indices} on C_12 at h=0; 18 unique Theta-Orbits at h=1; grading {[level_counts[h] for h in range(7)]} = 2,670.")
 
-# 4. Verify Theorem 30 (Universal Row-Sum Conservation (18, 20, 20))
+# 4. Verify Theorems 30, 31 & 32 (Universal Row-Sum Conservation (18, 20, 20), Zero-Locus Laws & Three Row Spectra)
 rows_checked = 0
 for M0, E0, Gp0, KW0 in orbits_6:
     D0 = 2 * J12 - I12 - F12 - M0 - (E0 @ F12)
@@ -244,7 +244,19 @@ for M0, E0, Gp0, KW0 in orbits_6:
     assert np.all(np.sum(Gp_off, axis=1) == 18)
     assert np.all(np.sum(D0, axis=1) == 20)
     assert np.all(np.sum(KW0, axis=1) == 20)
+    s_FM = int(np.sum(F12 * M0) // 2)
+    s_FE = int(np.sum(F12 * E0) // 2)
+    s_ME = int(np.sum(M0 * E0) // 2)
+    tr_MFE = int(np.sum(M0 * (E0 @ F12)))
+    assert int(np.sum(np.diag(KW0) == 0)) == 2 * s_ME
+    assert int(np.sum(D0 == 0)) == 2 * s_FM + 2 * s_FE + tr_MFE
+    for r in range(12):
+        for mat in (D0, KW0):
+            n0 = int(np.sum(mat[r] == 0))
+            n1 = int(np.sum(mat[r] == 1))
+            n2 = int(np.sum(mat[r] == 2))
+            assert n0 in (0, 1, 2) and n1 == 4 - 2 * n0 and n2 == 8 + n0
     rows_checked += 12
 assert rows_checked == 32040
-print(f"[5/6] Theorem 30 verified: Universal row sums (18, 20, 20) across all {rows_checked} rows (0 errors).")
-print(f"[6/6] ALL THEOREMS 25-30 PASSED ZERO-TRUST VERIFICATION in {time.time()-t0:.2f}s!")
+print(f"[5/6] Theorems 30-32 verified: Universal row sums (18, 20, 20), zero-locus laws, and Three Row Spectra {{2^10,0^2}}, {{2^9,1^2,0^1}}, {{2^8,1^4}} across all {rows_checked} rows (0 errors).")
+print(f"[6/6] ALL THEOREMS 25-32 PASSED ZERO-TRUST VERIFICATION in {time.time()-t0:.2f}s!")
