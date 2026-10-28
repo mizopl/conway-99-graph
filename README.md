@@ -38,6 +38,56 @@
 3. **Open Invitation for Compute Partners:**
    - While we pursue the pure cross-slice collapse ($\mathcal{T}_1 + \mathcal{T}_3$) on a single 16 GB M1 laptop, our deterministic CUDA C++ solver (`Gen V.6d` + `Master Theorems I–V` / `Theorems 34, 35, 37, 40 & 40b`, benchmarked at **`2.05 s / orbit-batch` on `1× NVIDIA A100` — `4.17×` faster than `Gen V.4` and `1.68×` faster than `Gen V.5`** with per-batch JSON checkpointing in [`verify-it-yourself/null2_k0_6_ckpts.json`](verify-it-yourself/null2_k0_6_ckpts.json) and SHA-256 verification) has certified **`270 / 2,670` (`10.11%`)** of the asymmetric `Class 6` tail ([`verify-it-yourself/null2_k0_6_partial.json`](verify-it-yourself/null2_k0_6_partial.json), **`1,180 / 3,580 = 32.96%` overall**). **If you have access to a larger GPU cluster (`NVIDIA A100 / H100`) and would enjoy contributing compute cycles to help complete the remaining checkpointed `Class 6` bundles, we warmly invite you to reach out via GitHub Issues/Discussions for full co-authorship / joint credit on the completed certificate** (details in [`docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md`](docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md#5-open-invitation-compute-partners--collaborative-completion)).
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/master_theorem_1_finiteness_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/master_theorem_1_finiteness_light.svg">
+    <img alt="Master Theorem I: Spectral Triangle-Pairing and the Five-Graph Finiteness Law (d | 63)" src="./docs/master_theorem_1_finiteness_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 1: Master Theorem I — Spectral Triangle-Pairing &amp; the Five-Graph Finiteness Law (<code>d | 63</code>)</b> (adaptive: <a href="./docs/master_theorem_1_finiteness_dark.svg">Dark</a> · <a href="./docs/master_theorem_1_finiteness_light.svg">Light</a>).</em>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/master_theorem_2_lefschetz_galois_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/master_theorem_2_lefschetz_galois_light.svg">
+    <img alt="Master Theorem II: Lefschetz-Brauer Trace, Galois Conjugacy and the N1(F) No-Orbital-Step Law" src="./docs/master_theorem_2_lefschetz_galois_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 2: Master Theorem II — Lefschetz–Brauer Trace, Galois Conjugacy &amp; the <code>N₁(F)</code> No-Orbital-Step Law</b> (adaptive: <a href="./docs/master_theorem_2_lefschetz_galois_dark.svg">Dark</a> · <a href="./docs/master_theorem_2_lefschetz_galois_light.svg">Light</a>).</em>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/master_theorem_3_schur_orthoplex_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/master_theorem_3_schur_orthoplex_light.svg">
+    <img alt="Master Theorem III: Three-Block Schur-Fiber Decomposition, 6D Orthoplex beta_6 and Cherry-Free Collapse" src="./docs/master_theorem_3_schur_orthoplex_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 3: Master Theorem III — Three-Block Schur–Fiber Decomposition, 6D Orthoplex <code>β₆</code> &amp; Cherry-Free Collapse (<code>Gen V.6d</code> <code>4.17×</code> Speedup)</b> (adaptive: <a href="./docs/master_theorem_3_schur_orthoplex_dark.svg">Dark</a> · <a href="./docs/master_theorem_3_schur_orthoplex_light.svg">Light</a>).</em>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/master_theorem_4_seed_dichotomy_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/master_theorem_4_seed_dichotomy_light.svg">
+    <img alt="Master Theorem IV: Triangle-Core Seed V_{3k-3}, the 3_3 Prism Closure Dichotomy and Seed Dodecagon C_{12}" src="./docs/master_theorem_4_seed_dichotomy_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 4: Master Theorem IV — Triangle-Core Seed <code>V₃ₖ₋₃</code>, the <code>3₃</code> Prism Closure Dichotomy &amp; Seed Dodecagon <code>C₁₂</code></b> (adaptive: <a href="./docs/master_theorem_4_seed_dichotomy_dark.svg">Dark</a> · <a href="./docs/master_theorem_4_seed_dichotomy_light.svg">Light</a>).</em>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/master_theorem_5_cayley_nogo_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/master_theorem_5_cayley_nogo_light.svg">
+    <img alt="Master Theorem V: Complete Abelian and Non-Abelian Cayley Classification Across All Five Graphs" src="./docs/master_theorem_5_cayley_nogo_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 5: Master Theorem V — Complete Abelian &amp; Non-Abelian Cayley Classification Across All Five Graphs (<code>v ∈ {9, 99, 243, 6273, 494019}</code>)</b> (adaptive: <a href="./docs/master_theorem_5_cayley_nogo_dark.svg">Dark</a> · <a href="./docs/master_theorem_5_cayley_nogo_light.svg">Light</a>).</em>
+</p>
+
 ---
 
 ## Update (`2026-10-28`): The Universal Seed Dodecagon $C_{12}$ & Complete Polygonal Generalization (`913 / 913` Symmetric & Decomposable Orbits Certified `UNSAT`)
@@ -65,7 +115,7 @@ We establish the **Universal Seed Dodecagon $C_{12}$ Generalization (`Theorems 2
     <img alt="From the Seed Square C4 (m = 2) to the Seed Dodecagon C12 (m = 7) and Kempe Cleavages" src="./docs/seed_dodecagon_generalization_light.svg" width="880">
   </picture>
   <br>
-  <em><b>Figure 1: From the Seed Square <code>C₄</code> (<code>m = 2</code>) to the Universal Seed Dodecagon <code>C₁₂</code> (<code>m = 7</code>) &amp; Kempe Cleavages</b> (adaptive: <a href="./docs/seed_dodecagon_generalization_dark.svg">Dark</a> · <a href="./docs/seed_dodecagon_generalization_light.svg">Light</a>).</em>
+  <em><b>Figure 6: From the Seed Square <code>C₄</code> (<code>m = 2</code>) to the Universal Seed Dodecagon <code>C₁₂</code> (<code>m = 7</code>) &amp; Kempe Cleavages</b> (adaptive: <a href="./docs/seed_dodecagon_generalization_dark.svg">Dark</a> · <a href="./docs/seed_dodecagon_generalization_light.svg">Light</a>).</em>
 </p>
 
 <p align="center">
@@ -75,7 +125,7 @@ We establish the **Universal Seed Dodecagon $C_{12}$ Generalization (`Theorems 2
     <img alt="The Seed Dodecagon C12 Mandala and Kempe-Pinch Orbit Lattice" src="./docs/seed_mandala_tree_light.svg" width="880">
   </picture>
   <br>
-  <em><b>Figure 2: The Seed Dodecagon <code>C₁₂</code> Mandala &amp; Kempe-Pinch Orbit Lattice</b> (adaptive: <a href="./docs/seed_mandala_tree_dark.svg">Dark</a> · <a href="./docs/seed_mandala_tree_light.svg">Light</a>). At the center sits the <code>m = 2</code> embryo square <code>C₄</code> inside its 3-fold cover <code>C₁₂</code> and the 3 Seed Orbits (<code>0, 1670, 2118</code> at <code>h = 0</code>), surrounded by the 18 unique <code>Θ</code>-graphs at <code>h = 1</code>, the concentric excitation rings <code>h = 2..6</code> aligned with the 12-fold dihedral <code>D₆</code> axes and chiral mirror axis <code>M₀ ↔ E₀</code>, and the 4 corner Kempe co-pinch medallions (<code>C₂ ⊔ C₁₀</code>, <code>C₈ ⊔ C₄</code>, <code>C₆ ⊔ C₆</code>, <code>C₄ ⊔ C₄ ⊔ C₄</code>).</em>
+  <em><b>Figure 7: The Seed Dodecagon <code>C₁₂</code> Mandala &amp; Kempe-Pinch Orbit Lattice</b> (adaptive: <a href="./docs/seed_mandala_tree_dark.svg">Dark</a> · <a href="./docs/seed_mandala_tree_light.svg">Light</a>). At the center sits the <code>m = 2</code> embryo square <code>C₄</code> inside its 3-fold cover <code>C₁₂</code> and the 3 Seed Orbits (<code>0, 1670, 2118</code> at <code>h = 0</code>), surrounded by the 18 unique <code>Θ</code>-graphs at <code>h = 1</code>, the concentric excitation rings <code>h = 2..6</code> aligned with the 12-fold dihedral <code>D₆</code> axes and chiral mirror axis <code>M₀ ↔ E₀</code>, and the 4 corner Kempe co-pinch medallions (<code>C₂ ⊔ C₁₀</code>, <code>C₈ ⊔ C₄</code>, <code>C₆ ⊔ C₆</code>, <code>C₄ ⊔ C₄ ⊔ C₄</code>).</em>
 </p>
 
 ---

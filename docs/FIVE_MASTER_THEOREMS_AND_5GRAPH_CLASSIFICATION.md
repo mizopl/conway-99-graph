@@ -56,6 +56,16 @@ Consider a regular network (graph) on $v$ vertices where every vertex has exactl
 
 - **Lean 4 Verification:** [`srg_lambda1_mu2_eigenvalue_discriminant_law`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L975-L993) (`Theorem 38`, `0 sorryAx`).
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./master_theorem_1_finiteness_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./master_theorem_1_finiteness_light.svg">
+    <img alt="Master Theorem I: Spectral Triangle-Pairing and the Five-Graph Finiteness Law (d | 63)" src="./master_theorem_1_finiteness_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 1: Master Theorem I — Spectral Triangle-Pairing &amp; the Five-Graph Finiteness Law (<code>d | 63</code>)</b> (adaptive: <a href="./master_theorem_1_finiteness_dark.svg">Dark</a> · <a href="./master_theorem_1_finiteness_light.svg">Light</a>).</em>
+</p>
+
 ---
 
 ### Master Theorem II: The Lefschetz–Brauer Trace, Galois Conjugacy & $N_1(F)$ No-Orbital-Step Law
@@ -88,6 +98,16 @@ Suppose $G = \mathrm{SRG}(v,k,1,2)$ admits a symmetry (automorphism $\sigma$) of
   - [`odd_order_galois_eigenvalue_multiplicity_law`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1029-L1052) (`Theorem 38c`, `0 sorryAx`)
   - [`order3_spectral_trace_divisibility_by_9`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L868-L884) (`Theorem 33`, `0 sorryAx`)
   - [`frob21_uniqueness_and_order3_global_elimination`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L901-L917) (`Theorem 35`, `0 sorryAx`)
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./master_theorem_2_lefschetz_galois_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./master_theorem_2_lefschetz_galois_light.svg">
+    <img alt="Master Theorem II: Lefschetz-Brauer Trace, Galois Conjugacy and the N1(F) No-Orbital-Step Law" src="./master_theorem_2_lefschetz_galois_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 2: Master Theorem II — Lefschetz–Brauer Trace, Galois Conjugacy &amp; the <code>N₁(F)</code> No-Orbital-Step Law</b> (adaptive: <a href="./master_theorem_2_lefschetz_galois_dark.svg">Dark</a> · <a href="./master_theorem_2_lefschetz_galois_light.svg">Light</a>).</em>
+</p>
 
 ---
 
@@ -134,6 +154,16 @@ $$\begin{aligned}
   - [`schur_fiber_three_block_rr_sufficiency_and_matching_law`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1146-L1178) (`Theorem 40b`, `0 sorryAx`)
   - Plus the full suite of Chiral Nullspace & Handshaking theorems (`Theorems 1–24, 30, 32`) in [`ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean).
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./master_theorem_3_schur_orthoplex_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./master_theorem_3_schur_orthoplex_light.svg">
+    <img alt="Master Theorem III: Three-Block Schur-Fiber Decomposition, 6D Orthoplex beta_6 and Cherry-Free Collapse" src="./master_theorem_3_schur_orthoplex_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 3: Master Theorem III — Three-Block Schur–Fiber Decomposition, 6D Orthoplex <code>β₆</code> &amp; Cherry-Free Collapse (<code>Gen V.6d</code> <code>4.17×</code> Speedup)</b> (adaptive: <a href="./master_theorem_3_schur_orthoplex_dark.svg">Dark</a> · <a href="./master_theorem_3_schur_orthoplex_light.svg">Light</a>).</em>
+</p>
+
 ---
 
 ### Master Theorem IV: The Triangle-Core Seed $V_{3k-3}$, the $3_3$ Configuration Closure Dichotomy & the Seed Dodecagon $C_{12}$
@@ -162,6 +192,16 @@ Now consider how the three layers $S_0, S_1, S_2$ connect to one another:
   - [`triangle_seed_transversal_decomposition`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1065-L1085) (`Theorem 39a`, `0 sorryAx`)
   - [`golay_243_ternary_closure_vs_99_obstruction`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1091-L1119) (`Theorem 39b`, `does not depend on any axioms`)
   - [`we_star_seed_dodecagon_and_seven_level_freckle_excitation_grading`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L747-L769) (`Theorem 28`, `0 sorryAx`)
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./master_theorem_4_seed_dichotomy_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./master_theorem_4_seed_dichotomy_light.svg">
+    <img alt="Master Theorem IV: Triangle-Core Seed V_{3k-3}, the 3_3 Prism Closure Dichotomy and Seed Dodecagon C_{12}" src="./master_theorem_4_seed_dichotomy_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 4: Master Theorem IV — Triangle-Core Seed <code>V₃ₖ₋₃</code>, the <code>3₃</code> Prism Closure Dichotomy &amp; Seed Dodecagon <code>C₁₂</code></b> (adaptive: <a href="./master_theorem_4_seed_dichotomy_dark.svg">Dark</a> · <a href="./master_theorem_4_seed_dichotomy_light.svg">Light</a>).</em>
+</p>
 
 ---
 
@@ -192,6 +232,16 @@ Why is every group $H$ of order $99$, $6,273$, or $494,019$ ruled out?
   - [`abelian_regular_3group_exponent_bound_no_go`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1185-L1214) (`Theorem 41`, `does not depend on any axioms`)
   - [`galois_quotient_and_induced_character_cayley_no_go_structural`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1224-L1268) (`Theorem 42a`, `0 sorryAx`)
   - [`complete_five_graph_cayley_classification_9_99_243_6273_494019_decide`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean#L1273-L1324) (`Theorem 42b`, `does not depend on any axioms`)
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./master_theorem_5_cayley_nogo_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./master_theorem_5_cayley_nogo_light.svg">
+    <img alt="Master Theorem V: Complete Abelian and Non-Abelian Cayley Classification Across All Five Graphs" src="./master_theorem_5_cayley_nogo_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 5: Master Theorem V — Complete Abelian &amp; Non-Abelian Cayley Classification Across All Five Graphs (<code>v ∈ {9, 99, 243, 6273, 494019}</code>)</b> (adaptive: <a href="./master_theorem_5_cayley_nogo_dark.svg">Dark</a> · <a href="./master_theorem_5_cayley_nogo_light.svg">Light</a>).</em>
+</p>
 
 ---
 
