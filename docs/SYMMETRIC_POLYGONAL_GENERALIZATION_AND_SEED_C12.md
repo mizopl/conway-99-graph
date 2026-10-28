@@ -32,31 +32,11 @@ The answer unifies the automorphism and slice-decomposition landscape of $\Gamma
 | **Seed II** | `Orbit 1670` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{even}})$ | `(0, 6, 0)` | `12` ($D_6$) | `49,982,900,602` | `3,630,428,696` | `90,674` | `0` | `0` | `CERTIFIED UNSAT` |
 | **Seed III** | `Orbit 2118` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{odd}})$ | `(0, 0, 6)` | `12` ($D_6$) | `969,255,803` | `189,503,580` | `5,966` | `0` | `0` | `CERTIFIED UNSAT` |
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./seed_dodecagon_generalization_dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./seed_dodecagon_generalization_light.svg">
-    <img alt="From the Seed Square C4 (m = 2) to the Seed Dodecagon C12 (m = 7) and Kempe Cleavages" src="./seed_dodecagon_generalization_light.svg" width="880">
-  </picture>
-  <br>
-  <em><b>Figure 1: From the Seed Square <code>C₄</code> (<code>m = 2</code>) to the Seed Dodecagon <code>C₁₂</code> (<code>m = 7</code>) &amp; Kempe Cleavages</b> (adaptive: <a href="./seed_dodecagon_generalization_dark.svg">Dark</a> · <a href="./seed_dodecagon_generalization_light.svg">Light</a>).</em>
-</p>
-
 ---
 
-## 2. The Crystallographic Mandala of All 3,580 Orbits: How Every Symmetric and Asymmetric Graph Grows from the 3 Seeds
+## 2. The Crystallographic Hierarchy of All 3,580 Orbits: How Every Symmetric and Asymmetric Graph Grows from the 3 Seeds
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./seed_mandala_tree_dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./seed_mandala_tree_light.svg">
-    <img alt="The Seed Dodecagon C12 Mandala and Kempe-Pinch Orbit Lattice" src="./seed_mandala_tree_light.svg" width="880">
-  </picture>
-  <br>
-  <em><b>Figure 2: The Seed Dodecagon <code>C₁₂</code> Mandala &amp; Kempe-Pinch Orbit Lattice</b> (adaptive: <a href="./seed_mandala_tree_dark.svg">Dark</a> · <a href="./seed_mandala_tree_light.svg">Light</a>).</em>
-</p>
-
-Starting from the Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$ ($6$ dominoes arranged at the center of the mandala above), consider a 2-edge Kempe switch (`pinch`) across a chord of span $k \in \{1, 2, 3\}$ dominoes:
+Starting from the Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$ ($6$ dominoes), consider a 2-edge Kempe switch (`pinch`) across a chord of span $k \in \{1, 2, 3\}$ dominoes:
 
 ### Branch A: Symmetric Co-Pinches (Corner Medallions I–IV) $\implies$ All Decomposable Polygonal Strata (`910 / 910` Certified `UNSAT`)
 When **both** matchings $(M_0, E_0)$ pinch across the same chord of span $k$ dominoes (`Theorem 31`), the 12-cycle $C_{12}$ cleaves into two disconnected even polygons $C_{2k} \sqcup C_{12-2k}$ with zero cross-freckles between them:
