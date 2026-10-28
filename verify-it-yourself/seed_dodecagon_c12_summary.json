@@ -1,0 +1,93 @@
+{
+  "theorem": "Theorem 28 & 29 (The Seed Dodecagon C12 at h=0 and 7-Level Freckle-Excitation Grading of Class 6)",
+  "seed_graph": "Regular Dodecagon C_12 = M_even U M_odd (|V|=12, |E|=12, c_shared=6, h=0)",
+  "level_counts_h0_to_h6": {
+    "h=0 (|E|=12, Seed Dodecagon C_12)": 3,
+    "h=1 (|E|=13, 18 Unique Theta-Graphs)": 18,
+    "h=2 (|E|=14)": 119,
+    "h=3 (|E|=15)": 347,
+    "h=4 (|E|=16)": 749,
+    "h=5 (|E|=17)": 853,
+    "h=6 (|E|=18, Disjoint Matchings)": 581,
+    "total_class6_orbits": 2670
+  },
+  "seed_orbits_h0": [
+    {
+      "seed_id": "Seed I",
+      "orbit_idx": 0,
+      "matching_triple_on_C12": "(F12, M0, E0) = (M_even, M_even, M_odd)",
+      "shared_edges": {
+        "s_FM": 6,
+        "s_FE": 0,
+        "s_ME": 0,
+        "c_shared": 6,
+        "h": 0
+      },
+      "status": "CERTIFIED_UNSAT",
+      "certificate": {
+        "orbit_idx": 0,
+        "reps": 91392,
+        "d4": 186949606677,
+        "d6": 19342812368,
+        "d8": 113567,
+        "sols": 0,
+        "elapsed_s": 2466.85
+      }
+    },
+    {
+      "seed_id": "Seed II",
+      "orbit_idx": 1670,
+      "matching_triple_on_C12": "(F12, M0, E0) = (M_even, M_odd, M_even)",
+      "shared_edges": {
+        "s_FM": 0,
+        "s_FE": 6,
+        "s_ME": 0,
+        "c_shared": 6,
+        "h": 0
+      },
+      "status": "CERTIFIED_UNSAT",
+      "certificate": {
+        "orbit_idx": 1670,
+        "bundle_idx": 0,
+        "reps": 11626,
+        "d4": 49982900602,
+        "d6": 3630428696,
+        "d8": 90674,
+        "sols": 0,
+        "bundle_elapsed_s": 457.658
+      }
+    },
+    {
+      "seed_id": "Seed III",
+      "orbit_idx": 2118,
+      "matching_triple_on_C12": "(F12, M0, E0) = (M_even, M_odd, M_odd) [Self-Chiral M0 = E0]",
+      "shared_edges": {
+        "s_FM": 0,
+        "s_FE": 0,
+        "s_ME": 6,
+        "c_shared": 6,
+        "h": 0
+      },
+      "transversal_half_crystal": {
+        "dominoes": [
+          0,
+          3,
+          4
+        ],
+        "rows": [
+          0,
+          2,
+          5,
+          8,
+          7,
+          10
+        ],
+        "aut_dec_K6_order": 24576,
+        "point_stabilizer_order": 1024,
+        "canonical_L0_reps": 212,
+        "coset_tail_members": 64
+      },
+      "status": "IN_PROGRESS_M1_CPU_SOLVER"
+    }
+  ]
+}

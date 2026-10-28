@@ -24,39 +24,50 @@
         types: `seven_triangle_type1_handshaking`, `klein_four_distinct_matchings_no_go`,
         `klein_triality_and_exact_tensor_factorization`).
     (D) Linear & Bilinear Arithmetic Consequences (`omega` / `ring`-style integer bridges:
-        `Theorems 1–3, 5–8, 11, 12b, 13–14`) discharging the integer systems derived in
+        `Theorems 1–3, 5–8, 11, 12b, 13–14, 23–30`) discharging the integer systems derived in
         `docs/CLASSICAL_PROOFS_FROM_SRG_AXIOMS.md`.
 
-    1. Theorem 1 (`Law M11-A` / Intra-Slice k-Block Edge-Split Law):
-       For any k-block connected component B_q (|I_{B_q}| = 2k) in srg(2m^2+1, 2m, 1, 2),
-         2 * n_int + n_cut = 4 * (k - 1)   and   n_int - n_disj = 4 * k - 2 * m.
-       For m = 7 (Conway's 99-graph) and k = 2 (n_int = 0), this forces
-         n_cut = 4   and   n_disj = 6.
-
-    2. Theorem 2 (Global Odd Nullspace Sector & Exact Column-Sum = 2 Law):
-       For all m >= 3, on the full slice S_r (k = m - 1, n_S = 2(m - 1) rows),
-       the row sums of G_+ and K_{W_r} are both identically equal to 4m - 8, so
-       ((G_+ - K_{W_r}) 1_{n_S})_i = 0. Together with the even nullspace equation
-       colSum(c) + colSum(g(c)) = (m - 1) - (m - 3) = 4, this forces:
-         colSum(c) = 2   and   colSum(g(c)) = 2   for every column c in R!
-
-    3. Theorem 3 (`Law M11-A2` / Unified Chiral Component Imbalance Law):
-       For any k-block connected component B_q (|I_{B_q}| = 2k) in srg(2m^2+1, 2m, 1, 2),
-       each row i in I_{B_q} satisfies ((G_+ - K_{W_r}) 1_{I_{B_q}})_i = 2(m - 1 - k),
-       and each row i not in I_{B_q} satisfies ((G_+ - K_{W_r}) 1_{I_{B_q}})_i = -2k.
-       Consequently, the chiral orbit-imbalance quadratic forms satisfy:
-         sum_e delta_{B_q}(e)^2 = 4 * k * (m - 1 - k),
-         sum_e delta_{B_p}(e) * delta_{B_q}(e) = -4 * k_p * k_q   (for p != q).
-       For m = 7 and k = 2, this forces sum_e delta_{B_q}(e)^2 = 32, and uniquely
-       splits the 12 disjoint g-orbits into d_2 = 4 orbits of type (2,0)/(0,2)
-       and d_0 = 8 orbits of type (1,1).
-
-    4. Theorem 4 (`Law M11-B1` / 7-Triangle Type-I Matching & Handshaking Theorem):
-       By Triality Reciprocity (M_r^+(u, u') = M_t^-(u, u')), Type-I blocks form a
-       symmetric graph H_type1 on the m = 7 inner triangles with degree k_type1(r) <= 1.
-       By Euler's Handshaking Lemma (sum_{r=0}^6 k_type1(r) = 2 * numEdges), at least
-       one (and in fact 7 - 2 * numEdges in {1, 3, 5, 7}) slice S_r must satisfy
-       k_type1(r) = 0.
+  =============================================================================
+  COMPLETE ARCHITECTURE OF THE 30 STRUCTURAL THEOREMS (`50` LEAN 4 DECLARATIONS)
+  =============================================================================
+  * CHAPTER 0 — First-Principles SRG & Spectral Definitions (`SimpleGraph 99`, `IsSRG 14 1 2`):
+    - `simpleGraph_adj_ne_of_loopless`, `conway99_srg_layer_and_slice_parameters`,
+      `srg_matrix_equation_and_conway99_spectral_decomposition`.
+  * CHAPTER I — Chiral Nullspace, Edge-Split & Handshaking (`Theorems 1–6`):
+    - `Theorem 1` (`Law M11-A`): Intra-Slice `k`-Block Edge-Split Law (`k_block_edge_split_general`, `conway99_two_block_exact_split`).
+    - `Theorem 2`: Global Odd Nullspace Sector & Exact Column-Sum `= 2` Law (`global_odd_nullspace_and_exact_column_sum_two`).
+    - `Theorem 3` (`Law M11-A2`): Unified Chiral Component Imbalance Law (`chiral_component_imbalance_general`).
+    - `Theorem 4` (`Law M11-B1`): 7-Triangle Type-I Matching & Handshaking Theorem (`seven_triangle_type1_handshaking`).
+    - `Theorem 5`: Global Involution Partner Common-Neighbors Law (`global_involution_partner_common_neighbors`).
+    - `Theorem 6` (`Law M16`): `k`-Block Column-Sum Particle-Hole Duality (`k_block_column_sum_particle_hole_duality`).
+  * CHAPTER II — Universal LEGO Interface, Klein Triality & Trunk/Compass Quotients (`Theorems 7–15`):
+    - `Theorem 7` (`Law M17`): Cross-Component Universal Interface (`cross_component_universal_interface`).
+    - `Theorem 8` (`Law M18`): Two-Block Cut-Orbit Exact Partition (`two_block_cut_orbit_exact_partition`).
+    - `Theorem 9` (`Law M19`): Asymmetric Diagonal Inversion Law (`asymmetric_diagonal_inversion_law`).
+    - `Theorem 10` (`Law M20`): Klein Four-Group Triality & Tensor Factorization (`klein_triality_and_exact_tensor_factorization`).
+    - `Theorem 11` (`Law M21`): Trunk-Compass Quotient & `Δ_0 + KW_0` Zero Conservation (`cone_fiber_coset_unsat_transfer`).
+    - `Theorem 12` (`Law M22`): Decoupled Row-Column Cone Automorphism (`decoupled_row_col_cone_covariance`).
+    - `Theorem 13` (`Law M23`): Open-Cone Column Saturation & Halfway Duality (`open_cone_column_saturation_and_halfway_duality`).
+    - `Theorem 14` (`Law M24`): Single-Pin No-Shared-Domino Law (`single_pin_no_shared_involution_domino`).
+    - `Theorem 15`: Explicit `Fin 12` Matrix Bridges (`cross_component_delta12_entry_eq_two`, `fpf_involution_no_shared_domino_structural`).
+  * CHAPTER III — Phantom Completion, Sub-Cone Covering & Half-Crystal Duality (`Theorems 16–22`):
+    - `Theorem 16`: Hierarchical Point-Stabilizer Tower & `20`-Column `M_0` Block Design (`twenty_column_m0_block_design_empty_horizon`).
+    - `Theorem 17`: Phantom 7th Block & `K_12` Gram Crystallization (`phantom_completion_two_way_bijection_iff`).
+    - `Theorem 18`: `4 × 8` Sub-Cone Covering (`3,308 → 28` Sub-Cones, `subcone_4x8_unsat_transfer_and_covering`).
+    - `Theorem 19`: Three-Crystal LEGO & `Empty_24` Dissolution (`three_crystal_lego_empty24_partition_and_bucket_dissolution`).
+    - `Theorem 20`: Master Exhaustive Cascade `3,580 / 3,580 → ¬∃ G : SimpleGraph 99, IsConway99Graph G` (`conway99_nonexistence_of_simpleGraph99_srg_14_1_2`).
+    - `Theorem 21`: Half-Crystal `d6` Duality & `U_36 ⊕ E_12` Partition (`half_crystal_d6_duality_and_u36_e12_exact_partition`).
+    - `Theorem 22`: Kernel-Verified Covering Tables (`3,308 → 28 → 4` and `2,670 → 504`, `conway99_kernel_decide_verified_covering_tables`).
+  * CHAPTER IV — The `we*` Recursive Fractal Domino Ladder, 9-Bit Hole Factorization,
+                 Spooky Freckle Entanglements (`Piegi Powiązań`) & Seed Dodecagon `C_12` (`Theorems 23–30`):
+    - `Theorem 23` (`Law M25`): The `we*` Recursive Fractal Domino Ladder (`k = 0..6`) & Closed Markov Loop (`we_star_recursive_fractal_ladder_and_markov_loop`).
+    - `Theorem 24`: Domino-Aligned Tail, 9-Bit Hole Factorization (`C(12,4) = 495 < 2^9`) & Deterministic `d10` Closure (`we_star_hole_factorization_9bit_and_d10_deterministic_closure`).
+    - `Theorem 25` (`Twierdzenie P1`): Freckle Cluster Decomposition & Triomino Bridge (`95.32%` Reducibility of `Class 6`, `we_star_freckle_cluster_decomposition_and_triomino_bridge`).
+    - `Theorem 26` (`Twierdzenie P2`): Chiral Partner Involution `M_0 ↔ E_0` & `120 / 144` Entry Identity (`we_star_chiral_partner_involution_and_zero_locus_identity`).
+    - `Theorem 27` (`Twierdzenie P3`): 2-Freckle Partial Transpose & `d7` Sub-Network Collapse (`2,670 → 864 → 269`, `we_star_two_freckle_partial_transpose_and_d7_cluster_collapse`).
+    - `Theorem 28` (`Twierdzenie P4`): Deductive Uniqueness of the Seed Dodecagon `C_12` at `h = 0` (`3` Seed Orbits `0, 1670, 2118`) & 7-Level Grading (`3+18+119+347+749+853+581 = 2,670`, `we_star_seed_dodecagon_and_seven_level_freckle_excitation_grading`).
+    - `Theorem 29` (`Twierdzenie P5`): No-5-Shared-Edges Law (`s ≠ 5`), Parity Jump `h = 2 → 0`, and Uniqueness of the `18` Theta-Graphs at `h = 1` (`we_star_no_five_shared_edges_parity_jump_and_theta18_uniqueness`).
+    - `Theorem 30` (`Twierdzenie P6`): Universal Row-Sum Conservation `(18, 20, 20)` & `d10` Inner-Product Lock (`we_star_universal_row_sum_conservation_18_20_20_and_d10_lock`).
 
   — autonomously engineered & 3-skeptic verified by Gemini-CLSS (PROOFER v18) on @mizopl's behalf
 -/
