@@ -1,208 +1,252 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" width="100%" height="100%" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
-
-<defs>
-  <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#0b1021"/>
-    <stop offset="50%" stop-color="#111833"/>
-    <stop offset="100%" stop-color="#0d1326"/>
-  </linearGradient>
-  <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#fbbf24"/>
-    <stop offset="100%" stop-color="#f59e0b"/>
-  </linearGradient>
-  <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#38bdf8"/>
-    <stop offset="100%" stop-color="#0284c7"/>
-  </linearGradient>
-  <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#34d399"/>
-    <stop offset="100%" stop-color="#059669"/>
-  </linearGradient>
-  <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#c084fc"/>
-    <stop offset="100%" stop-color="#7c3aed"/>
-  </linearGradient>
-  <marker id="arrowGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
-  </marker>
-  <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
-  </marker>
-  <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc"/>
-  </marker>
-</defs>
-
-<rect x="0" y="0" width="1280" height="820" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="2"/>
-<rect x="24" y="20" width="1232" height="74" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
-<text x="640" y="48" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="800">THE SEED DODECAGON C₁₂ UNIFICATION &amp; POLYGONAL GENERALIZATION OF CONWAY-99</text>
-<text x="640" y="74" text-anchor="middle" fill="#94a3b8" font-size="13.5" font-weight="500">From Positive Control srg(9,4,1,2) on C₄ (SAT = 1) to the 3-Fold Cover C₁₂ at m = 7: All 910 Decomposable Orbits + All 3/3 Seed Orbits = 100% CERTIFIED UNSAT</text>
-<rect x="24" y="112" width="290" height="684" rx="12" fill="#151f38" stroke="#10b981" stroke-width="1.8"/>
-<rect x="24" y="112" width="290" height="42" rx="12" fill="#064e3b"/>
-<text x="169" y="138" text-anchor="middle" fill="#ecfdf5" font-size="15" font-weight="700">1. EMBRYO AT m = 2: G₉ = srg(9,4,1,2)</text>
-<text x="169" y="178" text-anchor="middle" fill="#a7f3d0" font-size="13" font-weight="600">Seed Square C₄ = F₄ ∪ M₀ (h = 0)</text>
-<text x="169" y="198" text-anchor="middle" fill="#94a3b8" font-size="11.5">Outer slice |V| = 2(m-1) = 4 vertices (2 dominoes)</text>
-<line x1="101" y1="227" x2="237" y2="227" stroke="#f8fafc" stroke-width="5"/>
-<line x1="101" y1="363" x2="237" y2="363" stroke="#f8fafc" stroke-width="5"/>
-<line x1="101" y1="227" x2="101" y2="363" stroke="#34d399" stroke-width="4" stroke-dasharray="7,5"/>
-<line x1="237" y1="227" x2="237" y2="363" stroke="#34d399" stroke-width="4" stroke-dasharray="7,5"/>
-<circle cx="101" cy="227" r="14" fill="#065f46" stroke="#34d399" stroke-width="2.5"/>
-<text x="101" y="231" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">0</text>
-<circle cx="237" cy="227" r="14" fill="#065f46" stroke="#34d399" stroke-width="2.5"/>
-<text x="237" y="231" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">1</text>
-<circle cx="237" cy="363" r="14" fill="#065f46" stroke="#34d399" stroke-width="2.5"/>
-<text x="237" y="367" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">2</text>
-<circle cx="101" cy="363" r="14" fill="#065f46" stroke="#34d399" stroke-width="2.5"/>
-<text x="101" y="367" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">3</text>
-<text x="169" y="213" text-anchor="middle" fill="#f8fafc" font-size="11.5" font-weight="700">Domino D₀ (F₄)</text>
-<text x="169" y="387" text-anchor="middle" fill="#f8fafc" font-size="11.5" font-weight="700">Domino D₁ (F₄)</text>
-<text x="169" y="300" text-anchor="middle" fill="#34d399" font-size="14" font-weight="800">C₄ SEED</text>
-<rect x="40" y="405" width="258" height="175" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
-<text x="169" y="429" text-anchor="middle" fill="#34d399" font-size="13" font-weight="700">Shadow Propagation on C₄:</text>
-<text x="54" y="454" fill="#e2e8f0" font-size="12">• Rung k = 1 (2 rows): Shadow &gt; 0</text>
-<text x="54" y="478" fill="#e2e8f0" font-size="12">• Rung k = 2 (4 rows): Shadow = 1</text>
-<text x="54" y="502" fill="#34d399" font-size="12.5" font-weight="700">✓ Unique Solution SAT = 1</text>
-<text x="54" y="524" fill="#94a3b8" font-size="11.5">  srg(9, 4, 1, 2) ≅ K₃ □ K₃</text>
-<text x="54" y="548" fill="#94a3b8" font-size="11">  (Verified in verify.py: p2_5_srg9)</text>
-<rect x="40" y="598" width="258" height="178" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2"/>
-<text x="169" y="622" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">3-Fold Cover Scaling (m: 2 → 7):</text>
-<text x="54" y="646" fill="#e2e8f0" font-size="11.5">• m = 2: 2 dominoes → Square C₄</text>
-<text x="54" y="668" fill="#e2e8f0" font-size="11.5">• m = 7: 6 dominoes → Dodecagon C₁₂</text>
-<text x="54" y="692" fill="#fbbf24" font-size="11.5" font-weight="600">• Every C₄ freckle at m = 7 is a</text>
-<text x="54" y="710" fill="#fbbf24" font-size="11.5" font-weight="600">  local srg(9) embryo embedded in</text>
-<text x="54" y="728" fill="#fbbf24" font-size="11.5" font-weight="600">  the 12-vertex slice S₀!</text>
-<text x="54" y="754" fill="#94a3b8" font-size="11">  Quantum at d₈(Seed II) = 90,674</text>
-<rect x="334" y="112" width="430" height="684" rx="12" fill="#151f38" stroke="#fbbf24" stroke-width="2"/>
-<rect x="334" y="112" width="430" height="42" rx="12" fill="#78350f"/>
-<text x="549" y="138" text-anchor="middle" fill="#fef3c7" font-size="15" font-weight="800">2. UNIVERSAL SEED DODECAGON C₁₂ (m = 7, h = 0)</text>
-<text x="549" y="176" text-anchor="middle" fill="#fde68a" font-size="13" font-weight="700">Theorem 28: |E(F₁₂ ∪ M₀ ∪ E₀)| = 18 - c_shared = 12 + h ≥ 12</text>
-<text x="549" y="196" text-anchor="middle" fill="#94a3b8" font-size="11.5">At h = 0 (c_shared = 6), C₁₂ = M_even ∪ M_odd has uniquely 2² - 1 = 3 Seed Orbits</text>
-<line x1="518.5" y1="228.0" x2="579.5" y2="228.0" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
-<text x="549.0" y="200.0" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800">D_0</text>
-<line x1="632.4" y1="258.6" x2="663.0" y2="311.5" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
-<text x="675.4" y="273.0" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800">D_1</text>
-<line x1="663.0" y1="372.5" x2="632.4" y2="425.4" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
-<text x="675.4" y="419.0" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800">D_2</text>
-<line x1="579.5" y1="456.0" x2="518.5" y2="456.0" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
-<text x="549.0" y="492.0" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800">D_3</text>
-<line x1="465.6" y1="425.4" x2="435.0" y2="372.5" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
-<text x="422.6" y="419.0" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800">D_4</text>
-<line x1="435.0" y1="311.5" x2="465.6" y2="258.6" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
-<text x="422.6" y="273.0" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="800">D_5</text>
-<line x1="579.5" y1="228.0" x2="632.4" y2="258.6" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="6,4"/>
-<line x1="663.0" y1="311.5" x2="663.0" y2="372.5" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="6,4"/>
-<line x1="632.4" y1="425.4" x2="579.5" y2="456.0" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="6,4"/>
-<line x1="518.5" y1="456.0" x2="465.6" y2="425.4" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="6,4"/>
-<line x1="435.0" y1="372.5" x2="435.0" y2="311.5" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="6,4"/>
-<line x1="465.6" y1="258.6" x2="518.5" y2="228.0" stroke="#fbbf24" stroke-width="3.5" stroke-dasharray="6,4"/>
-<line x1="549.0" y1="442.0" x2="549.0" y2="242.0" stroke="#475569" stroke-width="1" stroke-dasharray="3,4"/>
-<line x1="462.4" y1="392.0" x2="635.6" y2="292.0" stroke="#475569" stroke-width="1" stroke-dasharray="3,4"/>
-<line x1="462.4" y1="292.0" x2="635.6" y2="392.0" stroke="#475569" stroke-width="1" stroke-dasharray="3,4"/>
-<circle cx="518.5" cy="228.0" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="518.5" y="232.0" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">0</text>
-<circle cx="579.5" cy="228.0" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="579.5" y="232.0" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">1</text>
-<circle cx="632.4" cy="258.6" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="632.4" y="262.6" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">2</text>
-<circle cx="663.0" cy="311.5" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="663.0" y="315.5" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">3</text>
-<circle cx="663.0" cy="372.5" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="663.0" y="376.5" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">4</text>
-<circle cx="632.4" cy="425.4" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="632.4" y="429.4" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">5</text>
-<circle cx="579.5" cy="456.0" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="579.5" y="460.0" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">6</text>
-<circle cx="518.5" cy="456.0" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="518.5" y="460.0" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">7</text>
-<circle cx="465.6" cy="425.4" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="465.6" y="429.4" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">8</text>
-<circle cx="435.0" cy="372.5" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="435.0" y="376.5" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">9</text>
-<circle cx="435.0" cy="311.5" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="435.0" y="315.5" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">10</text>
-<circle cx="465.6" cy="258.6" r="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
-<text x="465.6" y="262.6" text-anchor="middle" fill="#f8fafc" font-size="10.5" font-weight="700">11</text>
-<text x="549" y="334" text-anchor="middle" fill="#fef3c7" font-size="15" font-weight="800">REGULAR C₁₂</text>
-<text x="549" y="354" text-anchor="middle" fill="#38bdf8" font-size="11.5" font-weight="700">|Stab_B₆| = 12 (D₆)</text>
-<text x="549" y="372" text-anchor="middle" fill="#f87171" font-size="12" font-weight="800">d₁₀ = 0, sols = 0</text>
-<rect x="350" y="494" width="398" height="282" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.4"/>
-<text x="549" y="518" text-anchor="middle" fill="#fbbf24" font-size="13.5" font-weight="800">ALL 3 / 3 SEED ORBITS ON C₁₂ = 100% CERTIFIED UNSAT</text>
-<rect x="362" y="530" width="374" height="68" rx="8" fill="#1e293b" stroke="#334155"/>
-<text x="374" y="550" fill="#fde68a" font-size="12.5" font-weight="700">Seed I — Orbit 0: (M_even, M_even, M_odd) [s_FM = 6]</text>
-<text x="374" y="570" fill="#cbd5e1" font-size="11.5">d₄ = 186,949,606,677 | d₆ = 19,342,812,368 | d₈ = 113,567</text>
-<text x="374" y="588" fill="#34d399" font-size="11.5" font-weight="700">✓ d₁₀ = 0, sols = 0 (CERTIFIED UNSAT)</text>
-<rect x="362" y="606" width="374" height="68" rx="8" fill="#1e293b" stroke="#334155"/>
-<text x="374" y="626" fill="#fde68a" font-size="12.5" font-weight="700">Seed II — Orbit 1670: (M_even, M_odd, M_even) [s_FE = 6]</text>
-<text x="374" y="646" fill="#cbd5e1" font-size="11.5">d₄ = 49,982,900,602  | d₆ = 3,630,428,696  | d₈ = 90,674</text>
-<text x="374" y="664" fill="#34d399" font-size="11.5" font-weight="700">✓ d₁₀ = 0, sols = 0 (CERTIFIED UNSAT)</text>
-<rect x="362" y="682" width="374" height="82" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2"/>
-<text x="374" y="702" fill="#fde68a" font-size="12.5" font-weight="700">Seed III — Orbit 2118: (M_even, M_odd, M_odd) [Self-Chiral M₀=E₀]</text>
-<text x="374" y="721" fill="#cbd5e1" font-size="11.5">d₄ = 969,255,803     | d₆ = 189,503,580    | d₈ = 5,966</text>
-<text x="374" y="739" fill="#94a3b8" font-size="11">Transversal Dominoes (0,3,4): |Aut_dec(K₆)| = 24,576 (212 L₀ reps)</text>
-<text x="374" y="756" fill="#34d399" font-size="11.5" font-weight="700">✓ d₁₀ = 0, d₁₁ = 0, sols = 0 (M1 CPU, 2,544.9s — CERTIFIED UNSAT)</text>
-<rect x="784" y="112" width="472" height="316" rx="12" fill="#151f38" stroke="#38bdf8" stroke-width="1.8"/>
-<rect x="784" y="112" width="472" height="42" rx="12" fill="#0c4a6e"/>
-<text x="1020" y="138" text-anchor="middle" fill="#e0f2fe" font-size="14.5" font-weight="800">3A. SYMMETRIC CO-PINCHES OF C₁₂ → POLYGONAL STRATA</text>
-<text x="1020" y="174" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="600">Pinching BOTH (M₀, E₀) at span k splits C₁₂ into C_{2k} ⊔ C_{12-2k}:</text>
-<rect x="800" y="188" width="440" height="38" rx="7" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
-<text x="812" y="204" fill="#f8fafc" font-size="11.5" font-weight="700">Stratum 1+5 (k = 1): C₂ ⊔ C₁₀</text>
-<text x="1228" y="204" text-anchor="end" fill="#38bdf8" font-size="11.5" font-weight="700">299 / 299 Orbits</text>
-<text x="812" y="220" fill="#34d399" font-size="11" font-weight="600">✓ 100% CERTIFIED UNSAT (null3_k1_299)</text>
-<rect x="800" y="232" width="440" height="38" rx="7" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
-<text x="812" y="248" fill="#f8fafc" font-size="11.5" font-weight="700">Stratum 4+2 (k = 2): C₈ ⊔ C₄</text>
-<text x="1228" y="248" text-anchor="end" fill="#38bdf8" font-size="11.5" font-weight="700">168 / 168 Orbits</text>
-<text x="812" y="264" fill="#34d399" font-size="11" font-weight="600">✓ 100% CERTIFIED UNSAT (30 4×8 Sub-Cones)</text>
-<rect x="800" y="276" width="440" height="38" rx="7" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
-<text x="812" y="292" fill="#f8fafc" font-size="11.5" font-weight="700">Stratum 3+3 (k = 3): C₆ ⊔ C₆</text>
-<text x="1228" y="292" text-anchor="end" fill="#38bdf8" font-size="11.5" font-weight="700">35 / 35 + 55 Orbits</text>
-<text x="812" y="308" fill="#34d399" font-size="11" font-weight="600">✓ 100% CERTIFIED UNSAT (Russian-Doll 47.4x)</text>
-<rect x="800" y="320" width="440" height="38" rx="7" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
-<text x="812" y="336" fill="#f8fafc" font-size="11.5" font-weight="700">Stratum 2+2+2 (2×k=2): C₄ ⊔ C₄ ⊔ C₄</text>
-<text x="1228" y="336" text-anchor="end" fill="#38bdf8" font-size="11.5" font-weight="700">10 / 10 Orbits</text>
-<text x="812" y="352" fill="#34d399" font-size="11" font-weight="600">✓ 100% CERTIFIED UNSAT (LEGO Interface)</text>
-<rect x="800" y="364" width="440" height="38" rx="7" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
-<text x="812" y="380" fill="#f8fafc" font-size="11.5" font-weight="700">Higher Primes p ∈ {3,5,7,11,13} &amp; dim ≥ 4</text>
-<text x="1228" y="380" text-anchor="end" fill="#38bdf8" font-size="11.5" font-weight="700">343 Orbits + 54 LRAT</text>
-<text x="812" y="396" fill="#34d399" font-size="11" font-weight="600">✓ 100% CERTIFIED UNSAT (0 RAT Lemmas)</text>
-<text x="1020" y="418" text-anchor="middle" fill="#34d399" font-size="12.5" font-weight="800">ALL 910 / 910 DECOMPOSABLE &amp; POLYGONAL ORBITS = 100% UNSAT!</text>
-<rect x="784" y="444" width="472" height="352" rx="12" fill="#151f38" stroke="#c084fc" stroke-width="1.8"/>
-<rect x="784" y="444" width="472" height="42" rx="12" fill="#4c1d95"/>
-<text x="1020" y="470" text-anchor="middle" fill="#f3e8ff" font-size="14.5" font-weight="800">3B. CHIRAL FRECKLE PINCHES (h = 0..6) &amp; PARITY BREAKING</text>
-<text x="1020" y="504" text-anchor="middle" fill="#e9d5ff" font-size="12" font-weight="600">Theorems 25–32: 7-Level Grading (2,670 Orbits) &amp; Loop Splitting (2,0) ↦ (1,1)</text>
-<text x="800" y="530" fill="#e2e8f0" font-size="11" font-weight="600">h = 0 (|E|=12, Seed C₁₂)</text>
-<rect x="975" y="519" width="8" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="989" y="530" fill="#c084fc" font-size="11" font-weight="700">3</text>
-<text x="1242" y="530" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈11.49B</text>
-<text x="800" y="556" fill="#e2e8f0" font-size="11" font-weight="600">h = 1 (|E|=13, 18 Theta-Graphs)</text>
-<rect x="975" y="545" width="10" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="991" y="556" fill="#c084fc" font-size="11" font-weight="700">18</text>
-<text x="1242" y="556" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈9.81B</text>
-<text x="800" y="582" fill="#e2e8f0" font-size="11" font-weight="600">h = 2 (|E|=14, 2 Freckles)</text>
-<rect x="975" y="571" width="26" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="1007" y="582" fill="#c084fc" font-size="11" font-weight="700">119</text>
-<text x="1242" y="582" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈6.72B</text>
-<text x="800" y="608" fill="#e2e8f0" font-size="11" font-weight="600">h = 3 (|E|=15, 3 Freckles)</text>
-<rect x="975" y="597" width="60" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="1041" y="608" fill="#c084fc" font-size="11" font-weight="700">347</text>
-<text x="1242" y="608" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈5.71B</text>
-<text x="800" y="634" fill="#e2e8f0" font-size="11" font-weight="600">h = 4 (|E|=16, 4 Freckles)</text>
-<rect x="975" y="623" width="122" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="1103" y="634" fill="#c084fc" font-size="11" font-weight="700">749</text>
-<text x="1242" y="634" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈4.62B</text>
-<text x="800" y="660" fill="#e2e8f0" font-size="11" font-weight="600">h = 5 (|E|=17, 5 Freckles)</text>
-<rect x="975" y="649" width="138" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="1119" y="660" fill="#c084fc" font-size="11" font-weight="700">853</text>
-<text x="1242" y="660" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈4.21B</text>
-<text x="800" y="686" fill="#e2e8f0" font-size="11" font-weight="600">h = 6 (|E|=18, Cubic Cages)</text>
-<rect x="975" y="675" width="96" height="14" rx="3" fill="url(#purpleGrad)"/>
-<text x="1077" y="686" fill="#c084fc" font-size="11" font-weight="700">581</text>
-<text x="1242" y="686" text-anchor="end" fill="#94a3b8" font-size="10.5">d₆≈3.94B</text>
-<rect x="800" y="704" width="440" height="78" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1.2"/>
-<text x="1020" y="723" text-anchor="middle" fill="#e9d5ff" font-size="12" font-weight="800">Theorem 32 (Three Row Spectra &amp; Loop Parity Breaking):</text>
-<text x="1020" y="742" text-anchor="middle" fill="#f8fafc" font-size="11.5">n₀ = z,  n₁ = 4 - 2z,  n₂ = 8 + z   (Row Sum = 20 in Δ₀ and KW₀)</text>
-<text x="1020" y="761" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">z=2 (Seed Loops): {2¹⁰, 0²}  ⟶  z=1: {2⁹, 1², 0¹}  ⟶  z=0 (Freckles): {2⁸, 1⁴}</text>
-<text x="1020" y="776" text-anchor="middle" fill="#94a3b8" font-size="10.5">Each freckle breaks smooth even cycles (2,0) into odd endpoints (1,1), shrinking d₆!</text>
-<line x1="314" y1="342" x2="332" y2="342" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrowGold)"/>
-<line x1="764" y1="260" x2="782" y2="260" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
-<line x1="764" y1="580" x2="782" y2="580" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 540" width="100%" height="100%">
+<rect x="0" y="0" width="1240" height="540" fill="#ffffff"/>
+<style>
+  .poetic-title { font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-style: italic; font-weight: 400; letter-spacing: 0.04em; }
+  .math-label { font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-weight: 500; letter-spacing: 0.03em; }
+  .mono-whisper { font-family: 'JetBrains Mono', 'SF Mono', 'Menlo', monospace; font-weight: 400; letter-spacing: 0.05em; }
+</style>
+<circle cx="185.0" cy="275.0" r="82.0" fill="none" stroke="#d4d4d8" stroke-width="0.5" stroke-dasharray="2,3"/>
+<line x1="127.0" y1="217.0" x2="243.0" y2="217.0" stroke="#18181b" stroke-width="1.2"/>
+<line x1="127.0" y1="333.0" x2="243.0" y2="333.0" stroke="#18181b" stroke-width="1.2"/>
+<line x1="127.0" y1="217.0" x2="127.0" y2="333.0" stroke="#71717a" stroke-width="0.75" stroke-dasharray="3,3"/>
+<line x1="243.0" y1="217.0" x2="243.0" y2="333.0" stroke="#71717a" stroke-width="0.75" stroke-dasharray="3,3"/>
+<line x1="127.0" y1="217.0" x2="243.0" y2="333.0" stroke="#a1a1aa" stroke-width="0.35" stroke-opacity="0.4"/>
+<line x1="243.0" y1="217.0" x2="127.0" y2="333.0" stroke="#a1a1aa" stroke-width="0.35" stroke-opacity="0.4"/>
+<line x1="273.0" y1="249.8" x2="433.0" y2="233.0" stroke="#52525b" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.45"/>
+<line x1="273.0" y1="275.0" x2="433.0" y2="275.0" stroke="#52525b" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.45"/>
+<line x1="273.0" y1="300.2" x2="433.0" y2="317.0" stroke="#52525b" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.45"/>
+<circle cx="555.0" cy="275.0" r="120.0" fill="none" stroke="#d4d4d8" stroke-width="0.45" stroke-dasharray="1.5,3"/>
+<line x1="528.1" y1="174.5" x2="581.9" y2="375.5" stroke="#a1a1aa" stroke-width="0.32" stroke-opacity="0.28"/>
+<line x1="581.9" y1="174.5" x2="528.1" y2="375.5" stroke="#a1a1aa" stroke-width="0.32" stroke-opacity="0.28"/>
+<line x1="628.5" y1="201.5" x2="481.5" y2="348.5" stroke="#a1a1aa" stroke-width="0.32" stroke-opacity="0.28"/>
+<line x1="655.5" y1="248.1" x2="454.5" y2="301.9" stroke="#a1a1aa" stroke-width="0.32" stroke-opacity="0.28"/>
+<line x1="655.5" y1="301.9" x2="454.5" y2="248.1" stroke="#a1a1aa" stroke-width="0.32" stroke-opacity="0.28"/>
+<line x1="628.5" y1="348.5" x2="481.5" y2="201.5" stroke="#a1a1aa" stroke-width="0.32" stroke-opacity="0.28"/>
+<line x1="528.1" y1="174.5" x2="655.5" y2="248.1" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="655.5" y1="248.1" x2="581.9" y2="375.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="581.9" y1="375.5" x2="454.5" y2="301.9" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="454.5" y1="301.9" x2="528.1" y2="174.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="581.9" y1="174.5" x2="655.5" y2="301.9" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="655.5" y1="301.9" x2="528.1" y2="375.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="528.1" y1="375.5" x2="454.5" y2="248.1" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="454.5" y1="248.1" x2="581.9" y2="174.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="628.5" y1="201.5" x2="628.5" y2="348.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="628.5" y1="348.5" x2="481.5" y2="348.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="481.5" y1="348.5" x2="481.5" y2="201.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="481.5" y1="201.5" x2="628.5" y2="201.5" stroke="#52525b" stroke-width="0.35" stroke-opacity="0.18"/>
+<line x1="528.1" y1="174.5" x2="581.9" y2="174.5" stroke="#18181b" stroke-width="1.35" stroke-opacity="0.9"/>
+<line x1="581.9" y1="174.5" x2="628.5" y2="201.5" stroke="#71717a" stroke-width="0.8" stroke-dasharray="2.5,2.5" stroke-opacity="0.8"/>
+<line x1="628.5" y1="201.5" x2="655.5" y2="248.1" stroke="#18181b" stroke-width="1.35" stroke-opacity="0.9"/>
+<line x1="655.5" y1="248.1" x2="655.5" y2="301.9" stroke="#71717a" stroke-width="0.8" stroke-dasharray="2.5,2.5" stroke-opacity="0.8"/>
+<line x1="655.5" y1="301.9" x2="628.5" y2="348.5" stroke="#18181b" stroke-width="1.35" stroke-opacity="0.9"/>
+<line x1="628.5" y1="348.5" x2="581.9" y2="375.5" stroke="#71717a" stroke-width="0.8" stroke-dasharray="2.5,2.5" stroke-opacity="0.8"/>
+<line x1="581.9" y1="375.5" x2="528.1" y2="375.5" stroke="#18181b" stroke-width="1.35" stroke-opacity="0.9"/>
+<line x1="528.1" y1="375.5" x2="481.5" y2="348.5" stroke="#71717a" stroke-width="0.8" stroke-dasharray="2.5,2.5" stroke-opacity="0.8"/>
+<line x1="481.5" y1="348.5" x2="454.5" y2="301.9" stroke="#18181b" stroke-width="1.35" stroke-opacity="0.9"/>
+<line x1="454.5" y1="301.9" x2="454.5" y2="248.1" stroke="#71717a" stroke-width="0.8" stroke-dasharray="2.5,2.5" stroke-opacity="0.8"/>
+<line x1="454.5" y1="248.1" x2="481.5" y2="201.5" stroke="#18181b" stroke-width="1.35" stroke-opacity="0.9"/>
+<line x1="481.5" y1="201.5" x2="528.1" y2="174.5" stroke="#71717a" stroke-width="0.8" stroke-dasharray="2.5,2.5" stroke-opacity="0.8"/>
+<line x1="555.0" y1="235.0" x2="589.6" y2="295.0" stroke="#854d0e" stroke-width="0.45" stroke-opacity="0.5"/>
+<line x1="589.6" y1="295.0" x2="520.4" y2="295.0" stroke="#854d0e" stroke-width="0.45" stroke-opacity="0.5"/>
+<line x1="520.4" y1="295.0" x2="555.0" y2="235.0" stroke="#854d0e" stroke-width="0.45" stroke-opacity="0.5"/>
+<line x1="679.0" y1="245.0" x2="775" y2="195" stroke="#52525b" stroke-width="0.45" stroke-opacity="0.45"/>
+<line x1="679.0" y1="305.0" x2="775" y2="355" stroke="#52525b" stroke-width="0.45" stroke-opacity="0.45"/>
+<circle cx="825.0" cy="205.0" r="24.0" fill="none" stroke="#d4d4d8" stroke-width="0.4" stroke-dasharray="1,2"/>
+<line x1="818.8" y1="181.8" x2="831.2" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="831.2" y1="181.8" x2="818.8" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="842.0" y1="188.0" x2="848.2" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="848.2" y1="198.8" x2="848.2" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="848.2" y1="211.2" x2="842.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="842.0" y1="222.0" x2="831.2" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="831.2" y1="228.2" x2="818.8" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="818.8" y1="228.2" x2="808.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="808.0" y1="222.0" x2="801.8" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="801.8" y1="211.2" x2="801.8" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="801.8" y1="198.8" x2="808.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="808.0" y1="188.0" x2="842.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<circle cx="932.0" cy="205.0" r="24.0" fill="none" stroke="#d4d4d8" stroke-width="0.4" stroke-dasharray="1,2"/>
+<line x1="925.8" y1="181.8" x2="938.2" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="938.2" y1="181.8" x2="949.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="949.0" y1="188.0" x2="955.2" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="955.2" y1="198.8" x2="925.8" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="955.2" y1="211.2" x2="949.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="949.0" y1="222.0" x2="938.2" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="938.2" y1="228.2" x2="925.8" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="925.8" y1="228.2" x2="915.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="915.0" y1="222.0" x2="908.8" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="908.8" y1="211.2" x2="908.8" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="908.8" y1="198.8" x2="915.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="915.0" y1="188.0" x2="955.2" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<circle cx="1039.0" cy="205.0" r="24.0" fill="none" stroke="#d4d4d8" stroke-width="0.4" stroke-dasharray="1,2"/>
+<line x1="1032.8" y1="181.8" x2="1045.2" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1045.2" y1="181.8" x2="1056.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1056.0" y1="188.0" x2="1062.2" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1062.2" y1="198.8" x2="1062.2" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1062.2" y1="211.2" x2="1056.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1056.0" y1="222.0" x2="1032.8" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1045.2" y1="228.2" x2="1032.8" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1032.8" y1="228.2" x2="1022.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1022.0" y1="222.0" x2="1015.8" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1015.8" y1="211.2" x2="1015.8" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1015.8" y1="198.8" x2="1022.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1022.0" y1="188.0" x2="1045.2" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<circle cx="1146.0" cy="205.0" r="24.0" fill="none" stroke="#d4d4d8" stroke-width="0.4" stroke-dasharray="1,2"/>
+<line x1="1139.8" y1="181.8" x2="1152.2" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1152.2" y1="181.8" x2="1163.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1163.0" y1="188.0" x2="1169.2" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1169.2" y1="198.8" x2="1139.8" y2="181.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1169.2" y1="211.2" x2="1163.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1163.0" y1="222.0" x2="1152.2" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1152.2" y1="228.2" x2="1139.8" y2="228.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1139.8" y1="228.2" x2="1169.2" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1129.0" y1="222.0" x2="1122.8" y2="211.2" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1122.8" y1="211.2" x2="1122.8" y2="198.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1122.8" y1="198.8" x2="1129.0" y2="188.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="1129.0" y1="188.0" x2="1129.0" y2="222.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.82"/>
+<line x1="790.0" y1="415.0" x2="1180.0" y2="415.0" stroke="#d4d4d8" stroke-width="0.5"/>
+<line x1="805.0" y1="415.0" x2="805.0" y2="408.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="865.0" y1="415.0" x2="865.0" y2="407.8" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="925.0" y1="415.0" x2="925.0" y2="400.9" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="985.0" y1="415.0" x2="985.0" y2="385.4" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="1045.0" y1="415.0" x2="1045.0" y2="358.1" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="1105.0" y1="415.0" x2="1105.0" y2="351.0" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="1165.0" y1="415.0" x2="1165.0" y2="369.5" stroke="#18181b" stroke-width="0.75" stroke-opacity="0.75"/>
+<line x1="805.0" y1="359.0" x2="865.0" y2="367.2" stroke="#71717a" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.6"/>
+<line x1="865.0" y1="367.2" x2="925.0" y2="382.2" stroke="#71717a" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.6"/>
+<line x1="925.0" y1="382.2" x2="985.0" y2="387.2" stroke="#71717a" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.6"/>
+<line x1="985.0" y1="387.2" x2="1045.0" y2="392.5" stroke="#71717a" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.6"/>
+<line x1="1045.0" y1="392.5" x2="1105.0" y2="394.5" stroke="#71717a" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.6"/>
+<line x1="1105.0" y1="394.5" x2="1165.0" y2="395.8" stroke="#71717a" stroke-width="0.45" stroke-dasharray="2,2" stroke-opacity="0.6"/>
+<circle cx="127.0" cy="217.0" r="3.2" fill="#18181b" stroke="#2f5d50" stroke-width="0.9"/>
+<circle cx="243.0" cy="217.0" r="3.2" fill="#18181b" stroke="#2f5d50" stroke-width="0.9"/>
+<circle cx="243.0" cy="333.0" r="3.2" fill="#18181b" stroke="#2f5d50" stroke-width="0.9"/>
+<circle cx="127.0" cy="333.0" r="3.2" fill="#18181b" stroke="#2f5d50" stroke-width="0.9"/>
+<circle cx="528.1" cy="174.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="581.9" cy="174.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="628.5" cy="201.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="655.5" cy="248.1" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="655.5" cy="301.9" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="628.5" cy="348.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="581.9" cy="375.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="528.1" cy="375.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="481.5" cy="348.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="454.5" cy="301.9" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="454.5" cy="248.1" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="481.5" cy="201.5" r="2.6" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="555.0" cy="235.0" r="3.6" fill="#18181b" stroke="#854d0e" stroke-width="0.9"/>
+<circle cx="589.6" cy="295.0" r="3.6" fill="#18181b" stroke="#854d0e" stroke-width="0.9"/>
+<circle cx="520.4" cy="295.0" r="3.6" fill="#18181b" stroke="#854d0e" stroke-width="0.9"/>
+<circle cx="818.8" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="831.2" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="842.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="848.2" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="848.2" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="842.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="831.2" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="818.8" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="808.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="801.8" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="801.8" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="808.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="925.8" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="938.2" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="949.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="955.2" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="955.2" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="949.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="938.2" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="925.8" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="915.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="908.8" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="908.8" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="915.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="1032.8" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="1045.2" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="1056.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="1062.2" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="1062.2" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="1056.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="1045.2" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="1032.8" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="1022.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="1015.8" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="1015.8" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="1022.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="1139.8" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="1152.2" cy="181.8" r="1.2" fill="#27272a"/>
+<circle cx="1163.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="1169.2" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="1169.2" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="1163.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="1152.2" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="1139.8" cy="228.2" r="1.2" fill="#27272a"/>
+<circle cx="1129.0" cy="222.0" r="1.2" fill="#27272a"/>
+<circle cx="1122.8" cy="211.2" r="1.2" fill="#27272a"/>
+<circle cx="1122.8" cy="198.8" r="1.2" fill="#27272a"/>
+<circle cx="1129.0" cy="188.0" r="1.2" fill="#27272a"/>
+<circle cx="805.0" cy="408.8" r="2.6" fill="#18181b" stroke="#854d0e" stroke-width="0.7"/>
+<circle cx="865.0" cy="407.8" r="2.0" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="925.0" cy="400.9" r="2.0" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="985.0" cy="385.4" r="2.0" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="1045.0" cy="358.1" r="2.0" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="1105.0" cy="351.0" r="2.0" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<circle cx="1165.0" cy="369.5" r="2.0" fill="#18181b" stroke="#ffffff" stroke-width="0.7"/>
+<text x="56" y="54" fill="#18181b" font-size="18.5" class="poetic-title">From the Seed Square C₄ (m = 2) to the Seed Dodecagon C₁₂ (m = 7) &amp; Kempe Cleavages</text>
+<text x="56" y="73" fill="#71717a" font-size="9.0" class="mono-whisper">srg(2m² + 1, 2m, 1, 2) · outer slice |V| = 2(m − 1) · ground state h = 0 has zero cross-freckles</text>
+<text x="185.0" y="271.0" text-anchor="middle" fill="#18181b" font-size="14" class="math-label">C₄</text>
+<text x="185.0" y="287.0" text-anchor="middle" fill="#2f5d50" font-size="8.5" class="mono-whisper">SAT = 1</text>
+<text x="185.0" y="145" text-anchor="middle" fill="#18181b" font-size="12.5" class="math-label">I · Embryo at m = 2</text>
+<text x="185.0" y="160" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">srg(9, 4, 1, 2) ≅ K₃ □ K₃</text>
+<text x="185.0" y="405" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">2 dominoes · F₄ ∪ M₀ = C₄</text>
+<text x="185.0" y="419" text-anchor="middle" fill="#a1a1aa" font-size="8.0" class="mono-whisper">shadow survives at k = 2</text>
+<text x="353.0" y="241.0" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">3-fold cover</text>
+<text x="353.0" y="253.0" text-anchor="middle" fill="#a1a1aa" font-size="8.0" class="mono-whisper">m : 2 → 7</text>
+<text x="555.0" y="161.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">D0</text>
+<text x="656.3" y="219.5" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">D1</text>
+<text x="656.3" y="336.5" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">D2</text>
+<text x="555.0" y="395.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">D3</text>
+<text x="453.7" y="336.5" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">D4</text>
+<text x="453.7" y="219.5" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">D5</text>
+<text x="555.0" y="226.0" text-anchor="middle" fill="#18181b" font-size="7.8" class="mono-whisper">2118</text>
+<text x="589.6" y="309.0" text-anchor="middle" fill="#18181b" font-size="7.8" class="mono-whisper">0</text>
+<text x="520.4" y="309.0" text-anchor="middle" fill="#18181b" font-size="7.8" class="mono-whisper">1670</text>
+<text x="555.0" y="279.0" text-anchor="middle" fill="#18181b" font-size="13.5" class="math-label">C₁₂</text>
+<text x="555.0" y="128" text-anchor="middle" fill="#18181b" font-size="12.5" class="math-label">II · Universal Seed Dodecagon at m = 7 (h = 0)</text>
+<text x="555.0" y="143" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">|E(F₁₂ ∪ M₀ ∪ E₀)| = 18 − c_shared = 12 + h ≥ 12 · 2² − 1 = 3 Seeds</text>
+<text x="555.0" y="418" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">all 3 / 3 seeds extinguish at d₁₀ = 0 (100% certified unsat)</text>
+<text x="555.0" y="432" text-anchor="middle" fill="#a1a1aa" font-size="8.0" class="mono-whisper">smooth even row spectrum z = 2 : {2¹⁰, 0²}</text>
+<text x="985" y="128" text-anchor="middle" fill="#18181b" font-size="12.5" class="math-label">III·A · Symmetric Chord Co-Pinches (910 / 910 unsat)</text>
+<text x="985" y="143" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">pinching both (M₀, E₀) at span k cleaves C₁₂ → C₂ₖ ⊔ C₁₂₋₂ₖ</text>
+<text x="825.0" y="244.0" text-anchor="middle" fill="#18181b" font-size="10.5" class="math-label">C₂ ⊔ C₁₀</text>
+<text x="825.0" y="256.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">1+5 · 405 unsat</text>
+<text x="932.0" y="244.0" text-anchor="middle" fill="#18181b" font-size="10.5" class="math-label">C₈ ⊔ C₄</text>
+<text x="932.0" y="256.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">4+2 · 168 unsat</text>
+<text x="1039.0" y="244.0" text-anchor="middle" fill="#18181b" font-size="10.5" class="math-label">C₆ ⊔ C₆</text>
+<text x="1039.0" y="256.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">3+3 · 90 unsat</text>
+<text x="1146.0" y="244.0" text-anchor="middle" fill="#18181b" font-size="10.5" class="math-label">C₄ ⊔ C₄ ⊔ C₄</text>
+<text x="1146.0" y="256.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">2+2+2 · 10 + 237 unsat</text>
+<text x="985" y="308" text-anchor="middle" fill="#18181b" font-size="12.5" class="math-label">III·B · Chiral Freckle Excitations (h = 0..6 · 2,670 Orbits)</text>
+<text x="985" y="323" text-anchor="middle" fill="#71717a" font-size="8.5" class="mono-whisper">each freckle chord breaks even loops (2,0) ↦ (1,1) · z ∈ {2, 1, 0}</text>
+<text x="805.0" y="402.8" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">3</text>
+<text x="805.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=0</text>
+<text x="805.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">11.5B</text>
+<text x="865.0" y="401.8" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">18</text>
+<text x="865.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=1</text>
+<text x="865.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">9.8B</text>
+<text x="925.0" y="394.9" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">119</text>
+<text x="925.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=2</text>
+<text x="925.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">6.7B</text>
+<text x="985.0" y="379.4" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">347</text>
+<text x="985.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=3</text>
+<text x="985.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">5.7B</text>
+<text x="1045.0" y="352.1" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">749</text>
+<text x="1045.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=4</text>
+<text x="1045.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">4.6B</text>
+<text x="1105.0" y="345.0" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">853</text>
+<text x="1105.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=5</text>
+<text x="1105.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">4.2B</text>
+<text x="1165.0" y="363.5" text-anchor="middle" fill="#18181b" font-size="8.5" class="mono-whisper">581</text>
+<text x="1165.0" y="429.0" text-anchor="middle" fill="#71717a" font-size="8.0" class="mono-whisper">h=6</text>
+<text x="1165.0" y="440.0" text-anchor="middle" fill="#a1a1aa" font-size="7.2" class="mono-whisper">3.9B</text>
+<text x="56" y="502" fill="#a1a1aa" font-size="8.5" class="mono-whisper">theorem 28–32 · 32 formal lean 4.35.0 theorems (0 sorryAx) · row spectra {2¹⁰, 0²} → {2⁹, 1², 0¹} → {2⁸, 1⁴} · we*</text>
 </svg>

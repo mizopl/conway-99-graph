@@ -1,10 +1,18 @@
 # The Universal Seed Dodecagon $C_{12}$ & Polygonal Generalization of Conway's 99-Graph Problem
 
-![The Seed Dodecagon C12 Unification & Polygonal Generalization](seed_dodecagon_generalization.svg)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./seed_dodecagon_generalization_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./seed_dodecagon_generalization_light.svg">
+    <img alt="From the Seed Square C4 (m = 2) to the Seed Dodecagon C12 (m = 7) and Kempe Cleavages" src="./seed_dodecagon_generalization_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 1: From the Seed Square <code>C₄</code> (<code>m = 2</code>) to the Seed Dodecagon <code>C₁₂</code> (<code>m = 7</code>) &amp; Kempe Cleavages</b> (adaptive: <a href="./seed_dodecagon_generalization_dark.svg">Dark</a> · <a href="./seed_dodecagon_generalization_light.svg">Light</a>).</em>
+</p>
 
-> **[`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean) (`32` Structural Theorems, `52` Formal `#print axioms` Declarations, `0 sorryAx`)**  
-> **[`verify-it-yourself/verify_seed_dodecagon_and_freckles.py`](../verify-it-yourself/verify_seed_dodecagon_and_freckles.py) (`6.0s` Zero-Trust Verifier across all `2,670` Orbits & `3,114` Cluster Pairs)**  
-> **[`verify-it-yourself/seed_dodecagon_c12_summary.json`](../verify-it-yourself/seed_dodecagon_c12_summary.json) & [`verify-it-yourself/seed_orbit_2118_cert.json`](../verify-it-yourself/seed_orbit_2118_cert.json) (`3 / 3 = 100% CERTIFIED UNSAT` on $C_{12}$)**
+> **Formal Lean 4 Companion (`32` Structural Theorems, `52` Formal `#print axioms` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean)  
+> **Standalone Zero-Trust Verifier (`6.0s` across all `2,670` Orbits & `3,114` Cluster Pairs):** [`verify-it-yourself/verify_seed_dodecagon_and_freckles.py`](../verify-it-yourself/verify_seed_dodecagon_and_freckles.py)  
+> **Seed Dodecagon Certificates (`3 / 3` Certified `UNSAT` on $C_{12}$):** [`verify-it-yourself/seed_dodecagon_c12_summary.json`](../verify-it-yourself/seed_dodecagon_c12_summary.json) · [`verify-it-yourself/seed_orbit_2118_cert.json`](../verify-it-yourself/seed_orbit_2118_cert.json)
 
 ---
 
@@ -12,71 +20,79 @@
 
 While investigating the recursive hierarchy of `32` structural theorems governing the centralizer involution slice $S_0$ ($12 \times 60$ incidence system) of a putative Conway 99-graph $\Gamma = \mathrm{srg}(99, 14, 1, 2)$, we asked a foundational question:
 
-> **What graph sits at the very bottom of the entire deductive chain of theorems—like a seed—and how do both the positive control $\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$ and all decomposable / polygonal strata (`1+5`, `4+2`, `3+3`, `2+2+2`, and `Class 6`) emerge from it?**
+> *What graph sits at the very bottom of the entire deductive chain of theorems—like a seed—and how do both the positive control $\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$ and all decomposable / polygonal strata (`1+5`, `4+2`, `3+3`, `2+2+2`, and `Class 6`) emerge from it?*
 
-The answer unifies the entire automorphism and slice-decomposition landscape of $\Gamma_m = \mathrm{srg}(2m^2+1, 2m, 1, 2)$ into a single geometric tree rooted at the **Regular Seed Polygon $C_{2(m-1)}$**:
+The answer unifies the automorphism and slice-decomposition landscape of $\Gamma_m = \mathrm{srg}(2m^2+1, 2m, 1, 2)$ into a single geometric lattice rooted at the **Regular Seed Polygon $C_{2(m-1)}$**:
 
 1. **Positive-Control Embryo at $m = 2$ ($\Gamma_2 = \mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$ on the Seed Square $C_4$):**
    - For $m = 2$ ($2m^2 + 1 = 9$), the outer slice around a fixed triangle $T_0$ has $2(m - 1) = 4$ vertices partitioned into $2$ conjugate dominoes $F_4 = \{\{0,1\}, \{2,3\}\}$.
    - At $h = 0$ (zero cross-freckles), the union of the domino matching $F_4$ and the slice matchings $(M_0, E_0)$ is uniquely the **Regular 4-Gon (Seed Square) $C_4 = F_4 \cup M_0$**.
-   - Stepping down the Domino Ladder on $C_4$, the 1-domino shadow ($k = 1$) survives (`SAT > 0`) and closes at $k = 2$ to the **unique global solution $\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$ (`SAT = 1`, machine-checked in [`verify.py`](../verify-it-yourself/verify.py) as `p2_5_srg9_uniqueness`)**.
+   - Stepping down the Domino Ladder on $C_4$, the 1-domino shadow ($k = 1$) survives (`SAT > 0`) and closes at $k = 2$ to the unique global solution $\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$ (`SAT = 1`, machine-checked in [`verify.py`](../verify-it-yourself/verify.py) as `p2_5_srg9_uniqueness`).
 
 2. **The 3-Fold Cover at $m = 7$ ($\Gamma_7 = \mathrm{srg}(99, 14, 1, 2)$ on the Regular Seed Dodecagon $C_{12}$):**
    - For $m = 7$ ($2m^2 + 1 = 99$), the slice $S_0$ has $2(m - 1) = 12$ vertices partitioned into $6$ conjugate dominoes $F_{12} = \mathcal{M}_{\text{even}}$.
    - By **`Theorem 28` (`we_star_seed_dodecagon_and_seven_level_freckle_excitation_grading`)**, the No-Triple-Edge Law ($F_{12} + M_0 + E_0 \le 2$) forces every vertex in $\Gamma_{\text{seed}} = F_{12} \cup M_0 \cup E_0$ to have degree $\ge 2$, yielding:
      $$|E(F_{12} \cup M_0 \cup E_0)| = 18 - c_{\text{shared}} = 12 + h \ge 12 \qquad (c_{\text{shared}} = s_{FM} + s_{FE} + s_{ME} \in \{0..6\}, \;\; h = 6 - c_{\text{shared}} \in \{0..6\}).$$
-   - At the ground state **$h = 0$ ($|E| = 12, \, c_{\text{shared}} = 6$)**, $\Gamma_{\text{seed}}$ is uniquely the **Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$** (the exact 3-fold cover of the $\mathrm{srg}(9,4,1,2)$ Seed Square $C_4$!).
-   - Because $C_{12}$ has exactly two perfect matchings ($\mathcal{M}_{\text{even}} = F_{12}$ and $\mathcal{M}_{\text{odd}}$) and $(M_0, E_0) \ne (\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{even}})$, there are **uniquely $2^2 - 1 = 3$ Seed Orbits at $h = 0$**, and **all `3 / 3` are now 100% machine-certified `UNSAT` (`d10 = 0, sols = 0`)**:
+   - At the ground state $h = 0$ ($|E| = 12, \, c_{\text{shared}} = 6$), $\Gamma_{\text{seed}}$ is uniquely the **Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$** (the 3-fold cover of the $\mathrm{srg}(9,4,1,2)$ Seed Square $C_4$).
+   - Because $C_{12}$ has two perfect matchings ($\mathcal{M}_{\text{even}} = F_{12}$ and $\mathcal{M}_{\text{odd}}$) and $(M_0, E_0) \ne (\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{even}})$, there are uniquely $2^2 - 1 = 3$ **Seed Orbits at $h = 0$**, and all `3 / 3` are machine-certified `UNSAT` (`d10 = 0, sols = 0`):
 
 | Seed ID | Canonical Orbit | Matching Triple $(F_{12}, M_0, E_0)$ on $C_{12}$ | Shared Edges $(s_{FM}, s_{FE}, s_{ME})$ | Dihedral Symmetry $\|\mathrm{Stab}_{B_6}\|$ | `d4` (2 Dominoes) | `d6` (Half-Crystal) | `d8` (4 Dominoes) | `d10` (5 Dominoes) | `sols` (Full Crystal) | Status |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`Seed I`** | `Orbit 0` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}})$ | `(6, 0, 0)` | `12` ($D_6$) | `186,949,606,677` | `19,342,812,368` | `113,567` | **`0`** | **`0`** | ✅ **`CERTIFIED UNSAT`** |
-| **`Seed II`** | `Orbit 1670` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{even}})$ | `(0, 6, 0)` | `12` ($D_6$) | `49,982,900,602` | `3,630,428,696` | `90,674` | **`0`** | **`0`** | ✅ **`CERTIFIED UNSAT`** |
-| **`Seed III`** | `Orbit 2118` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{odd}})$ | `(0, 0, 6)` | `12` ($D_6$) | `969,255,803` | `189,503,580` | `5,966` | **`0`** | **`0`** | ✅ **`CERTIFIED UNSAT`** |
+| **Seed I** | `Orbit 0` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}})$ | `(6, 0, 0)` | `12` ($D_6$) | `186,949,606,677` | `19,342,812,368` | `113,567` | `0` | `0` | `CERTIFIED UNSAT` |
+| **Seed II** | `Orbit 1670` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{even}})$ | `(0, 6, 0)` | `12` ($D_6$) | `49,982,900,602` | `3,630,428,696` | `90,674` | `0` | `0` | `CERTIFIED UNSAT` |
+| **Seed III** | `Orbit 2118` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{odd}})$ | `(0, 0, 6)` | `12` ($D_6$) | `969,255,803` | `189,503,580` | `5,966` | `0` | `0` | `CERTIFIED UNSAT` |
 
 ---
 
-## 2. The Tree-Mandala of All 3,580 Orbits: How Every Symmetric and Asymmetric Graph Grows from the 3 Seeds
+## 2. The Crystallographic Mandala of All 3,580 Orbits: How Every Symmetric and Asymmetric Graph Grows from the 3 Seeds
 
-![The Seed Dodecagon C12 Tree-Mandala](seed_mandala_tree.svg)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./seed_mandala_tree_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./seed_mandala_tree_light.svg">
+    <img alt="The Seed Dodecagon C12 Mandala and Kempe-Pinch Orbit Lattice" src="./seed_mandala_tree_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 2: The Seed Dodecagon <code>C₁₂</code> Mandala &amp; Kempe-Pinch Orbit Lattice</b> (adaptive: <a href="./seed_mandala_tree_dark.svg">Dark</a> · <a href="./seed_mandala_tree_light.svg">Light</a>).</em>
+</p>
 
-Starting from the Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$ ($6$ dominoes arranged in a ring at the golden core of the mandala above), consider a 2-edge Kempe switch (`pinch`) across a chord of span $k \in \{1, 2, 3\}$ dominoes:
+Starting from the Regular Dodecagon $C_{12} = \mathcal{M}_{\text{even}} \cup \mathcal{M}_{\text{odd}}$ ($6$ dominoes arranged at the center of the mandala above), consider a 2-edge Kempe switch (`pinch`) across a chord of span $k \in \{1, 2, 3\}$ dominoes:
 
-### Branch A: Symmetric Co-Pinches (Outer Petals I–IV) $\implies$ All Decomposable Polygonal Strata (`910 / 910 = 100% CERTIFIED UNSAT`)
+### Branch A: Symmetric Co-Pinches (Corner Medallions I–IV) $\implies$ All Decomposable Polygonal Strata (`910 / 910` Certified `UNSAT`)
 When **both** matchings $(M_0, E_0)$ pinch across the same chord of span $k$ dominoes (`Theorem 31`), the 12-cycle $C_{12}$ cleaves into two disconnected even polygons $C_{2k} \sqcup C_{12-2k}$ with zero cross-freckles between them:
-- **Petal I — Span $k = 1$ Domino ($C_{12} \to C_2 \sqcup C_{10}$ & $k_{\text{type1}} \ge 1$):** Generates **Stratum `1+5`** (`299 / 299` orbits), **`1+2+3`** (`30 / 30` orbits), **`k_type1 = 2`** (`62 / 62` orbits), and **`k_type1 >= 3`** (`14 / 14` Mod-2 parity exclusions) — **all `405 / 405` CERTIFIED UNSAT** ([`null3_k1_299_summary.json`](../verify-it-yourself/null3_k1_299_summary.json)).
-- **Petal II — Span $k = 2$ Dominoes ($C_{12} \to C_8 \sqcup C_4$):** Generates **Stratum `4+2`** (`168 / 168` canonical orbits — **100% CERTIFIED UNSAT** in `6.27h` on M1 CPU via `30` canonical $4 \times 8$ sub-cones, [`null3_k0_42_168_summary.json`](../verify-it-yourself/null3_k0_42_168_summary.json)).
-- **Petal III — Span $k = 3$ Dominoes ($C_{12} \to C_6 \sqcup C_6$):** Generates **Stratum `3+3`** (`55 / 55` nullity-4 + `35 / 35` nullity-3 canonical orbits — **100% CERTIFIED UNSAT** via `47.36x` Russian-Doll stabilizer tower, [`null3_k0_33_10_summary.json`](../verify-it-yourself/null3_k0_33_10_summary.json) & [`null4_k0_33_55_summary.json`](../verify-it-yourself/null4_k0_33_55_summary.json)).
-- **Petal IV — Two Span-$2$ Pinches ($C_{12} \to C_4 \sqcup C_4 \sqcup C_4$) & Algebraic/LRAT Exclusions:** Generates **Stratum `2+2+2`** (`10 / 10` canonical orbits of three embedded $\mathrm{srg}(9)$ squares $C_4$ — **100% CERTIFIED UNSAT**, [`null4_k0_222_10_summary.json`](../verify-it-yourself/null4_k0_222_10_summary.json)) plus `272` $\mathrm{KW}_0 < 0$ algebraic exclusions.
+- **Medallion I — Span $k = 1$ Domino ($C_{12} \to C_2 \sqcup C_{10}$ & $k_{\text{type1}} \ge 1$):** Generates **Stratum `1+5`** (`299 / 299` orbits), **`1+2+3`** (`30 / 30` orbits), **`k_type1 = 2`** (`62 / 62` orbits), and **`k_type1 >= 3`** (`14 / 14` Mod-2 parity exclusions) — `405 / 405 CERTIFIED UNSAT` ([`null3_k1_299_summary.json`](../verify-it-yourself/null3_k1_299_summary.json)).
+- **Medallion II — Span $k = 2$ Dominoes ($C_{12} \to C_8 \sqcup C_4$):** Generates **Stratum `4+2`** (`168 / 168` canonical orbits — `CERTIFIED UNSAT` in `6.27h` on M1 CPU via `30` canonical $4 \times 8$ sub-cones, [`null3_k0_42_168_summary.json`](../verify-it-yourself/null3_k0_42_168_summary.json)).
+- **Medallion III — Span $k = 3$ Dominoes ($C_{12} \to C_6 \sqcup C_6$):** Generates **Stratum `3+3`** (`55 / 55` nullity-4 + `35 / 35` nullity-3 canonical orbits — `CERTIFIED UNSAT` via `47.36x` Russian-Doll stabilizer tower, [`null3_k0_33_10_summary.json`](../verify-it-yourself/null3_k0_33_10_summary.json) & [`null2_k0_33_55_summary.json`](../verify-it-yourself/null2_k0_33_55_summary.json)).
+- **Medallion IV — Two Span-$2$ Pinches ($C_{12} \to C_4 \sqcup C_4 \sqcup C_4$) & Algebraic/LRAT Exclusions:** Generates **Stratum `2+2+2`** (`10 / 10` canonical orbits of three embedded $\mathrm{srg}(9)$ squares $C_4$ — `CERTIFIED UNSAT`, [`null4_k0_222_10_summary.json`](../verify-it-yourself/null4_k0_222_10_summary.json)) plus `272` $\mathrm{KW}_0 < 0$ algebraic exclusions.
 
-Combined with our **54 Pure-RUP LRAT proof certificates (`0 RAT lemmas`)** ruling out all odd prime orders $p \in \{3, 5, 7, 11, 13\}$, $\mathrm{Frob}(21)$, and all `18 / 19` non-central involution profiles (`p2_*`), **100% of all higher-symmetry, polygonally decomposable (`910 / 910`), and unpinched dodecagonal (`3 / 3`) Conway-99 candidates are unconditionally refuted (`913 / 913 UNSAT`)**.
+Combined with our **54 Pure-RUP LRAT proof certificates (`0 RAT lemmas`)** ruling out all odd prime orders $p \in \{3, 5, 7, 11, 13\}$, $\mathrm{Frob}(21)$, and all `18 / 19` non-central involution profiles (`p2_*`), `100%` of all higher-symmetry, polygonally decomposable (`910 / 910`), and unpinched dodecagonal (`3 / 3`) Conway-99 candidates are unconditionally refuted (`913 / 913 UNSAT`).
 
 ---
 
-### Branch B: Chiral Half-Pinches (Concentric Rings $h = 1 \dots 6$) $\implies$ The Symmetric Wings (`1,038` Orbits) & Asymmetric Canopy (`1,632` Orbits) of `Class 6`
+### Branch B: Chiral Half-Pinches (Concentric Rings $h = 1 \dots 6$) $\implies$ The Symmetric Lattice (`1,038` Orbits) & Chiral Mirror Pairs (`1,632` Orbits) of `Class 6`
 When only **one** matching pinches $C_{12}$ into $C_{2k} \sqcup C_{12-2k}$ while the other matching remains on the outer cycle, the two polygonal clusters remain stitched together by sparse **cross-cluster freckles**.
 
-By **`Theorem 25` (`we_star_freckle_cluster_decomposition_and_triomino_bridge`)**, **`2,545 / 2,670` (`95.32%`)** of all `Class 6` orbits split into $\ge 2$ disjoint polygonal clusters in at least one of the three 2-matching skeletons $(\mathcal{S}_{FM}, \mathcal{S}_{FE}, \mathcal{S}_{ME})$, coupled solely by the freckle bridge $P_{ab} = E_0|_{C_a \times C_b}$:
+By **`Theorem 25` (`we_star_freckle_cluster_decomposition_and_triomino_bridge`)**, `2,545 / 2,670` (`95.32%`) of all `Class 6` orbits split into $\ge 2$ disjoint polygonal clusters in at least one of the three 2-matching skeletons $(\mathcal{S}_{FM}, \mathcal{S}_{FE}, \mathcal{S}_{ME})$, coupled solely by the freckle bridge $P_{ab} = E_0|_{C_a \times C_b}$:
 $$\mathrm{KW}_0|_{C_a \times C_b} = 2J - (P_{ab} + M_a P_{ab} + P_{ab} M_b), \qquad \Delta_0|_{C_a \times C_b} = 2J - P_{ab} F_b.$$
 
-Inside `Class 6`, the Mandala separates cleanly into two hemispheres:
-- **Upper Hemisphere (`1,038` Symmetric `Class 6` Orbits with $|\mathrm{Stab}_{B_6}(M_0, E_0)| \ge 2$):**
-  * **Quantized Dihedral $D_6$ Spine ($|\mathrm{Stab}_{B_6}| = 12$, `18` Orbits):** Exists *exclusively* at the two extreme poles of the ladder: the **`3` Seed Orbits at $h = 0$ (`0, 1670, 2118` — `100% CERTIFIED UNSAT`)** and **`15` maximally symmetric cubic cages at $h = 6$** (`0` orbits at $h \in \{1..5\}$!).
+Inside `Class 6`, the Mandala is organized by its dihedral ($D_6$) and chiral ($M_0 \leftrightarrow E_0$) symmetry axes:
+- **Symmetric Sub-Lattice (`1,038` `Class 6` Orbits with $|\mathrm{Stab}_{B_6}(M_0, E_0)| \ge 2$):**
+  * **Quantized Dihedral $D_6$ Spine ($|\mathrm{Stab}_{B_6}| = 12$, `18` Orbits):** Exists *exclusively* at the two extreme poles of the ladder: the `3` Seed Orbits at $h = 0$ (`0, 1670, 2118` — `CERTIFIED UNSAT`) and `15` maximally symmetric cubic cages at $h = 6$ (`0` orbits at $h \in \{1..5\}$).
   * **Quantized Cyclic $C_6 / S_3$ Rays ($|\mathrm{Stab}_{B_6}| = 6$, `14` Orbits):** Exists *exclusively* at $h = 3$ (`9` orbits where every second edge of the hexagon is shared) and $h = 6$ (`5` orbits).
-  * **Klein-4 $V_4$, Cyclic $C_3$, and Reflection $\mathbb{Z}_2$ Wings (`170 + 1 + 835 = 1,006` Orbits):** Orbits whose freckle chords are arranged symmetrically across one or two mirror axes of the dodecagon.
-- **Lower Hemisphere (`1,632` Completely Asymmetric Orbits with $|\mathrm{Stab}_{B_6}(M_0, E_0)| = 1$):**
-  * The vast asymmetric canopy across rings $h = 1 \dots 6$, where chiral freckle chords break all $B_6$ symmetries of the dodecagon.
+  * **Klein-4 $V_4$, Cyclic $C_3$, and Reflection $\mathbb{Z}_2$ Lattice (`170 + 1 + 835 = 1,006` Orbits):** Orbits whose freckle chords are arranged symmetrically across one or two mirror axes of the dodecagon.
+- **Chiral Mirror Pairs (`1,632` Asymmetric Orbits with $|\mathrm{Stab}_{B_6}(M_0, E_0)| = 1$):**
+  * Across rings $h = 1 \dots 6$, chiral freckle chords break internal $B_6$ reflections, pairing orbits into mirror partners $(M_0, E_0) \leftrightarrow (E_0, M_0)$ across the vertical self-chiral axis (`Theorem 26`).
 
 | Excitation Ring $h$ | Total Edges $\|E(F_{12}\cup M_0\cup E_0)\|$ | Shared Edges $c_{\text{shared}}$ | Canonical Orbits | Mean Half-Crystal Shadows `d6` | Structural & Symmetry Characterization |
 | :---: | :---: | :---: | :---: | :---: | :--- |
-| **`h = 0`** | `12` | `6` | **`3`** | `11.49B` | **Regular Seed Dodecagon $C_{12}$ (`Orbits 0, 1670, 2118` — `3 / 3 = 100% CERTIFIED UNSAT`)** |
-| **`h = 1`** | `13` | `5` | **`18`** | `9.81B` | **`18` Unique Theta-Graphs $\Theta$ (`multiplicity = 1` per admissible triple by `Theorem 29`)** |
-| **`h = 2`** | `14` | `4` | **`119`** | `6.72B` | **2-Chord Freckle Excitations ($\Delta h = -2$ Parity Jump to $h = 0$)** |
-| **`h = 3`** | `15` | `3` | **`347`** | `5.71B` | **3-Chord Excitations (includes `9` cyclically symmetric $C_6/S_3$ orbits with $\|\mathrm{Stab}_{B_6}\| = 6$)** |
-| **`h = 4`** | `16` | `2` | **`749`** | `4.62B` | **4-Chord Excitations (`864` canonical $d_7$ sub-networks across `Class 6`, `Theorem 27`)** |
-| **`h = 5`** | `17` | `1` | **`853`** | `4.21B` | **Single Shared Edge (`c_shared = 1`)** |
-| **`h = 6`** | `18` | `0` | **`581`** | `3.94B` | **Pairwise Disjoint Cubic Cages (includes `15` dihedral $D_6$ cages with $\|\mathrm{Stab}_{B_6}\| = 12$)** |
-| **Total** | `12..18` | `6..0` | **`2,670`** | — | **Connected 7-Level Freckle Hierarchy Rooted at $C_{12}$** |
+| `h = 0` | `12` | `6` | **`3`** | `11.49B` | Regular Seed Dodecagon $C_{12}$ (`Orbits 0, 1670, 2118` — `3 / 3 CERTIFIED UNSAT`) |
+| `h = 1` | `13` | `5` | **`18`** | `9.81B` | `18` Unique Theta-Graphs $\Theta$ (`multiplicity = 1` per admissible triple by `Theorem 29`) |
+| `h = 2` | `14` | `4` | **`119`** | `6.72B` | 2-Chord Freckle Excitations ($\Delta h = -2$ Parity Jump to $h = 0$) |
+| `h = 3` | `15` | `3` | **`347`** | `5.71B` | 3-Chord Excitations (includes `9` cyclically symmetric $C_6/S_3$ orbits with $\|\mathrm{Stab}_{B_6}\| = 6$) |
+| `h = 4` | `16` | `2` | **`749`** | `4.62B` | 4-Chord Excitations (`864` canonical $d_7$ sub-networks across `Class 6`, `Theorem 27`) |
+| `h = 5` | `17` | `1` | **`853`** | `4.21B` | Single Shared Edge (`c_shared = 1`) |
+| `h = 6` | `18` | `0` | **`581`** | `3.94B` | Pairwise Disjoint Cubic Cages (includes `15` dihedral $D_6$ cages with $\|\mathrm{Stab}_{B_6}\| = 12$) |
+| **Total** | `12..18` | `6..0` | **`2,670`** | — | Connected 7-Level Freckle Hierarchy Rooted at $C_{12}$ |
 
 ---
 
