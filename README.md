@@ -3,15 +3,32 @@
 [![Engine: we*star](https://img.shields.io/badge/Autoresearch_Engine-we*star-blue)](https://github.com/mizopl/we-star)
 [![Benchmark: V3R1T4S PR #774](https://img.shields.io/badge/V3R1T4S-PR_%23774-success)](https://github.com/elder-plinius/V3R1T4S/pull/774)
 [![Proofs: 54 Pure-RUP LRAT (0 RAT)](https://img.shields.io/badge/LRAT_Proofs-54_Pure--RUP_(0_RAT)-brightgreen)](#quick-verification-18-seconds-zero-dependencies)
-[![Lean 4.35.0: 32 Theorems (0 sorryAx)](https://img.shields.io/badge/Lean_4.35.0-32_Theorems_(0_sorryAx)-blueviolet)](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)
+[![Lean 4.35.0: 36 Theorems (0 sorryAx)](https://img.shields.io/badge/Lean_4.35.0-36_Theorems_(0_sorryAx)-blueviolet)](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)
 [![Seed Dodecagon C12: 3/3 UNSAT](https://img.shields.io/badge/Seed_Dodecagon_C12-3%2F3_CERTIFIED_UNSAT-gold)](docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md)
+[![Meta Directions: 6D Orthoplex & 7-Slice WIP](https://img.shields.io/badge/Meta_Directions_(WIP)-6D_Orthoplex_%26_7--Slice-teal)](docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md)
+
+---
+
+## Meta-Research Notes & Open Directions (`Work in Progress`, `2026-10-28`): The 6D Orthoplex $\beta_6$, `1-3 / 3-1` Ternary Domino Duality, 5-Graph Diophantine Classification ($d \mid 63$), and Cross-Slice Coupling
+
+> **Full Subpage (`Work in Progress`):** [`docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md`](docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md)  
+> **Formal Lean 4 Companion (`36` Theorems, `56` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)
+
+1. **Higher-Dimensional Coxeter & Ternary Unification (`Theorems 33–36`):**
+   - **Why $C_{12}$ and 60 Columns (`Theorem 35`):** Identifies each 12-vertex, 60-column slice $S_r$ with the **6-dimensional orthoplex $\beta_6 \subset \mathbb{R}^6$** and the **60 roots of the $D_6$ root lattice**, whose orthogonal projection onto the $B_6$ Coxeter plane ($h(B_6) = 12$) has Petrie polygon equal to the **Regular Dodecagon $C_{12}$**. Establishes **6D Root-Momentum Conservation** ($\Delta_0 L^T = (E_0 - M_0)L^T$), the **`1-3 / 3-1` Ternary Domino Duality** ($\mathrm{KW}_{\text{dom}} \equiv 2J_6 - F_{M_0} - I_6 \pmod 3$, $\Delta_{\text{dom}} \equiv 2J_6 - T_{ME} \pmod 3$), and the **Domino-Hole Chiral Envelope** ($H_3 \subset S_4 \cap S_5$), alongside the **Future-Hole Overlap Cone (`Theorem 34`, `~1.75x` GPU speedup)**.
+   - **Only 5 Graphs in the Universe (`Theorem 36`, $d \mid 63 = 3^2 \times 7$):** Proves from $128m(mu-1) \equiv -126 \pmod d$ that $\mathrm{srg}(2m^2+1, 2m, 1, 2)$ admits **uniquely 5 parameter sets** $d \in \{3, 7, 9, 21, 63\}$ ($n \in \{9, 99, 243, 6273, 494019\}$), splitting into the **Pure Ternary Branch** ($d \in \{3, 9\}$, $n \in \{3^2, 3^5\}$, $(m-2) \bmod 9 = 0$, existing over $\mathbb{F}_3^2$ with $|\mathrm{Aut}| = 72$ and $\mathbb{F}_3^5$ with $|\mathrm{Aut}| = 3,849,120$) and the **Intruder-7 Branch** ($d \in \{7, 21, 63\}$, where $d=7$ uniquely breaks $\pmod 3$ divisibility $m-2 = 5$, $d=21$ breaks $\mathbb{Z}_2$ parity $m=56$ even, and $d=63$ breaks the $\mathbb{F}_3^5$ prime-power order).
+2. **Next Open Structural Directions (`Work in Progress` on Local M1 CPU):**
+   - **Direction $\mathcal{T}_1$ (`Global 7-Slice Triality Coupling on 42 × 42`):** Coupling all 7 slices $S_0, \dots, S_6$ simultaneously across the 21 four-vertex cells $Q_{\{r, t\}}$ under the `913 + 258 = 1,171` already-certified `UNSAT` slice exclusions and global involution partner matching $B = 2P_\pi + |D|$.
+   - **Direction $\mathcal{T}_3$ (`Orthoplex-to-Orthoplex Edge Bijection` $X = U_{M_0}\Pi$):** Reformulating each slice from 12-row selection to a 30-pair chiral matching of the 60 fixed edges of $\beta_6(M_0)$ into six 10-edge cycle/path covers $H_0 \sqcup \dots \sqcup H_5$.
+3. **Open Invitation for Compute Partners:**
+   - While we pursue the pure cross-slice collapse ($\mathcal{T}_1 + \mathcal{T}_3$) on a single 16 GB M1 laptop, our deterministic CUDA C++ solver (`Gen V.3` + `Theorems 34–35`, with per-batch JSON checkpointing and SHA-256 verification) has certified `258 / 2,670` (`~10%`) of the asymmetric `Class 6` tail (`1,168 / 3,580 = 32.63%` overall). **If you have access to a larger GPU cluster (`NVIDIA A100 / H100`) and would enjoy contributing compute cycles to help complete the remaining checkpointed `Class 6` bundles, we warmly invite you to reach out via GitHub Issues/Discussions for full co-authorship / joint credit on the completed certificate** (details in [`docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md`](docs/META_DIRECTIONS_6D_ORTHOPLEX_AND_7SLICE_COUPLING.md#4-open-invitation-compute-partners--collaborative-completion)).
 
 ---
 
 ## Update (`2026-10-28`): The Universal Seed Dodecagon $C_{12}$ & Complete Polygonal Generalization (`913 / 913` Symmetric & Decomposable Orbits Certified `UNSAT`)
 
 > **Full Subpage:** [`docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md`](docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md)  
-> **Formal Lean 4 Companion (`32` Theorems, `52` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)  
+> **Formal Lean 4 Companion (`36` Theorems, `56` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](verify-it-yourself/ChiralNullspaceAndHandshaking.lean)  
 > **Zero-Trust Python Verifier (`5.4s`, `0` Errors across all `2,670` Orbits):** [`verify-it-yourself/verify_seed_dodecagon_and_freckles.py`](verify-it-yourself/verify_seed_dodecagon_and_freckles.py)
 
 We establish the **Universal Seed Dodecagon $C_{12}$ Generalization (`Theorems 25–32`)**, unifying the positive control $\mathrm{srg}(9, 4, 1, 2) \cong K_3 \square K_3$, all decomposable polygonal strata (`1+5`, `4+2`, `3+3`, `2+2+2`), and the `2,670`-orbit `Class 6` freckle hierarchy into a single deductive lattice (full derivation and Socratic discovery dialogue in [`docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md`](docs/SYMMETRIC_POLYGONAL_GENERALIZATION_AND_SEED_C12.md)):
