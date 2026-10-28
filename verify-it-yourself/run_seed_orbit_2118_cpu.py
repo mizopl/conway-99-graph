@@ -1,13 +1,357 @@
 import time
 import json
+import pathlib
 import numpy as np
 from numba import njit, prange
 from itertools import permutations, product
 
 t_start = time.time()
-with open("/Users/blister/.gemini/antigravity/brain/a032f282-8f89-4af4-b78c-396ebf6f53dc/scratch/build_we_star_ladder_plan.py") as f:
-    bsrc = f.read()
-exec(bsrc.split("def canonicalize_cone6_all20")[0])
+import json
+import time
+import numpy as np
+from itertools import combinations, permutations, product
+from collections import defaultdict, Counter
+
+t0 = time.time()
+
+F12 = np.zeros((12, 12), dtype=np.int32)
+for b_idx in range(6):
+    F12[2 * b_idx, 2 * b_idx + 1] = F12[2 * b_idx + 1, 2 * b_idx] = 1
+I12 = np.eye(12, dtype=np.int32)
+J12 = np.ones((12, 12), dtype=np.int32)
+
+def gen_matchings_12(verts):
+    if not verts:
+        yield ()
+        return
+    v0 = verts[0]
+    rest = verts[1:]
+    for idx, v1 in enumerate(rest):
+        rem = rest[:idx] + rest[idx + 1:]
+        for m in gen_matchings_12(rem):
+            yield ((v0, v1),) + m
+
+matchings_12 = list(gen_matchings_12(list(range(12))))
+m_tuples = []
+for m in matchings_12:
+    p = [0] * 12
+    for u, v in m:
+        p[u] = v
+        p[v] = u
+    m_tuples.append(tuple(p))
+m_to_id = {t: i for i, t in enumerate(m_tuples)}
+
+def cycle_part_12(p):
+    vis = [False] * 6
+    cycs = []
+    for b_idx in range(6):
+        if vis[b_idx]:
+            continue
+        cur = 2 * b_idx
+        length = 0
+        while not vis[cur // 2]:
+            vis[cur // 2] = True
+            length += 1
+            nxt = p[cur]
+            if nxt // 2 == cur // 2:
+                break
+            cur = nxt ^ 1
+        cycs.append(length)
+    return tuple(sorted(cycs, reverse=True))
+
+reps_M0 = {}
+for p in m_tuples:
+    part = cycle_part_12(p)
+    if part not in reps_M0:
+        reps_M0[part] = p
+
+b6_perms = []
+for perm in permutations(range(6)):
+    for flips in product((0, 1), repeat=6):
+        g_p = [0] * 12
+        for b_old in range(6):
+            b_new = perm[b_old]
+            fl = flips[b_old]
+            g_p[2 * b_old] = 2 * b_new + fl
+            g_p[2 * b_old + 1] = 2 * b_new + (1 - fl)
+        b6_perms.append(tuple(g_p))
+
+def get_block_comps(M, E):
+    adj = F12 | M | E
+    vis = set()
+    comps = []
+    for u in range(12):
+        if u not in vis:
+            comp = []
+            q = [u]
+            vis.add(u)
+            while q:
+                cur = q.pop()
+                comp.append(cur)
+                for nxt in range(12):
+                    if adj[cur, nxt] and nxt not in vis:
+                        vis.add(nxt)
+                        q.append(nxt)
+            comps.append(sorted(comp))
+    return comps
+
+orbits_6 = []
+for part, m0 in sorted(reps_M0.items()):
+    stab = [g_p for g_p in b6_perms if all(g_p[m0[u]] == m0[g_p[u]] for u in range(12))]
+    M0_mat = np.zeros((12, 12), dtype=np.int32)
+    for u, v in enumerate(m0):
+        M0_mat[u, v] = 1
+    seen_e0 = [False] * len(m_tuples)
+    for idx_e, e0 in enumerate(m_tuples):
+        if seen_e0[idx_e]:
+            continue
+        for g_p in stab:
+            img = [0] * 12
+            for u in range(12):
+                img[g_p[u]] = g_p[e0[u]]
+            seen_e0[m_to_id[tuple(img)]] = True
+        E0_mat = np.zeros((12, 12), dtype=np.int32)
+        for u, v in enumerate(e0):
+            E0_mat[u, v] = 1
+        KW0 = 2 * J12 - F12 - E0_mat - (M0_mat @ E0_mat) - (E0_mat @ M0_mat)
+        if KW0.min() >= 0:
+            k_t1 = sum(1 for b_idx in range(6) if m0[2 * b_idx] == 2 * b_idx + 1 and e0[2 * b_idx] == 2 * b_idx + 1)
+            if k_t1 == 0:
+                comps = get_block_comps(M0_mat, E0_mat)
+                sig = "+".join(str(len(c)//2) for c in sorted(comps, key=lambda x: len(x), reverse=True))
+                if sig == "6":
+                    Gp = 9 * I12 + J12 - M0_mat
+                    orbits_6.append((M0_mat, E0_mat, Gp, KW0))
+
+print(f"[we* Generator] Loaded {len(orbits_6)} Class-6 orbits in {time.time()-t0:.2f}s", flush=True)
+
+def pool_size(deg_row, kw_diag):
+    has_zero = (min(deg_row) == 0)
+    if kw_diag == 0:
+        return 101184 if has_zero else 155904
+    else:
+        return 91392 if has_zero else 216576
+
+fact = {1: 1, 2: 2, 3: 6, 4: 24, 5: 120, 6: 720}
+
+def canonicalize_D_cols(D_sub):
+    k = len(D_sub)
+    block_info = []
+    for b in range(6):
+        c0 = tuple(int(D_sub[r][2*b]) for r in range(k))
+        c1 = tuple(int(D_sub[r][2*b+1]) for r in range(k))
+        if c0 <= c1:
+            block_info.append(((c0, c1), (2*b, 2*b+1)))
+        else:
+            block_info.append(((c1, c0), (2*b+1, 2*b)))
+    block_info.sort(key=lambda x: x[0])
+    tau = []
+    for _, pair in block_info:
+        tau.extend(pair)
+    tau = tuple(tau)
+    D_can = tuple(tuple(int(D_sub[r][tau[j]]) for j in range(12)) for r in range(k))
+    return D_can, tau
+
+def compute_col_stab_count(D_tup):
+    k = len(D_tup)
+    sigs = defaultdict(int)
+    flips = 0
+    for b in range(6):
+        c0 = tuple(D_tup[r][2*b] for r in range(k))
+        c1 = tuple(D_tup[r][2*b+1] for r in range(k))
+        if c0 == c1:
+            flips += 1
+        pair = (c0, c1) if c0 <= c1 else (c1, c0)
+        sigs[pair] += 1
+    ans = 1 << flips
+    for cnt in sigs.values():
+        ans *= fact[cnt]
+    return ans
+
+def get_all_col_isos(D_from, D_to, max_isos=64):
+    k = len(D_from)
+    from_blocks = [(tuple(D_from[r][2*b] for r in range(k)), tuple(D_from[r][2*b+1] for r in range(k))) for b in range(6)]
+    to_blocks   = [(tuple(D_to[r][2*b]   for r in range(k)), tuple(D_to[r][2*b+1]   for r in range(k))) for b in range(6)]
+    choices_per_to = []
+    for b_to in range(6):
+        tc0, tc1 = to_blocks[b_to]
+        opts = []
+        for b_from in range(6):
+            fc0, fc1 = from_blocks[b_from]
+            if fc0 == tc0 and fc1 == tc1:
+                opts.append((b_from, (2*b_from, 2*b_from+1)))
+            if fc1 == tc0 and fc0 == tc1:
+                opts.append((b_from, (2*b_from+1, 2*b_from)))
+        if not opts:
+            return []
+        choices_per_to.append(opts)
+    res = []
+    used = [False] * 6
+    cur = [None] * 6
+    def bt(b_to):
+        if len(res) >= max_isos:
+            return
+        if b_to == 6:
+            tau = []
+            for p in cur:
+                tau.extend(p)
+            res.append(tuple(tau))
+            return
+        for b_from, pair in choices_per_to[b_to]:
+            if not used[b_from]:
+                used[b_from] = True
+                cur[b_to] = pair
+                bt(b_to + 1)
+                used[b_from] = False
+                if len(res) >= max_isos:
+                    return
+    bt(0)
+    return res
+
+def pair_factor(gp, kw):
+    f = 0.38 if gp == 0 else 1.0
+    if kw == 0:
+        f *= 0.38
+    elif kw == 1:
+        f *= 0.68
+    return f
+
+# Evaluate canonical 4-row crystal K4 (Rung k=2)
+k4_eval_cache = {}
+b1_perms_role = [
+    (0,1,2,3), (1,0,2,3), (0,1,3,2), (1,0,3,2),
+    (2,3,0,1), (3,2,0,1), (2,3,1,0), (3,2,1,0),
+]
+
+def eval_canonical_k4(k4_key):
+    if k4_key in k4_eval_cache:
+        return k4_eval_cache[k4_key]
+    G4, K4, D4 = k4_key
+    col_stab = compute_col_stab_count(D4)
+    valid_sigmas4 = []
+    for sig in b1_perms_role:
+        ok = True
+        for a in range(4):
+            for b in range(4):
+                if G4[sig[a]][sig[b]] != G4[a][b] or K4[sig[a]][sig[b]] != K4[a][b]:
+                    ok = False
+                    break
+            if not ok:
+                break
+        if not ok:
+            continue
+        D_perm = [D4[sig[a]] for a in range(4)]
+        D_perm_can, _ = canonicalize_D_cols(D_perm)
+        if D_perm_can == D4:
+            valid_sigmas4.append(sig)
+    aut4 = len(valid_sigmas4) * col_stab
+    res = (aut4, col_stab, valid_sigmas4)
+    k4_eval_cache[k4_key] = res
+    return res
+
+def extract_k4_key_from_ckey(ckey):
+    G6, K6, D6 = ckey
+    best_k4 = None
+    for p1 in b1_perms_role:
+        G4 = tuple(tuple(G6[p1[a]][p1[b]] for b in range(4)) for a in range(4))
+        K4 = tuple(tuple(K6[p1[a]][p1[b]] for b in range(4)) for a in range(4))
+        D4_can, _ = canonicalize_D_cols([D6[p1[a]] for a in range(4)])
+        cand = (G4, K4, D4_can)
+        if best_k4 is None or cand < best_k4:
+            best_k4 = cand
+    return best_k4
+
+# Evaluate canonical 6-row half-loop K6 (Rung k=3)
+cone_eval_cache = {}
+r45_perms_role = [(4,5), (5,4)]
+
+def eval_canonical_cone(ckey):
+    if ckey in cone_eval_cache:
+        return cone_eval_cache[ckey]
+    G6, K6, D6 = ckey
+    col_stab = compute_col_stab_count(D6)
+    row_sigs = []
+    for a in range(6):
+        bp = tuple(sorted(
+            (min(D6[a][2*b], D6[a][2*b+1]), max(D6[a][2*b], D6[a][2*b+1]))
+            for b in range(6)
+        ))
+        row_sigs.append((K6[a][a], bp))
+
+    valid_sigmas = []
+    for sig in permutations(range(6)):
+        if any(row_sigs[sig[a]] != row_sigs[a] for a in range(6)):
+            continue
+        ok = True
+        for a in range(6):
+            for b in range(a+1, 6):
+                if G6[sig[a]][sig[b]] != G6[a][b] or K6[sig[a]][sig[b]] != K6[a][b]:
+                    ok = False
+                    break
+            if not ok:
+                break
+        if not ok:
+            continue
+        D_perm = [D6[sig[a]] for a in range(6)]
+        D_perm_can, _ = canonicalize_D_cols(D_perm)
+        if D_perm_can == D6:
+            valid_sigmas.append(sig)
+
+    aut_size = len(valid_sigmas) * col_stab
+    s0_orbit = len({s[0] for s in valid_sigmas})
+    eff_aut = min(col_stab, 16) * min(s0_orbit, 2)
+
+    prod_b1 = 1.0
+    for a in range(4):
+        prod_b1 *= (pool_size(D6[a], K6[a][4 if a >= 4 else a]) / 91392.0)
+    prod_45 = (pool_size(D6[4], K6[4][4]) / 91392.0) * (pool_size(D6[5], K6[5][5]) / 91392.0)
+
+    pf_01 = pair_factor(G6[0][1], K6[0][1])
+    pf_23 = pair_factor(G6[2][3], K6[2][3])
+    pf_b1 = 1.0
+    for a in (0, 1):
+        for b in (2, 3):
+            pf_b1 *= pair_factor(G6[a][b], K6[a][b])
+    if all(K6[a][b] >= 1 for a in (0, 1) for b in (2, 3)):
+        pf_b1 *= 4.5
+    if all(G6[a][b] == 1 and K6[a][b] == 2 for a in (0, 1) for b in (2, 3)):
+        pf_b1 *= 3.0
+    if K6[0][2] == 0:
+        pf_b1 *= 0.78
+    if K6[1][2] == 0:
+        pf_b1 *= 0.84
+    if pool_size(D6[1], K6[1][1]) > pool_size(D6[3], K6[3][3]):
+        pf_b1 *= 1.35
+
+    pf_45 = pair_factor(G6[4][5], K6[4][5])
+    if G6[4][5] != 0 and K6[4][5] == 2:
+        pf_45 *= 2.5
+    for a in (4, 5):
+        row_pf = 1.0
+        for b in range(4):
+            row_pf *= pair_factor(G6[a][b], K6[a][b])
+        if row_pf > 0.70:
+            row_pf *= 2.0
+        pf_45 *= row_pf
+
+    d4_work = prod_b1 * (pf_01 ** 1.25) * pf_23 * pf_b1 * 100.0 / eff_aut
+    d6_work = d4_work * prod_45 * pf_45 * 3.0
+    work = d4_work + d6_work
+    res = (work, d4_work, d6_work, aut_size, col_stab, valid_sigmas)
+    cone_eval_cache[ckey] = res
+    return res
+
+# Allow all 48 3-domino permutations (S_3 x Z_2^3) when finding the canonical 3-domino half-loop K6,
+# while ordering the representative so pool_size(0)<=pool_size(1), pool_size(2)<=pool_size(3), pool_size(4)<=pool_size(5),
+# and putting the two tightest dominoes first as B1 = (D0, D1)!
+all_dom3_perms = []
+for d_perm in permutations(range(3)):
+    for flips in product((0, 1), repeat=3):
+        p = []
+        for idx_d in d_perm:
+            u, v = 2 * idx_d, 2 * idx_d + 1
+            p.extend((u, v) if flips[idx_d] == 0 else (v, u))
+        all_dom3_perms.append(tuple(p))
 
 MASK60 = np.uint64((1 << 60) - 1)
 
@@ -714,5 +1058,5 @@ cert_out = {
     "sols": tot_sol,
     "elapsed_s": round(el, 3)
 }
-with open("/Users/blister/.gemini/antigravity/brain/a032f282-8f89-4af4-b78c-396ebf6f53dc/scratch/seed_orbit_2118_cert.json", "w") as f:
+with open(pathlib.Path(__file__).resolve().parent / "seed_orbit_2118_cert.json", "w") as f:
     json.dump(cert_out, f, indent=2)
