@@ -1,6 +1,6 @@
 # Meta-Level Research Notes & Open Directions (`Work in Progress`): The 6D Orthoplex $\beta_6$, `1-3 / 3-1` Ternary Domino Duality, 5-Graph Diophantine Classification ($d \mid 63$), and Cross-Slice Coupling
 
-> **Status (`2026-10-28`, Meta-Research / Work in Progress):** These notes document our ongoing architectural exploration beyond single-slice row-by-row enumeration, developed within the **[`we*star`](https://github.com/mizopl/we-star)** human–AI autoresearch loop on a single 16 GB Apple M1 laptop. Rather than a finished academic paper, this document serves as an open laboratory notebook mapping the higher-dimensional geometry of the problem (`Theorems 33–36`, machine-checked in Core Lean 4.35.0 with `0 sorryAx` in [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean)) and outlining the next structural directions ($\mathcal{T}_1$ & $\mathcal{T}_3$).
+> **Status (`2026-10-28`, Meta-Research / Work in Progress):** These notes document our ongoing architectural exploration beyond single-slice row-by-row enumeration, developed within the **[`we*star`](https://github.com/mizopl/we-star)** human–AI autoresearch loop on a single 16 GB Apple M1 laptop. Rather than a finished academic paper, this document serves as an open laboratory notebook mapping the higher-dimensional geometry of the problem (`Theorems 33–37`, machine-checked in Core Lean 4.35.0 with `0 sorryAx` in [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean)) and outlining the next structural directions ($\mathcal{T}_1$ & $\mathcal{T}_3$).
 
 ---
 
@@ -16,12 +16,12 @@ Across the automorphism and local-slice hierarchy of John H. Conway's 99-graph p
 2. **All Symmetric, Polygonally Decomposable, and Seed Dodecagonal $C_{12}$ Strata under `(0, 7, 0)` (`913 / 913 = 100% Certified UNSAT` on a Single M1 Laptop):**
    - Every orbit with $\ge 1$ Type-I block ($k_{\text{type1}}(S_r) \ge 1$: `391 / 391 UNSAT`), every multi-component polygonal cleavage of the dodecagon (`4+2`: `168 / 168 UNSAT`, `3+3`: `55 / 55` canonical = `178 / 178 UNSAT`, `2+2+2`: `10 / 10` canonical = `265 / 265 UNSAT`), and all **`3 / 3` Seed Dodecagon $C_{12}$ orbits at ground state $h = 0$ (`Orbit 0`, `Orbit 1670`, `Orbit 2118`)** are `100% CERTIFIED UNSAT` (`sols = 0`).
 
-3. **The Irreducible Freckled Stratum (`Class 6`, $h = 1..6$): `258 / 2,670` Certified `UNSAT` (`1,168 / 3,580 = 32.63%` Total Orbits):**
-   - Within the remaining single-component `Class 6` stratum (`2,670` canonical orbits across freckle excitation rings $h = 1..6$), **`258` orbits** (`257` in batch certificates + `Orbit 2118`, with another `+12` finishing on `Bundle 20082` to cross **`270 / 2,670 > 10.1%`**) are certified `UNSAT` (`sols = 0`).
+3. **The Irreducible Freckled Stratum (`Class 6`, $h = 1..6$): `270 / 2,670` (`10.11%`) Certified `UNSAT` (`1,180 / 3,580 = 32.96%` Total Orbits):**
+   - Within the remaining single-component `Class 6` stratum (`2,670` canonical orbits across freckle excitation rings $h = 1..6$), **`270` orbits** (`269` in [`verify-it-yourself/null2_k0_6_partial.json`](../verify-it-yourself/null2_k0_6_partial.json) + `Orbit 2118`, with `41` active mid-bundle checkpoints saved in [`verify-it-yourself/null2_k0_6_ckpts.json`](../verify-it-yourself/null2_k0_6_ckpts.json)) are certified `UNSAT` (`sols = 0`).
 
 ---
 
-## 2. Meta-Level Geometric Synthesis (`Theorems 33–36`, Core Lean 4.35.0, `0 sorryAx`)
+## 2. Meta-Level Geometric Synthesis (`Theorems 33–37`, Core Lean 4.35.0, `0 sorryAx`)
 
 ### 2.1. `Theorem 33` & `Theorem 34`: The 8-Bucket Throat Partition & Future-Hole Overlap Cone (`Sieve-Cone`)
 At the half-crystal horizon `d6` ($6$ rows = $3$ $M_0$-dominoes), the $60$ columns split into $36$ saturated (`u2 = 1`), $12$ active (`u1 = 1`), and $12$ empty (`E12`) columns.
@@ -69,13 +69,24 @@ Thus the entire family $\mathrm{srg}(2m^2 + 1, 2m, 1, 2)$ contains **uniquely 5 
 
 ---
 
+### 2.4. `Theorem 37`: Cross-Slice Residual Matrix Identity & Four-Fold Mask-Exclusion Laws (`Laws T1-A, T1-B, T1-C1, T1-C2`)
+In a single-slice solver (`Lens 3`), enforcing $M_{36 \times 60} M_{36 \times 60}^T = G_{36}(M_0, E_0)$ on the stacked $36 \times 60$ incidence matrix $M_{36 \times 60} = (W^T, X^T, g(X)^T)^T$ checks only row inner products, ignoring the **entrywise non-negativity of the cross-slice walk equation** $(A_{99}^2 + A_{99})_{S_{36}, R_{60}} = 2 J_{36 \times 60}$:
+$$M_{36 \times 60} \, A_{60} \;=\; 2 J_{36 \times 60} \;-\; (I_{36} + B_{36}) \, M_{36 \times 60} \;\in\; \{0, 1, 2\}^{36 \times 60}, \qquad B_{36} = \begin{pmatrix} F_{12} & I_{12} & F_{12} \\ I_{12} & M_0 & E_0 \\ F_{12} & E_0 & M_0 \end{pmatrix}.$$
+Since $B_{36}$ is 3-regular and $x_k \cap x_{m(k)} = \emptyset$, the 36-row non-negativity condition $M_{36 \times 60} A_{60} \ge 0$ (`Theorem 37`, `we_star_cross_slice_residual_matrix_and_mask_exclusion_theorem`) is **strictly equivalent** to the **Four-Fold Cross-Slice Mask-Exclusion Law** for every row pair $(i, i') \in \{0, \dots, 11\}^2$:
+$$\big(x_i \ \& \ g(x_{i'}) \ \& \ \mathrm{Forb}_{M_0, E_0}[i, i']\big) \;=\; 0,$$
+where:
+$$\mathrm{Forb}_{M_0, E_0}[i, i'] \;=\; \underbrace{F_{12}[i, i']\,(W_j[i] \cup W_j[f(i)])}_{\text{Law T1-A (Domino)}}\;\cup\;\underbrace{E_0[i, i']\,(W_j[i] \cup W_j[f(i')])}_{\text{Law T1-B ($E_0$-edge)}}\;\cup\;\underbrace{(M_0 E_0)[i, i']\,W_j[m(i)]}_{\text{Law T1-C1 ($M_0 E_0$-walk)}}\;\cup\;\underbrace{(E_0 M_0)[i, i']\,W_j[f(e(i))]}_{\text{Law T1-C2 ($E_0 M_0$-walk)}}.$$
+- **Zero-Overhead Bitwise Filtering on Local M1 CPU (`bench_t1_d8.py`):** Because `x_a & gx_b` is already computed in registers when checking `popcnt64(x_a & gx_b) == kw[a, b]`, adding `((x_a & gx_b) & fb[a, b]) == 0ULL` costs a single bitwise `AND` and prunes up to **`-21.3%` at `d4`**, **`-29.0%` at `d6`**, and **`-20.9%` at `d7/d8`** across multi-active `Class 6` bundles (`Bundle 6: d4 78.7%, d6 71.0%, d7 79.1%`; `Bundle 7: d6 77.2%, d7 79.8%, d8 79.2%`; `Bundle 3: d6 86.5%, d7 85.1%`; `Bundle 0: d6 91.9%, d7 84.0%`).
+
+---
+
 ## 3. Next Open Architectural Directions (`Work in Progress` on Local M1 CPU)
 
 Rather than brute-forcing the remaining `Class 6` orbits one isolated slice $S_0$ at a time on paid cloud GPUs, we are actively pursuing two structural reductions on a single Apple M1 laptop:
 
 ### Direction $\mathcal{T}_1$: Global 7-Slice Triality Coupling on the $42 \times 42$ Orbit Space
 Evaluating a single slice $S_0$ in isolation ignores the other **6 slices $S_1, \dots, S_6$** around $x_0$. In the full 99-vertex graph under $g = -I_7$:
-- All **7 slices $S_0, \dots, S_6$** intersect pairwise across the $\binom{7}{2} = 21$ four-vertex cells $Q_{\{r, t\}} = S_r \cap S_t$ ($42$ involution orbits) and must **simultaneously** avoid all `913` certified `UNSAT` symmetric/decomposable/seed orbits and all `258+` certified `UNSAT` `Class 6` orbits.
+- All **7 slices $S_0, \dots, S_6$** intersect pairwise across the $\binom{7}{2} = 21$ four-vertex cells $Q_{\{r, t\}} = S_r \cap S_t$ ($42$ involution orbits) and must **simultaneously** avoid all `913` certified `UNSAT` symmetric/decomposable/seed orbits and all `270` certified `UNSAT` `Class 6` orbits.
 - Since $k_{\text{type1}}(S_r) = 0$ for all $r \in \{0, \dots, 6\}$, in the global $42 \times 42$ equation $B = 2P_\pi + |D|$ ($B^2 + B - 12I_{42} = M_{21}^{\text{true}} \otimes J_2$), no involution partner $\pi(u)$ can lie in the same cell $Q_{\{r, t\}}$, so $\pi(u)$ cannot lie in $S_r \cap S_t$. Consequently, for every orbit $u \in Q_{\{r, t\}}$, **at most one** of the two slices $S_r, S_t$ can have a diagonal freckle $\mathrm{KW}(u, u) = 0$ ($M^+(u) = E(u)$), while any diagonal freckle in $S_r$ rigidly pins the $\Lambda$-hinge $\{c, g(c)\}$ in the dual slices.
 
 ### Direction $\mathcal{T}_3$: Orthoplex-to-Orthoplex Edge Bijection ($X = U_{M_0}\Pi$)
@@ -87,8 +98,8 @@ Each of the 6 column-blocks $b \in \{0, \dots, 5\}$ is therefore a 10-edge subgr
 
 ## 4. Open Invitation: Compute Partners & Collaborative Completion
 
-All theoretical reductions, formal Lean 4 proofs (`36` theorems, `56` declarations, `0 sorryAx`), CPU solvers (`913 / 913` symmetric, decomposable, and $C_{12}$ seed orbits verifiable on a single 16 GB M1 laptop), and the first `~10%` (`258+ / 2,670` orbits, `33%` of the full `(0, 7, 0)` space) of the asymmetric `Class 6` sweep were developed by an independent human–AI research team (`we*`) on a single laptop supplemented by modest cloud GPU runs.
+All theoretical reductions, formal Lean 4 proofs (`37` theorems, `57` declarations, `0 sorryAx`), CPU solvers (`913 / 913` symmetric, decomposable, and $C_{12}$ seed orbits verifiable on a single 16 GB M1 laptop), and the first **`10.11%` (`270 / 2,670` orbits, `1,180 / 3,580 = 32.96%` of the full `(0, 7, 0)` space)** of the asymmetric `Class 6` sweep were developed by an independent human–AI research team (`we*`) on a single laptop supplemented by modest cloud GPU runs.
 
-While we pursue the pure cross-slice theoretical collapse ($\mathcal{T}_1 + \mathcal{T}_3$) locally, **our deterministic CUDA C++ solver (`Gen V.3` + `Theorems 34–35`, with per-batch JSON checkpointing and zero-trust SHA-256 verification) is ready to run out-of-the-box on any modern multi-GPU cluster (`NVIDIA A100 / H100`)**.
+While we pursue the pure cross-slice theoretical collapse ($\mathcal{T}_1 + \mathcal{T}_3$) locally, **our deterministic CUDA C++ solver (`Gen V.4` + `Theorems 34, 35 & 37`, with per-batch JSON checkpointing in [`verify-it-yourself/null2_k0_6_ckpts.json`](../verify-it-yourself/null2_k0_6_ckpts.json) and zero-trust SHA-256 verification) is ready to run out-of-the-box on any modern multi-GPU cluster (`NVIDIA A100 / H100`)**.
 
 > **If you have access to a larger GPU cluster and would enjoy contributing compute cycles to help finish the remaining checkpointed `Class 6` bundles — or collaborating on the final verification — we warmly invite you to reach out (via GitHub Issues/Discussions on [`mizopl/conway-99-graph`](https://github.com/mizopl/conway-99-graph)) for full co-authorship / joint credit on the completed certificate.**

@@ -2235,6 +2235,49 @@ theorem we_star_five_graph_diophantine_and_orthoplex_ternary_classification :
     (54 = 2 * 27 ∧ 19 - 18 = 1 ∧ 910 + 3 = 913 ∧ 910 + 2670 = 3580) := by
   decide
 
+/-- Theorem 37 (`Twierdzenie T1/T3` — Cross-Slice Residual Matrix Identity & Four-Fold
+    Mask-Exclusion Laws `T1-A, T1-B, T1-C1, T1-C2` on `S_36 × R_60`):
+    1. By the SRG matrix equation `(A_99^2 + A_99)_{S_36, R_60} = 2 J_{36 × 60}` across the
+       3-regular 36-vertex union `S_36 = (N(x_0) \ T_0) ⊔ N(y_0)' ⊔ N(z_0)'` and the 60-vertex
+       outer shell `R_60`, the internal adjacency matrix `A_60` of `R_60` satisfies the exact
+       three-block residual degree equations at every column `c in R_60` and index `k in {0..11}`:
+       - `r_W(k, c) := (W A_60)_{k, c} = 2 - X[k, c] - g(X)[f(k), c] - W[k, c] - W[f(k), c] >= 0`,
+       - `r_X(k, c) := (X A_60)_{k, c} = 2 - X[k, c] - X[m(k), c] - g(X)[e(k), c] - W[k, c] >= 0`,
+       - `r_gX(k, c) := (g(X) A_60)_{k, c} = 2 - g(X)[k, c] - g(X)[m(k), c] - X[e(k), c] - W[f(k), c] >= 0`,
+       with `X[k, c] + X[m(k), c] <= 1` (`since G'_0[k, m(k)] = 0`), `g(X)[k, c] + g(X)[m(k), c] <= 1`,
+       and `W[k, c] + W[f(k), c] <= 1`.
+    2. Consequently, non-negativity `(r_W >= 0 ∧ r_X >= 0 ∧ r_gX >= 0)` is strictly equivalent to
+       the Four-Fold Cross-Slice Mask-Exclusion Laws:
+       - Law `T1-A` (Domino Mask): `(W[k, c] = 1 ∨ W[f(k), c] = 1) -> ¬(X[k, c] = 1 ∧ g(X)[f(k), c] = 1)`,
+       - Law `T1-B` (`E_0`-Partner Mask):
+         `(W[k, c] = 1 -> ¬(X[k, c] = 1 ∧ g(X)[e(k), c] = 1)) ∧ (W[f(k), c] = 1 -> ¬(X[e(k), c] = 1 ∧ g(X)[k, c] = 1))`,
+       - Law `T1-C1` (`M_0 E_0`-Walk Mask): `W[k, c] = 1 -> ¬(X[m(k), c] = 1 ∧ g(X)[e(k), c] = 1)`,
+       - Law `T1-C2` (`E_0 M_0`-Walk Mask): `W[f(k), c] = 1 -> ¬(X[e(k), c] = 1 ∧ g(X)[m(k), c] = 1)`. -/
+theorem we_star_cross_slice_residual_matrix_and_mask_exclusion_theorem
+    (xk_c xmk_c xek_c gxk_c gxmk_c gxfk_c gxek_c wk_c wfk_c rW_c rX_c rgX_c : Int)
+    (h_xk : xk_c = 0 ∨ xk_c = 1)
+    (h_xmk : xmk_c = 0 ∨ xmk_c = 1)
+    (h_xek : xek_c = 0 ∨ xek_c = 1)
+    (h_gxk : gxk_c = 0 ∨ gxk_c = 1)
+    (h_gxmk : gxmk_c = 0 ∨ gxmk_c = 1)
+    (h_gxfk : gxfk_c = 0 ∨ gxfk_c = 1)
+    (h_gxek : gxek_c = 0 ∨ gxek_c = 1)
+    (h_wk : wk_c = 0 ∨ wk_c = 1)
+    (h_wfk : wfk_c = 0 ∨ wfk_c = 1)
+    (h_m_disj : xk_c + xmk_c ≤ 1)
+    (h_gm_disj : gxk_c + gxmk_c ≤ 1)
+    (h_w_disj : wk_c + wfk_c ≤ 1)
+    (h_rW : rW_c = 2 - xk_c - gxfk_c - wk_c - wfk_c)
+    (h_rX : rX_c = 2 - xk_c - xmk_c - gxek_c - wk_c)
+    (h_rgX : rgX_c = 2 - gxk_c - gxmk_c - xek_c - wfk_c) :
+    ((rW_c ≥ 0 ∧ rX_c ≥ 0 ∧ rgX_c ≥ 0) ↔
+      (((wk_c = 1 ∨ wfk_c = 1) → ¬(xk_c = 1 ∧ gxfk_c = 1)) ∧
+       (wk_c = 1 → ¬(xk_c = 1 ∧ gxek_c = 1)) ∧
+       (wfk_c = 1 → ¬(xek_c = 1 ∧ gxk_c = 1)) ∧
+       (wk_c = 1 → ¬(xmk_c = 1 ∧ gxek_c = 1)) ∧
+       (wfk_c = 1 → ¬(xek_c = 1 ∧ gxmk_c = 1)))) := by
+  omega
+
 #print axioms simpleGraph_adj_ne_of_loopless
 #print axioms conway99_srg_layer_and_slice_parameters
 #print axioms srg_matrix_equation_and_conway99_spectral_decomposition
@@ -2292,5 +2335,6 @@ theorem we_star_five_graph_diophantine_and_orthoplex_ternary_classification :
 #print axioms we_star_future_hole_overlap_partition_and_monotone_threshold_ladder
 #print axioms we_star_d6_root_momentum_ternary_domino_duality_and_h3_hole_envelope
 #print axioms we_star_five_graph_diophantine_and_orthoplex_ternary_classification
+#print axioms we_star_cross_slice_residual_matrix_and_mask_exclusion_theorem
 
 end Conway99ChiralTheorems
