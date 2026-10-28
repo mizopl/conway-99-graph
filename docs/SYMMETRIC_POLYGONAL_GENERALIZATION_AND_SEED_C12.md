@@ -1,15 +1,5 @@
 # The Universal Seed Dodecagon $C_{12}$ & Polygonal Generalization of Conway's 99-Graph Problem
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./seed_dodecagon_generalization_dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./seed_dodecagon_generalization_light.svg">
-    <img alt="From the Seed Square C4 (m = 2) to the Seed Dodecagon C12 (m = 7) and Kempe Cleavages" src="./seed_dodecagon_generalization_light.svg" width="880">
-  </picture>
-  <br>
-  <em><b>Figure 1: From the Seed Square <code>C₄</code> (<code>m = 2</code>) to the Seed Dodecagon <code>C₁₂</code> (<code>m = 7</code>) &amp; Kempe Cleavages</b> (adaptive: <a href="./seed_dodecagon_generalization_dark.svg">Dark</a> · <a href="./seed_dodecagon_generalization_light.svg">Light</a>).</em>
-</p>
-
 > **Formal Lean 4 Companion (`32` Structural Theorems, `52` Formal `#print axioms` Declarations, `0 sorryAx`):** [`verify-it-yourself/ChiralNullspaceAndHandshaking.lean`](../verify-it-yourself/ChiralNullspaceAndHandshaking.lean)  
 > **Standalone Zero-Trust Verifier (`6.0s` across all `2,670` Orbits & `3,114` Cluster Pairs):** [`verify-it-yourself/verify_seed_dodecagon_and_freckles.py`](../verify-it-yourself/verify_seed_dodecagon_and_freckles.py)  
 > **Seed Dodecagon Certificates (`3 / 3` Certified `UNSAT` on $C_{12}$):** [`verify-it-yourself/seed_dodecagon_c12_summary.json`](../verify-it-yourself/seed_dodecagon_c12_summary.json) · [`verify-it-yourself/seed_orbit_2118_cert.json`](../verify-it-yourself/seed_orbit_2118_cert.json)
@@ -41,6 +31,16 @@ The answer unifies the automorphism and slice-decomposition landscape of $\Gamma
 | **Seed I** | `Orbit 0` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}})$ | `(6, 0, 0)` | `12` ($D_6$) | `186,949,606,677` | `19,342,812,368` | `113,567` | `0` | `0` | `CERTIFIED UNSAT` |
 | **Seed II** | `Orbit 1670` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{even}})$ | `(0, 6, 0)` | `12` ($D_6$) | `49,982,900,602` | `3,630,428,696` | `90,674` | `0` | `0` | `CERTIFIED UNSAT` |
 | **Seed III** | `Orbit 2118` | $(\mathcal{M}_{\text{even}}, \mathcal{M}_{\text{odd}}, \mathcal{M}_{\text{odd}})$ | `(0, 0, 6)` | `12` ($D_6$) | `969,255,803` | `189,503,580` | `5,966` | `0` | `0` | `CERTIFIED UNSAT` |
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./seed_dodecagon_generalization_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./seed_dodecagon_generalization_light.svg">
+    <img alt="From the Seed Square C4 (m = 2) to the Seed Dodecagon C12 (m = 7) and Kempe Cleavages" src="./seed_dodecagon_generalization_light.svg" width="880">
+  </picture>
+  <br>
+  <em><b>Figure 1: From the Seed Square <code>C₄</code> (<code>m = 2</code>) to the Seed Dodecagon <code>C₁₂</code> (<code>m = 7</code>) &amp; Kempe Cleavages</b> (adaptive: <a href="./seed_dodecagon_generalization_dark.svg">Dark</a> · <a href="./seed_dodecagon_generalization_light.svg">Light</a>).</em>
+</p>
 
 ---
 
