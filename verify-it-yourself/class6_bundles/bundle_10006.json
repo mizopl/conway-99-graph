@@ -1,0 +1,105 @@
+{
+  "bundle_id": 10006,
+  "orig_bundle_id": 8,
+  "array_pos": 170,
+  "status": "CERTIFIED_UNSAT",
+  "shard_id": -1,
+  "shard_pos": 6,
+  "num_orbits": 7,
+  "num_uncertified_orbits": 0,
+  "orbits": [
+    66,
+    67,
+    300,
+    334,
+    756,
+    757,
+    759
+  ],
+  "num_coset_members": 76,
+  "num_r6": 18,
+  "num_r7": 31,
+  "aut_dec_order": 16,
+  "work_est": 0.606,
+  "est_a100_v6g_hours": 0.43,
+  "reps_done": 11626,
+  "reps_total": 11626,
+  "progress_pct": 100.0,
+  "d4": 66733504268,
+  "d6": 7649135408,
+  "sum_d8": 128394661,
+  "sols": 0,
+  "elapsed_s": 6995.843,
+  "orbit_certificates": [
+    {
+      "orbit_idx": 66,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 10377160,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    },
+    {
+      "orbit_idx": 67,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 34699808,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    },
+    {
+      "orbit_idx": 300,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 8038978,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    },
+    {
+      "orbit_idx": 334,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 22820625,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    },
+    {
+      "orbit_idx": 756,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 34699808,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    },
+    {
+      "orbit_idx": 757,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 5413840,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    },
+    {
+      "orbit_idx": 759,
+      "bundle_idx": 0,
+      "reps": 11626,
+      "d4": 66733504268,
+      "d6": 7649135408,
+      "d8": 12344442,
+      "sols": 0,
+      "bundle_elapsed_s": 6995.843
+    }
+  ]
+}

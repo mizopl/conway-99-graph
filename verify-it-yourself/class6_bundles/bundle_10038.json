@@ -1,0 +1,39 @@
+{
+  "bundle_id": 10038,
+  "orig_bundle_id": 0,
+  "array_pos": 202,
+  "status": "CERTIFIED_UNSAT",
+  "shard_id": -1,
+  "shard_pos": 38,
+  "num_orbits": 1,
+  "num_uncertified_orbits": 0,
+  "orbits": [
+    1683
+  ],
+  "num_coset_members": 16,
+  "num_r6": 8,
+  "num_r7": 16,
+  "aut_dec_order": 16,
+  "work_est": 0.785,
+  "est_a100_v6g_hours": 0.56,
+  "reps_done": 11626,
+  "reps_total": 11626,
+  "progress_pct": 100.0,
+  "d4": 143375227540,
+  "d6": 1357096174,
+  "sum_d8": 4506834,
+  "sols": 0,
+  "elapsed_s": 4268.39,
+  "orbit_certificates": [
+    {
+      "orbit_idx": 1683,
+      "bundle_idx": 1,
+      "reps": 11626,
+      "d4": 143375227540,
+      "d6": 1357096174,
+      "d8": 4506834,
+      "sols": 0,
+      "bundle_elapsed_s": 4268.39
+    }
+  ]
+}

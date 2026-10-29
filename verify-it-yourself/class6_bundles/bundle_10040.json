@@ -1,0 +1,94 @@
+{
+  "bundle_id": 10040,
+  "orig_bundle_id": 246,
+  "array_pos": 204,
+  "status": "CERTIFIED_UNSAT",
+  "shard_id": -1,
+  "shard_pos": 40,
+  "num_orbits": 6,
+  "num_uncertified_orbits": 0,
+  "orbits": [
+    1753,
+    1759,
+    1761,
+    1763,
+    1767,
+    1776
+  ],
+  "num_coset_members": 176,
+  "num_r6": 22,
+  "num_r7": 74,
+  "aut_dec_order": 32,
+  "work_est": 0.488,
+  "est_a100_v6g_hours": 0.35,
+  "reps_done": 5870,
+  "reps_total": 5870,
+  "progress_pct": 100.0,
+  "d4": 1257937028,
+  "d6": 6944754914,
+  "sum_d8": 371576604,
+  "sols": 0,
+  "elapsed_s": 8086.63,
+  "orbit_certificates": [
+    {
+      "orbit_idx": 1753,
+      "bundle_idx": 0,
+      "reps": 5870,
+      "d4": 1257937028,
+      "d6": 6944754914,
+      "d8": 44225956,
+      "sols": 0,
+      "bundle_elapsed_s": 8086.63
+    },
+    {
+      "orbit_idx": 1759,
+      "bundle_idx": 0,
+      "reps": 5870,
+      "d4": 1257937028,
+      "d6": 6944754914,
+      "d8": 4212048,
+      "sols": 0,
+      "bundle_elapsed_s": 8086.63
+    },
+    {
+      "orbit_idx": 1761,
+      "bundle_idx": 0,
+      "reps": 5870,
+      "d4": 1257937028,
+      "d6": 6944754914,
+      "d8": 90063708,
+      "sols": 0,
+      "bundle_elapsed_s": 8086.63
+    },
+    {
+      "orbit_idx": 1763,
+      "bundle_idx": 0,
+      "reps": 5870,
+      "d4": 1257937028,
+      "d6": 6944754914,
+      "d8": 28359088,
+      "sols": 0,
+      "bundle_elapsed_s": 8086.63
+    },
+    {
+      "orbit_idx": 1767,
+      "bundle_idx": 0,
+      "reps": 5870,
+      "d4": 1257937028,
+      "d6": 6944754914,
+      "d8": 123665688,
+      "sols": 0,
+      "bundle_elapsed_s": 8086.63
+    },
+    {
+      "orbit_idx": 1776,
+      "bundle_idx": 0,
+      "reps": 5870,
+      "d4": 1257937028,
+      "d6": 6944754914,
+      "d8": 81050116,
+      "sols": 0,
+      "bundle_elapsed_s": 8086.63
+    }
+  ]
+}

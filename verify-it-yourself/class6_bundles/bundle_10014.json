@@ -1,0 +1,116 @@
+{
+  "bundle_id": 10014,
+  "orig_bundle_id": 4,
+  "array_pos": 178,
+  "status": "CERTIFIED_UNSAT",
+  "shard_id": -1,
+  "shard_pos": 14,
+  "num_orbits": 8,
+  "num_uncertified_orbits": 0,
+  "orbits": [
+    316,
+    320,
+    324,
+    652,
+    665,
+    667,
+    674,
+    679
+  ],
+  "num_coset_members": 120,
+  "num_r6": 24,
+  "num_r7": 53,
+  "aut_dec_order": 16,
+  "work_est": 0.521,
+  "est_a100_v6g_hours": 0.37,
+  "reps_done": 5870,
+  "reps_total": 5870,
+  "progress_pct": 100.0,
+  "d4": 2665153193,
+  "d6": 1171017734,
+  "sum_d8": 32856847,
+  "sols": 0,
+  "elapsed_s": 989.644,
+  "orbit_certificates": [
+    {
+      "orbit_idx": 316,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 3332412,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 320,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 6972608,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 324,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 5557752,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 652,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 2584172,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 665,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 1193983,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 667,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 2980982,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 674,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 7301006,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    },
+    {
+      "orbit_idx": 679,
+      "bundle_idx": 1,
+      "reps": 5870,
+      "d4": 2665153193,
+      "d6": 1171017734,
+      "d8": 2933932,
+      "sols": 0,
+      "bundle_elapsed_s": 989.644
+    }
+  ]
+}
