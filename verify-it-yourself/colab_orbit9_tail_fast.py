@@ -983,10 +983,10 @@ def main():
 
     t_orb = time.time()
     # Run ALL 8 batches (0..4092) with the ultra-fast block-cooperative kernel!
-    tot_b1 = 61062148
-    tot_b2 = 684776
+    tot_b1 = 0
+    tot_b2 = 0
     tot_b3 = 0
-    for st in range(2560, len(reps), batch_sz):
+    for st in range(0, len(reps), batch_sz):
         en = min(st + batch_sz, len(reps))
         b_reps = np.ascontiguousarray(reps[st:en], dtype=np.int32)
         b_cans = np.ascontiguousarray(rep_canons[st:en], dtype=np.uint64)

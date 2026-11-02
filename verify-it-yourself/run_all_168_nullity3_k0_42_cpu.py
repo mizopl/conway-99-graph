@@ -768,7 +768,7 @@ def main():
     F4 = F12[:4, :4]; I4 = np.eye(4, dtype=int); J4 = np.ones((4, 4), dtype=int)
     F8 = F12[:8, :8]; I8 = np.eye(8, dtype=int); J8 = np.ones((8, 8), dtype=int)
 
-    for orb_idx in [0, 162]:
+    for orb_idx in range(len(orbits_42)):
         M, E, Gp, KW0, Delta0, comps = orbits_42[orb_idx]
         comp2 = comps[0] if len(comps[0]) == 4 else comps[1]
         comp4 = comps[1] if len(comps[0]) == 4 else comps[0]
@@ -942,14 +942,9 @@ def main():
         assert naive_counts == numba_counts, f"Oracle mismatch on Orbit {orb_idx}: naive={naive_counts} != numba={numba_counts}"
         print(f"  [ORACLE Orbit {orb_idx:3d} rep_idx={or_idx:4d}] EXACT MATCH naive == numba == {naive_counts} in {time.time()-t_or:.2f}s", flush=True)
 
-        n_test = min(50, len(reps))
-        sample_idx = np.linspace(0, len(reps) - 1, n_test, dtype=np.int32)
-        s_reps = np.ascontiguousarray(reps[sample_idx], dtype=np.int32)
-        s_cans = np.ascontiguousarray(rep_canons[sample_idx], dtype=np.uint64)
-
         t0 = time.time()
         res = solve_orbit_42_chiral_cpu(
-            n_test, s_reps, s_cans,
+            len(reps), reps, rep_canons,
             Y[0], Y[1], cy_cans[1], Y[2], cy_cans[2], Y[3], cy_cans[3],
             X[0], cx_cans[0], X[1], cx_cans[1], X[2], cx_cans[2], X[3], cx_cans[3],
             X[4], cx_cans[4], X[5], cx_cans[5], X[6], cx_cans[6], X[7], cx_cans[7],
@@ -958,10 +953,9 @@ def main():
             luts_g01, is_g012_flag, is_g0123_flag, luts_swap01
         )
         el = time.time() - t0
-        scale = len(reps) / n_test
         print(
             f"Orbit {orb_idx:3d}: |Stab2|={len(stab2_m16)} |Stab4|={len(stab4_m16)} (tot={len(stab2_m16)*len(stab4_m16)}) | "
-            f"reps={len(reps):5d} | Est b1={int(res[2]*scale):10,d} | Est d6={int(res[4]*scale):11,d} | Est d8={int(res[6]*scale):9,d} | 50-rep={el:.2f}s | Est 8c-M1={(el*scale)/7.5:.1f}s",
+            f"reps={len(reps):5d} | b1={int(res[2]):10,d} | d6={int(res[4]):11,d} | d8={int(res[6]):9,d} | sols={int(res[7])} | {el:.2f}s",
             flush=True
         )
 

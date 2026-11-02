@@ -1,0 +1,801 @@
+{
+  "description": "Unconditional LEGO & Chiral Component Imbalance UNSAT Certificate for k_type1(S_0) >= 1 (without fixing (h0, h1) = canonical_78_pairs[0])",
+  "strata_certified": {
+    "kt1_1_partition_3_2_1": {
+      "num_orbits": 30,
+      "method": "Exact reduction of 3-block component C3 to the 10 canonical B3-classes C0..C9 (lego33BricksTable in ChiralNullspaceAndHandshaking.lean & null2_k0_33_55_summary.json)",
+      "total_c3_reps": 23129,
+      "total_solutions": 0,
+      "elapsed_s": 0.0
+    },
+    "kt1_2_partition_2_2_1_1": {
+      "num_orbits": 6,
+      "method": "Unconditional 3-component LEGO solver (B1=C1+C1, B2=C2^(1), B3=C2^(2)) without fixing (h0, h1)",
+      "total_b1": 18259722,
+      "total_b12": 227789,
+      "total_solutions": 0,
+      "elapsed_s": 409.52,
+      "orbits": [
+        {
+          "orbit_idx": 0,
+          "label": "A+A+C1+C1",
+          "stab_order": 32,
+          "reps": 1973,
+          "b1": 3005897,
+          "b12": 3875,
+          "b123_sols": 0,
+          "elapsed_s": 24.62
+        },
+        {
+          "orbit_idx": 1,
+          "label": "B+A+C1+C1",
+          "stab_order": 32,
+          "reps": 1973,
+          "b1": 2714383,
+          "b12": 10785,
+          "b123_sols": 0,
+          "elapsed_s": 29.75
+        },
+        {
+          "orbit_idx": 2,
+          "label": "A+C+C1+C1",
+          "stab_order": 256,
+          "reps": 1000,
+          "b1": 1506141,
+          "b12": 58880,
+          "b123_sols": 0,
+          "elapsed_s": 42.27
+        },
+        {
+          "orbit_idx": 3,
+          "label": "B+B+C1+C1",
+          "stab_order": 32,
+          "reps": 1973,
+          "b1": 2714382,
+          "b12": 8752,
+          "b123_sols": 0,
+          "elapsed_s": 25.01
+        },
+        {
+          "orbit_idx": 4,
+          "label": "B+C+C1+C1",
+          "stab_order": 256,
+          "reps": 1000,
+          "b1": 1360770,
+          "b12": 60476,
+          "b123_sols": 0,
+          "elapsed_s": 37.99
+        },
+        {
+          "orbit_idx": 5,
+          "label": "C+C+C1+C1",
+          "stab_order": 2048,
+          "reps": 327,
+          "b1": 6958149,
+          "b12": 85021,
+          "b123_sols": 0,
+          "elapsed_s": 115.33
+        }
+      ]
+    },
+    "kt1_2_partition_4_1_1": {
+      "num_orbits": 56,
+      "num_subcones": 45,
+      "num_secondary_bundle_classes_8dom_verified": 11,
+      "method": "Unconditional LEGO solver coupling Y=C1+C1 with all 56 4-block classes C4 (45 canonical 4x8 sub-cones + full 8-domain av1/av2 surjectivity verification of all 11 secondary bundle classes)",
+      "subcones_total_b1": 26191081,
+      "subcones_total_d6": 21463933026,
+      "subcones_total_d8": 1021941902,
+      "subcones_total_solutions": 0,
+      "subcones_elapsed_s": 10053.03,
+      "secondary_11_classes_total_b1": 4461096,
+      "secondary_11_classes_total_nodes": 746085717,
+      "secondary_11_classes_total_solutions": 0,
+      "secondary_11_classes_elapsed_s": 3327.07,
+      "total_solutions": 0,
+      "subcones": [
+        {
+          "cone_id": 0,
+          "stab_order": 16384,
+          "reps": 114,
+          "b1": 5420,
+          "d6": 1950898,
+          "d8": 46528,
+          "sols": 0,
+          "elapsed_s": 19.06,
+          "classes": [
+            10,
+            39,
+            41,
+            43
+          ]
+        },
+        {
+          "cone_id": 1,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 331276,
+          "d6": 142607590,
+          "d8": 243605,
+          "sols": 0,
+          "elapsed_s": 38.59,
+          "classes": [
+            18
+          ]
+        },
+        {
+          "cone_id": 2,
+          "stab_order": 256,
+          "reps": 1449,
+          "b1": 237140,
+          "d6": 84974700,
+          "d8": 601002,
+          "sols": 0,
+          "elapsed_s": 63.39,
+          "classes": [
+            4
+          ]
+        },
+        {
+          "cone_id": 3,
+          "stab_order": 256,
+          "reps": 1449,
+          "b1": 217553,
+          "d6": 83041287,
+          "d8": 977934,
+          "sols": 0,
+          "elapsed_s": 85.63,
+          "classes": [
+            7
+          ]
+        },
+        {
+          "cone_id": 4,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 474960,
+          "d6": 205065147,
+          "d8": 539658,
+          "sols": 0,
+          "elapsed_s": 38.04,
+          "classes": [
+            29
+          ]
+        },
+        {
+          "cone_id": 5,
+          "stab_order": 1024,
+          "reps": 718,
+          "b1": 103272,
+          "d6": 40149865,
+          "d8": 593714,
+          "sols": 0,
+          "elapsed_s": 48.68,
+          "classes": [
+            8
+          ]
+        },
+        {
+          "cone_id": 6,
+          "stab_order": 1024,
+          "reps": 718,
+          "b1": 103272,
+          "d6": 37292986,
+          "d8": 468038,
+          "sols": 0,
+          "elapsed_s": 45.56,
+          "classes": [
+            19
+          ]
+        },
+        {
+          "cone_id": 7,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 543777,
+          "d6": 211136973,
+          "d8": 743731,
+          "sols": 0,
+          "elapsed_s": 96.27,
+          "classes": [
+            1
+          ]
+        },
+        {
+          "cone_id": 8,
+          "stab_order": 1024,
+          "reps": 748,
+          "b1": 120333,
+          "d6": 42552588,
+          "d8": 358702,
+          "sols": 0,
+          "elapsed_s": 23.98,
+          "classes": [
+            30
+          ]
+        },
+        {
+          "cone_id": 9,
+          "stab_order": 1024,
+          "reps": 748,
+          "b1": 57740,
+          "d6": 20462182,
+          "d8": 217744,
+          "sols": 0,
+          "elapsed_s": 30.1,
+          "classes": [
+            40
+          ]
+        },
+        {
+          "cone_id": 10,
+          "stab_order": 256,
+          "reps": 1484,
+          "b1": 238868,
+          "d6": 122362152,
+          "d8": 163949,
+          "sols": 0,
+          "elapsed_s": 46.48,
+          "classes": [
+            46
+          ]
+        },
+        {
+          "cone_id": 11,
+          "stab_order": 64,
+          "reps": 5694,
+          "b1": 1067711,
+          "d6": 460748983,
+          "d8": 785478,
+          "sols": 0,
+          "elapsed_s": 80.64,
+          "classes": [
+            31
+          ]
+        },
+        {
+          "cone_id": 12,
+          "stab_order": 1024,
+          "reps": 748,
+          "b1": 120333,
+          "d6": 42552588,
+          "d8": 1196912,
+          "sols": 0,
+          "elapsed_s": 36.14,
+          "classes": [
+            2
+          ]
+        },
+        {
+          "cone_id": 13,
+          "stab_order": 1024,
+          "reps": 748,
+          "b1": 60265,
+          "d6": 21376940,
+          "d8": 761824,
+          "sols": 0,
+          "elapsed_s": 56.54,
+          "classes": [
+            11
+          ]
+        },
+        {
+          "cone_id": 14,
+          "stab_order": 128,
+          "reps": 2859,
+          "b1": 470945,
+          "d6": 181932495,
+          "d8": 1481515,
+          "sols": 0,
+          "elapsed_s": 93.22,
+          "classes": [
+            0,
+            5,
+            6
+          ]
+        },
+        {
+          "cone_id": 15,
+          "stab_order": 128,
+          "reps": 2859,
+          "b1": 470945,
+          "d6": 198841652,
+          "d8": 2646922,
+          "sols": 0,
+          "elapsed_s": 120.27,
+          "classes": [
+            32,
+            34
+          ]
+        },
+        {
+          "cone_id": 16,
+          "stab_order": 128,
+          "reps": 2810,
+          "b1": 464463,
+          "d6": 167021137,
+          "d8": 763603,
+          "sols": 0,
+          "elapsed_s": 90.34,
+          "classes": [
+            20
+          ]
+        },
+        {
+          "cone_id": 17,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 490795,
+          "d6": 190688336,
+          "d8": 14171479,
+          "sols": 0,
+          "elapsed_s": 68.91,
+          "classes": [
+            26
+          ]
+        },
+        {
+          "cone_id": 18,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 474960,
+          "d6": 205065147,
+          "d8": 10905189,
+          "sols": 0,
+          "elapsed_s": 44.84,
+          "classes": [
+            37
+          ]
+        },
+        {
+          "cone_id": 19,
+          "stab_order": 64,
+          "reps": 5694,
+          "b1": 1067711,
+          "d6": 414005106,
+          "d8": 1460864,
+          "sols": 0,
+          "elapsed_s": 68.37,
+          "classes": [
+            3
+          ]
+        },
+        {
+          "cone_id": 20,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 348238,
+          "d6": 592029125,
+          "d8": 70236,
+          "sols": 0,
+          "elapsed_s": 21.76,
+          "classes": [
+            21,
+            33
+          ]
+        },
+        {
+          "cone_id": 21,
+          "stab_order": 256,
+          "reps": 1484,
+          "b1": 169050,
+          "d6": 211855919,
+          "d8": 3090940,
+          "sols": 0,
+          "elapsed_s": 32.27,
+          "classes": [
+            12
+          ]
+        },
+        {
+          "cone_id": 22,
+          "stab_order": 64,
+          "reps": 5604,
+          "b1": 1054818,
+          "d6": 409384674,
+          "d8": 8674281,
+          "sols": 0,
+          "elapsed_s": 127.18,
+          "classes": [
+            28
+          ]
+        },
+        {
+          "cone_id": 23,
+          "stab_order": 128,
+          "reps": 2810,
+          "b1": 461471,
+          "d6": 178871975,
+          "d8": 4397725,
+          "sols": 0,
+          "elapsed_s": 35.91,
+          "classes": [
+            9
+          ]
+        },
+        {
+          "cone_id": 24,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 463757,
+          "d6": 180801246,
+          "d8": 87664,
+          "sols": 0,
+          "elapsed_s": 32.9,
+          "classes": [
+            22
+          ]
+        },
+        {
+          "cone_id": 25,
+          "stab_order": 256,
+          "reps": 1473,
+          "b1": 148829,
+          "d6": 52997998,
+          "d8": 1049796,
+          "sols": 0,
+          "elapsed_s": 19.23,
+          "classes": [
+            42
+          ]
+        },
+        {
+          "cone_id": 26,
+          "stab_order": 512,
+          "reps": 1437,
+          "b1": 146775,
+          "d6": 245279547,
+          "d8": 42881486,
+          "sols": 0,
+          "elapsed_s": 63.52,
+          "classes": [
+            47
+          ]
+        },
+        {
+          "cone_id": 27,
+          "stab_order": 32,
+          "reps": 11184,
+          "b1": 2454654,
+          "d6": 953347503,
+          "d8": 13914770,
+          "sols": 0,
+          "elapsed_s": 245.89,
+          "classes": [
+            23
+          ]
+        },
+        {
+          "cone_id": 28,
+          "stab_order": 64,
+          "reps": 5640,
+          "b1": 1135493,
+          "d6": 491736326,
+          "d8": 17607861,
+          "sols": 0,
+          "elapsed_s": 97.92,
+          "classes": [
+            35
+          ]
+        },
+        {
+          "cone_id": 29,
+          "stab_order": 128,
+          "reps": 5640,
+          "b1": 1135493,
+          "d6": 440959138,
+          "d8": 4891710,
+          "sols": 0,
+          "elapsed_s": 135.51,
+          "classes": [
+            24
+          ]
+        },
+        {
+          "cone_id": 30,
+          "stab_order": 1024,
+          "reps": 392,
+          "b1": 32338,
+          "d6": 148725890,
+          "d8": 6644428,
+          "sols": 0,
+          "elapsed_s": 28.77,
+          "classes": [
+            13
+          ]
+        },
+        {
+          "cone_id": 31,
+          "stab_order": 1024,
+          "reps": 747,
+          "b1": 77463,
+          "d6": 355941235,
+          "d8": 21721648,
+          "sols": 0,
+          "elapsed_s": 64.34,
+          "classes": [
+            51
+          ]
+        },
+        {
+          "cone_id": 32,
+          "stab_order": 64,
+          "reps": 5604,
+          "b1": 1054818,
+          "d6": 460929124,
+          "d8": 9140362,
+          "sols": 0,
+          "elapsed_s": 131.46,
+          "classes": [
+            38
+          ]
+        },
+        {
+          "cone_id": 33,
+          "stab_order": 32,
+          "reps": 11184,
+          "b1": 2454654,
+          "d6": 1062805439,
+          "d8": 26036331,
+          "sols": 0,
+          "elapsed_s": 229.09,
+          "classes": [
+            36
+          ]
+        },
+        {
+          "cone_id": 34,
+          "stab_order": 128,
+          "reps": 2834,
+          "b1": 490795,
+          "d6": 190688336,
+          "d8": 46393958,
+          "sols": 0,
+          "elapsed_s": 122.34,
+          "classes": [
+            27
+          ]
+        },
+        {
+          "cone_id": 35,
+          "stab_order": 256,
+          "reps": 2836,
+          "b1": 432183,
+          "d6": 155098718,
+          "d8": 11998574,
+          "sols": 0,
+          "elapsed_s": 94.62,
+          "classes": [
+            44
+          ]
+        },
+        {
+          "cone_id": 36,
+          "stab_order": 512,
+          "reps": 748,
+          "b1": 57740,
+          "d6": 20462182,
+          "d8": 1168005,
+          "sols": 0,
+          "elapsed_s": 14.33,
+          "classes": [
+            45
+          ]
+        },
+        {
+          "cone_id": 37,
+          "stab_order": 1024,
+          "reps": 367,
+          "b1": 32946,
+          "d6": 190131568,
+          "d8": 30990498,
+          "sols": 0,
+          "elapsed_s": 49.64,
+          "classes": [
+            14
+          ]
+        },
+        {
+          "cone_id": 38,
+          "stab_order": 32,
+          "reps": 11184,
+          "b1": 2454654,
+          "d6": 954373675,
+          "d8": 8442871,
+          "sols": 0,
+          "elapsed_s": 290.47,
+          "classes": [
+            25
+          ]
+        },
+        {
+          "cone_id": 39,
+          "stab_order": 64,
+          "reps": 5694,
+          "b1": 1061849,
+          "d6": 1226535209,
+          "d8": 60531180,
+          "sols": 0,
+          "elapsed_s": 269.37,
+          "classes": [
+            48
+          ]
+        },
+        {
+          "cone_id": 40,
+          "stab_order": 128,
+          "reps": 2949,
+          "b1": 465877,
+          "d6": 2173437003,
+          "d8": 40058099,
+          "sols": 0,
+          "elapsed_s": 173.85,
+          "classes": [
+            17,
+            52,
+            55
+          ]
+        },
+        {
+          "cone_id": 41,
+          "stab_order": 64,
+          "reps": 5694,
+          "b1": 1067711,
+          "d6": 2795609873,
+          "d8": 141874486,
+          "sols": 0,
+          "elapsed_s": 323.93,
+          "classes": [
+            49
+          ]
+        },
+        {
+          "cone_id": 42,
+          "stab_order": 128,
+          "reps": 2836,
+          "b1": 331209,
+          "d6": 1079907121,
+          "d8": 178751144,
+          "sols": 0,
+          "elapsed_s": 206.06,
+          "classes": [
+            50
+          ]
+        },
+        {
+          "cone_id": 43,
+          "stab_order": 128,
+          "reps": 2859,
+          "b1": 491122,
+          "d6": 1303003675,
+          "d8": 53850886,
+          "sols": 0,
+          "elapsed_s": 349.87,
+          "classes": [
+            15,
+            16
+          ]
+        },
+        {
+          "cone_id": 44,
+          "stab_order": 64,
+          "reps": 5604,
+          "b1": 1045405,
+          "d6": 2715191775,
+          "d8": 248544572,
+          "sols": 0,
+          "elapsed_s": 5697.75,
+          "classes": [
+            53,
+            54
+          ]
+        }
+      ],
+      "secondary_11_classes_8dom": [
+        {
+          "class_id": 39,
+          "stab8x2_order": 128,
+          "reps": 2949,
+          "b1": 465877,
+          "nodes": 70735213,
+          "sols": 0,
+          "elapsed_s": 329.9
+        },
+        {
+          "class_id": 41,
+          "stab8x2_order": 4096,
+          "reps": 114,
+          "b1": 3763,
+          "nodes": 522856,
+          "sols": 0,
+          "elapsed_s": 10.1
+        },
+        {
+          "class_id": 43,
+          "stab8x2_order": 128,
+          "reps": 2949,
+          "b1": 465877,
+          "nodes": 70800974,
+          "sols": 0,
+          "elapsed_s": 301.01
+        },
+        {
+          "class_id": 5,
+          "stab8x2_order": 128,
+          "reps": 2859,
+          "b1": 491122,
+          "nodes": 50484613,
+          "sols": 0,
+          "elapsed_s": 189.45
+        },
+        {
+          "class_id": 6,
+          "stab8x2_order": 128,
+          "reps": 2859,
+          "b1": 471968,
+          "nodes": 48603603,
+          "sols": 0,
+          "elapsed_s": 177.45
+        },
+        {
+          "class_id": 34,
+          "stab8x2_order": 128,
+          "reps": 2859,
+          "b1": 470945,
+          "nodes": 49046575,
+          "sols": 0,
+          "elapsed_s": 186.24
+        },
+        {
+          "class_id": 33,
+          "stab8x2_order": 128,
+          "reps": 2834,
+          "b1": 474960,
+          "nodes": 49853065,
+          "sols": 0,
+          "elapsed_s": 130.42
+        },
+        {
+          "class_id": 52,
+          "stab8x2_order": 128,
+          "reps": 2949,
+          "b1": 465877,
+          "nodes": 115832044,
+          "sols": 0,
+          "elapsed_s": 580.99
+        },
+        {
+          "class_id": 55,
+          "stab8x2_order": 256,
+          "reps": 1482,
+          "b1": 188234,
+          "nodes": 46376981,
+          "sols": 0,
+          "elapsed_s": 233.01
+        },
+        {
+          "class_id": 16,
+          "stab8x2_order": 128,
+          "reps": 2859,
+          "b1": 491528,
+          "nodes": 125188182,
+          "sols": 0,
+          "elapsed_s": 565.18
+        },
+        {
+          "class_id": 54,
+          "stab8x2_order": 128,
+          "reps": 2859,
+          "b1": 470945,
+          "nodes": 118641611,
+          "sols": 0,
+          "elapsed_s": 623.32
+        }
+      ]
+    },
+    "global_7_triangle_handshaking_closure_of_kt1_1": {
+      "lean4_theorem": "Conway99ChiralTheorems.seven_triangle_type1_handshaking (ChiralNullspaceAndHandshaking.lean lines 381-393)",
+      "statement": "With k_type1(S_r) >= 3 UNSAT (Step 4A Mod-2 Triple-Block Parity Obstruction) and k_type1(S_r) == 2 unconditionally UNSAT (6/6 in 1+1+2+2 and 56/56 in 1+1+4, sols=0), every slice S_r (r in 0..6) around the 7 inner triangles T_0..T_6 satisfies k_type1(S_r) in {0, 1}. By Triality Reciprocity, H_type1 is a simple undirected matching on 7 (odd!) vertices, so sum_{r=0}^6 k_type1(S_r) = 2|E(H_type1)| in {0, 2, 4, 6}, forcing at least 7 - 2|E(H_type1)| in {1, 3, 5, 7} slices to have k_type1(S_r) = 0, where all 2,903 orbits are unconditionally UNSAT without any Type-I block (h0, h1)."
+    }
+  }
+}

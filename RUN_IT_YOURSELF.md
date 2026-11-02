@@ -40,10 +40,17 @@ python3 verify-it-yourself/verify_seed_dodecagon_and_freckles.py
 python3 verify-it-yourself/test_naive_oracle_33_and_42.py
 
 # 3. Run CPU refutation suites for decomposable strata (requires numpy + numba):
-python3 verify-it-yourself/run_all_10_nullity4_k0_222_cpu.py   # 2+2+2 (10/10 orbits, ~11 min on M1 CPU)
-python3 verify-it-yourself/run_all_10_nullity3_k0_33_cpu.py    # 3+3   (55/55 orbits, ~1.5 h on M1 CPU)
-python3 verify-it-yourself/run_all_168_nullity3_k0_42_cpu.py   # 4+2   (168/168 orbits, ~6.3 h on M1 CPU)
-python3 verify-it-yourself/run_all_299_nullity3_k1.py          # 1+5   (299/299 orbits, ~35 min on M1 CPU)
+python3 verify-it-yourself/run_all_10_nullity4_k0_222_cpu.py       # 2+2+2   (10/10 orbits, ~11 min on M1 CPU)
+python3 verify-it-yourself/run_all_10_nullity3_k0_33_cpu.py        # 3+3     (55/55 orbits, ~1.5 h on M1 CPU)
+python3 verify-it-yourself/run_all_168_nullity3_k0_42_cpu.py       # 4+2     (168/168 orbits, ~6.3 h on M1 CPU)
+
+# 4. Unconditional LEGO + 8-Domain Column-Sum Surjectivity Verifiers for k_type1 >= 1
+#    (zero (h0, h1) assumptions; peer-review catch credit: Ralph @ibenarb, Issue #1):
+python3 verify-it-yourself/run_all_6_nullity5_k2_1122_cpu.py       # 1+1+2+2 (6/6 orbits, ~6.8 min on M1 CPU)
+python3 verify-it-yourself/run_all_56_nullity4_k2_114_subcones_cpu.py # 1+1+4 (45/45 canonical 4x8 sub-cones, ~2.56 h on M1 CPU)
+python3 verify-it-yourself/run_rem11_nullity4_k2_114_8dom_cpu.py   # 1+1+4   (11/11 secondary bundle classes via 8-domain av1/av2 pruning, ~55.5 min on M1 CPU)
+# Combined with 1+2+3 (30/30 UNSAT via 3+3 C_3 bricks) and Theorem 4 (seven_triangle_type1_handshaking),
+# see verify-it-yourself/null_ktype1_ge1_unconditional_lego_summary.json.
 ```
 
 ---

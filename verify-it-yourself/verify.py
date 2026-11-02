@@ -1420,6 +1420,48 @@ def main():
     if total_lrat_B != summary.get("total_lrat_rup_lemmas_encoding_B"):
         fail("total_lrat_rup_lemmas_encoding_B mismatch")
 
+    # 4. Verify algebraic-spectral invariants in object/lens3_output.json & unconditional LEGO summary
+    lens3_obj_path = os.path.join(here, "..", "object", "lens3_output.json")
+    lens3_asym_path = os.path.join(here, "..", "asymmetric_research", "lens3_output.json")
+    if os.path.isfile(lens3_obj_path):
+        try:
+            with open(lens3_obj_path, "r") as f:
+                l3 = json.load(f)
+        except Exception as e:
+            fail(f"Could not parse object/lens3_output.json: {e}")
+        s2c = l3.get("step2C_triangle_equitable_duality", {})
+        part_sizes = s2c.get("partition_sizes", [])
+        q_eigs = s2c.get("quotient_matrix_eigenvalues", [])
+        if part_sizes != [3, 12, 12, 12, 60] or sum(part_sizes) != 99:
+            fail(f"lens3_output.json: invalid triangle equitable partition_sizes {part_sizes}")
+        if q_eigs != [14, 3, -1, -1, -4]:
+            fail(f"lens3_output.json: invalid quotient_matrix_eigenvalues {q_eigs}")
+        if os.path.isfile(lens3_asym_path):
+            with open(lens3_asym_path, "r") as f2:
+                if l3 != json.load(f2):
+                    fail("lens3_output.json: mismatch between object/ and asymmetric_research/")
+
+    lego_path = os.path.join(here, "null_ktype1_ge1_unconditional_lego_summary.json")
+    if os.path.isfile(lego_path):
+        try:
+            with open(lego_path, "r") as f:
+                lg = json.load(f)
+        except Exception as e:
+            fail(f"Could not parse null_ktype1_ge1_unconditional_lego_summary.json: {e}")
+        sc = lg.get("strata_certified", {})
+        p1122 = sc.get("kt1_2_partition_2_2_1_1", {})
+        p114 = sc.get("kt1_2_partition_4_1_1", {})
+        if sum(r.get("b1", 0) for r in p1122.get("orbits", [])) != p1122.get("total_b1", -1):
+            fail("null_ktype1_ge1_unconditional_lego_summary.json: 1+1+2+2 b1 sum mismatch")
+        if sum(r.get("b123_sols", 1) for r in p1122.get("orbits", [])) != 0:
+            fail("null_ktype1_ge1_unconditional_lego_summary.json: 1+1+2+2 nonzero solutions")
+        if sum(r.get("b1", 0) for r in p114.get("subcones", [])) != p114.get("subcones_total_b1", -1):
+            fail("null_ktype1_ge1_unconditional_lego_summary.json: 1+1+4 subcones b1 sum mismatch")
+        if sum(r.get("nodes", 0) for r in p114.get("secondary_11_classes_8dom", [])) != p114.get("secondary_11_classes_total_nodes", -1):
+            fail("null_ktype1_ge1_unconditional_lego_summary.json: 1+1+4 secondary nodes sum mismatch")
+        if p114.get("total_solutions", 1) != 0:
+            fail("null_ktype1_ge1_unconditional_lego_summary.json: 1+1+4 nonzero solutions")
+
     print(
         f"All 54 UNSAT proofs (27 theorems x 2 encodings, {total_lrat_A + total_lrat_B} RUP lemmas, 0 RAT lemmas) verified."
     )
