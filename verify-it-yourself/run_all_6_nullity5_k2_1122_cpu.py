@@ -260,6 +260,8 @@ def main():
             flush=True
         )
 
+    if total_b3 != 0:
+        raise RuntimeError(f"[PART B2 FAIL] Expected 0 solutions in 1+1+2+2, got total_b123={total_b3}")
     print(f"\n[PART B2 PASS] ALL 6 ORBITS OF 1+1+2+2 CERTIFIED UNSAT in {time.time()-t_start:.2f}s: total_b1={total_b1:,}, total_b12={total_b2:,}, total_b123={total_b3}", flush=True)
 
 if __name__ == "__main__":

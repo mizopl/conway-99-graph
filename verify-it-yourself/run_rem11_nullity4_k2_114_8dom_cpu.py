@@ -746,6 +746,8 @@ def main():
             Gp8_4, KW8, ALL60,
             luts_g01, is_g012_flag, luts_swap01
         )
+        if int(res[2]) != 0:
+            raise RuntimeError(f"[1+1+4 Class {ex_c:2d} FAIL] Expected 0 solutions, got sols={int(res[2])}")
         print(f"[1+1+4 Class {ex_c:2d}] |Stab8x2|={len(stab8)*len(stab2_m16):4d} | reps={len(reps):4d} | b1={int(res[0]):7d} nodes={int(res[1]):8d} sols={int(res[2])} | {time.time()-tc0:.2f}s", flush=True)
 
 

@@ -954,6 +954,8 @@ def main():
         tot_b1 += int(res[2]); tot_d6 += int(res[4]); tot_d8 += int(res[6]); tot_sols += int(res[7])
         print(f"  [1+1+4 K4_{idx_m:02d}] |Stab|={len(stab2_m16)*len(stab4_sub):5d} | reps={len(reps):4d} | b1={int(res[2]):6d} d6={int(res[4]):8d} d8={int(res[6]):6d} sols={int(res[7])} | {time.time()-t_k:.2f}s (classes={new_c})", flush=True)
 
+    if tot_sols != 0:
+        raise RuntimeError(f"[PART B1 FAIL] Expected 0 solutions in 1+1+4 sub-cones, got tot_sols={tot_sols}")
     print(f"[PART B1 PASS] All 45 canonical 4x8 sub-cones of 1+1+4 (kt1=2, dim=4) CERTIFIED UNSAT (tot_b1={tot_b1}, tot_d6={tot_d6}, tot_d8={tot_d8}, tot_sols={tot_sols}) in {time.time()-t_114:.2f}s!", flush=True)
 
 if __name__ == "__main__":

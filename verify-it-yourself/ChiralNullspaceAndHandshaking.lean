@@ -1534,6 +1534,67 @@ theorem conway99_nonexistence_of_simpleGraph99_srg_14_1_2
     bundle504_of crystal28_of ValidBundle6 ValidCrystal6 IsCanon6 Covers6 proj6 toRep6 x12_6
     h_cryst_lift_6 h_cov_6 h_proj_6 h_canon_6 h_unsat_6_cryst).2 (G, g) ⟨h_srg, h_inv⟩
 
+/-- Theorem 20e (`conway99_seven_slice_root_selection_bypassing_stratum51`):
+    Global 7-Anchor Root-Selection Reduction bypassing `Stratum51` (`1+5`, `299` orbits)
+    and `Stratum321` (`1+2+3`, `30` orbits) via `seven_triangle_type1_handshaking` (`Theorem 4`):
+    Once `StratumKW0Neg`, `StratumType1Ge3` (`k_r >= 3`), and `StratumType1Eq2` (`k_r = 2`,
+    i.e. `1+1+2+2` and `1+1+4`) are excluded across all 7 anchor slices `r : Fin 7`,
+    Euler handshaking on the 7-anchor Type-I matching (`k0 + ... + k6 = 2 * numEdges`)
+    forces at least one anchor slice `r_star : Fin 7` to have `k_slice r_star = 0`, placing
+    `o_slice r_star` directly in the Type-I-free strata
+    (`Stratum222 ∨ Stratum33 ∨ Stratum42 ∨ StratumClass6`) without requiring any local
+    hypothesis `h_unsat_51` on `Stratum51` (`1+5`)! -/
+theorem conway99_seven_slice_root_selection_bypassing_stratum51
+    (ValidOrbitSol : Fin 3580 → Prop)
+    (o_slice : Fin 7 → Fin 3580)
+    (k_slice : Fin 7 → Int)
+    (numEdges : Int)
+    (h_valid : ∀ r : Fin 7, ValidOrbitSol (o_slice r))
+    (h_nonneg : ∀ r : Fin 7, 0 ≤ k_slice r)
+    (h_ge2_stratum : ∀ r : Fin 7, 2 ≤ k_slice r →
+      StratumKW0Neg (o_slice r) ∨ StratumType1Ge3 (o_slice r) ∨ StratumType1Eq2 (o_slice r))
+    (h_zero_stratum : ∀ r : Fin 7, k_slice r = 0 →
+      StratumKW0Neg (o_slice r) ∨ Stratum222 (o_slice r) ∨
+      Stratum33 (o_slice r) ∨ Stratum42 (o_slice r) ∨ StratumClass6 (o_slice r))
+    (h_handshake :
+      k_slice 0 + k_slice 1 + k_slice 2 + k_slice 3 + k_slice 4 + k_slice 5 + k_slice 6 = 2 * numEdges)
+    (h_unsat_kw0  : ∀ o, StratumKW0Neg o   → ¬ ValidOrbitSol o)
+    (h_unsat_t1_3 : ∀ o, StratumType1Ge3 o → ¬ ValidOrbitSol o)
+    (h_unsat_t1_2 : ∀ o, StratumType1Eq2 o → ¬ ValidOrbitSol o) :
+    ∃ r_star : Fin 7,
+      k_slice r_star = 0 ∧
+      ValidOrbitSol (o_slice r_star) ∧
+      (Stratum222 (o_slice r_star) ∨ Stratum33 (o_slice r_star) ∨
+       Stratum42 (o_slice r_star) ∨ StratumClass6 (o_slice r_star)) := by
+  have h_le1 : ∀ r : Fin 7, 0 ≤ k_slice r ∧ k_slice r ≤ 1 := by
+    intro r
+    refine ⟨h_nonneg r, ?_⟩
+    by_contra h_not
+    have h_ge2 : 2 ≤ k_slice r := by omega
+    rcases h_ge2_stratum r h_ge2 with h_kw | h_t3 | h_t2
+    · exact h_unsat_kw0 (o_slice r) h_kw (h_valid r)
+    · exact h_unsat_t1_3 (o_slice r) h_t3 (h_valid r)
+    · exact h_unsat_t1_2 (o_slice r) h_t2 (h_valid r)
+  have h_ex := (seven_triangle_type1_handshaking
+    (k_slice 0) (k_slice 1) (k_slice 2) (k_slice 3) (k_slice 4) (k_slice 5) (k_slice 6) numEdges
+    (h_le1 0) (h_le1 1) (h_le1 2) (h_le1 3) (h_le1 4) (h_le1 5) (h_le1 6) h_handshake).2
+  have h_pick : ∃ r : Fin 7, k_slice r = 0 := by
+    rcases h_ex with h0 | h1 | h2 | h3 | h4 | h5 | h6
+    · exact ⟨0, h0⟩
+    · exact ⟨1, h1⟩
+    · exact ⟨2, h2⟩
+    · exact ⟨3, h3⟩
+    · exact ⟨4, h4⟩
+    · exact ⟨5, h5⟩
+    · exact ⟨6, h6⟩
+  rcases h_pick with ⟨r_star, hr0⟩
+  rcases h_zero_stratum r_star hr0 with h_kw | h_222 | h_33 | h_42 | h_c6
+  · exact False.elim (h_unsat_kw0 (o_slice r_star) h_kw (h_valid r_star))
+  · exact ⟨r_star, hr0, h_valid r_star, Or.inl h_222⟩
+  · exact ⟨r_star, hr0, h_valid r_star, Or.inr (Or.inl h_33)⟩
+  · exact ⟨r_star, hr0, h_valid r_star, Or.inr (Or.inr (Or.inl h_42))⟩
+  · exact ⟨r_star, hr0, h_valid r_star, Or.inr (Or.inr (Or.inr h_c6))⟩
+
 /-!
   ==============================================================================
   ### 22. Theorem 21 (`Law M23` — Kryształy Połówkowe `d6`, Dualność Cząstka-Dziura
@@ -2795,6 +2856,7 @@ theorem complete_five_graph_cayley_classification_9_99_243_6273_494019_decide :
 #print axioms conway99_master_nonexistence_from_crystal_cascade
 #print axioms conway99_concrete_fin3580_exhaustive_disjoint_cascade
 #print axioms conway99_nonexistence_of_simpleGraph99_srg_14_1_2
+#print axioms conway99_seven_slice_root_selection_bypassing_stratum51
 #print axioms half_crystal_d6_duality_and_u36_e12_exact_partition
 #print axioms conway99_every_remaining_row_exact_6_in_U36_and_4_in_E12_and_d8_hole_filter
 #print axioms conway99_kernel_decide_verified_covering_tables
